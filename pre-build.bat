@@ -1,0 +1,1 @@
+(pushd sources\iconfont & fontcustom compile & popd)

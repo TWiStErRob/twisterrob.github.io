@@ -3,6 +3,7 @@
 #   This file should live in the directory where you run `fontcustom compile`.
 #   For more info, visit <https://github.com/FontCustom/fontcustom>.
 # =============================================================================
+# Usage: `fontcustom compile` and see iconfont-preview.html in this directory for examples
 
 
 # -----------------------------------------------------------------------------
@@ -19,13 +20,13 @@ css_selector: .icon-{{glyph}}
 no_hash: true
 
 # Encode WOFF fonts into the generated CSS.
-#base64: true
+#base64: true # doesn't work yet https://github.com/FontCustom/fontcustom/issues/277
 
 # Forces compilation, even if inputs have not changed
-#force: true
+force: true
 
 # Display (possibly useful) debugging messages.
-#debug: true
+debug: true
 
 # Hide status messages.
 #quiet: true
@@ -46,15 +47,14 @@ no_hash: true
 # -----------------------------------------------------------------------------
 
 input:
- vectors: svg-files-for-custom-font
+  vectors: vectors
 #  templates: my/templates
 
 output:
- fonts: .
- css: .
-#  preview: app/views/styleguide
+  fonts: ../../assets/fonts
+  css: ../../_sass
+  preview: ./
 #  my-custom-template.yml: path/to/template/output
-
 
 # -----------------------------------------------------------------------------
 # Templates
@@ -70,12 +70,13 @@ output:
 #   Default: css, preview
 # -----------------------------------------------------------------------------
 
-#templates:
-#- scss-rails
-#- preview
+templates:
+#- css
+- scss
+- preview
 #- my-custom-template.yml
 
-#preprocessor_path: ../fonts/
+preprocessor_path: ../fonts/
 
 
 # -----------------------------------------------------------------------------
