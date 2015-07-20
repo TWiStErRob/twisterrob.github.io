@@ -1,0 +1,48 @@
+---
+layout: page
+---
+{{ content }}
+
+<h2>Posts</h2>
+{% assign category_posts = site.categories[page.category] %}
+{% if category_posts %}
+	{% for post in category_posts %}
+		{% capture post_year %}{{ post.date | date: '%Y' }}{% endcapture %}
+		{% if forloop.first %}
+			<h3>{{ post_year }}</h3><ul>
+		{% endif %}
+		
+		{% if forloop.first == false %}
+			{% assign previous_index = forloop.index0 | minus: 1 %}
+			{% capture previous_post_year %}{{ category_posts[previous_index].date | date: '%Y' }}{% endcapture %}
+			{% if post_year != previous_post_year %}
+				</ul><h3>{{ post_year }}</h3><ul>
+			{% endif %}
+		{% endif %}
+		<li>
+		<a href="{{ site.baseurl }}{{ post.url }}" title="Read {{ post.title | escape_once }}">{{ post.title }}</a>
+		</li>
+
+		{% if forloop.last %}
+			</ul>
+		{% endif %}
+	{% endfor %}
+{% else %}
+	<p>There are no posts in this category.</p>
+{% endif %}
+
+<h2>Other categories</h2>
+<ul>
+{% for other_category in site.pages %}
+	{% if other_category.category %}
+		{% assign other_category_key = other_category_entry[0] %}
+		{% assign other_category = other_category_entry[1] %}
+		{% assign post_count = site.categories[other_category.category].size %}{% unless post_count %}{% assign post_count = 0 %}{% endunless %}
+		<li {% if other_category.category == page.category %}class="active"{% endif %}>
+			<a href="{{ site.baseurl }}/blog/category/{{ other_category.category }}">{{ other_category.title }}</a>
+			({{ post_count }} article{%unless post_count == 1%}s{%endunless%})
+		</li>
+	{% endif %}
+{% endfor %}
+</ul>
+<a href="{{ site.baseurl }}/blog/category/">See posts in all categories</a>
