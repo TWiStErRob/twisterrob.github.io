@@ -2,15 +2,22 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 @charset "utf-8";
-
+$environment: '{{ jekyll.environment }}';
 @import "functions.scss";
+@import "mixins.scss";
+
+@import "iconfont.scss";
+[class^='icon-']:before, [class*=' icon-']:before {
+  margin-right: rem-calc(4);
+}
+
 @import "01_settings_colors.scss";
 @import "02_settings_typography.scss";
 @import "03_settings_mixins_media_queries.scss";
 @import "04_settings_global.scss";
 @import "05_normalize.scss";    // normalize.css v3.0.2
 
-@import "foundation/scss/foundation/components/top-bar.scss";
+@import "foundation/scss/foundation/components/top-bar";
 @import "foundation/scss/foundation/components/accordion";
 @import "foundation/scss/foundation/components/alert-boxes";
 @import "foundation/scss/foundation/components/breadcrumbs";
@@ -25,19 +32,46 @@
 @import "foundation/scss/foundation/components/grid";
 @import "foundation/scss/foundation/components/inline-lists";
 @import "foundation/scss/foundation/components/keystrokes";
+@import "foundation/scss/foundation/components/labels"; // tags
 @import "foundation/scss/foundation/components/panels";
 @import "foundation/scss/foundation/components/reveal";
 @import "foundation/scss/foundation/components/side-nav";
 @import "foundation/scss/foundation/components/sub-nav";
-@import "foundation/scss/foundation/components/tables";
+//@import "foundation/scss/foundation/components/tables";
 @import "foundation/scss/foundation/components/thumbs";
 @import "foundation/scss/foundation/components/top-bar";
 @import "foundation/scss/foundation/components/type";
 @import "foundation/scss/foundation/components/visibility";
 
 @import "06_typography.scss";
-@import "07_layout";
+@import "07_layout.scss";
 @import "foundation/scss/foundation/components/grid";
-@import "09_elements";
+@import "09_elements.scss";
 
-@import "11_syntax-highlighting";
+@import "11_syntax-highlighting.scss";
+
+{% for tag in site.data.tags %}
+  $tag_id: {{ tag[0] | slugify }};
+  /* tag[0] */
+  {% if tag[1].color %}
+      $tag_color: {{ tag[1].color }};
+      .tag-#{$tag_id} {
+        &.tag {
+          background-color: $tag_color;
+          border: 2px solid $tag_color;
+          text-shadow: if(lightness( $tag_color ) >= 70%, $label-font-color-alt, $label-font-color) 0px 0px 2px;
+        }
+        color: if(lightness( $tag_color ) < 70%, $label-font-color-alt, $label-font-color);
+        &:before {
+          text-shadow: black 0px 0px 2px;
+        }
+        lightness: lightness( $tag_color );
+      }
+      .tag-#{$tag_id}.tag:before {
+        //color: $tag_color;
+      }
+      .tag-#{$tag_id}.icon-price-tag:before {
+        color: $tag_color;
+      }
+  {% endif %}
+{% endfor %}

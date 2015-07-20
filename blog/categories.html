@@ -1,0 +1,32 @@
+---
+permalink: /blog/category/
+redirect_from:
+- /blog/categories/
+- /blog/categories.html
+title: "Articles by categories"
+breadcrumbs: true
+---
+
+{% for category in site.categories %}
+	{% assign category_posts = category[1] %}
+	{% for category_page in site.pages %}
+		{% if category_page.category == category[0] %}
+			{% assign category_data = category_page %}{% break %}
+		{% endif %}
+	{% endfor %}
+	<h3 id="{{ category_data.category }}">
+		<a href="{{ site.baseurl }}/blog/category/{{ category_data.category }}/">{{ category_data.title }}</a>
+		({% if category_posts.size %}{{ category_posts.size }}{% else %}0{% endif %} article{%unless category_posts.size == 1%}s{%endunless%})
+	</h3>
+	{% if 0 < category_posts.size %}
+	<ul>
+	{% for post in category_posts %}
+		<li>
+			<a href="{{ site.baseurl }}{{ post.url }}" title="Read {{ post.title | escape_once }}">{{ post.title }}</a>
+		</li>
+	{% endfor %}
+	</ul>
+	{% else %}
+		There are no posts in this category.
+	{% endif %}
+{% endfor %}

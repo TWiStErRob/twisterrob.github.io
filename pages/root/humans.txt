@@ -1,4 +1,6 @@
 ---
+permalink: /humans.txt
+layout: null
 ---
 /* SITE */
 # humanstxt.org/

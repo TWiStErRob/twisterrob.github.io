@@ -144,3 +144,12 @@ $modules: () !default;
 @function em-calc($values){
   @return rem-calc($values);
 }
+
+@function text-on-solid-color($color) {
+    @if (lightness( $color ) > 40) {
+      @return #000000;
+    }
+    @else {
+      @return #FFFFFF;
+    }
+}

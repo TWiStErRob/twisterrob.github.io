@@ -1,6 +1,6 @@
-/* TOC – Typography variables
+/* TOC – Typography variables
 
-Modular Scale › http://modularscale.com/scale/?px1=16&px2=36&ra1=1.25&ra2=0
+Modular Scale › http://modularscale.com/scale/?px1=16&px2=36&ra1=1.25&ra2=0
 
 - Fonts
 - Font Weight
@@ -21,8 +21,8 @@ $rem-base: $base-font-size;
 $base-line-height: 1.5 !default;
 
 
-$font-family-sans-serif: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-family-serif: "Volkhov", Georgia, Times, serif;
+$font-family-sans-serif: if($environment == 'development', "", "Lato"), "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif: if($environment == 'development', "", "Volkhov"), Georgia, Times, serif;
 $font-family-monospace: "Lucida Console", Monaco, monospace;
 
 $body-font-family: $font-family-sans-serif;

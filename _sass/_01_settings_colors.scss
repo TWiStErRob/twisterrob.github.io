@@ -1,4 +1,4 @@
-/* TOC – Color Variables
+/* TOC – Color Variables
 
 - Basics
 - Corporate Identity Colorpalette
@@ -9,16 +9,6 @@
 - Code
 
 */
-
-
-
-/* Basics
-------------------------------------------------------------------- */
-
-$text-color:       	#111;
-$body-font-color: 	$text-color;
-$body-bg: 			#fdfdfd;
-
 
 
 /* Corporate Identity Colorpalette
@@ -37,18 +27,19 @@ $ci-6: #A1D044;     // green
 /* Foundation Color Variables
 ------------------------------------------------------------------- */
 
-$primary-color: $ci-1;
+$primary-color: $ci-3;
 $secondary-color: $ci-6;
 $alert-color: $ci-5;
 $success-color: $ci-6;
 $warning-color: $ci-4;
-$info-color: $ci-1;
+$info-color: $ci-2;
 
 
 
 /* Grey Scale
 ------------------------------------------------------------------- */
 
+$grey-0: #FFFFFF;
 $grey-1: #E4E4E4;
 $grey-2: #D7D7D7;
 $grey-3: #CBCBCB;
@@ -68,12 +59,21 @@ $grey-16: #0B0B0B;
 
 
 
+/* Basics
+------------------------------------------------------------------- */
+
+$text-color:       	$grey-0;
+$body-font-color: 	$text-color;
+$body-bg: 			$grey-14;
+
+
+
 /* Topbar-Navigation
 ------------------------------------------------------------------- */
 
 $topbar-bg-color: #fff;
 
-$topbar-dropdown-toggle-color: $ci-1;
+$topbar-dropdown-toggle-color: $ci-3;
 
 $topbar-link-color: #000;
 $topbar-link-color-hover: #000;
@@ -81,16 +81,17 @@ $topbar-link-color-active: #000;
 $topbar-link-color-active-hover: #000;
 
 $topbar-dropdown-label-color: $ci-2;
-$topbar-dropdown-link-bg-hover: $ci-6;
+$topbar-dropdown-link-bg-hover: $primary-color;
+$topbar-dropdown-toggle-color: darken($secondary-color, 20%);
 
-$topbar-link-bg-active: $ci-6; // Active Navigation Link
-$topbar-link-bg-hover: $ci-6;
-$topbar-link-bg-active-hover: $ci-2;
+$topbar-link-bg-active: $warning-color; // Active Navigation Link
+$topbar-link-bg-hover: $primary-color;
+$topbar-link-bg-active-hover: $warning-color;
 
 
 $topbar-dropdown-bg: $ci-6; // Background Mobile Navigation
 $topbar-dropdown-link-color: #000;
-$topbar-dropdown-link-bg: $ci-2;
+$topbar-dropdown-link-bg: $secondary-color;
 
 $topbar-menu-link-color-toggled: $ci-1;
 $topbar-menu-icon-color-toggled: $ci-1;
@@ -104,47 +105,20 @@ $topbar-menu-icon-color-toggled: $ci-6;
 /* Footer
 ------------------------------------------------------------------- */
 
-$footer-bg: $grey-8;
-$footer-color: #fff;
-$footer-link-color: $ci-6;
+$footer-bg: $grey-13;
+$footer-color: $grey-0;
+$footer-header-color: $secondary-color;
 
 
-$subfooter-bg: $grey-13;
-$subfooter-color: $grey-8;
-$subfooter-link-color: $grey-8;
+$subfooter-bg: $grey-12;
+$subfooter-color: $grey-6;
+$subfooter-link-color: $grey-6;
 
 
 
 /* Code
 ------------------------------------------------------------------- */
 
-$code-background-color: scale-color($secondary-color, $lightness: 70%);
-
-$highlight-background: #ffffff;
-$highlight-comment: #999988;
-$highlight-error: #a61717;
-$highlight-comment-special: #999999;
-$highlight-deleted: #000000;
-$highlight-error-2: #aa0000;
-$highlight-literal-string: #d14;
-$highlight-literal-number: #009999;
-$highlight-name-attribut: #008080;
-$highlight-error-background: #e3d2d2;
-$highlight-generic-deleted: #ffdddd;
-$highlight-generic-deleted-specific: #ffaaaa;
-$highlight-generic-inserted: #ddffdd;
-$highlight-generic-inserted-specific: #aaffaa;
-$highlight-generic-output: #888888;
-$highlight-generic-prompt: #555555;
-$highlight-subheading: #aaaaaa;
-$highlight-keyword-type: #445588;
-$highlight-name-builtin: #0086B3;
-$highlight-name-class: #445588;
-$highlight-name-entity: #800080;
-$highlight-name-exception: #990000;
-$highlight-name-function: #990000;
-$highlight-name-namespace: #555555;
-$highlight-name-tag: #000080;
-$highlight-text-whitespace: #bbbbbb;
-$highlight-literal-string-regex: #009926;
-$highlight-literal-string-symbol: #990073;
+$code-color: white;
+$code-background-color: black; //scale-color($secondary-color, $lightness: 70%);
+// also see _11_syntax-highlighting.scss 

@@ -1,9 +1,29 @@
-<script src="{{ site.url }}{{ site.baseurl }}/assets/js/javascript.min.js"></script>
+<script src="{{ site.baseurl }}/assets/js/javascript.min.js"></script>
 
 {% if page.header.image_fullwidth %}
 <script>
     $("#masthead").backstretch("{{ site.urlimg }}/{{ page.header.image_fullwidth }}", {fade: 700});
     $("#masthead-with-text").backstretch("{{ site.urlimg }}/{{ page.header.image_fullwidth }}", {fade: 700});
+</script>
+{% endif %}
+
+{% if page.format == 'video' %}
+<script>
+	$(function() {
+		var item = $('.flex-video');
+		var body = $(document.body).addClass("cinematic");
+		var w = $(window);
+		$(window).scroll(function() {
+			var scroll = w.scrollTop();
+			var threshold = item.offset().top;
+			console.log('scroll', scroll, threshold, threshold <= scroll);
+			if (threshold <= scroll) {
+				body.removeClass('cinematic');
+			} else {
+				body.addClass("cinematic");
+			}
+		});
+	});
 </script>
 {% endif %}
 

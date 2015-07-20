@@ -1,44 +1,53 @@
-- name: YouTube
-  url: http://www.youtube.com/PhlowMedia
-  class: icon-youtube
-  title: "Videos, Video-Anleitungen und Filme von Phlow auf YouTube"
+- name: LinkedIn
+  url: http://uk.linkedin.com/in/papproberts
+  class: icon-linkedin
+  title: "Scout me on LinkedIn"
 
-- name: Twitter
-  url: http://twitter.com/phlow
-  class: icon-twitter
-  title: "Immer das Neuste von Phlow gibt es auf Twitter"
-
-- name: Facebook
-  url: http://www.facebook.com/phlow.media
-  class: icon-facebook
-  title: "Lass uns Freunde sein!"
-
-- name: Soundcloud
-  url: http://soundcloud.com/phlow
-  class: icon-soundcloud
-  title: "Sounds und Downloads und mehr"
+- name: Google Play
+  url: https://play.google.com/store/apps/developer?id=Róbert+Papp+(TWiStErRob)
+  class: icon-google-play
+  title: "Install my apps from Google Play"
 
 - name: GitHub
-  url: http://github.com/phlow
+  url: http://github.com/TWiStErRob
   class: icon-github
-  title: Code und mehr...
+  title: "Interpret my code on GitHub"
 
-- name: Instagram
-  url: http://instagram.com/phlowmedia
-  class: icon-instagram
-  title: "Bilder und Impressionen mit und ohne Filter..."
+- name: YouTube
+  url: http://www.youtube.com/user/TWiStErRob
+  class: icon-youtube
+  title: "Watch my videos on YouTube"
 
-- name: Pinterest
-  url: http://www.pinterest.com/phlowmedia/
-  class: icon-pinterest
-  title: "Bilder, Fotos, Illustrationen, Grafiken sammeln..."
+- name: Google+
+  url: https://plus.google.com/+RóbertPappTWiStErRob
+  class: icon-google-plus
+  title: "Add me to your circles on Google Plus!"
 
-- name: Mixcloud
-  url: http://www.mixcloud.com/phlow/
-  class: icon-cloud
-  title: "Mixe, was sonst?"
+- name: Facebook
+  url: http://www.facebook.com/TWiStErRob
+  class: icon-facebook
+  title: "Let's be friends on Facebook!"
 
-# - name: Xing
-#   url: https://www.xing.com/profile/Moritzmo_Sauer
-#   class: icon-xing
-#   title: Xing Profil
+- name: Twitter
+  url: http://twitter.com/TWiStErRob
+  class: icon-twitter
+  title: "Follow my tweets on Twitter"
+
+#- name: Soundcloud
+#  url: http://soundcloud.com/twisterrob
+#  class: icon-soundcloud
+#  title: "Listen to my music on Soundcloud"
+#
+#- name: Instagram
+#  url: http://instagram.com/twisterrob
+#  class: icon-instagram
+#  title: "Check out my pictures on Instagram"
+#
+#- name: Pinterest
+#  url: http://www.pinterest.com/TWiStErRob
+#  class: icon-pinterest
+#  title: "See my pins on Pinterest"
+
+# http://picasaweb.google.com/papp.robert.s
+# http://www.google.com/reader/shared/papp.robert.s
+# https://profiles.google.com/117531635791453169417/buzz

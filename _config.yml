@@ -1,4 +1,6 @@
-# ASCII-Font › http://patorjk.com/software/taag/#p=display&f=Slant&t=Phlow
+#http://jekyllrb.com/docs/configuration/
+
+# ASCII-Font › http://patorjk.com/software/taag/#p=display&f=Slant&t=Phlow
 #
 #      _____ _ __          _____      __  __  _                 
 #     / ___/(_) /____     / ___/___  / /_/ /_(_)___  ____ ______
@@ -8,58 +10,63 @@
 #                                                 /____/        
 #
 # Title of your website
-title: "Feeling Responsive"
+title: "TWiStErRob"
 
 
 # The slogan describes your website and is used on homepage in <title> and other important places
-slogan: "A Flexible Theme for Jekyll"
+slogan: "Personal &amp; Development blog"
 
 
 # The description is used on homepage and in the footer to quickly describe your website. Use a maximum of 150 characters for SEO-purposes.
-description: "»Feeling Responsive« is a responsive theme for Jekyll based on the fabulous foundation framework with beautiful typography and a bright color palette."
+description: "Home for all things about and by Róbert&nbsp;Papp&nbsp;(TWiStErRob)."
 
 
-# This URL is the main adresse. Don't include a slash at the end.
-#
-url: "https://phlow.github.io/feeling-responsive"
-baseurl: ""
+# This URL is the main address for absolute links. Don't include a slash at the end.
+url: 'http://twisterrob.github.io'
+baseurl: ''
 
 # This is for the editing function in _/includes/improve_content.html
 # Leave it empty if your site is not on GitHub/GitHub Pages
-improve_content: https://github.com/Phlow/feeling-responsive/edit/gh-pages
+improve_content: https://github.com/twisterrob/twisterrob.github.io/issues
 
 # This URL points directly to the images directory making
-# things easier to link to images in posts and templates. It needs a slash.
+# things easier to link to images in posts and templates. Don't include a slash at the end.
 #
-# Example: <img src="{{ site.urlimg }}/{{ post.image.title }}">
-# Markdown-Example for posts ![Image Text]({{ site.urlimg }}/image.jpg)
+# Example: <img src="{{ site.urlimg }}/{{ post.image.title }}">
+# Markdown-Example for posts ![Image Text]({{ site.urlimg }}/image.jpg)
 #
-urlimg: "http://phlow.github.io/feeling-responsive/images/"
-
+urlimg: '/images'
 
 # Logo size is 600x80 pixels
-logo: "logo.png"
+logo: "logo-600x80.png"
 
+gems:
+  - jekyll-redirect-from
 
+#      _____ __                  __                
+#     / ___// /________  _______/ /___  __________ 
+#     \__ \/ __/ ___/ / / / ___/ __/ / / / ___/ _ \
+#    ___/ / /_/ /  / /_/ / /__/ /_/ /_/ / /  /  __/
+#   /____/\__/_/   \__,_/\___/\__/\__,_/_/   \___/ 
+#
+# Open _data/navigation.yml to adjust the left and right topbar navigation
+# Open _data/socialmedia.yml to adjust the left and right topbar navigation
+
+show_drafts: null
+limit_posts: 0
+future:      true
+unpublished: false
 # Paginates all X entries
-paginate: 5
-
-
-# Pagination path › Important for blog page in /blog/ to work
+paginate: 10
+# Pagination path › Important for blog page in /blog/ to work
 paginate_path: "blog/page:num"
 
+# !GitHub pages! Disable custom plugins and ignore symbolic links
+# This means that ```java will not work because it requires https://github.com/mvdbos/kramdown-with-pygments
+safe: true
 
-# Theme works best with Kramdown (using the table of contents function)
-markdown: kramdown
-permalink: /:categories/:title/
-highlight: pygments
-excerpt_separator: "\n\n"
 exclude: []
 include: ['.htaccess']
-
-
-# The language setting is used in /includes/header.html for html-settings
-language: "en"
 
 # Exclude these files from your production _site
 exclude:
@@ -67,8 +74,75 @@ exclude:
     - Gemfile.lock
     - LICENSE
     - README.md
+    - "*.bat"
+    - "*.zip"
+    - sources
+    - .sass-cache
+
+#       ______                                _           
+#      / ____/___  ____ _   _____  __________(_)___  ____ 
+#     / /   / __ \/ __ \ | / / _ \/ ___/ ___/ / __ \/ __ \
+#    / /___/ /_/ / / / / |/ /  __/ /  (__  ) / /_/ / / / /
+#    \____/\____/_/ /_/|___/\___/_/  /____/_/\____/_/ /_/ 
+#                                                         
+quiet: false
+
+# More > http://kramdown.gettalong.org/quickref.html
+# Options > http://kramdown.gettalong.org/options.html
+kramdown:
+  input:          GFM
+  auto_ids:       true
+  footnote_nr:    1
+  entity_output:  as_char
+  toc_levels:     1..6
+  smart_quotes:   lsquo,rsquo,ldquo,rdquo
+  #enable_coderay: true
+  #syntax_highlighter: rouge
+
+  coderay:
+    coderay_wrap:              div
+    coderay_line_numbers:      inline
+    coderay_line_number_start: 1
+    coderay_tab_width:         4
+    coderay_bold_every:        10
+    coderay_css:               style
+
+# More › http://sass-lang.com
+# Options › http://jekyllrb.com/docs/assets/#sassscss
+sass:
+  sass_dir: _sass
+  # Options > http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+  style: :compressed
+
+# Theme works best with Kramdown (using the table of contents function)
+markdown: kramdown
+highlight: pygments
+excerpt_separator: "<!--more-->"
+
+# Used > default.html front-matter and comress.html
+# Options > http://jch.penibelst.de
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: all
+
+# !GitHub pages! ???
+lsi: false
 
 
+# The language setting is used in /includes/header.html for html-settings
+language: "en"
+
+
+# Docs > http://jekyllrb.com/docs/collections/
+permalink: /blog/:year/:month/:day/:title.html
+collections:
+  projects:
+    output: true
+    permalink: /project/:name/
+  jobs:
+    output: true
+    permalink: /work/:name/
 #
 #       ____       ____            ____ 
 #      / __ \___  / __/___ ___  __/ / /_
@@ -81,35 +155,51 @@ exclude:
 defaults:
   -
     scope:
-      path: "" 				# an empty string here means all files in the project
-      type: "pages"
+      path: ""
     values:
-      show_meta: true 	# Show metadata beneath all pages
-      # sidebar:    		# Possible values › left, right › by default there will be no sidebar
-      comments: false
-      author: "your_author_name"
+      layout: page
+      #skip_boilerplate: true
   -
     scope:
-      path: ""        
-      type: "posts"
+      type: pages
+      path: ""
     values:
-      show_meta: true   # Show metadata beneath all posts
-      # sidebar:        # Possible values › left, right › by default there will be no sidebar
+      show_meta: false
+      # sidebar:        # Possible values › left, right › by default there will be no sidebar
       comments: false
-      author: "your_author_name"
-
-
-
-#       _   __            _             __  _           
-#      / | / /___ __   __(_)___ _____ _/ /_(_)___  ____ 
-#     /  |/ / __ `/ | / / / __ `/ __ `/ __/ / __ \/ __ \
-#    / /|  / /_/ /| |/ / / /_/ / /_/ / /_/ / /_/ / / / /
-#   /_/ |_/\__,_/ |___/_/\__, /\__,_/\__/_/\____/_/ /_/ 
-#                       /____/                          
-#
-#  Open _data/navigation.yml to adjust the left and right topbar navigation
-#
-
+  -
+    scope:
+      type: posts
+      path: ""        
+    values:
+      show_meta: true
+      # sidebar:        # Possible values › left, right › by default there will be no sidebar
+      comments: false # TODO true
+      #author: twisterrob # disable for now, I'm the only one
+  -
+    scope:
+      type: projects
+      path: ""
+    values:
+      layout: project
+      breadcrumbs: true
+      images:
+        icon: unknown-app-icon-512.png
+        icon_small: unknown-app-icon-512.png
+  -
+    scope:
+      type: jobs
+      path: ""
+    values:
+      layout: job
+      breadcrumbs: true
+  -
+    scope:
+      path: blog/category/
+    values:
+      #permalink: /blog/:category/ # will be available in 3.0, see https://github.com/jekyll/jekyll/pull/3320
+      breadcrumbs: true
+      title: Category Details
 
 
 #     _____ __________ 
@@ -118,91 +208,44 @@ defaults:
 #   ___/ / /___/ /_/ / 
 #  /____/_____/\____/    Verify Website to Webmaster Tools
 
-google_author:             "https://plus.google.com/u/0/118311555303973066167"
-google_site_verification:  "Vk0IOJ2jwG_qEoG7fuEXYqv0m2rLa8P778Fi_GrsgEQ"
-bing_webmastertools_id:    "0FB4C028ABCF07C908C54386ABD2D97F"
+google_author:             "https://plus.google.com/+RóbertPappTWiStErRob"
+#google_site_verification:  "Vk0IOJ2jwG_qEoG7fuEXYqv0m2rLa8P778Fi_GrsgEQ"
+#bing_webmastertools_id:    "0FB4C028ABCF07C908C54386ABD2D97F"
 # alexa_verify_id:         ""
 
+# Favicon-Crap: Favicons, Chrome, Android & Apple Touch Buttons
+# More information » https://mathiasbynens.be/notes/touch-icons
+#favicon-32x32:                          "favicon-32x32.png"
+#touch-icon-192x192:                     "touch-icon-192x192.png"
+#apple-touch-icon-180x180-precomposed:   "apple-touch-icon-180x180-precomposed.png"
+#apple-touch-icon-152x152-precomposed:   "apple-touch-icon-152x152-precomposed.png"
+#apple-touch-icon-144x144-precomposed:   "apple-touch-icon-144x144-precomposed.png"
+#apple-touch-icon-120x120-precomposed:   "apple-touch-icon-120x120-precomposed.png"
+#apple-touch-icon-114x114-precomposed:   "apple-touch-icon-114x114-precomposed.png"
+#apple-touch-icon-76x76-precomposed:     "apple-touch-icon-76x76-precomposed.png"
+#apple-touch-icon-72x72-precomposed:     "apple-touch-icon-72x72-precomposed.png"
+#apple-touch-icon-precomposed:           "apple-touch-icon-precomposed.png"
+#msapplication_tileimage:                "msapplication_tileimage.png"               # Size 144x144
+#msapplication_tilecolor:                "#fabb00"
 
-
-#       ______            _                      
-#      / ____/___ __   __(_)________  ____  _____
-#     / /_  / __ `/ | / / / ___/ __ \/ __ \/ ___/
-#    / __/ / /_/ /| |/ / / /__/ /_/ / / / (__  ) 
-#   /_/    \__,_/ |___/_/\___/\____/_/ /_/____/   Favicon-Crap: Favicons, Chrome, Android & Apple Touch Buttons
-#                                                 More information » https://mathiasbynens.be/notes/touch-icons
-
-favicon-32x32:                          "favicon-32x32.png"
-touch-icon-192x192:                     "touch-icon-192x192.png"
-apple-touch-icon-180x180-precomposed:   "apple-touch-icon-180x180-precomposed.png"
-apple-touch-icon-152x152-precomposed:   "apple-touch-icon-152x152-precomposed.png"
-apple-touch-icon-144x144-precomposed:   "apple-touch-icon-144x144-precomposed.png"
-apple-touch-icon-120x120-precomposed:   "apple-touch-icon-120x120-precomposed.png"
-apple-touch-icon-114x114-precomposed:   "apple-touch-icon-114x114-precomposed.png"
-apple-touch-icon-76x76-precomposed:     "apple-touch-icon-76x76-precomposed.png"
-apple-touch-icon-72x72-precomposed:     "apple-touch-icon-72x72-precomposed.png"
-apple-touch-icon-precomposed:           "apple-touch-icon-precomposed.png"
-msapplication_tileimage:                "msapplication_tileimage.png"               # Size 144x144
-msapplication_tilecolor:                "#fabb00"
-
-
-#       ______                __                __  
-#      / ____/___ _________  / /_  ____  ____  / /__
-#     / /_  / __ `/ ___/ _ \/ __ \/ __ \/ __ \/ //_/
-#    / __/ / /_/ / /__/  __/ /_/ / /_/ / /_/ / ,<   
-#   /_/    \__,_/\___/\___/_.___/\____/\____/_/|_|      Facebook-Optimization › http://j.mp/fb_optimize
-
-og_image:                           "http://images.phlow.de/phlow/phlow_de-logo-512x.png"
+# Facebook-Optimization › http://j.mp/fb_optimize
+og_image:                           imgurl + "/logo-512x512.png"
 og_locale:                          "en_EN"
 og_type:                            "website"
-og_title:                           "Feeling Responsive – A Responsive Theme for Jekyll"
-og_description:                     "Feeling Responsive is built on the fabulous Foundation Framework and comes with lots of features to show your content right."
+og_title:                           "TWiStErRob &mdash; Personal &amp; Development blog"
+og_description:                     "Personal and development blog for Róbert&nbsp;Papp&nbsp;(TWiStErRob)."
 # og_url:                           ""
 # og_site_name:                     ""
 
-
-#      _____            _       __   __  ___         ___      
-#     / ___/____  _____(_)___ _/ /  /  |/  /__  ____/ (_)___ _
-#     \__ \/ __ \/ ___/ / __ `/ /  / /|_/ / _ \/ __  / / __ `/
-#    ___/ / /_/ / /__/ / /_/ / /  / /  / /  __/ /_/ / / /_/ / 
-#   /____/\____/\___/_/\__,_/_/  /_/  /_/\___/\__,_/_/\__,_/  
+#       ____      __                        __  _           
+#      /  _/___  / /____  ____ __________ _/ /_(_)___  ____ 
+#      / // __ \/ __/ _ \/ __ `/ ___/ __ `/ __/ / __ \/ __ \
+#    _/ // / / / /_/  __/ /_/ / /  / /_/ / /_/ / /_/ / / / /
+#   /___/_/ /_/\__/\___/\__, /_/   \__,_/\__/_/\____/_/ /_/ 
+#                      /____/                               
 #
-#  Open _data/socialmedia.yml to adjust the left and right topbar navigation
-#
-
-
-#        ____  _                      
-#       / __ \(_)________ ___  _______
-#      / / / / / ___/ __ `/ / / / ___/
-#     / /_/ / (__  ) /_/ / /_/ (__  ) 
-#    /_____/_/____/\__, /\__,_/____/  
-#                    /_/              
-#
-# used in _includes/comments.html
-
-disqus_shortname: feelingresponsive
-
-
-#      _____                
-#     / ___/____ ___________
-#     \__ \/ __ `/ ___/ ___/
-#    ___/ / /_/ (__  |__  )     More › http://sass-lang.com/ 
-#   /____/\__,_/____/____/      More › http://jekyllrb.com/docs/assets/#sassscss
-#                           
-
-sass:
-    sass_dir: _sass
-    style: :compressed
-
-
-#       ___                __      __  _          
-#      /   |  ____  ____ _/ /_  __/ /_(_)_________
-#     / /| | / __ \/ __ `/ / / / / __/ / ___/ ___/
-#    / ___ |/ / / / /_/ / / /_/ / /_/ / /__(__  ) 
-#   /_/  |_/_/ /_/\__,_/_/\__, /\__/_/\___/____/      https://www.google.com/analytics/
-#                        /____/                   
-#
-# used in _includes/footer_scripts.html
-
-google_analytics_tracking_id: UA-60112281-1
-
+# Used > _includes/comments.html
+#disqus_shortname: twisterrob-blog
+# More > https://www.google.com/analytics/
+# Used > _includes/footer_scripts.html
+#google_analytics_tracking_id: UA-38202353-3

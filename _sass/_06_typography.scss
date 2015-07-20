@@ -1,6 +1,6 @@
-/* TOC – Typography 
+/* TOC – Typography 
 
-Check typography variables › _3_typography_settings.scss
+Check typography variables › _3_typography_settings.scss
 
 - Links
 - Customize Foundation Typography
@@ -14,8 +14,6 @@ Check typography variables › _3_typography_settings.scss
 - Smaller Fontsize for Bigteaser on small devices
 - Additional typographical elements
 - Footnotes
-- Icon Font
-
 */
 
 
@@ -24,22 +22,27 @@ Check typography variables › _3_typography_settings.scss
 ------------------------------------------------------------------- */
 
 a,
-a:link {}
+a:link {
+}
 
 a:visited {
-        border-bottom: $grey-2;
+    border-bottom: $grey-2;
 }
 
 a:hover {
-        color: darken( $ci-1, 10% );
+    color: lighten( $primary-color, 10% );
 }
 
 a:focus {
-        color: lighten( $ci-1, 20% );
+    color: darken( $primary-color, 20% );
 }
 
 a:active {
-        color: darken( $ci-1, 20% );
+    color: lighten( $primary-color, 20% );
+}
+.no-adorn, .no-adorn:hover, .no-adorn:visited {
+    border: 0;
+    text-decoration: none;
 }
 
 
@@ -57,21 +60,34 @@ p a,
 article a {
     font-weight: bold;
     border-bottom: 1px dotted;
+    &:hover {
+        border-bottom: 2px solid;
+    }
 }
-p a:hover,
-article a:hover {
-    border-bottom: 2px solid;
+h1, h2, h3, h4, h5, h6 {
+    a {
+        font-weight: normal;
+        border: 0;
+    }
+    & + ul > li > a, & + ol > li > a {
+        font-weight: normal;
+        border: 0;
+    }
 }
 p a.button,
 .button,
 .button:hover {
     border: 0;
-    color: #fff;
+    color: text-on-solid-color($primary-color);
 }
 p.button a {
     border: 0;
-    color: #fff;
+    color: text-on-solid-color($primary-color);
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.breadcrumbs > *:before {
+    top: -1px !important;
 }
 
 
@@ -83,6 +99,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: $header-font-family;
     font-weight: normal;
     padding: 0;
+
+    &:target, &:target > * {
+        color: $topbar-link-bg-active !important;
+    }
 }
 
 h1 {
@@ -121,6 +141,7 @@ img { border-radius: $global-radius;}
     img.right       { float: right; margin:5px 0 5px 15px; }
     img.aligncenter,
     img.center      { display: block; margin:0 auto 10px; }
+    img.light-bg    { background: rgba(255,255,255,.6); padding: 10px; }
 
 figure {
     margin: 0 0 rem-calc(30) 0;
@@ -166,23 +187,65 @@ td {
 ------------------------------------------------------------------- */
 
 pre {
-    overflow: auto;
     margin-bottom: rem-calc(20);
-    padding: 5px;
-    background-color: $code-background-color;
+    padding: rem-calc(4) rem-calc(7) rem-calc(3) rem-calc(4);
     border-radius: $global-radius;
+    line-height: 1.2;
+    color: $code-color;
+    background-color: $code-background-color;
+    border: 3px ridge darken($secondary-color, 33%);
+
+    max-height: 350px;
+    overflow: auto;
+
+    code {
+        border: 0;
+        padding: 0;
+        line-height: 1.2;
+        font-size: rem-calc(14);
+        background: black;
+        box-shadow: none;
+        color: inherit;
+        text-shadow: none;
+    }
+
+    &::-webkit-scrollbar {
+        height: 12px;
+        width: 12px;
+        background: lighten($code-background-color, 10%);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: darken($secondary-color, 20%);
+        background-clip: padding-box;
+        border-radius: 1ex;
+        border: 2px solid transparent;
+    }
+
+    &::-webkit-scrollbar-corner {
+        background: transparent;
+    }
 }
-pre code {
-    padding: rem-calc(2) rem-calc(5) rem-calc(1) rem-calc(0);
-    border: 0;
+
+.highlight.debug code {
+  white-space: pre-wrap;
+}
+
+div.highlight[title]:before {
+  content: attr(title);
+  text-align: center;
+  display: block;
+  border: 2px ridge darken($primary-color, 10%);
+  border-bottom: none;
 }
 
 code {
-    font-size: rem-calc(14);
-    line-height: 1.5;
+    //box-shadow: 0 0 1px 1px $primary-color;
+    //background: darken($primary-color, 35%);
+    border: 1px ridge darken($primary-color, 10%);
+    padding: 3px;
+    font-style: normal;
 }
-
-
 
 /* Lists
 ------------------------------------------------------------------- */
@@ -193,6 +256,20 @@ ul, ol {
 }
 li {
     margin-left: 0;
+}
+
+ol.numbered-list {
+    counter-reset: list;
+    list-style-type: none;
+
+    ol {
+        counter-reset: list;
+        list-style-type: none;
+    }
+    li:before {
+        counter-increment: list;
+        content: counters(list, ".") ". ";
+    }
 }
 
 .no-bullet {
@@ -222,44 +299,61 @@ dd {
 article dl dt   { line-height: 1.3; }
 article dl dd   { line-height: 1.6; margin-bottom: rem-calc(12); margin-left: rem-calc(24); }
 
+dl.project {
+    dt {
+        float: left;
+        clear: left;
+        width: 150px;
+        text-align: right;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+    }
+    dt:after {
+        content: ":";
+    }
+    dd {
+        margin: 0 0 0 160px;
+        padding: 0 0 0.5em 0;
+    }
+}
+
 
 
 /* Quotes
 ------------------------------------------------------------------- */
 
 blockquote {
-    font-style: italic;
     position: relative;
     border: none;
     margin: 0 30px 30px 30px;
-    color: #4b4b4d
+    p {
+        font-style: italic;
+        color: $info-color;
+    }
+
+    &:before {
+        content: "\00BB";
+        font-size: 80px;
+        line-height: 0;
+        position: absolute;
+        left: -26px;
+        color: $secondary-color;
+    }
+    &:after {
+        content: "\00AB";
+        font-size: 80px;
+        line-height: 0;
+        position: absolute;
+        right: -26px;
+        bottom: 20px;
+        color: $secondary-color;
+    }
+    cite:before {
+        content: "\2014 \0020"
+    }
 }
- 
-    blockquote p {font-style: italic; color: $grey-10; }
- 
-    blockquote:before {
-        display:block;content:"\00BB";
-        font-size:80px;
-        position:absolute;
-        left:-25px;
-        top:-40px;
-        color:#4b4b4d
-    }
-    blockquote:after {
-        display:block;
-        content:"\00AB";
-        font-size:80px;
-        position:absolute;
-        right:-10px;
-        bottom:-40px;
-        color:#4b4b4d;
-    }
-    blockquote cite:before {
-        content:"\2014 \0020"
-    }
-    blockquote cite a,blockquote cite a:visited {
-        color: #555
-    }
+
 cite {
     padding-top: 5px;
 }

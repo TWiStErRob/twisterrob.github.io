@@ -1,8 +1,10 @@
 <script language="Javascript" type="text/javascript">
-  function google_search()
-  {
-    var query = document.getElementById("google-search").value;
-    window.open("http://google.com/search?q=" + query
-  + "%20site:" + "{{ site.url }}");
-  }
+	function google_search() {
+		var query = document.getElementById("google-search").value;
+		window.open("http://google.com/search?q=" + query  + "%20site:" + "{{ site.url }}{{ site.baseurl }}/");
+	}
 </script>
+
+<form style="padding-bottom: 200px;" onsubmit="google_search()" >
+  <input type="text" id="google-search" placeholder="{{ site.data.language.enter_search_term }}">
+</form>

@@ -205,7 +205,7 @@ $global-radius: 3px;
 // $header-font-family: $font-family-serif;
 // $header-font-weight: $font-weight-normal;
 // $header-font-style: normal;
-// $header-font-color: $jet;
+$header-font-color: $secondary-color;
 // $header-line-height: 1.4;
 // $header-top-margin: .2rem;
 // $header-bottom-margin: .5rem;
@@ -325,15 +325,15 @@ $list-side-margin: 1.3rem;
 // $include-html-accordion-classes: $include-html-classes;
 
 $accordion-navigation-padding: rem-calc(12);
-$accordion-navigation-bg-color: #ffffff;
-$accordion-navigation-hover-bg-color: $grey-1;
-$accordion-navigation-active-bg-color: $grey-1;
+// $accordion-navigation-bg-color: #ffffff;
+// $accordion-navigation-hover-bg-color: $grey-1;
+// $accordion-navigation-active-bg-color: $grey-1;
 // $accordion-navigation-font-color: $jet;
 // $accordion-navigation-font-size: rem-calc(16);
 // $accordion-navigation-font-family: $body-font-family;
 
 // $accordion-content-padding: $column-gutter/2;
-$accordion-content-active-bg-color: $grey-1;
+$accordion-content-active-bg-color: $body-bg;
 
 // 02. Alert Boxes
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -397,7 +397,7 @@ $alert-font-size: rem-calc(15);
 // $include-html-nav-classes: $include-html-classes;
 
 // We use this to set the background color for the breadcrumb container.
-$crumb-bg: $grey-1;
+$crumb-bg: $footer-bg;
 
 // We use these to set the padding around the breadcrumbs.
 // $crumb-padding: rem-calc(9 9 14 0);
@@ -413,14 +413,14 @@ $crumb-radius: 0;
 // We use these to set various text styles for breadcrumbs.
 // $crumb-font-size: rem-calc(11);
 // $crumb-font-color: $primary-color;
-// $crumb-font-color-current: $oil;
+$crumb-font-color-current: $secondary-color;
 // $crumb-font-color-unavailable: $aluminum;
 // $crumb-font-transform: uppercase;
 // $crumb-link-decor: underline;
 
 // We use these to control the slash between breadcrumbs
-// $crumb-slash-color: $base;
-$crumb-slash: "/";
+$crumb-slash-color: $secondary-color;
+$crumb-slash: "\025b6";
 
 // 05. Buttons
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -711,7 +711,7 @@ $crumb-slash: "/";
 // $inline-list-opposite-margin: 0;
 // $inline-list-bottom-margin: rem-calc(17);
 // $inline-list-default-float-margin: rem-calc(-22);
-// $inline-list-default-float-list-margin: rem-calc(22);
+$inline-list-default-float-list-margin: rem-calc(12);
 
 // $inline-list-padding: 0;
 
@@ -958,7 +958,7 @@ $crumb-slash: "/";
 // $include-html-panel-classes: $include-html-classes;
 
 // We use these to control the background and border styles
-$panel-bg: $grey-1;
+$panel-bg: $grey-13;
 // $panel-border-style: solid;
 // $panel-border-size: 1px;
 
@@ -1138,8 +1138,8 @@ $side-nav-list-margin: rem-calc(0 0 0 0);
 
 // We use these to control link styles.
 $side-nav-link-color: $primary-color;
-$side-nav-link-color-active: scale-color($side-nav-link-color, $lightness: -40%);
-$side-nav-link-color-hover: scale-color($side-nav-link-color, $lightness: -40%);
+$side-nav-link-color-active: scale-color($side-nav-link-color, $lightness: +40%);
+$side-nav-link-color-hover: scale-color($side-nav-link-color, $lightness: +40%);
 $side-nav-font-size: rem-calc(16);
 
 // $side-nav-link-bg-hover: hsla(0, 0, 0, 0.025);
@@ -1436,8 +1436,8 @@ $topbar-breakpoint: #{lower-bound($large-range)}; // Change to 9999px for always
 $topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})" !default;
 
 // Divider Styles
-$topbar-divider-border-bottom: solid 0px scale-color($topbar-bg-color, $lightness: 23%);
-$topbar-divider-border-top: solid 0px scale-color($topbar-bg-color, $lightness: -50%);
+$topbar-divider-border-bottom: solid 0px scale-color($topbar-bg-color, $lightness: -23%);
+$topbar-divider-border-top: solid 0px scale-color($topbar-bg-color, $lightness: 50%);
 
 // Sticky Class
 // $topbar-sticky-class: ".sticky";

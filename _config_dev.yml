@@ -1,9 +1,27 @@
 #
-# This config-file is only needed for development. Instead of changing the url
-# everytime you work locally on the project, you start both config-files, overwriting
-# the first one with the development variables needed.
+# This config-file is only for development.
+# It helps to give a faster turnaround on local development as well as turning off code compation to be easier to debug.
 #
-# Start development with › $ jekyll serve --config _config.yml,_config_dev.yml
+# See dev.bat
 
-url: "http://localhost:4000"
-urlimg: "http://localhost:4000/images/"
+url: 'http://localhost:4000'
+urlimg: '/dev/images'
+
+# Make sure the site is ready to be served in a subfolder with a simple config change
+baseurl: '/dev'
+
+# Need to be unsafe for {{ var | debug }} plugin
+safe: false
+
+sass:
+  # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+  style: :expanded
+  line_numbers: true
+  #trace_selectors: true
+  #debug_info: true
+  # FUTURE https://github.com/jekyll/jekyll-sass-converter/issues/12
+  sourcemap: true
+
+compress_html:
+  ignore:
+    envs: [development]
