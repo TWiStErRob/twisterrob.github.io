@@ -1,0 +1,21 @@
+{% comment %}
+Based on http://techblog.tilllate.com/2008/07/20/ten-methods-to-obfuscate-e-mail-addresses-compared/
+revisit once Jekyll 3.0 is out which includes Liquid 3.0 which has the slice method... can't even do ROT13 without slice
+{% assign length = include.address | size %}
+{% assign inserts = 3 %}
+{% assign insertsLast = inserts | minus: 1 %}
+{% capture locs %}{% for i in (1..inserts) %}{{ site.time | date: "%s%N" | times: i | modulo: length }}{% if forloop.last == false %},{% endif %}{% endfor %}{% endcapture %}
+{% capture chars %}{% for i in (1..inserts) %}{{ site.time | date: "%s%N" | times: i | modulo: 26 }}{% if forloop.last == false %},{% endif %}{% endfor %}{% endcapture %}
+{% assign locs = locs | split: ',' %}
+{% assign chars = chars | split: ',' %}
+
+{{ locs | debug }}
+{{ chars | debug }}
+{% capture html %}{% for i in (0..length) %}{{include.address | slice: i }}{% assign pos = forloop.index %}{% for j in (0..insertsLast) %}{% assign selectedPos = locs[j] | times: 1 %}{% if pos == selectedPos %}<span class="">&#{{chars[j] | plus: 65}};</span>{% endif %}{% endfor %}{% endfor %}{% endcapture %}
+{{ html | debug }}
+
+{% endcomment %}
+{% if include.unsafe %}<a href="mailto:{{include.address}}" target="_blank">{{include.address}}</a>
+{% else %}<script type="text/javascript">
+document.write('<n uers="znvygb:vasb@gjvfgreebo.arg" gnetrg="_oynax">vasb@<fcna pynff="uvqr">fnsr-</fcna>gjvfgreebo<fcna pynff="uvqr">_qbznva</fcna>.arg</n>'.replace(/[a-zA-Z]/g, rot13));
+</script>{% endif %}

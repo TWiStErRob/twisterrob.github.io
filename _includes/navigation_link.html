@@ -1,8 +1,13 @@
+{% assign link_url = include.link.url %}
 <!-- start {{ include.link.title }} -->
-{% if include.link.url contains 'http' %}
+{% if link_url contains 'http' %}
 	{% assign domain = '' %}
-{% elsif include.link.url == '#' %}
+{% elsif link_url == '#' %}
 	{% assign domain = '' %}
+{% elsif link_url contains 'site.data.links.' %}
+	{% assign domain = '' %}
+	{% assign link_url = link_url | remove: 'site.data.links.' %}
+	{% assign link_url = site.data.links[link_url] %}
 {% else %}
 	{% assign domain = site.baseurl %}
 {% endif %}
@@ -16,15 +21,18 @@
 
 {% if include.link.dropdown == nil %}
 	{% if include.link.side == "right" %}<li class="divider"></li>{% endif %}
-	<li{% if page_url == include.link.url or page_url contains include.link.url and include.link.url != '/' %} class="active"{% endif %}>
-		<a href="{{ domain }}{{ include.link.url }}"{% if include.link.url contains 'http' %} target="_blank"{% endif %}>{{ include.link.title }}</a>
+	<li{% if page_url == link_url or page_url contains link_url and link_url != '/' %} class="active"{% endif %}>
+		<a href="{{ domain }}{{ link_url }}"
+			{% if link_url contains 'http' %}target="_blank"{% endif %}
+			{% if include.link.icon %}class="icon-{{include.link.icon}}"{% endif %}
+		>{{ include.link.title }}</a>
 	</li>
 	{% if include.link.side == "left" %}<li class="divider"></li>{% endif %}
 {% else %}
 	{% if include.link.side == "right" %}<li class="divider"></li>{% endif %}
-	<li class="has-dropdown{% if page_url == include.link.url or page_url contains include.link.url and include.link.url != '/' %} active{% endif %}">
-		<a href="{{ domain }}{{ include.link.url }}"
-			{% if include.link.url contains 'http' %}target="_blank"{% endif %}
+	<li class="has-dropdown{% if page_url == link_url or page_url contains link_url and link_url != '/' %} active{% endif %}">
+		<a href="{{ domain }}{{ link_url }}"
+			{% if link_url contains 'http' %}target="_blank"{% endif %}
 			{% if include.link.icon %}class="icon-{{include.link.icon}}"{% endif %}
 		>{{ include.link.title }}</a>
 		<ul class="dropdown">
@@ -47,11 +55,10 @@
 					{% endfor %}
 					{% capture category_url %}/blog/category/{{ category_key | slugify }}/{% endcapture %}
 					<li{% if category_url == page_url %} class="active"{% endif %}>
-						<a href="{{ site.baseurl }}{{ category_url }}">{{ category_data.title }}</a>
+						<a href="{{ site.baseurl }}{{ category_url }}" class="icon-archive">{{ category_data.title }}</a>
 					</li>
 				{% endfor %}
 			{% elsif include.link.dropdown == "blog-tags" %}
-				
 				{% for tag in site.tags %}
 					{% assign tag1 = tag[0] %}
 					{% assign tag_data = site.data.tags[tag1] %}
@@ -66,7 +73,7 @@
 					{% if currentyear != year %}
 						{% capture year_url %}/blog/archive/#{{ currentyear }}{% endcapture %}
 						<li{% if year_url == page_url %} class="active"{% endif %}>
-							<a href="{{ site.baseurl }}{{ year_url }}">{{ currentyear }}</a>
+							<a href="{{ site.baseurl }}{{ year_url }}" class="icon-calendar">{{ currentyear }}</a>
 						</li>
 						{% assign year = currentyear %}
 					{% endif %}

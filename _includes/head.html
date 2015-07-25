@@ -3,13 +3,14 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>{% if page.meta_title %}{{ page.meta_title }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+	<title>{% if page.meta_title %}{{ page.meta_title }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.title }} – {{ site.slogan }}{% endif %}</title>
 	<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles_feeling_responsive.css">
 	<script src="{{ site.baseurl }}/assets/js/modernizr.min.js"></script>
+	<script>function rot13(c){return String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26)}</script>
 
 	<!-- https://github.com/typekit/webfontloader -->
 	<!-- TODO https://github.com/Phlow/feeling-responsive/issues/19 -->
-	<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic%7cVolkhov' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic%7cVolkhov:400,700' rel='stylesheet' type='text/css'>
 
 	{% if site.google_site_verification %}<meta name="google-site-verification" content="{{ site.google_site_verification }}" />{% endif %}
 	{% if site.bing_webmastertools_id %}<meta name="msvalidate.01" content="{{ site.bing_webmastertools_id }}" />{% endif %}

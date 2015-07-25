@@ -1,29 +1,30 @@
 ---
 permalink: /humans.txt
+title: ""
 layout: null
 ---
-/* SITE */
-# humanstxt.org/
-# The humans responsible & technology colophon
+{% comment %}http://humanstxt.org/Standard.html{% endcomment %}
+/* TEAM */
 
-# TEAM
+Name: Róbert Papp
+Role: webmaster, developer, copywriter, designer
+Site: {{ site.url }}{{ site.baseurl }}/info/
+Twitter: @twisterrob
 
 
-
-# THANKS
+/* THANKS */
 
 Name: Moritz »mo.« Sauer
-Role: Webdesigner of Theme
+Role: Web designer of Theme
 Site: http://mo.phlow.de/
 Theme: http://phlow.github.io/feeling-responsive/
-Twitter: http://twitter.com/phlow
+Twitter: @phlow
 
-# TECHNOLOGY COLOPHON
+
+/* SITE */
 
 Last Updated: {{ site.time | date:"%Y/%m/%d" }}
 Standards: HTML5, CSS3
-Software: Sublime Text, Chrome, Jekyll, Git, Imageoptim, JPEGMini, Gulp.js, Sass
-Components: Modernizr, jQuery, Backstretch.js, Reveal, Foundation Framework
-
-
-
+Software: Sublime Text, Chrome, Jekyll, Git, Sass
+Components: Foundation Framework, Modernizr, jQuery, Backstretch.js, Reveal
+More: {{ site.url }}{{ site.baseurl }}/project/twisterrob-net

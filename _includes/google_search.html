@@ -1,10 +1,14 @@
 <script language="Javascript" type="text/javascript">
 	function google_search() {
 		var query = document.getElementById("google-search").value;
-		window.open("http://google.com/search?q=" + query  + "%20site:" + "{{ site.url }}{{ site.baseurl }}/");
+		window.open("https://www.google.com/search?q=" + query + "%20site:" + "{{ site.url }}{{ site.baseurl }}/");
 	}
 </script>
 
-<form style="padding-bottom: 200px;" onsubmit="google_search()" >
-  <input type="text" id="google-search" placeholder="{{ site.data.language.enter_search_term }}">
+<form id="search" onsubmit="google_search(); return false;">
+	<input type="text" id="google-search" placeholder="{{ site.data.language.enter_search_term }}">
 </form>
+<noscript>
+	Search <a href="https://www.google.com?q=search-term+site:{{ site.url }}{{ site.baseurl }}/" target="_blank">Google</a> for:
+	<pre><code>search-term site:{{ site.url }}{{ site.baseurl }}/</code></pre>
+</noscript>

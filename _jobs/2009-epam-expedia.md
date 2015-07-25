@@ -17,6 +17,6 @@ I was working for one of the world’s largest international e–commerce travel
 
 Regardless of being in Hungary almost all written and spoken communications were done in English between me and the customer and team members. There was 9 hour time zone difference between the two halves of the team resulting in special processes and issues we tackled successfully.
 
-**Technologies**: Java, Tomcat, Spring, SOA, JUnit, EasyMock, XML, JAXB, FreeMarker, CSS, HTML, JavaScript, JQuery, AJAX, SonicMQ (JMS), MSSQL, JDBC, WSDL, SFTP (J2SSH), CSV
-**Technologies for legacy systems**: C, C++, IIS, Windows Services, HTX (a proprietary templating language for C++), .NET 2.0, ASP.NET 2.0, ADO.NET
+**Technologies**: Java, Tomcat, Spring, SOA, JUnit, EasyMock, XML, JAXB, FreeMarker, CSS, HTML, JavaScript, JQuery, AJAX, SonicMQ (JMS), MSSQL, JDBC, WSDL, SFTP (J2SSH), CSV  
+**Technologies for legacy systems**: C, C++, IIS, Windows Services, HTX (a proprietary templating language for C++), .NET 2.0, ASP.NET 2.0, ADO.NET  
 **Tools used**: Scrum, Waterfall, Eclipse, Perforce, RAID (bug tracking), Ant, Ivy, Cruise Control, Jenkins, Mingle, SQL Server Management Studio, Notepad++, Microsoft Outlook 2003—2010 and OWA, Visual Studio 2008—2010, various browsers (FF, Chrome, IE, Safari) and add-ons

@@ -1,0 +1,11 @@
+---
+permalink: /sitemap.html
+title: "Sitemap for humans"
+layout: page
+---
+<ul>
+	{% include sitemap_collection.html links=site.pages name="Pages" %}
+	{% include sitemap_collection.html links=site.projects name="Projects" %}
+	{% include sitemap_collection.html links=site.jobs name="Jobs" %}
+	{% include sitemap_collection.html links=site.posts name="Posts" %}
+</ul>

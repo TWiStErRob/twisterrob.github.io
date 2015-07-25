@@ -2,13 +2,6 @@
 layout: default
 format: blog-index
 ---
-<div id="header-home">
-    <div class="row">
-        <div class="small-12 columns">
-        </div><!-- /.medium-4.columns -->
-    </div><!-- /.row -->
-</div><!-- /#header-home -->
-
 
 {% comment %}
 *
@@ -16,33 +9,33 @@ format: blog-index
 *
 {% endcomment %}
 <div class="row t60">
-    {% if page.widget-1.title %}
-    <div class="medium-4 columns">
-        <a href="{% if page.widget-1.url contains 'http' %}{{ page.widget-1.url }}{% else %}{{ site.baseurl }}/{{ page.widget-1.url }}{% endif %}">{% if page.widget-1.image %}<img src="{{ site.urlimg }}/{{ page.widget-1.image }}" width="302" height="182" alt="">{% endif %}{% if page.widget-1.video %}{{ page.widget-1.video }}{% endif %}</a>
-        <h2 class="font-size-h3 t10">{{ page.widget-1.title }}</h2>
-        <p>{{ page.widget-1.text }}</p>
-        <p><a class="button tiny radius" href="{% if page.widget-1.url contains 'http' %}{{ page.widget-1.url }}{% else %}{{ site.baseurl }}/{{ page.widget-1.url }}{% endif %}">{{ site.data.language.more }}</a></p>
+    {% if page.widget1.title %}
+    <div class="medium-4 columns frontpage-widget">
+        <a href="{% if page.widget1.url contains 'http' %}{{ page.widget1.url }}{% else %}{{ site.baseurl }}{{ page.widget1.url }}{% endif %}">{% if page.widget1.image %}<img src="{{ site.urlimg }}/{{ page.widget1.image }}" width="100%" alt="">{% endif %}{% if page.widget1.video %}{{ page.widget1.video }}{% endif %}</a>
+        <h2 class="font-size-h3 t10">{{ page.widget1.title }}</h2>
+        <p>{{ page.widget1.text }}</p>
+        <p><a class="button tiny radius" href="{% if page.widget1.url contains 'http' %}{{ page.widget1.url }}{% else %}{{ site.baseurl }}{{ page.widget1.url }}{% endif %}">{{ site.data.language.more }}</a></p>
     </div><!-- /.medium-4.columns -->
     {% endif %}
 
 
-    {% if page.widget-2.title %}
-    <div class="medium-4 columns">
-        <a href="{% if page.widget-2.url contains 'http' %}{{ page.widget-2.url }}{% else %}{{ site.baseurl }}/{{ page.widget-2.url }}{% endif %}">{% if page.widget-2.image %}<img src="{{ site.urlimg }}/{{ page.widget-2.image }}" width="302" height="182" alt="">{% endif %}{% if page.widget-2.video %}{{ page.widget-2.video }}{% endif %}</a>
-        <h2 class="font-size-h3 t10">{{ page.widget-2.title }}</h2>
-        <p>{{ page.widget-2.text }}</p>
-        <p><a class="button tiny radius" href="{% if page.widget-2.url contains 'http' %}{{ page.widget-2.url }}{% else %}{{ site.baseurl }}/{{ page.widget-2.url }}{% endif %}">{{ site.data.language.more }}</a></p>
+    {% if page.widget2.title %}
+    <div class="medium-4 columns frontpage-widget">
+        <a href="{% if page.widget2.url contains 'http' %}{{ page.widget2.url }}{% else %}{{ site.baseurl }}{{ page.widget2.url }}{% endif %}">{% if page.widget2.image %}<img src="{{ site.urlimg }}/{{ page.widget2.image }}" width="100%" alt="">{% endif %}{% if page.widget2.video %}{{ page.widget2.video }}{% endif %}</a>
+        <h2 class="font-size-h3 t10">{{ page.widget2.title }}</h2>
+        <p>{{ page.widget2.text }}</p>
+        <p><a class="button tiny radius" href="{% if page.widget2.url contains 'http' %}{{ page.widget2.url }}{% else %}{{ site.baseurl }}{{ page.widget2.url }}{% endif %}">{{ site.data.language.more }}</a></p>
     </div><!-- /.medium-4.columns -->
     {% endif %}
 
 
-    {% if page.widget-3.title %}
-    <div class="medium-4 columns">
-        <a href="{% if page.widget-3.url contains 'http' %}{{ page.widget-3.url }}{% else %}{{ site.baseurl }}/{{ page.widget-3.url }}{% endif %}">{% if page.widget-3.image %}<img src="{{ site.urlimg }}/{{ page.widget-3.image }}" width="302" height="182" alt="">{% endif %}{% if page.widget-3.video %}{{ page.widget-3.video }}{% endif %}</a>
-        <a href="{{ page.widget-3.url }}">{% if page.widget-3.image %}<img class="lazy" data-src="{{ site.urlimg }}/{{ page.widget-3.image }}" width="302" height="182" alt="">{% endif %}{% if page.widget-3.video %}{{ page.widget-3.video }}{% endif %}</a>
-        <h2 class="font-size-h3 t10">{{ page.widget-3.title }}</h2>
-        <p>{{ page.widget-3.text }}</p>
-        <p><a class="button tiny radius" href="{% if page.widget-3.url contains 'http' %}{{ page.widget-3.url }}{% else %}{{ site.baseurl }}/{{ page.widget-3.url }}{% endif %}">{{ site.data.language.more }}</a></p>
+    {% if page.widget3.title %}
+    <div class="medium-4 columns frontpage-widget">
+        <a href="{% if page.widget3.url contains 'http' %}{{ page.widget3.url }}{% else %}{{ site.baseurl }}{{ page.widget3.url }}{% endif %}">{% if page.widget3.image %}<img src="{{ site.urlimg }}/{{ page.widget3.image }}" width="100%" alt="">{% endif %}{% if page.widget3.video %}{{ page.widget3.video }}{% endif %}</a>
+        <a href="{{ page.widget3.url }}">{% if page.widget3.image %}<img class="lazy" data-src="{{ site.urlimg }}/{{ page.widget3.image }}" width="302" height="182" alt="">{% endif %}{% if page.widget3.video %}{{ page.widget3.video }}{% endif %}</a>
+        <h2 class="font-size-h3 t10">{{ page.widget3.title }}</h2>
+        <p>{{ page.widget3.text }}</p>
+        <p><a class="button tiny radius" href="{% if page.widget3.url contains 'http' %}{{ page.widget3.url }}{% else %}{{ site.baseurl }}{{ page.widget3.url }}{% endif %}">{{ site.data.language.more }}</a></p>
     </div><!-- /.medium-4.columns -->
     {% endif %}
 </div><!-- /.row -->

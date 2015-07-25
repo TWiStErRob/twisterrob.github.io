@@ -1,15 +1,33 @@
+# Left
+
 - title: Home
+  icon: home
   url: /
   side: left
-- title: CV / Work
+
+- title: Work (CV)
+  icon: lab-flask
   url: /work/
   side: left
   dropdown:
   - title: PDF
-    url: /work/cv.pdf
+    icon: graduation-cap
+    url: site.data.links.cv-view
   - title: Past Jobs
-    url: /work/jobs.html
+    icon: graduation-cap
+    url: /work/
+#  - title: Detailed Skill listing
+#    icon: trophy
+#    url: /work/skills.html
+
+- title: Apps
+  icon: install
+  url: /project/
+  side: left
+  dropdown: projects
+
 - title: Blog
+  icon: open-book
   url: /blog/
   side: left
   dropdown:
@@ -22,58 +40,62 @@
     url: /blog/tags/
     dropdown: blog-tags
   - title: Archive
-    icon: calendar
+    icon: back-in-time
     url: /blog/archive/
     dropdown: blog-years
-- title: Apps
-  url: /project/
-  side: left
-  dropdown: projects
+#  - title: Notes
+#    icon: blackboard
+#    url: /blog/notes/
+#    side: left
+#    dropdown:
+#    - title: Programozás Alapjai
+#      url: /blog/notes/progalap/
+#      dropdown:
+#      - title: Kötelező Program 1
+#        url: /blog/notes/progalap-kp1.html
+#      - title: Kötelező Program 2
+#        url: /blog/notes/progalap-kp2.html
+#      - title: Vezérlési Szerkezetek
+#        url: /blog/notes/progalap-control.html
+#      - title: Érdekes feladatok
+#        url: /blog/notes/?.html
+#    - title: Számítógép Architektúra
+#      url: /blog/notes/szar/
+#      dropdown:
+#      - title: 2. gyakorlat
+#        url: /blog/notes/szar2.html
+#      - title: 3. gyakorlat
+#        url: /blog/notes/szar3.html
+#      - title: 4. gyakorlat
+#        url: /blog/notes/szar4.html
+#      - title: 5. gyakorlat
+#        url: /blog/notes/szar5.html
+#      - title: 6. gyakorlat
+#        url: /blog/notes/szar6.html
+#      - title: 7. gyakorlat
+#        url: /blog/notes/szar7.html
+#      - title: 8. gyakorlat
+#        url: /blog/notes/szar8.html
+#      - title: 9. gyakorlat
+#        url: /blog/notes/szar9.html
+#      - title: 10. gyakorlat
+#        url: /blog/notes/szar10.html
+#    - title: Roadmap
+#      url: /roadmap/
 
-- title: Notes
-  url: /blog/notes/
-  side: left
-  dropdown:
-  - title: Programozás Alapjai
-    url: /blog/notes/progalap/
-    dropdown:
-    - title: Kötelező Program 1
-      url: /blog/notes/progalap-kp1.html
-    - title: Kötelező Program 2
-      url: /blog/notes/progalap-kp2.html
-    - title: Vezérlési Szerkezetek
-      url: /blog/notes/progalap-control.html
-    - title: Érdekes feladatok
-      url: /blog/notes/?.html
-  - title: Számítógép Architektúra
-    url: /blog/notes/szar/
-    dropdown:
-    - title: 2. gyakorlat
-      url: /blog/notes/szar2.html
-    - title: 3. gyakorlat
-      url: /blog/notes/szar3.html
-    - title: 4. gyakorlat
-      url: /blog/notes/szar4.html
-    - title: 5. gyakorlat
-      url: /blog/notes/szar5.html
-    - title: 6. gyakorlat
-      url: /blog/notes/szar6.html
-    - title: 7. gyakorlat
-      url: /blog/notes/szar7.html
-    - title: 8. gyakorlat
-      url: /blog/notes/szar8.html
-    - title: 9. gyakorlat
-      url: /blog/notes/szar9.html
-    - title: 10. gyakorlat
-      url: /blog/notes/szar10.html
-  - title: Roadmap
-    url: /roadmap/
-
+# Right
 
 - title: Search
+  icon: magnifying-glass
   url: /search/
   side: right
 
+- title: Info
+  icon: v-card
+  url: /info/
+  side: right
+
 - title: Contact
+  icon: mail
   url: /contact/
   side: right

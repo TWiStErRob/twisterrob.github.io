@@ -14,11 +14,11 @@ title: "TWiStErRob"
 
 
 # The slogan describes your website and is used on homepage in <title> and other important places
-slogan: "Personal &amp; Development blog"
+slogan: "Professional &amp; Hobby Development site"
 
 
 # The description is used on homepage and in the footer to quickly describe your website. Use a maximum of 150 characters for SEO-purposes.
-description: "Home for all things about and by Róbert&nbsp;Papp&nbsp;(TWiStErRob)."
+description: "Home for all things about and by Róbert&nbsp;Papp (TWiStErRob)."
 
 
 # This URL is the main address for absolute links. Don't include a slash at the end.
@@ -96,6 +96,7 @@ kramdown:
   entity_output:  as_char
   toc_levels:     1..6
   smart_quotes:   lsquo,rsquo,ldquo,rdquo
+  hard_wrap:      false
   #enable_coderay: true
   #syntax_highlighter: rouge
 
@@ -122,6 +123,8 @@ excerpt_separator: "<!--more-->"
 # Used > default.html front-matter and comress.html
 # Options > http://jch.penibelst.de
 compress_html:
+  ignore:
+    envs: [development]
   clippings: all
   comments: ["<!-- ", " -->"]
   endings: all

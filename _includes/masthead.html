@@ -3,9 +3,7 @@
 <div id="masthead-no-image-header">
 	<div class="row">
 		<div class="small-12 columns">
-			<a id="logo" href="{{ site.baseurl }}/" title="{{ site.title }} – {{ site.slogan }}">
-				<img src="{{ site.baseurl }}/assets/img/{{ site.logo }}" alt="{{ site.title }} – {{ site.slogan }}">
-			</a>
+			{% include masthead-logo.html %}
 		</div><!-- /.small-12.columns -->
 	</div><!-- /.row -->
 </div><!-- /#masthead -->
@@ -51,9 +49,7 @@
 <div id="masthead">
 	<div class="row">
 		<div class="small-12 columns">
-			<a id="logo" href="{{ site.baseurl }}/" title="{{ site.title }} – {{ site.slogan }}">
-				<img src="{{ site.baseurl }}/assets/img/{{ site.logo }}" alt="{{ site.title }} – {{ site.slogan }}">
-			</a>
+			{% include masthead-logo.html %}
 		</div><!-- /.small-12.columns -->
 	</div><!-- /.row -->
 </div><!-- /#masthead -->

@@ -21,7 +21,3 @@ sass:
   #debug_info: true
   # FUTURE https://github.com/jekyll/jekyll-sass-converter/issues/12
   sourcemap: true
-
-compress_html:
-  ignore:
-    envs: [development]

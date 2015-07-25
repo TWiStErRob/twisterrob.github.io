@@ -10,6 +10,7 @@
 - Accordion
 - Lazy Load XT
 - Project
+- Frontpage Widget
 
 */
 
@@ -166,16 +167,52 @@ h6[id]:hover::after,
 
 /* Projects
 ------------------------------------------------------------------- */
-.project a p {
-  color: $text-color;
-}
-.project a:hover h3 {
-  color: $primary-color;
+section.project {
   transition-duration: 0.2s;
+  outline: 3px ridge transparent;
+  a p {
+    color: $text-color;
+  }
+  &:hover {
+    outline: 3px ridge $primary-color;
+    h3 {
+      color: $primary-color;
+    }
+    .no-touch & img {
+      @include filter(saturate(200%));
+    }
+  }
+  h3 {
+    transition-duration: 0.2s;
+    margin: 0;
+    height: $font-size-h3 * 2;
+    display: table;
+    width: 100%;
+
+    .center {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+  .no-touch & img {
+    transition-duration: 0.2s;
+  }
+  figure {
+    padding: 1em;
+    margin: 0;
+  }
 }
-.no-touch .project img:hover {
-  @include filter(saturate(200%));
-}
-.no-touch .project img {
-  transition-duration: 0.3s;
+
+/* Projects
+------------------------------------------------------------------- */
+.frontpage-widget img {
+  transition-duration: .5s;
+  transition-property: all;
+  transform-origin: 50% 50%;
+  &:hover {
+    transform: scale(1.1) rotate(2deg) translateZ(0);
+    position: relative;
+    z-index: 1;
+  }
 }

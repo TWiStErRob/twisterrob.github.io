@@ -18,23 +18,23 @@ layout: page
 			</dd>
 		{% endif %}
 	  	{% if page.urls.site %}<dt>Website</dt><dd>{{ page.urls.site }}</dd>{% endif %}
-	  	{% if page.urls.download %}<dt>Download</dt><dd>{{ page.urls.download }}</dd>{% endif %}
+	  	{% if page.urls.download %}<dt>Download</dt><dd><a href="{{ page.urls.download }}">{{ page.urls.download }}</a></dd>{% endif %}
 	  	{% if page.years %}<dt>Years</dt><dd>{{ page.years }}</dd>{% endif %}
 	  	{% if page.urls.sources %}<dt>Download Sources</dt><dd>{{ page.urls.sources }}</dd>{% endif %}
-	  	{% if page.images.screenshots %}<dt>Screenshots</dt><dd><a href="#screenshots">View</a>{% endif %}
+	  	{% if page.images.screenshots %}<dt>Screenshots</dt><dd><a href="javascript:$('.clearing-thumbs a:first').click();">View</a>{% endif %}
   	</dl>
   </div>
 </div>
-
-{{ content }}
 
 {% if page.images.screenshots %}
 	<h2 id="screenshots">Screenshots</h2>
 	<ul class="clearing-thumbs small-block-grid-3" data-clearing>
 	{% for shot in page.images.screenshots %}
 	<li><a href="{{ site.urlimg}}/{{ shot.url }}">
-		<img src="{{ site.urlimg }}/{{ shot.url }}" alt="Screenshot #{{ forloop.index }}" title="{{ shot.title }}" />
+		<img src="{{ site.urlimg }}/{{ shot.url }}" alt="Screenshot #{{ forloop.index }}" data-caption="{{ shot.title }}" title="{{ shot.title }}" />
 	</a></li>
 	{% endfor %}
 	</ul>
 {% endif %}
+
+{{ content }}

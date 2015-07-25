@@ -75,12 +75,9 @@ body.video {
 /* Search
 ------------------------------------------------------------------- */
 
-#search {
-    padding: 20px 0 0 0;
-    background: $ci-4;
+.no-js form#search {
+  display: none;
 }
-
-
 
 /* Masthead
 ------------------------------------------------------------------- */
@@ -102,15 +99,40 @@ body.video {
 #masthead-no-image-header {
     height: 175px;
 }
-#masthead-no-image-header #logo img {
-    margin-top: 60px;
+#masthead-no-image-header #logo {
+    margin-top: 50px;
+}
+
+#logo {
+    display: inline-block;
+    position: relative;
+}
+#logo-title {
+    font-family: $header-font-family;
+    color: lighten($primary-color, 25%);
+    font-size: 80px;
+    text-shadow: 4px 4px 16px black;
+    -webkit-text-stroke: 1px black;
+    letter-spacing: -4px;
+    font-weight: bolder;
+}
+#logo-slogan {
+    font-family: $header-font-family;
+    color: lighten($secondary-color, 25%);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    font-size: 24px;
+    text-shadow: 0px 0px 5px black;
+    letter-spacing: -2px;
 }
 
 /* Masthead › small-only
 ------------------------------------------------------------------- */
 
 @media #{$small-only} {
-    #logo img {
+    #logo {
         display: none;
     }
     #masthead {
@@ -137,7 +159,7 @@ body.video {
 ------------------------------------------------------------------- */
 
 @media #{$medium-only} {
-    #logo img {
+    #logo {
         margin-top: 60px;
     }
     #masthead {
@@ -160,7 +182,7 @@ body.video {
 ------------------------------------------------------------------- */
 
 @media #{$large-only} {
-    #logo img {
+    #logo {
         margin-top: 80px;
     }
     #masthead {
@@ -183,7 +205,7 @@ body.video {
 ------------------------------------------------------------------- */
 
 @media #{$xlarge-up} {
-    #logo img {
+    #logo {
         margin-top: 110px;
     }
     #masthead {
