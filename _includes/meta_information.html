@@ -1,32 +1,33 @@
-		<div id="page-meta" class="t30">
-			<p>
-				<!-- Look the author details up from the site config. -->
-				{% assign author = site.data.authors[page.author] %}
-				<!-- Output author details if some exist. -->
-				{% if author %}
-				<span itemprop="author" itemscope itemtype="http://schema.org/Person">
-					<a href="{{ author.url }}" itemprop="name" class="icon-edit" target="_blank">{{ author.name }}</a>
-				</span>
-				{% endif %}
+<div id="page-meta" class="t30">
+	<p>
+		{% comment %}Look up the author details up from the site config and output author details if exists.{% endcomment %}
+		{% assign author = site.data.authors[page.author] %}
+		{% if author %}
+			<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+				<a href="{{ author.url }}" itemprop="name" class="icon-edit" target="_blank">{{ author.name }}</a>
+			</span>
+		{% endif %}
 
-				{% if page.date %}
-				<time class="icon-calendar" datetime="{{ page.date | date: "%Y-%m-%d" }}" itemprop="datePublished">{{ page.date | date: "%Y-%m-%d" }}</time>
-				{% endif %}
+		{% if page.date %}
+			<time class="icon-calendar" datetime="{{ page.date | date: "%Y-%m-%d" }}" itemprop="datePublished">{{ page.date | date: "%Y-%m-%d" }}</time>
+		{% endif %}
 
-				{% if page.categories %}
-					<span class="icon-archive">{% for category in page.categories %}{% capture ignore %}
-						{% for page in site.pages %}
-							{% if page.category == category %}{% assign category_page = page %}{% break %}{% endif %}
-						{% endfor %}
-						{% endcapture %}<a href="{{ site.baseurl }}/blog/category/{{ category }}">{{ category_page.title }}</a>
-						{% unless forloop.last %}·{% endunless %}
-					{% endfor %}</span>
-				{% endif %}
+		{% if page.categories %}
+			<span class="icon-archive">{% for category in page.categories %}{% capture ignore %}
+				{% for page in site.pages %}
+					{% if page.category == category %}{% assign category_page = page %}{% break %}{% endif %}
+				{% endfor %}
+				{% endcapture %}<a href="{{ site.baseurl }}/blog/category/{{ category }}">{{ category_page.title }}</a>
+				{% unless forloop.last %}·{% endunless %}
+			{% endfor %}</span>
+		{% endif %}
 
-				<span>
-					{% for tag in page.tags %}
-						<a href="{{ site.baseurl }}/blog/tags/#{{ tag | slugify }}" class="icon-price-tag tag-{{ tag | slugify }}">{{ tag }}</a>
-					{% endfor %}
-				</span>
-			</p>
-		</div><!--  /.page-meta -->
+		<span class="meta-tags">
+			{% for tag in page.tags %}
+				{% capture tag_url %}{{ site.baseurl }}/blog/tags/#{{ tag | slugify }}{% endcapture %}
+				{% capture tag_name %}{% if site.data.tags[tag].title %}{{ site.data.tags[tag].title }}{% else %}{{ tag }}{% endif %}{% endcapture %}
+				<span class="icon-price-tag tag-{{ tag | slugify }}"><a href="{{ tag_url }}">{{ tag_name }}</a></span>
+			{% endfor %}
+		</span>
+	</p>
+</div>

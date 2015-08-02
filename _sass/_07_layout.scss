@@ -269,40 +269,51 @@ body.video {
 #page-meta .button:hover {
     background: $primary-color;
 }
-.meta-info p {
-  font-size: rem-calc(13);
-  color: scale-color($grey-1, $lightness: 40%);
+#page-meta p {
+    white-space: normal;
+    text-align: initial;
+    font-size: rem-calc(13);
 }
-.meta-info a {
-    text-decoration: underline;
-    color: scale-color($grey-1, $lightness: 40%);
-    &:hover {
-        text-decoration: none;
-        color: $secondary-color;
-    }
+#page-meta a:hover {
+    color: $secondary-color;
 }
 #page-meta > p > * {
     margin-right: rem-calc(20);
 }
 
-.inline-list .tag {
-    //margin-bottom: $inline-list-default-float-list-margin / 2;
+#page-meta span[class^='icon-'] {
+    white-space: nowrap;
 }
+#page-meta .meta-tags {
+    display: inline-block;
+    * {
+        margin-right: rem-calc(4);
+    }
+}
+
+$tag-size-base: 12;
+$tag-size-count: 10;
 .tags {
-    width: 85%;
+    //width: 85%;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
     li {
-        height: rem-calc(40);
+        height: rem-calc(36);
+        display: inline-block;
     }
 }
 .tag {
+    $tag-size-height-max: $tag-size-base + $tag-size-count * $tag-size-count / $tag-size-count;
     @include label($bg: $grey-11, $radius: true);
     font-weight: bold;
-    font-size: rem-calc(10 + 0 * 0 / 10);
-    margin-top: rem-calc((10 - 0) / 2);
-    margin-bottom: rem-calc((10 - 0) / 2);
+    font-size: rem-calc($tag-size-base + 0 * 0 / $tag-size-count);
+    margin-top: rem-calc(($tag-size-height-max - $tag-size-base) / 2);
+    margin-bottom: rem-calc(($tag-size-height-max - $tag-size-base) / 2);
     border: 2px solid $grey-11;
+    &:visited {
+        border: 2px solid $grey-11;
+    }
     &:hover {
         background-color: $body-bg !important;
         color: $text-color !important;
@@ -321,11 +332,12 @@ body.video {
         }
     }
 
-    @for $i from 1 through 10 {
+    @for $i from 1 through $tag-size-count {
       &.tag-size-#{$i} {
-        font-size: rem-calc(10 + $i * $i / 10);
-        margin-top: rem-calc((10 - $i * $i / 10) / 2);
-        margin-bottom: rem-calc((10 - $i * $i / 10) / 2);
+        $tag-size-height: $tag-size-base + $i * $i / $tag-size-count;
+        font-size: rem-calc($tag-size-height);
+        margin-top: rem-calc( ( $tag-size-height-max - $tag-size-height) / 2);
+        margin-bottom: rem-calc( ( $tag-size-height-max - $tag-size-height) / 2);
       }
     }
 }
@@ -422,6 +434,9 @@ body.video {
             color: $subfooter-bg;
             background: $subfooter-color;
             text-shadow: none;
+        }
+        &:after {
+            display: none;
         }
     }
     @media #{$large-up} {

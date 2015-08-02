@@ -16,7 +16,7 @@ breadcrumbs: true
 	{% endfor %}
 	<h3 id="{{ category_data.category }}">
 		<a href="{{ site.baseurl }}/blog/category/{{ category_data.category }}/">{{ category_data.title }}</a>
-		({% if category_posts.size %}{{ category_posts.size }}{% else %}0{% endif %} article{%unless category_posts.size == 1%}s{%endunless%})
+		({% if category_posts.size %}{{ category_posts.size }}{% else %}0{% endif %}&nbsp;article{%unless category_posts.size == 1%}s{%endunless%})
 	</h3>
 	{% if 0 < category_posts.size %}
 	<ul>

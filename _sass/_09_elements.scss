@@ -17,17 +17,20 @@
 /* Table of Contents (Index)
 ------------------------------------------------------------------- */
 
-#toc ul,
-#toc ul ul,
-#toc ul ul ul, {
-    list-style: none;
-    margin-left: 30px;
+ul#markdown-toc {
+  list-style: none;
+  margin-left: 0;
+  ul,
+  ul ul,
+  ul ul ul {
+      list-style: none;
+      margin-left: 30px;
+  }
+  a {
+    font-weight: normal;
+    border: none;
+  }
 }
-#toc ul {
-    margin-left: 0;
-    margin-top: $spacing-unit;
-}
-
 
 
 /* Panel
@@ -55,35 +58,38 @@
 
 .alert-box {
   font-family: $font-family-sans-serif;
-  text-shadow: 0px 1px 1px rgba(0,0,0,0.9);
-} 
-  .alert-box p {
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+  p {
     margin-bottom: 0;
+    display: inline;
   } 
-  .alert-box a {
+  a {
     text-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
-    color: #fff;
     border-bottom: 1px dotted #fff;
   }
-  .alert-box a:hover {
+  a:hover {
     border-bottom: 1px solid #fff;
   }
-  .alert-box.terminal {
-    background: $grey-12; 
-    color: #fff; 
-    border-color: scale-color($grey-12, $lightness: -14%);
+  &.terminal {
+    @include alert-style($terminal-color);
     font-family: $font-family-monospace;
+    &:before {
+      content: "$ ";
+      color: $ci-6;
+    }
   }
-  .alert-box.terminal::before {
-    content: "$ ";
-    color: $ci-6;
+  &.text {
+    @include alert-style($grey-2);
+    text-shadow: none;
   }
-  .alert-box.text {
-    background-color: $grey-2;
-    text-shadow: 0px 0px 0px rgba(0,0,0,0.9);
-    border-color: scale-color($grey-2, $lightness: -14%);
-    color: $grey-12;
+  &.tip {
+    @extend .alert-box.info;
   }
+  &.todo {
+    @include alert-style($todo-color);
+    text-shadow: none;
+  }
+}
 
 
 
@@ -146,22 +152,31 @@ img.lazy {
 
 /* IDs
 ------------------------------------------------------------------- */
-.showId[id]:hover::after,
-h1[id]:hover::after,
-h2[id]:hover::after,
-h3[id]:hover::after,
-h4[id]:hover::after,
-h5[id]:hover::after,
-h6[id]:hover::after,
-.env-development *[id]:not(#up-to-top):not(.row):hover::after {
+.showId[id]:hover:after,
+h1[id]:hover:after,
+h2[id]:hover:after,
+h3[id]:hover:after,
+h4[id]:hover:after,
+h5[id]:hover:after,
+h6[id]:hover:after,
+.env-development *[id]:not(#up-to-top):not(.row):hover:after {
   color: Gray;
   content: '#' attr(id);
   margin-left: 1em;
   font-weight: normal;
   position: absolute;
 }
-.noShowId[id]:hover::after {
+.noShowId[id]:hover:after {
   content: '';
+}
+
+*:target:before {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0; 
+  padding-top: 50px; 
+  margin-top: -50px;
 }
 
 

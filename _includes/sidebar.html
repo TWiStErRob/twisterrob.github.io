@@ -1,20 +1,39 @@
 <aside>
 	<div class="panel radius">
-		<h3>Sidebar</h3>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-
-			Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		</p>
+		{% assign tags_url = site.baseurl | append: '/blog/tags/' %}
+		<h3><a href="{{ tags_url }}">Tags</a></h3>
+		{% include tag_cloud.html baseurl=tags_url %}
 	</div>
 
-  <img class="b30" src="http://dummyimage.com/303x16:9/df4949/e27b3f.png&amp;text=Ugly+Ad+Space" alt="">
+	<div class="panel radius">
+		<h3>Subscribe</h3>
+		<ul>
+			<li><a href="{{ site.baseurl }}/rss.xml" class="icon_rss">RSS Feed</a></li>
+			<li><a href="{{ site.baseurl }}/atom.xml" class="icon_rss">Atom Feed</a></li>
+		</ul>
+	</div>
 
-
-	<div class="border-dotted radius b30">
-		<img src="http://placekitten.com/271/270" alt="uh, Placekitten">
-		<p class="text-left">
-			This is an advertisment with a crazy cat! <a href="http://placekitten.com/">More cats, please!</a>
-		</p>
+	<div class="panel radius">
+		<h3>Archive</h3>
+		<ul>
+			{% for post in site.posts reversed %}
+				{% assign currentdate = post.date | date: '%Y-%m' %}
+				{% if currentdate != date %}
+					{% assign count = 1 %}
+					{% unless forloop.first %}({{ count }})</li>{% endunless %}
+					{% assign currentyear = post.date | date: '%Y' %}
+					{% if currentyear != year %}
+						{% unless forloop.first %}</ul></li>{% endunless %}
+						<li><a href="{{ site.baseurl }}/blog/archive/#{{ currentyear }}" class="icon_rss">{{ currentyear }}</a><ul>
+						{% assign year = currentyear %}
+					{% endif %}
+					<li><a href="{{ site.baseurl }}/blog/archive/#{{ currentdate }}" class="icon_rss">{{ post.date | date: '%B' }}</a>
+					{% assign date = currentdate %}
+				{% else %}
+					{% assign count = count | plus: 1 %}
+				{% endif %}
+				{% if forloop.last %}({{ count }})</li></ul></li>{% endif %}
+			{% endfor %}
+		</ul>
 	</div>
 </aside>

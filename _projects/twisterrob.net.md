@@ -9,7 +9,4 @@ urls:
   download: http://twisterrob.net
 ---
 
-## Table of Contents
-*  Auto generated table of contents
-{:toc}
-
+{% include toc.md %}

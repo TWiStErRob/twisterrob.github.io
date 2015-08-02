@@ -286,7 +286,7 @@ $list-side-margin: 1.3rem;
 // $definition-list-margin-bottom: rem-calc(12);
 
 // We use these to style blockquotes
-// $blockquote-font-color: scale-color($header-font-color, $lightness: 35%);
+$blockquote-font-color: $info-color;
 // $blockquote-padding: rem-calc(9 20 0 19);
 // $blockquote-border: 1px solid $gainsboro;
 // $blockquote-cite-font-size: rem-calc(13);
@@ -765,13 +765,13 @@ $inline-list-default-float-list-margin: rem-calc(12);
 
 // We use these to control text styles.
 // $keystroke-font: "Consolas", "Menlo", "Courier", monospace;
-// $keystroke-font-size: inherit;
+$keystroke-font-size: small;
 // $keystroke-font-color: $jet;
 // $keystroke-font-color-alt: $white;
 // $keystroke-function-factor: -7%;
 
 // We use this to control keystroke padding.
-// $keystroke-padding: rem-calc(2 4 0);
+$keystroke-padding: rem-calc(2 4);
 
 // We use these to control background and border styles.
 // $keystroke-bg: scale-color($white, $lightness: $keystroke-function-factor);

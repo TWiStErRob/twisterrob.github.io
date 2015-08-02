@@ -1,5 +1,5 @@
 ---
-# Only the main Sass file needs front matter (the dashes are enough)
+# Only the main Sass file needs front matter
 sitemap:
   exclude: true
 ---
@@ -39,7 +39,7 @@ $environment: '{{ jekyll.environment }}';
 @import "foundation/scss/foundation/components/reveal";
 @import "foundation/scss/foundation/components/side-nav";
 @import "foundation/scss/foundation/components/sub-nav";
-//@import "foundation/scss/foundation/components/tables";
+@import "foundation/scss/foundation/components/tables";
 @import "foundation/scss/foundation/components/thumbs";
 @import "foundation/scss/foundation/components/top-bar";
 @import "foundation/scss/foundation/components/type";
@@ -49,12 +49,13 @@ $environment: '{{ jekyll.environment }}';
 @import "07_layout.scss";
 @import "foundation/scss/foundation/components/grid";
 @import "09_elements.scss";
+@import "timeline.scss";
 
 @import "11_syntax-highlighting.scss";
 
 {% for tag in site.data.tags %}
   $tag_id: {{ tag[0] | slugify }};
-  /* tag[0] */
+  /* {{ tag[0] | slugify }}: title={{ tag[1].title }}, color={{ tag[1].color }} */
   {% if tag[1].color %}
       $tag_color: {{ tag[1].color }};
       .tag-#{$tag_id} {

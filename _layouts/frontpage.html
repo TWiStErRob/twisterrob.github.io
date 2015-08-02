@@ -9,35 +9,19 @@ format: blog-index
 *
 {% endcomment %}
 <div class="row t60">
-    {% if page.widget1.title %}
-    <div class="medium-4 columns frontpage-widget">
-        <a href="{% if page.widget1.url contains 'http' %}{{ page.widget1.url }}{% else %}{{ site.baseurl }}{{ page.widget1.url }}{% endif %}">{% if page.widget1.image %}<img src="{{ site.urlimg }}/{{ page.widget1.image }}" width="100%" alt="">{% endif %}{% if page.widget1.video %}{{ page.widget1.video }}{% endif %}</a>
-        <h2 class="font-size-h3 t10">{{ page.widget1.title }}</h2>
-        <p>{{ page.widget1.text }}</p>
-        <p><a class="button tiny radius" href="{% if page.widget1.url contains 'http' %}{{ page.widget1.url }}{% else %}{{ site.baseurl }}{{ page.widget1.url }}{% endif %}">{{ site.data.language.more }}</a></p>
-    </div><!-- /.medium-4.columns -->
-    {% endif %}
+	{% if page.widget1.title %}
+		{% include frontpage-widget.html widget=page.widget1 %}
+	{% endif %}
 
 
-    {% if page.widget2.title %}
-    <div class="medium-4 columns frontpage-widget">
-        <a href="{% if page.widget2.url contains 'http' %}{{ page.widget2.url }}{% else %}{{ site.baseurl }}{{ page.widget2.url }}{% endif %}">{% if page.widget2.image %}<img src="{{ site.urlimg }}/{{ page.widget2.image }}" width="100%" alt="">{% endif %}{% if page.widget2.video %}{{ page.widget2.video }}{% endif %}</a>
-        <h2 class="font-size-h3 t10">{{ page.widget2.title }}</h2>
-        <p>{{ page.widget2.text }}</p>
-        <p><a class="button tiny radius" href="{% if page.widget2.url contains 'http' %}{{ page.widget2.url }}{% else %}{{ site.baseurl }}{{ page.widget2.url }}{% endif %}">{{ site.data.language.more }}</a></p>
-    </div><!-- /.medium-4.columns -->
-    {% endif %}
+	{% if page.widget2.title %}
+		{% include frontpage-widget.html widget=page.widget2 %}
+	{% endif %}
 
 
-    {% if page.widget3.title %}
-    <div class="medium-4 columns frontpage-widget">
-        <a href="{% if page.widget3.url contains 'http' %}{{ page.widget3.url }}{% else %}{{ site.baseurl }}{{ page.widget3.url }}{% endif %}">{% if page.widget3.image %}<img src="{{ site.urlimg }}/{{ page.widget3.image }}" width="100%" alt="">{% endif %}{% if page.widget3.video %}{{ page.widget3.video }}{% endif %}</a>
-        <a href="{{ page.widget3.url }}">{% if page.widget3.image %}<img class="lazy" data-src="{{ site.urlimg }}/{{ page.widget3.image }}" width="302" height="182" alt="">{% endif %}{% if page.widget3.video %}{{ page.widget3.video }}{% endif %}</a>
-        <h2 class="font-size-h3 t10">{{ page.widget3.title }}</h2>
-        <p>{{ page.widget3.text }}</p>
-        <p><a class="button tiny radius" href="{% if page.widget3.url contains 'http' %}{{ page.widget3.url }}{% else %}{{ site.baseurl }}{{ page.widget3.url }}{% endif %}">{{ site.data.language.more }}</a></p>
-    </div><!-- /.medium-4.columns -->
-    {% endif %}
+	{% if page.widget3.title %}
+		{% include frontpage-widget.html widget=page.widget3 %}
+	{% endif %}
 </div><!-- /.row -->
 
 
@@ -48,45 +32,45 @@ format: blog-index
 {% endcomment %}
 
 {% unless site.posts == empty %}
-    <div class="row t30 b20 homepage">
-        <div class="small-12 columns">
-            {% for post in site.posts limit:1 %}
-            {% if post.image.homepage %}
-            <p>
-                <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title escape_once }}"><img width="970" src="{{ site.urlimg }}/{{ post.image.homepage }}" alt="{{ page.title escape_once }}"></a>
-            </p>
+	<div class="row t30 b20 homepage">
+		<div class="small-12 columns">
+			{% for post in site.posts limit:1 %}
+			{% if post.image.homepage %}
+			<p>
+				<a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title escape_once }}"><img width="970" src="{{ site.urlimg }}{{ post.image.homepage }}" alt="{{ page.title escape_once }}"></a>
+			</p>
 
-            {% if post.image.caption_url && post.image.caption %}
-            <p class="text-right caption">
-                <a href="{{ post.image.caption_url }}">{{ post.image.caption }}</a>
-            </p>
-            {% endif %}
-            {% else post.image.homepage == NULL %}
-            <h2>{{ site.data.language.new_blog_entries }}</h2>
-            {% endif %}
-            {% endfor %}
-        </div><!-- /.small-12.columns -->
-    </div><!-- /.row -->
-
-
-    <div class="row">
-        <div class="medium-6 columns">
-            {% for post in site.posts limit:1 %}
-            {% if post.subheadline %}<p class="subheadline">{{ post.subheadline }}</p>{% endif %}
-            <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
-            <p>
-                {% if post.meta_description %}{{ post.meta_description | strip_html | escape }}{% else post.teaser %}{{ post.teaser | strip_html | escape }}{% endif %}
-                <a href="{{ site.baseurl }}{{ post.url }}" title="Read {{ post.title escape_once }}"><strong>{{ site.data.language.read_more }}</strong></a>
-            </p>
-            {% endfor %}
-        </div><!-- /.medium-5.columns -->
+			{% if post.image.caption_url && post.image.caption %}
+			<p class="text-right caption">
+				<a href="{{ post.image.caption_url }}">{{ post.image.caption }}</a>
+			</p>
+			{% endif %}
+			{% else %}
+			<h2>{{ site.data.language.new_blog_entries }}</h2>
+			{% endif %}
+			{% endfor %}
+		</div><!-- /.small-12.columns -->
+	</div><!-- /.row -->
 
 
-        <div class="medium-6 columns">
-            <p><strong>{{ site.data.language.more_articles }}</strong></p>
-            {% include list-posts.html entries='3' offset='1' %}
-        </div><!-- /.medium-7.columns -->
-    </div><!-- /.row -->
+	<div class="row">
+		<div class="medium-6 columns">
+			{% for post in site.posts limit:1 %}
+			{% if post.subheadline %}<p class="subheadline">{{ post.subheadline }}</p>{% endif %}
+			<h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+			<p>
+				{% if post.meta_description %}{{ post.meta_description | strip_html | escape }}{% elsif post.teaser %}{{ post.teaser | strip_html | escape }}{% endif %}
+				<a href="{{ site.baseurl }}{{ post.url }}" title="Read {{ post.title escape_once }}"><strong>{{ site.data.language.read_more }}</strong></a>
+			</p>
+			{% endfor %}
+		</div><!-- /.medium-5.columns -->
+
+
+		<div class="medium-6 columns">
+			<p><strong>{{ site.data.language.more_articles }}</strong></p>
+			{% include list-posts.html entries='3' offset='1' %}
+		</div><!-- /.medium-7.columns -->
+	</div><!-- /.row -->
 {% endunless %}
 
 
@@ -97,5 +81,5 @@ format: blog-index
 {% endcomment %}
 
 <div class="row">
-    {{ content }}
+	{{ content }}
 </div><!-- /.row -->

@@ -14,8 +14,8 @@ header:
 ## Me
 
 {% comment %} Including the two pictures is a hack, because there's no way use the Foundation Grid (needs a container with row) {% endcomment %}
-![picture of me]({{ site.urlimg }}/me.jpg){: .left .show-for-large-up width="200"}
-![picture of me]({{ site.urlimg }}/me.jpg){: .center .hide-for-large-up width="250"}
+![picture of me]({{ site.urlimg }}me.jpg){: .left .show-for-large-up width="200"}
+![picture of me]({{ site.urlimg }}me.jpg){: .center .hide-for-large-up width="250"}
 Hi, my name is *Róbert&nbsp;Sándor&nbsp;Papp*, mostly known as *TWiStErRob* online and *Robi* among my friends and collegaues. I was born and raised in *Hungary*, then fled to *London*.
 
 I'm an experienced senior&nbsp;software&nbsp;engineer with a masters degree from the University&nbsp;of Szeged&nbsp;(Hungary). I'm efficient, fast, perfectionist and I pay excessive attention to details when it comes to my work.
@@ -29,5 +29,5 @@ This website is a long-waited upgrade from my [old website](http://twisterrob.uw
 *Big thanks to [Moritz&nbsp;»mo.«&nbsp;Sauer](http://sauer.io) aka [Phlow](http://phlow.de/) for his [**Feeling&nbsp;Responsive**](http://phlow.github.io/feeling-responsive/) theme.*
 
 
-Have a nice \<whatever time of day it is for you\>!  
+Have a nice <q>whatever time of day it is for you</q>!  
 [**+Robi**]({{ site.baseurl }}/contact/)

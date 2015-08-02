@@ -5,7 +5,6 @@
 		{% unless link.sitemap.exclude or link.published == false %}
 		<li>
 			<a href="{{ site.baseurl }}{{ link.url | remove: 'index.html' }}">{% if link.title %}{{ link.title }}{% else %}...{% endif %}</a>
-			{{ link | debug }}
 		</li>
 		{% endunless %}
 	{% endfor %}

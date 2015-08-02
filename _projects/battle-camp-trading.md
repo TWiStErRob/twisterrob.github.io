@@ -16,9 +16,7 @@ urls:
   download: http://twisterrob.net/dev/bc/bc-trade.user.js
 ---
 
-## Table of Contents
-*  Auto generated table of contents
-{:toc}
+{% include toc.md %}
 
 ## Reason for existence
 In short: they moved the Facebook Trading App to their Support site, but it was in a hurry and it's unfinished/unpolished. Here's a detailed breakdown:

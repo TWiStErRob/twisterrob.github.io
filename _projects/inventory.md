@@ -12,9 +12,7 @@ urls:
   googleplay: net.twisterrob.inventory
 ---
 
-## Table of Contents
-*  Auto generated table of contents
-{:toc}
+{% include toc.md %}
 
 ## Inception
 

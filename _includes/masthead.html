@@ -9,7 +9,7 @@
 </div><!-- /#masthead -->
 
 {% if page.breadcrumbs == true %}
-{% include breadcrumbs.html %}
+{% include masthead-breadcrumbs.html %}
 {% endif %}
 
 
@@ -18,7 +18,7 @@
 
 {% elsif page.header.title %}
 
-<div id="masthead-with-text" style="{% if page.header.background-color %}background: {{ page.header.background-color }};{% endif %} {% if page.header.image_fullwidth %}{% elsif page.header.pattern %}background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('{{ site.urlimg }}/{{ page.header.pattern }}'){% endif %}">
+<div id="masthead-with-text" style="{% if page.header.background-color %}background: {{ page.header.background-color }};{% endif %} {% if page.header.image_fullwidth %}{% elsif page.header.pattern %}background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('{{ site.urlimg }}{{ page.header.pattern }}'){% endif %}">
 	<div class="row">
 		<div class="small-12 columns">
 			<div class="masthead-title">{{ page.header.title }}</div>
@@ -26,8 +26,8 @@
 	</div><!-- /.row -->
 </div><!-- /#masthead -->
 
-{% if page.breadcrumb == true %}
-{% include breadcrumb.html %}
+{% if page.breadcrumbs == true %}
+{% include masthead-breadcrumbs.html %}
 {% endif %}
 
 {% if page.header.caption_url && page.header.caption %}
@@ -54,8 +54,8 @@
 	</div><!-- /.row -->
 </div><!-- /#masthead -->
 
-{% if page.breadcrumb == true %}
-{% include breadcrumb.html %}
+{% if page.breadcrumbs == true %}
+{% include masthead-breadcrumbs.html %}
 {% endif %}
 
 {% if page.header.caption_url && page.header.caption %}
@@ -74,16 +74,16 @@
 
 {% elsif page.header.pattern %}
 
-<div id="masthead-with-pattern" style="background: url('{{ site.urlimg }}/{{ page.header.pattern }}')">
+<div id="masthead-with-pattern" style="background: url('{{ site.urlimg }}{{ page.header.pattern }}')">
 	<div class="row">
 		<figure class="small-12 columns">
-			<img src="{{ site.urlimg }}/{{ page.header.image }}" alt="{{ site.title }}">
+			<img src="{{ site.urlimg }}{{ page.header.image }}" alt="{{ site.title | escape }}">
 		</figure><!-- /.small-12.columns -->
 	</div><!-- /.row -->
 </div><!-- /#masthead -->
 
-{% if page.breadcrumb == true %}
-{% include breadcrumb.html %}
+{% if page.breadcrumbs == true %}
+{% include masthead-breadcrumbs.html %}
 {% endif %}
 
 {% if page.header.caption_url && page.header.caption %}
@@ -105,13 +105,13 @@
 <div id="masthead-with-background-color" style="background: {{ page.header.background-color }};">
 	<div class="row">
 		<figure class="small-12 columns">
-			<img src="{{ site.urlimg }}/{{ page.header.image }}" alt="{{ site.title }}">
+			<img src="{{ site.urlimg }}{{ page.header.image }}" alt="{{ site.title | escape }}">
 		</figure><!-- /.small-12.columns -->
 	</div><!-- /.row -->
 </div><!-- /#masthead -->
 
-{% if page.breadcrumb == true %}
-{% include breadcrumb.html %}
+{% if page.breadcrumbs == true %}
+{% include masthead-breadcrumbs.html %}
 {% endif %}
 
 {% if page.header.caption_url && page.header.caption %}
@@ -130,8 +130,8 @@
 
 {% elsif page.header == false %}
 
-{% if page.breadcrumb == true %}
-{% include breadcrumb.html %}
+{% if page.breadcrumbs == true %}
+{% include masthead-breadcrumbs.html %}
 {% endif %}
 
 {% endif %}

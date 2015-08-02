@@ -29,10 +29,14 @@ $ci-6: #A1D044;     // green
 
 $primary-color: $ci-3;
 $secondary-color: $ci-6;
-$alert-color: $ci-5;
-$success-color: $ci-6;
-$warning-color: $ci-4;
-$info-color: $ci-2;
+
+$alert-opacity: 0.8;
+$alert-color: rgba(#BD0623, $alert-opacity);
+$success-color: rgba(#21AA0E, $alert-opacity);
+$warning-color: rgba(#D6810A, $alert-opacity);
+$info-color: rgba(#19A7D6, $alert-opacity);
+$terminal-color: rgba(#000000, $alert-opacity);
+$todo-color: #ffffff;
 
 
 
@@ -73,7 +77,7 @@ $body-bg: 			$grey-14;
 
 $topbar-bg-color: #fff;
 
-$topbar-dropdown-toggle-color: $ci-3;
+$topbar-dropdown-toggle-color: $primary-color;
 
 $topbar-link-color: #000;
 $topbar-link-color-hover: #000;

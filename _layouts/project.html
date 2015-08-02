@@ -4,7 +4,7 @@ layout: page
 <div class="row">
   <div class="small-12 medium-3 large-4 columns">
   	<figure>
-  		<img src="{{ site.urlimg }}/{{ page.images.icon }}" alt="Icon of {{ page.title }}" />
+  		<img src="{{ site.urlimg }}{{ page.images.icon }}" alt="Icon of {{ page.title }}" />
   	</figure>
   </div>
   <div class="small-12 medium-9 large-8 columns">
@@ -30,8 +30,8 @@ layout: page
 	<h2 id="screenshots">Screenshots</h2>
 	<ul class="clearing-thumbs small-block-grid-3" data-clearing>
 	{% for shot in page.images.screenshots %}
-	<li><a href="{{ site.urlimg}}/{{ shot.url }}">
-		<img src="{{ site.urlimg }}/{{ shot.url }}" alt="Screenshot #{{ forloop.index }}" data-caption="{{ shot.title }}" title="{{ shot.title }}" />
+	<li><a href="{{ site.urlimg}}{{ shot.url }}">
+		<img src="{{ site.urlimg }}{{ shot.url }}" alt="Screenshot #{{ forloop.index }}" data-caption="{{ shot.title }}" title="{{ shot.title }}" />
 	</a></li>
 	{% endfor %}
 	</ul>

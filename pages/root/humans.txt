@@ -5,11 +5,11 @@ layout: null
 ---
 {% comment %}http://humanstxt.org/Standard.html{% endcomment %}
 /* TEAM */
-
-Name: Róbert Papp
+{% assign author = site.data.authors[site.author] %}
+Name: {% if author.name %}{{ author.name }}{% else %}{{ site.author }}{% endif %}
 Role: webmaster, developer, copywriter, designer
-Site: {{ site.url }}{{ site.baseurl }}/info/
-Twitter: @twisterrob
+{% if author.uri %}Site: {{ author.uri }}{% endif %}
+{% if author.twitter %}Twitter: {{ author.twitter }}{% endif %}
 
 
 /* THANKS */

@@ -1,22 +1,20 @@
 ---
 layout: page
+subheadline: 'Articles in Category'
 ---
 {{ content }}
 
-<h2>Posts</h2>
 {% assign category_posts = site.categories[page.category] %}
 {% if category_posts %}
 	{% for post in category_posts %}
 		{% capture post_year %}{{ post.date | date: '%Y' }}{% endcapture %}
 		{% if forloop.first %}
-			<h3>{{ post_year }}</h3><ul>
-		{% endif %}
-		
-		{% if forloop.first == false %}
+			<h2 id="{{post_year}}">{{ post_year }}</h2><ul>
+		{% else %}
 			{% assign previous_index = forloop.index0 | minus: 1 %}
 			{% capture previous_post_year %}{{ category_posts[previous_index].date | date: '%Y' }}{% endcapture %}
 			{% if post_year != previous_post_year %}
-				</ul><h3>{{ post_year }}</h3><ul>
+				</ul><h2 id="{{post_year}}">{{ post_year }}</h2><ul>
 			{% endif %}
 		{% endif %}
 		<li>
@@ -31,7 +29,7 @@ layout: page
 	<p>There are no posts in this category.</p>
 {% endif %}
 
-<h2>Other categories</h2>
+<h2 id="other">Other categories</h2>
 <ul>
 {% for other_category in site.pages %}
 	{% if other_category.category %}
@@ -40,7 +38,7 @@ layout: page
 		{% assign post_count = site.categories[other_category.category].size %}{% unless post_count %}{% assign post_count = 0 %}{% endunless %}
 		<li {% if other_category.category == page.category %}class="active"{% endif %}>
 			<a href="{{ site.baseurl }}/blog/category/{{ other_category.category }}">{{ other_category.title }}</a>
-			({{ post_count }} article{%unless post_count == 1%}s{%endunless%})
+			({{ post_count }}&nbsp;article{%unless post_count == 1%}s{%endunless%})
 		</li>
 	{% endif %}
 {% endfor %}

@@ -9,17 +9,21 @@
 #   /____/_/\__/\___/   /____/\___/\__/\__/_/_/ /_/\__, /____/  
 #                                                 /____/        
 #
+
 # Title of your website
 title: "TWiStErRob"
 
 
 # The slogan describes your website and is used on homepage in <title> and other important places
-slogan: "Professional &amp; Hobby Development site"
+slogan: "Professional & Hobby Development site"
 
 
 # The description is used on homepage and in the footer to quickly describe your website. Use a maximum of 150 characters for SEO-purposes.
-description: "Home for all things about and by Róbert&nbsp;Papp (TWiStErRob)."
+description: "Home for all things about and by Róbert Papp (TWiStErRob)."
 
+# Main author of the website
+# See > authors.yml
+author: twisterrob
 
 # This URL is the main address for absolute links. Don't include a slash at the end.
 url: 'http://twisterrob.github.io'
@@ -32,10 +36,10 @@ improve_content: https://github.com/twisterrob/twisterrob.github.io/issues
 # This URL points directly to the images directory making
 # things easier to link to images in posts and templates. Don't include a slash at the end.
 #
-# Example: <img src="{{ site.urlimg }}/{{ post.image.title }}">
-# Markdown-Example for posts ![Image Text]({{ site.urlimg }}/image.jpg)
+# Example: <img src="{{ site.urlimg }}{{ post.image.title }}">
+# Markdown-Example for posts ![Image Text]({{ site.urlimg }}image.jpg)
 #
-urlimg: '/images'
+urlimg: '/images/'
 
 # Logo size is 600x80 pixels
 logo: "logo-600x80.png"
@@ -74,9 +78,11 @@ exclude:
     - Gemfile.lock
     - LICENSE
     - README.md
+    - INSTALL.md
     - "*.bat"
     - "*.zip"
     - sources
+    - .fast-dev
     - .sass-cache
 
 #       ______                                _           
@@ -87,14 +93,17 @@ exclude:
 #                                                         
 quiet: false
 
-# More > http://kramdown.gettalong.org/quickref.html
-# Options > http://kramdown.gettalong.org/options.html
+# More › http://kramdown.gettalong.org/quickref.html
+# Options › http://kramdown.gettalong.org/options.html
 kramdown:
   input:          GFM
   auto_ids:       true
+  auto_id_stripping: true # TODO is this --safe?
+  #transliterated_header_ids: true # requires some more dependency
   footnote_nr:    1
   entity_output:  as_char
   toc_levels:     1..6
+  toc_panel:      true
   smart_quotes:   lsquo,rsquo,ldquo,rdquo
   hard_wrap:      false
   #enable_coderay: true
@@ -110,18 +119,19 @@ kramdown:
 
 # More › http://sass-lang.com
 # Options › http://jekyllrb.com/docs/assets/#sassscss
+# Safe mode only allows style, syntax=based on extension, cache=false
 sass:
   sass_dir: _sass
-  # Options > http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
-  style: :compressed
+  # Options › http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+  style: :compressed # :nested | :expanded | :compact | :compressed
 
 # Theme works best with Kramdown (using the table of contents function)
 markdown: kramdown
 highlight: pygments
 excerpt_separator: "<!--more-->"
 
-# Used > default.html front-matter and comress.html
-# Options > http://jch.penibelst.de
+# Used › default.html front-matter and comress.html
+# Options › http://jch.penibelst.de
 compress_html:
   ignore:
     envs: [development]
@@ -137,7 +147,7 @@ lsi: false
 language: "en"
 
 
-# Docs > http://jekyllrb.com/docs/collections/
+# Docs › http://jekyllrb.com/docs/collections/
 permalink: /blog/:year/:month/:day/:title.html
 collections:
   projects:
@@ -217,7 +227,7 @@ google_author:             "https://plus.google.com/+RóbertPappTWiStErRob"
 # alexa_verify_id:         ""
 
 # Favicon-Crap: Favicons, Chrome, Android & Apple Touch Buttons
-# More information » https://mathiasbynens.be/notes/touch-icons
+# More information Â» https://mathiasbynens.be/notes/touch-icons
 #favicon-32x32:                          "favicon-32x32.png"
 #touch-icon-192x192:                     "touch-icon-192x192.png"
 #apple-touch-icon-180x180-precomposed:   "apple-touch-icon-180x180-precomposed.png"
@@ -235,10 +245,10 @@ google_author:             "https://plus.google.com/+RóbertPappTWiStErRob"
 og_image:                           imgurl + "/logo-512x512.png"
 og_locale:                          "en_EN"
 og_type:                            "website"
-og_title:                           "TWiStErRob &mdash; Personal &amp; Development blog"
-og_description:                     "Personal and development blog for Róbert&nbsp;Papp&nbsp;(TWiStErRob)."
-# og_url:                           ""
-# og_site_name:                     ""
+#og_title:                           ""
+#og_description:                     ""
+#og_url:                             ""
+#og_site_name:                       ""
 
 #       ____      __                        __  _           
 #      /  _/___  / /____  ____ __________ _/ /_(_)___  ____ 
@@ -247,8 +257,16 @@ og_description:                     "Personal and development blog for Róbert&n
 #   /___/_/ /_/\__/\___/\__, /_/   \__,_/\__/_/\____/_/ /_/ 
 #                      /____/                               
 #
-# Used > _includes/comments.html
-#disqus_shortname: twisterrob-blog
-# More > https://www.google.com/analytics/
-# Used > _includes/footer_scripts.html
-#google_analytics_tracking_id: UA-38202353-3
+# Used › _includes/comments.html
+disqus_shortname: twisterrob-blog
+
+# More › https://www.google.com/analytics/
+# Used › _includes/footer_scripts.html
+google_analytics_tracking_id: UA-38202353-3
+
+# More › https://www.tawk.to/knowledgebase/
+#        tawk.to is a free live chat app that lets you monitor and chat 
+#         with visitors on your website or from a free customizable page
+#         To load the script add tawkto: true in front matter of each page
+# Used › _includes/footer_scripts.html
+#tawkto_embed_uri: https://embed.tawk.to/<id>/default

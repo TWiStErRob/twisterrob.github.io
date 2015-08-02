@@ -4,8 +4,8 @@ subheadline: "Work around the quirks"
 teaser: "Full process of how I go through a pull request for a GitHub fork."
 category: dev
 tags:
-- Git
-- GitHub
+- git
+- github
 - tutorial
 ---
 
@@ -13,11 +13,12 @@ Many times when you ask for a feature in a GitHub issue, you're welcomed with:
 
 > Can you create a PR please?
 
-*[PR]: Pull Request
-
-... even if it's a one-character typo. Here's how I do create a PR.
+... even if it's a one-character typo. Here's how I create a PR.
 
 <!--more-->
+
+## What is a PR?
+A <dfn>Pull&nbsp;Request</dfn> is request created on GitHub to merge code from one fork of the repository to another. Usually there's a feature/bug branch in the fork and the PR is made against the `master` branch &mdash;, or wherever their `HEAD` commit is &mdash; in the base repository.
 
 ## GitHub setup
 
@@ -61,13 +62,13 @@ origin  https://github.com/me/repo-name.git (push)
 
 ## Update remote
 
-`strager-head-branch` is usually the `master` branch and `my-pr-branch`'s name is highly correlated with what your PR is representing.
+`stranger-head-branch` is usually the `master` branch and `my-pr-branch`'s name is highly correlated with what your PR is representing.
 
 {% highlight console %}
-me@laptop$ git checkout strager-head-branch
-Switched to branch 'strager-head-branch'
+me@laptop$ git checkout stranger-head-branch
+Switched to branch 'stranger-head-branch'
 
-me@laptop$ git merge mint/strager-head-branch
+me@laptop$ git merge mint/stranger-head-branch
 Updating abc1230..abc123f
 Fast-forward
 ...
@@ -75,7 +76,7 @@ Fast-forward
 me@laptop$ git checkout my-pr-branch
 Switched to branch 'my-pr-branch'
 
-me@laptop$ git rebase strager-head-branch
+me@laptop$ git rebase stranger-head-branch
 First, rewinding head to replay your work on top of it...
 Applying: Commit message 1
 Applying: Commit message 2
@@ -87,6 +88,13 @@ Applying: Commit message 2
 me@laptop$ git push --all
 {% endhighlight %}
 
-Upon success just go to the original repo or your fork on GitHub and you should see a "Your recently pushed branches:" tip with a "Compare & pull request" button.
+Upon success just go to the original repo or your fork on GitHub and you should see a <mark>Your recently pushed branches:</mark> tip with a <mark>Compare & pull request<mark> button.
 
 Review changes, fill in description and you're good to go.
+
+## Future of a PR
+If the repository owners like what you did and it adheres to rules usually defined in `CONTRIBUTING.md` they'll merge your PR and you'll see a <mark>Pull request successfully merged and closed</mark> message with a <mark>Delete branch</mark> button next to it. That helps to keep your fork's working branches to a minimum. Once it's merged the commits are copied to their repository so it's safe to delete your branch.
+
+There's of course the possibility that something goes wrong, like the CI build fails or there's some modification needed in the PR. In that case make some more commits to your fork, or even rebase or squash commits; then push it to the working branch and the PR will be updated automatically.
+
+*[PR]: Pull Request

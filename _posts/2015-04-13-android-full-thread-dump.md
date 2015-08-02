@@ -1,19 +1,18 @@
 ---
-title: "Getting full Thread Dump on Android"
-subheadline: "Work around the quirks"
-teaser: >
-  The Android operating system does a thread dump whenever it receives `SIGQUIT` signal.
-  However you need an unlocked device to send that signal.
-  Fear not, there's a workaround to get the exact same thread dump with a little more effort on a production device with a debuggable application.
+title: "Getting a full Thread Dump on Android"
+subheadline: "Detailed walkthrough"
 category: android
 tags:
-- Android
+- android
 - debug
 - workaround
 ---
 
-<!--more-->
+The Android operating system does a thread dump whenever it receives `SIGQUIT` signal.
+However you need an unlocked device to send that signal.
+Fear not, there's a workaround to get the exact same thread dump with a little more effort on a production device with a debuggable application.
 
+<!--more-->
 
 ## Background
 There are a few sources on the Internet on how to make a thread dump in Android, but most of them don't work or are lacking the intrinsic locking information, here's an example:
@@ -69,7 +68,7 @@ synchronized (this) {
 ### Step 1: Always available debugger break entry point
 If you want a thread dump you probably have a deadlock in your code in which case it might not be trivial to know when and where to stop the code execution. You'll need to start a background thread in your app so that you can stop the execution any time and be able to mess around in immediate mode too.
 
-There's a "Pause Program" action available in IntelliJ IDEA's Debug view:
+There's a <mark>Pause Program</mark> action available in IntelliJ IDEA's Debug view:  
 !["Pause Program" action in IDEA's Debug View](data:image/png;base64,
 	iVBORw0KGgoAAAANSUhEUgAAAcsAAAC9CAMAAADr0KYdAAAABGdBTUEAALGPC/xhBQAAAAFzUkdC
 	AK7OHOkAAACKUExURcbP4M3W5u3t7JycnMrT4/Pz8729vfDw8P///9DZ6d/f3fLw7Nra2c/Pz9TU
@@ -140,7 +139,7 @@ There's a "Pause Program" action available in IntelliJ IDEA's Debug view:
 	9VKD4KbVlx/9196xPNA5f6XHTiApUxm1QGyh/XpLt6Z5kv/vsfeNtJ6H4J231TR/+XKWtEZkO2tE
 	BGkr+qAliZvRB6WZbdY+JGJJIpakdVnaXHQ+3prlPhOxfHOWjJXhwb7L8qfMTcGfX3qwQAw2wLJM
 	jyvLcVLkZ7CEv/+CJ7J8B9C/AeVabgQmDWtsAAAAAElFTkSuQmCC
-)
+)  
 but you can't execute any code in that mode:
 
 > Target VM is not paused by breakpoint request. Evaluation of methods is not possible in this mode
@@ -162,7 +161,7 @@ new Thread() {
 {% endhighlight %}
 
 Anywhere is ok that you know will surely execute before you need the thread dump.
-Even an Button's event handler will work.
+Even an button's event handler will work.
 I choose to put mine in:
 
 {% highlight java %}
@@ -176,7 +175,7 @@ Compile and run your app. If you did step 0 as I did, your app will be plain bla
 
 
 ### Step 2: Create thread dump
-Go to your IDE and do Run > Attach debugger to Android process
+Go to your IDE and do <mark>Run > Attach debugger</mark> to Android process  
 ![Choose Process dialog](data:image/png;base64,
 	iVBORw0KGgoAAAANSUhEUgAAASQAAAHECAMAAACnY6dcAAAABGdBTUEAALGPC/xhBQAAAAFzUkdC
 	AK7OHOkAAABgUExURfDw8PT09LPM5p+61TOZ/6K82AAAAP///7rS67nR6pq10cDAwKrE39rb2zQ0
@@ -230,8 +229,8 @@ Go to your IDE and do Run > Attach debugger to Android process
 	EGpqXcRzN36FdbEu7hJp7CeTRdZNpd06+lIps05mtorKOVlxX0jr2QjPpGfRM+5iBPTivp5xZ9U4
 	8dBvS3jvBhJIBEgggQQSSA+DRJyMf0ECCSSQQALpIZH+Jc6E/jcpxJn4Hw8hJrcRh4pMAAAAAElF
 	TkSuQmCC
-)
-and select your app's process and then go to the place where you have `Thread.sleep(1);` and put a breakpoint on it:
+)  
+and select your app's process and then go to the place where you have `Thread.sleep(1);` and put a breakpoint on it:  
 ![Breakpoint on line `Thread.sleep`](data:image/png;base64,
 	iVBORw0KGgoAAAANSUhEUgAAAj0AAABKCAMAAABn9xVjAAAABGdBTUEAALGPC/xhBQAAAAFzUkdC
 	AK7OHOkAAABdUExURS1gmTc3N7POza2t+ylWIv//7f7/AQAAADEzNVBQUFd6df/m/VZWVuH/vwD/
@@ -268,8 +267,8 @@ and select your app's process and then go to the place where you have `Thread.sl
 	azg9NIQen88BepaWNV9aUuPe9NC2RNhHD/34rHkZFfvFrdjNWT5qNRqzhVoLM6pxyjzJdpPmsJbS
 	3VOxXxZJz6JmC2k0A5PMwPXASkWs9DgrFUAP0NMXnyb/AXrgCY1lCdADAvQAPUAPkAH0RGEz6hs5
 	IH75H0nGqlhgzt4HAAAAAElFTkSuQmCC
-)
-The breakpoint should be hit immediately:
+)  
+The breakpoint should be hit immediately:  
 ![app pause at breakpoint](data:image/png;base64,
 	iVBORw0KGgoAAAANSUhEUgAAAbwAAACGCAMAAACR+M+SAAAABGdBTUEAALGPC/xhBQAAAAFzUkdC
 	AK7OHOkAAABdUExURfHx8dbW1snS4u3s7DOZ/8vU5AAAAP///8/Y6MbP39zc3NLS0ouUpZycnHBw
@@ -343,13 +342,13 @@ The breakpoint should be hit immediately:
 	YII=
 )
 
-Now there's a context you can execute code in, go to Run > Evaluate Expression... and enter
+Now there's a context you can execute code in, go to <mark>Run > Evaluate Expression...</mark> and enter:
 
 {% highlight java %}
 android.os.Process.sendSignal(android.os.Process.myPid(), android.os.Process.SIGNAL_QUIT)
 {% endhighlight %}
 
-In the Android logcat view you'll see the following information printed:
+In the Android LogCat view you'll see the following information printed:
 
 {% highlight text %}
 04-13 16:36:21.971  10904-10954/net.twisterrob.app I/Process﹕ Sending signal. PID: 10904 SIG: 3
@@ -375,7 +374,7 @@ me@laptop$ adb shell "cat /data/anr/traces.txt" > traces.txt
 
 
 ### Step 4: Read thread dump
- Now if you open traces.txt on you machine and scroll from the bottom you should find your app:
+Now if you open <samp>traces.txt</samp> on you machine and scroll from the bottom you should find your app:
 
 {% highlight text %}
 ----- pid 10904 at 2015-04-13 17:16:40 -----
@@ -386,7 +385,7 @@ Cmd line: net.twisterrob.app
 ----- end 10904 -----
 {% endhighlight %}
 
-Here's the UI thread's state, remember in "Step 0" I synchronized on `this`, see line #6:
+Here's the UI thread's state, remember in [Step 0](#step-0-fake-a-ui-lock-down) I synchronized on `this`, see line #6:
 {% highlight text linenos=inline hl_lines=6 %}
 "main" prio=5 tid=1 WAIT
     | group="main" sCount=1 dsCount=0 obj=0x418ccea0 self=0x417c7388
@@ -402,4 +401,4 @@ Here's the UI thread's state, remember in "Step 0" I synchronized on `this`, see
 
 
 ## Summary
-The above steps should give you access to thread dumps for any application you develop from your real device. The full thread dumps contain locking information like the "waiting on" line above which helps to diagnose deadlocks and synchronization issues. If you just want to see where your app is at the current time I suggest you use the Threads view of the SDK's DDMS `monitor`, or `Thread.getAllStackTraces()` programmatically or while debugging.
+The above steps should give you access to thread dumps for any application you develop from your real device. The full thread dumps contain locking information like the <samp>waiting on</samp> line above which helps to diagnose deadlocks and synchronization issues. If you just want to see where your app is at the current time I suggest you use the Threads view of the SDK's DDMS `monitor`, or `Thread.getAllStackTraces()` programmatically or while debugging.

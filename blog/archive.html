@@ -3,6 +3,16 @@ permalink: /blog/archive/
 title: "Articles by date"
 breadcrumbs: true
 ---
+<ul class="inline-list">
+{% for post in site.posts reversed %}
+	{% assign currentyear = post.date | date: '%Y' %}
+	{% if currentyear != year %}
+		<li><a href="#{{ currentyear }}">{{ currentyear }}</a></li>
+		{% assign year = currentyear %}
+	{% endif %}
+{% endfor %}
+</ul>
+
 {% for post in site.posts %}
 	{% assign currentdate = post.date | date: '%Y-%m' %}
 	{% if currentdate != date %}
@@ -12,7 +22,7 @@ breadcrumbs: true
 			<h2 id="{{ currentyear }}">{{ currentyear }}</h2>
 			{% assign year = currentyear %}
 		{% endif %}
-		<h3 id="{{ post.date | date: '%Y-%m' }}">{{ post.date | date: '%Y %B' }}</h1>
+		<h3 id="{{ currentdate }}">{{ post.date | date: '%Y %B' }}</h3>
 		<ul>
 		{% assign date = currentdate %}
 	{% endif %}

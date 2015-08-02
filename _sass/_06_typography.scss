@@ -44,7 +44,11 @@ a:active {
     border: 0;
     text-decoration: none;
 }
-
+a[target='_blank']:after {
+    @extend .icon-export:before;
+    @extend sup;
+    margin-left: rem-calc(4);
+}
 
 
 /* Customize Foundation Typography
@@ -55,6 +59,7 @@ p {
     -moz-hyphens: auto;
     -ms-hyphens: auto;
     hyphens: auto;
+    text-align: justify;
 }
 p a,
 article a {
@@ -193,7 +198,7 @@ pre {
     line-height: 1.2;
     color: $code-color;
     background-color: $code-background-color;
-    border: 3px ridge darken($secondary-color, 33%);
+    border: 3px ridge darken($primary-color, 33%);
 
     max-height: 350px;
     overflow: auto;
@@ -216,7 +221,7 @@ pre {
     }
 
     &::-webkit-scrollbar-thumb {
-        background: darken($secondary-color, 20%);
+        background: darken($primary-color, 20%);
         background-clip: padding-box;
         border-radius: 1ex;
         border: 2px solid transparent;
@@ -235,16 +240,19 @@ div.highlight[title]:before {
   content: attr(title);
   text-align: center;
   display: block;
-  border: 2px ridge darken($primary-color, 10%);
+  border: 3px ridge darken($primary-color, 33%);
+  background-color: scale-color($header-font-color, $lightness: -90%);
+  color: $header-font-color;
   border-bottom: none;
 }
 
-code {
+code, var {
     //box-shadow: 0 0 1px 1px $primary-color;
     //background: darken($primary-color, 35%);
     border: 1px ridge darken($primary-color, 10%);
     padding: 3px;
     font-style: normal;
+    font-size: rem-calc(14);
 }
 
 /* Lists
@@ -329,7 +337,7 @@ blockquote {
     margin: 0 30px 30px 30px;
     p {
         font-style: italic;
-        color: $info-color;
+        text-align: initial;
     }
 
     &:before {
@@ -358,12 +366,21 @@ cite {
     padding-top: 5px;
 }
 
+q {
+    font-style: italic;
+    color: $blockquote-font-color;
+}
+
 button, .button {
     letter-spacing: 1px;
 }
 
 mark {
-    background-color: scale-color($warning-color, $lightness: 60%);
+    background: invert($body-bg);
+    color: $body-bg;
+    font-weight: bold;
+    font-size: 0.9em;
+    padding: 2px;
 }
 
 

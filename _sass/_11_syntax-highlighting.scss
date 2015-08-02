@@ -16,7 +16,7 @@
 .highlight {
 	tab-size: 4;
 	.hll   /* Highligh Line */               { border: 1px ridge $primary-color; padding: 2px; }
-	.err   /* Error */                       { color: #a61717; background-color: #e3d2d2; }
+	.err   /* Error */                       { color: #a61717; background-color: #e3d2d2; padding: 2px 1px; }
 	.w     /* Text.Whitespace */             { color: #bbb; }
 	.p     /* Punctuation */                 { color: #FFFF80; }
 	.o     /* Operator */                    { color: #FFFF80; }
@@ -56,7 +56,7 @@
 	.ne    /* Name.Exception */              { color: #900;    font-weight: bold; }
 	.nf    /* Name.Function */               { color: #FFFF00; font-weight: bold; }
 	.nl    /* Name.Label */                  { color: red; }
-	.nn    /* Name.Namespace */              { color: red; }
+	.nn    /* Name.Namespace */              { color: #FFFFBF; font-style: italic; }
 	.nx    /* Name.Other */                  { color: red; }
 	.py    /* Name.Property */               { color: red; }
 	.nt    /* Name.Tag */                    { color: #B0B0FF; }
@@ -78,10 +78,10 @@
 	.s2    /* Literal.String.Double */       { color: #FF8000; }
 	.sc    /* Literal.String.Char */         { color: red; }
 	.sd    /* Literal.String.Doc */          { color: red; }
-	.se    /* Literal.String.Escape */       { color: red; }
+	.se    /* Literal.String.Escape */       { color: #FFC800; }
 	.sh    /* Literal.String.Heredoc */      { color: red; }
 	.si    /* Literal.String.Interpol */     { color: #00C9FF; }
 	.sx    /* Literal.String.Other */        { color: red; }
-	.sr    /* Literal.String.Regex */        { color: red; }
+	.sr    /* Literal.String.Regex */        { color: #FF8000; border-bottom: 1px #FF8000 dotted; }
 	.ss    /* Literal.String.Symbol */       { color: red; }
 }
