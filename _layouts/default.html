@@ -1,7 +1,11 @@
 ---
 layout: compress
 ---
-{% include head.html %}
+<!doctype html>
+<html class="no-js" lang="{% if site.language == nil %}en{% else %}{{ site.language }}{% endif %}">
+<head>
+	{% include head.html %}
+</head>
 <body id="top-of-page" class="{{ page.format }} env-{{ jekyll.environment }}">
 	{% unless page.skip_boilerplate %}
 	{% include navigation.html %}
