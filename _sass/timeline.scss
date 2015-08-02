@@ -1,0 +1,173 @@
+$timeline-line-color: $secondary-color;
+$timeline-point-color: $primary-color;
+$timeline-point-color-highlight: #fff;
+$timeline-point-color-lowlight: #000;
+$timeline-box-color: $primary-color;
+
+a article {
+	color: white;
+	font-weight: normal;
+}
+
+section.timeline {
+	position: relative;
+	margin: 5% 0;
+
+	&:after { // spine of the timeline
+		$timeline-spine-height: 15%;
+		$timeline-spine-width: 4px;
+		background: $timeline-line-color;
+		background: -webkit-linear-gradient(top,rgba(80,80,80,0) 0,$timeline-line-color 8%,$timeline-line-color 92%,rgba(80,80,80,0) 100%);
+		content: "";
+		display: block;
+		height: 100% + $timeline-spine-height;
+		left: 50%;
+		margin-left: -$timeline-spine-width / 2 !important;
+		position: absolute;
+		top: -$timeline-spine-height / 2;
+		width: $timeline-spine-width;
+		z-index: 0;
+		filter: alpha(opacity=80);
+		opacity: .80
+	}
+
+	.timeline-date {
+		box-shadow: 0 1px 5px 0 rgba(0,0,0,.04);
+		position: relative;
+		display: block;
+		clear: both;
+		width: 30%;
+		min-width: 150px;
+		padding: 5px;
+		border: 1px solid $timeline-line-color;
+		margin: 0 auto 10px;
+		border-radius: 4px;
+		background: #000;
+		z-index: 1;
+		text-align: center;
+		font-size: .9em;
+	}
+	
+	.timeline-box {
+		box-shadow: 0 1px 5px 0 rgba(0,0,0,.04);
+		border: 1px solid $timeline-box-color;
+		border-radius: 4px;
+		padding: 10px;
+		position: relative;
+		width: 47%;
+		float: left;
+		z-index: 1;
+		background: #000;
+
+		h3 {
+			margin-top: 0;
+		}
+
+		&:hover {
+			border-color: $timeline-point-color-highlight;
+			//outline: 2px solid $timeline-box-color;
+			&:after {
+				//border-width: 3px !important;
+				border-color: $timeline-point-color-highlight !important;
+			}
+			&:before {
+				background: $timeline-point-color-highlight !important;
+				box-shadow: 0 0 0 3px $timeline-point-color-lowlight, 0 0 0 6px $timeline-point-color-highlight !important;
+			}
+			// compensate for the extra width
+			&.left:after {
+				//right: -9px;
+			}
+			&.right:after {
+				//left: -9px;
+			}
+		}
+
+		&.left, &.right {
+			&:before { // circle
+				background: $timeline-point-color;
+				box-shadow: 0 0 0 3px $timeline-point-color-lowlight, 0 0 0 6px $timeline-point-color;
+				border-radius: 50%;
+				content: "";
+				display: block;
+				height: 8px;
+				position: absolute;
+				width: 8px;
+			}
+			&:after { // triangle
+				transform: rotate(45deg);
+				background: #000;
+				content: "";
+				display: block;
+				height: 14px;
+				position: absolute;
+				width: 14px;
+				z-index: 0;
+			}
+		}
+		&.left {
+			//text-align: right;
+			clear: both;
+			margin-top: 15px;
+			margin-bottom: 15px;
+			&:before { // circle
+				top: 22px;
+				right: -29px;
+			}
+			&:after { // triangle
+				right: -8px;
+				top: 20px;
+				border-right: 1px solid $timeline-box-color;
+				border-top: 1px solid $timeline-box-color;
+			}
+		}
+		&.right {
+			//text-align: left;
+			clear: right;
+			float: right;
+			right: -1px;
+			margin-top: 35px;
+			margin-bottom: 15px;
+			&:before { // circle
+				top: 32px;
+				left: -29px;
+			}
+			&:after { // triangle
+				left: -8px;
+				top: 30px;
+				border-left: 1px solid $timeline-box-color;
+				border-bottom: 1px solid $timeline-box-color;
+			}
+		}
+		@media only screen and (max-width: 64.063em) {
+			&.left, &.right {
+				float: none !important;
+				clear: both;
+				right: auto;
+				left: auto;
+				margin: 20px auto;
+				max-width: 80%;
+				width: auto;
+
+				&:before, &:after {
+					display: none;
+				}
+			}
+			&.left {
+				//text-align: left;
+				margin-left: 0;
+			}
+			&.right {
+				//text-align: right;
+				margin-right: 0;
+			}
+		}
+
+		@media only screen and (max-width: 40em) {
+			&.left, &.right {
+				margin: 15px auto;
+				max-width: 90%;
+			}
+		}
+	}
+}

@@ -15,7 +15,7 @@
 	{% if measure == 'dynamic' %}
 		{% if 1 < year_diff or year_diff == 1 and day_diff > 180 %}
 			{% assign measure = 'years' %}
-		{% elsif year_diff == 0 and day_diff < 100 %}
+		{% elsif year_diff == 0 and day_diff <= 42 %}
 			{% assign measure = 'days' %}
 		{% else %}
 			{% assign measure = 'months' %}
