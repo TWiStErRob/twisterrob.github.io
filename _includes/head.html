@@ -1,0 +1,44 @@
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>{% if page.meta_title %}{{ page.meta_title }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.title }} – {{ site.slogan }}{% endif %}</title>
+	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/styles_feeling_responsive.css" />
+	<script src="{{ site.baseurl }}/assets/js/modernizr.min.js"></script>
+
+	{% comment %}https://github.com/typekit/webfontloader
+	        TODO https://github.com/Phlow/feeling-responsive/issues/19
+	{% endcomment %}
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic|Volkhov:400,700,400italic:latin' rel='stylesheet' type='text/css' />
+
+	{% if site.google_site_verification %}<meta name="google-site-verification" content="{{ site.google_site_verification }}" />{% endif %}
+	{% if site.bing_webmastertools_id %}<meta name="msvalidate.01" content="{{ site.bing_webmastertools_id }}" />{% endif %}
+	{% if page.meta_description %}<meta name="description" content="{{ page.meta_description | strip_html | escape }}"/>{% elsif page.teaser %}<meta name="description" content="{{ page.teaser | strip_html | escape }}"/>{% elsif site.description %}<meta name="description" content="{{ site.description | strip_html | escape }}"/>{% endif %}
+	
+	{% if site.google_author %}<link rel="author" href="{{ site.google_author }}" />{% endif %}
+
+	{% include favicon %}
+
+	<!-- Facebook Optimization -->
+	<meta property="og:locale" content="{% if site.og_locale %}{{ site.og_locale }}{% else %}en_EN{% endif %}" />
+	{% if site.og_type %}<meta property="og:type" content="{{ site.og_type }}" />{% endif %}
+	<meta property="og:title" content="{% if page.title %}{{ page.title | escape }}{% elsif site.og_title %}{{ site.og_title | escape }}{% else %}{{ site.title | escape }}{% if site.slogan %} – {{ site.slogan | escape }}{% endif %}{% endif %}" />
+	<meta property="og:description" content="{% if page.meta_description %}{{ page.meta_description | strip_html | escape }}{% elsif page.description %}{{ page.description | strip_html | escape }}{% elsif site.description %}{{ site.description | strip_html | escape }}{% endif %}"/>
+	<meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}" />
+	<meta property="og:site_name" content="{% if site.og_title %}{{ site.og_title | escape }}{% else %}{{ site.title | escape }}{% if site.slogan %} – {{ site.slogan | escape }}{% endif %}{% endif %}" />
+	{% if page.image.thumb %}<meta property="og:image" content="{{ site.urlimg }}{{ page.image.thumb }}" />{% endif %}
+
+	{% if site.alexa_verify_id %}<meta name="alexaVerifyID" content="{{ site.alexa_verify_id }}" />{% endif %}
+
+	<!-- Search Engine Optimization -->
+	{% if page.noindex == true %}<meta name="robots" content="noindex" />{% endif %}
+
+	<link type="text/plain" rel="author" href="{{ site.baseurl }}/humans.txt" />
+
+	{% unless page.style == NULL %}
+	<style type="text/css">{{ page.style }}</style>
+	{% endunless %}
+
+	{% unless page.script.head == NULL %}
+	<script type="text/javascript">/*<![CDATA[*/
+		{{ page.script.head }}
+	/*]]>*/</script>
+	{% endunless %}

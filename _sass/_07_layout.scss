@@ -1,0 +1,441 @@
+/* TOC
+
+- Adjustments: Video Layout
+- Navigation
+- Search
+- Masthead
+- Masthead › small-only
+- Masthead › medium-only
+- Masthead › large-only
+- Masthead › xlarge-up
+- Breadcrumb
+- Meta
+- Jump to top
+- Footer
+- Subfooter
+- CSS-Classes to add margin at top or bottom
+
+*/
+
+
+
+/* Adjustments: Video Layout
+------------------------------------------------------------------- */
+
+body.video {
+    #masthead-no-image-header {
+        margin-bottom: 60px;
+    }
+    &, #masthead-no-image-header, #footer, #subfooter {
+        transition-property: background-color;
+        transition-duration: 2s;
+    }
+    h1, h2, h3, h4, h5, h6, p, a, blockquote:before, blockquote:after, cite a, cite a:visited, cite {
+        transition-property: color;
+        transition-duration: 2s;
+    }
+    &.cinematic {
+        &, #masthead-no-image-header, #footer, #subfooter {
+            background: #000;
+        }
+        h1, h2, h3, h4, h5, h6, p, a, blockquote:before, blockquote:after, cite a, cite a:visited, cite {
+            color: #fff;
+        }
+        .top-bar a {
+            color: initial;
+        }
+    }
+}
+
+
+
+
+/* Navigation
+------------------------------------------------------------------- */
+
+#navigation {
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.2);
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.2);
+
+    [class^='icon-']:before, [class*=' icon-']:before {
+        margin-right: rem-calc(10);
+        font-size: rem-calc(20);
+    }
+
+    li img {
+        width: 32px;
+        height: 32px;
+        max-width: initial;
+        margin-right: rem-calc(10);
+    }
+}
+
+
+
+/* Search
+------------------------------------------------------------------- */
+
+.no-js form#search {
+  display: none;
+}
+
+/* Masthead
+------------------------------------------------------------------- */
+
+#masthead {
+    background-color: $primary-color;
+}
+#masthead-no-image-header {
+    background-color: $primary-color;
+}
+#masthead-with-text {
+    text-align: center;
+    font-size: rem-calc(54);
+    font-family: $header-font-family;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 2px 3px rgba(0,0,0,.4);
+}
+#masthead-no-image-header {
+    height: 175px;
+}
+#masthead-no-image-header #logo {
+    margin-top: 50px;
+}
+
+#logo {
+    display: inline-block;
+    position: relative;
+}
+#logo-title {
+    font-family: $header-font-family;
+    color: lighten($primary-color, 25%);
+    font-size: 80px;
+    text-shadow: 4px 4px 16px black;
+    -webkit-text-stroke: 1px black;
+    letter-spacing: -4px;
+    font-weight: bolder;
+}
+#logo-slogan {
+    font-family: $header-font-family;
+    color: lighten($secondary-color, 25%);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    font-size: 24px;
+    text-shadow: 0px 0px 5px black;
+    letter-spacing: -2px;
+}
+
+/* Masthead › small-only
+------------------------------------------------------------------- */
+
+@media #{$small-only} {
+    #logo {
+        display: none;
+    }
+    #masthead {
+        height: 200px;
+    }
+    #masthead-with-pattern {
+        padding: 15px 0;
+    }
+    #masthead-with-background-color {
+        padding: 15px 0;
+    }
+    #masthead-with-text {
+        height: 220px;
+        padding: 30px 0;
+        font-size: rem-calc(36);
+    }
+    #masthead-no-image-header {
+        display: none;
+    }
+}
+
+
+/* Masthead › medium-only
+------------------------------------------------------------------- */
+
+@media #{$medium-only} {
+    #logo {
+        margin-top: 60px;
+    }
+    #masthead {
+        height: 280px;
+    }
+    #masthead-with-pattern {
+        padding: 20px 0;
+    }
+    #masthead-with-background-color {
+        padding: 20px 0;
+    }
+    #masthead-with-text {
+        padding: 60px 0;
+        height: 300px;
+    }
+}
+
+
+/* Masthead › large-only
+------------------------------------------------------------------- */
+
+@media #{$large-only} {
+    #logo {
+        margin-top: 80px;
+    }
+    #masthead {
+        height: 310px;
+    }
+    #masthead-with-pattern {
+        padding: 30px 0;
+    }
+    #masthead-with-background-color {
+        padding: 30px 0;
+    }
+    #masthead-with-text {
+        height: 330px;
+        padding: 60px 0;
+    }
+}
+
+
+/* Masthead › xlarge-up
+------------------------------------------------------------------- */
+
+@media #{$xlarge-up} {
+    #logo {
+        margin-top: 110px;
+    }
+    #masthead {
+        height: 380px;
+    }
+    #masthead-with-pattern {
+        padding: 45px 0;
+    }
+    #masthead-with-background-color {
+        padding: 45px 0;
+    }
+    #masthead-with-text {
+        padding: 95px 0;
+        height: 400px;
+    }
+}
+
+
+#title-image-small {
+    height: 240px;
+}
+#title-image-large {
+    height: 520px;
+}
+#title-image-index-small {
+    height: 120px;
+}
+#title-image-index-large {
+    height: 260px;
+}
+
+
+
+/* Breadcrumb
+------------------------------------------------------------------- */
+
+#breadcrumb {
+    background: scale-color($grey-1, $lightness: 55%);
+    border-top: 1px solid scale-color($grey-1, $lightness: 45%);
+    border-bottom: 1px solid scale-color($grey-1, $lightness: 45%);
+}
+.breadcrumbs>.current {
+  font-weight: bold;
+}
+
+
+/* Meta
+------------------------------------------------------------------- */
+
+#page-meta, #page-meta a {
+    color: $grey-5;
+}
+
+#page-meta .button {
+    background: $grey-5;
+    border: 0;
+}
+#page-meta .button {
+    color: #fff;
+}
+#page-meta .button:hover {
+    background: $primary-color;
+}
+#page-meta p {
+    white-space: normal;
+    text-align: initial;
+    font-size: rem-calc(13);
+}
+#page-meta a:hover {
+    color: $secondary-color;
+}
+#page-meta > p > * {
+    margin-right: rem-calc(20);
+}
+
+#page-meta span[class^='icon-'] {
+    white-space: nowrap;
+}
+#page-meta .meta-tags {
+    display: inline-block;
+    * {
+        margin-right: rem-calc(4);
+    }
+}
+
+.tags {
+    //width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    li {
+        height: rem-calc(36);
+        display: inline-block;
+    }
+}
+
+/* Jump to top
+------------------------------------------------------------------- */
+
+#up-to-top {
+    padding: 80px 0 10px 0;
+    text-align: right;
+}
+#up-to-top a {
+    visibility: hidden;
+}
+#up-to-top a:after {
+    @extend .icon-chevron-up:before;
+    visibility: visible;
+    font-size: 24px;
+    padding: 5px;
+    border-radius: 3px;
+}
+#up-to-top a:hover:after {
+    background: $grey-11;
+}
+
+
+
+/* Footer
+------------------------------------------------------------------- */
+#footer-content {
+    p,
+    li {
+        font-size: rem-calc(13);
+        font-weight: 300;
+    }
+}
+
+#footer {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    background: $footer-bg;
+    color: $footer-color;
+
+    h4,
+    h5 {
+        letter-spacing: 1px;
+        color: $footer-header-color;
+        text-transform: uppercase;
+    }
+}
+
+
+
+/* Subfooter
+------------------------------------------------------------------- */
+
+#subfooter {
+    background: $subfooter-bg;
+    color: $subfooter-color;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    .credits p {
+        text-align: left;
+    }
+    .credits a {
+        color: $subfooter-link-color;
+        border: 0;
+        //text-transform: uppercase;
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    .social-icons li a {
+        font-size: rem-calc(10);
+        text-align: center;
+        color: $subfooter-color;
+        visibility: collapse;
+        width: 36px;
+        height: 36px;
+        &:hover {
+            color: #fff;
+            &:before {
+               color: #fff;
+               background: $subfooter-bg;
+            }
+        }
+        &:before {
+            font-size: rem-calc(23);
+            line-height: 1.5;
+            display: block;
+            visibility: visible;
+            width: 36px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 50%;
+            color: $subfooter-bg;
+            background: $subfooter-color;
+            text-shadow: none;
+        }
+        &:after {
+            display: none;
+        }
+    }
+    @media #{$large-up} {
+        .social-icons li a {
+            visibility: visible;
+            width: 55px;
+            height: auto;
+            margin-left: -18px;
+        }
+    }
+}
+
+
+
+/* CSS-Classes to add margin at top or bottom
+------------------------------------------------------------------- */
+
+.t10 { margin-top: 10px !important; }
+.t15 { margin-top: 15px !important; }
+.t20 { margin-top: 20px !important; }
+.t30 { margin-top: 30px !important; }
+.t50 { margin-top: 50px !important; }
+.t60 { margin-top: 60px !important; }
+.t70 { margin-top: 70px !important; }
+.t80 { margin-top: 80px !important; }
+.t90 { margin-top: 90px !important; }
+
+.b15 { margin-bottom: 15px !important; }
+.b20 { margin-bottom: 20px !important; }
+.b30 { margin-bottom: 30px !important; }
+.b60 { margin-bottom: 60px !important; }
+
+.l15 { margin-left: 15px !important; }
+.r15 { margin-right: 15px !important; }
+
+.pl20 { padding-left: 20px !important; }
+.pr5  { padding-right: 5px !important; }
+.pr10 { padding-right: 10px !important; }
+.pr20 { padding-right: 20px !important; }

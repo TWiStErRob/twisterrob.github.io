@@ -1,0 +1,32 @@
+---
+permalink: /blog/tags/
+redirect_from:
+  - blog/tags.html
+title: "Articles by tags"
+breadcrumbs: true
+---
+{% include tag_cloud.html %}
+
+{% capture site_tags %}{% for tag in site.tags %}{{ tag | first | downcase }}&#x1F;{{ tag | first }}{% unless forloop.last %}&#x1E;{% endunless %}{% endfor %}{% endcapture %}
+{% assign site_tags = site_tags | split:'&#x1E;' | sort %}
+{% capture site_tags %}{% for tag in site_tags %}{{ tag | split: '&#x1F;' | last }}{% unless forloop.last %}&#x1E;{% endunless %}{% endfor %}{% endcapture %}
+{% assign site_tags = site_tags | split: '&#x1E;' %}
+
+{% for tag_key in site_tags %}
+	{% assign tag = site.data.tags[tag_key] %}
+	{% assign posts = site.tags[tag_key] %}
+	{% unless posts %}{% continue %}{% endunless %}
+	<h3 id="{{ tag_key | slugify }}">
+		<a href="#{{ tag_key | slugify }}" class="icon-alias-tag tag-{{ tag_key | slugify }}">{% if tag.title %}{{ tag.title }}{% else %}{{ tag_key }}{% endif %}</a>
+		{% include snippets/article_count.html list=posts %}
+	</h3>
+	{% if 0 < posts.size %}
+		<ul>
+		{% for post in posts %}
+			<li>{% include snippets/post_link.html post=post %}</li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		There are no posts in this category.
+	{% endif %}
+{% endfor %}

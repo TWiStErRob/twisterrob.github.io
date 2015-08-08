@@ -1,0 +1,31 @@
+---
+permalink: /project/
+redirect_from:
+  - /projects/
+title: "Project List"
+meta_title: "Projects List of Róbert Papp"
+layout: page-fullwidth
+breadcrumbs: true
+---
+<div class="clearfix folders separator text-center wide x-frame-medium-up x3-hover-icon-asterisk-primary title-small images">
+<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 items">
+	{% for project in site.projects %}{% unless project.hidden %}
+	<li>
+		<section aria-labelledby="{{ project.title | slugify }}" class="project">
+			<a href="{{ site.baseurl }}{{ project.url }}">
+			<header>
+				<h3 id="{{ project.title | slugify }}" class="title"><div class="center">{{ project.title }}</div></h3>
+				<p class="subheadline">{{project.subheadline}}</p>
+			</header>
+			<figure>
+				<img src="{{ site.urlimg }}{{ project.images.icon }}" alt="{{ project.title }}" />
+			</figure>
+			<footer>
+				<p class="teaser">{{ project.teaser }}</p>
+			</footer>
+			</a>
+		</section>
+	</li>
+	{% endunless %}{% endfor %}
+</ul>
+</div>

@@ -1,0 +1,34 @@
+---
+title: "Articles by date"
+breadcrumbs: true
+permalink: /blog/archive/
+---
+<ul class="inline-list quick-links">
+{% assign lastyear = '' %}
+{% for post in site.posts reversed %}
+	{% assign currentyear = post.date | date: '%Y' %}
+	{% if currentyear != lastyear %}
+		<li><a href="#{{ currentyear }}">{{ currentyear }}</a></li>
+		{% assign lastyear = currentyear %}
+	{% endif %}
+{% endfor %}
+</ul>
+
+{% assign lastyear = '' %}
+{% assign lastdate = '' %}
+{% for post in site.posts %}
+	{% assign currentdate = post.date | date: '%Y-%m' %}
+	{% if currentdate != lastdate %}
+		{% unless forloop.first %}</ul>{% endunless %}
+		{% assign currentyear = post.date | date: '%Y' %}
+		{% if currentyear != lastyear %}
+			<h2 id="{{ currentyear }}"><span class="icon-alias-archive">{{ currentyear }}</span></h2>
+			{% assign lastyear = currentyear %}
+		{% endif %}
+		<h3 id="{{ currentdate }}">{{ post.date | date: '%Y %B' }}</h3>
+		<ul>
+		{% assign lastdate = currentdate %}
+	{% endif %}
+	<li>{% include snippets/post_link.html post=post %}</li>
+	{% if forloop.last %}</ul>{% endif %}
+{% endfor %}

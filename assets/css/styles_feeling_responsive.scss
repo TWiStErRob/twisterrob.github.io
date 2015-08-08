@@ -1,0 +1,93 @@
+---
+# Only the main Sass file needs front matter
+sitemap:
+  exclude: true
+---
+@charset "utf-8";
+$environment: '{{ jekyll.environment }}';
+@import "functions.scss";
+@import "mixins.scss";
+
+@import "iconfont.scss";
+[class^='icon-']:before, [class*=' icon-']:before {
+	margin-right: rem-calc(6);
+}
+
+@import "01_settings_colors.scss";
+@import "02_settings_typography.scss";
+@import "03_settings_mixins_media_queries.scss";
+@import "04_settings_global.scss";
+@import "05_normalize.scss"; // normalize.css v3.0.2
+
+@import "foundation-components/top-bar";
+@import "foundation-components/accordion";
+@import "foundation-components/alert-boxes";
+@import "foundation-components/breadcrumbs";
+@import "foundation-components/block-grid";
+@import "foundation-components/button-groups";
+@import "foundation-components/buttons";
+@import "foundation-components/clearing";
+@import "foundation-components/dropdown";
+@import "foundation-components/dropdown-buttons";
+@import "foundation-components/flex-video";
+@import "foundation-components/forms";
+@import "foundation-components/grid";
+@import "foundation-components/inline-lists";
+@import "foundation-components/keystrokes";
+@import "foundation-components/labels"; // tags
+@import "foundation-components/panels";
+@import "foundation-components/reveal";
+@import "foundation-components/side-nav";
+@import "foundation-components/sub-nav";
+@import "foundation-components/tables";
+@import "foundation-components/thumbs";
+@import "foundation-components/top-bar";
+@import "foundation-components/type";
+@import "foundation-components/visibility";
+
+@import "06_typography.scss";
+@import "07_layout.scss";
+@import "foundation-components/grid";
+@import "09_elements.scss";
+@import "timeline.scss";
+
+@import "11_syntax-highlighting.scss";
+
+{% for tag in site.data.tags %}
+	$tag_id: {{ tag[0] | slugify }};
+	/* {{ tag[0] | slugify }}: title={{ tag[1].title }}, color={{ tag[1].color }} */
+	{% if tag[1].color %}
+		$tag_color: {{ tag[1].color }};
+		.tag-#{$tag_id} {
+			&.tag {
+				border: 2px solid $tag_color;
+				&:hover {
+					color: if(lightness( $tag_color ) < 70%, $label-font-color-alt, $label-font-color);
+					background-color: $tag_color;
+					$tag_shadow: if(lightness( $tag_color ) >= 70%, $label-font-color-alt, $label-font-color) 0px 0px 2px;
+					text-shadow: $tag_shadow;
+					text-shadow: $tag_shadow, $tag_shadow;
+				}
+			}
+			&::before {
+				color: $tag_color;
+				$tag_shadow: black 0px 0px 2px;
+				text-shadow: $tag_shadow;
+				text-shadow: $tag_shadow, $tag_shadow;
+			}
+		}
+	{% endif %}
+{% endfor %}
+{% comment %}
+{% for tag in site.tags %}
+	{% unless site.data.tags[tag[0]] %}
+		$tag_id: {{ tag[0] | slugify }};
+		.tag-#{$tag_id} {
+			&::before {
+				color: $grey-4;
+				text-shadow: black 0px 0px 2px;
+			}
+		}
+	{% endunless %}
+{% endfor %}
+{% endcomment %}

@@ -1,0 +1,446 @@
+/* TOC – Typography 
+
+Check typography variables › _3_typography_settings.scss
+
+- Links
+- Customize Foundation Typography
+- Headlines
+- Images
+- Lists
+- Tables
+- Code
+- Quotes
+- Typography for Articles
+- Smaller Fontsize for Bigteaser on small devices
+- Additional typographical elements
+- Footnotes
+*/
+
+
+
+/* Links
+------------------------------------------------------------------- */
+
+a,
+a:link {
+}
+
+a:visited {
+    border-bottom: $grey-2;
+}
+
+a:hover {
+    color: lighten( $primary-color, 10% );
+}
+
+a:focus {
+    color: darken( $primary-color, 20% );
+}
+
+a:active {
+    color: lighten( $primary-color, 20% );
+}
+.no-adorn, .no-adorn:hover, .no-adorn:visited {
+    border: 0;
+    text-decoration: none;
+}
+a[target='_blank']:after {
+    @extend .icon-export:before;
+    @extend sup;
+    display: inline;
+    margin-left: rem-calc(4);
+}
+
+
+/* Customize Foundation Typography
+------------------------------------------------------------------- */
+
+p { 
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    text-align: justify;
+}
+p a,
+article a {
+    font-weight: bold;
+    border-bottom: 1px dotted;
+    &:hover {
+        border-bottom: 2px solid;
+    }
+}
+h1, h2, h3, h4, h5, h6 {
+    a {
+        font-weight: normal;
+        border: 0;
+    }
+    & + ul > li > a, & + ol > li > a {
+        font-weight: normal;
+        border: 0;
+    }
+}
+p a.button,
+.button,
+.button:hover {
+    border: 0;
+    color: text-on-solid-color($primary-color);
+}
+p.button a {
+    border: 0;
+    color: text-on-solid-color($primary-color);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.breadcrumbs > *:before {
+    top: -1px !important;
+}
+
+
+
+/* Headlines
+------------------------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $header-font-family;
+    font-weight: normal;
+    padding: 0;
+
+    &:target, &:target > * {
+        color: $topbar-link-bg-active !important;
+    }
+}
+
+h1 {
+    font-size: $font-size-h1;
+    margin-top: 0;
+}
+h2 {
+    font-size: $font-size-h2;
+    margin: 1.563em 0 0 0;
+}
+    .blog-index h2 {
+        margin-top: 0;
+    }
+h3 {
+    font-size: $font-size-h3;
+    margin: 1.152em 0 0 0;
+}
+h4 {
+    font-size: $font-size-h4;
+    margin: 1.152em 0 0 0;
+}
+h5 {
+    font-size: $font-size-h5;
+    margin: 1em 0 0 0;
+}
+
+
+
+/* Images
+------------------------------------------------------------------- */
+
+img { border-radius: $global-radius;}
+    img.alignleft,
+    img.left        { float: left; margin:5px 15px 5px 0; }
+    img.alignright,
+    img.right       { float: right; margin:5px 0 5px 15px; }
+    img.aligncenter,
+    img.center      { display: block; margin:0 auto 10px; }
+    img.light-bg    { background: rgba(255,255,255,.6); padding: 10px; }
+
+figure {
+    margin: 0 0 rem-calc(30) 0;
+}
+#masthead-with-background-color figure,
+#masthead-with-pattern figure {
+    margin: 0;
+}
+figcaption,
+.masthead-caption {
+    color: $grey-10;
+    font-family: $font-family-sans-serif;
+    font-size: rem-calc(13);
+    padding-top: rem-calc(2);
+}
+figcaption a,
+.masthead-caption a {
+    border-bottom: 1px dotted $grey-4;
+    color: $grey-10;
+}
+figcaption a:hover,
+.masthead-caption a:hover {
+    border-bottom: 2px solid $primary-color;
+    color: $primary-color;
+}
+.masthead-caption {
+    padding-right: 10px;
+    text-align: right;
+}
+
+
+
+/* Tables
+------------------------------------------------------------------- */
+
+td {
+    vertical-align: top;
+}
+
+
+
+/* Code
+------------------------------------------------------------------- */
+
+pre {
+    margin-bottom: rem-calc(20);
+    padding: rem-calc(4) rem-calc(7) rem-calc(3) rem-calc(4);
+    border-radius: $global-radius;
+    line-height: 1.2;
+    color: $code-color;
+    background-color: $code-background-color;
+    border: 3px ridge darken($primary-color, 33%);
+
+    max-height: 350px;
+    overflow: auto;
+
+    code {
+        border: 0;
+        padding: 0;
+        line-height: 1.2;
+        font-size: rem-calc(14);
+        background: black;
+        box-shadow: none;
+        color: inherit;
+        text-shadow: none;
+    }
+
+    &::-webkit-scrollbar {
+        height: 12px;
+        width: 12px;
+        background: lighten($code-background-color, 10%);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: darken($primary-color, 20%);
+        background-clip: padding-box;
+        border-radius: 1ex;
+        border: 2px solid transparent;
+    }
+
+    &::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+}
+
+.highlight.debug code {
+  white-space: pre-wrap;
+}
+
+div.highlight[title]:before {
+  content: attr(title);
+  text-align: center;
+  display: block;
+  border: 3px ridge darken($primary-color, 33%);
+  background-color: scale-color($header-font-color, $lightness: -90%);
+  color: $header-font-color;
+  border-bottom: none;
+}
+
+code, var {
+    //box-shadow: 0 0 1px 1px $primary-color;
+    //background: darken($primary-color, 35%);
+    border: 1px ridge darken($primary-color, 10%);
+    padding: 3px;
+    font-style: normal;
+    font-size: rem-calc(14);
+}
+
+/* Lists
+------------------------------------------------------------------- */
+
+ol.numbered-list {
+    counter-reset: list;
+    list-style-type: none;
+
+    ol {
+        counter-reset: list;
+        list-style-type: none;
+    }
+    li:before {
+        counter-increment: list;
+        content: counters(list, ".") ". ";
+    }
+}
+
+.no-bullet {
+    list-style: none;
+}
+
+li {
+    > ul,
+    > ol {
+         margin-bottom: 0;
+    }
+}
+
+dl {
+
+}
+dt:first-child {
+    padding-top: 0px;
+}
+dt {
+    font-weight: bold;
+    padding-top: 30px;
+}
+dd {
+}
+article dl dt   { line-height: 1.3; }
+article dl dd   { line-height: 1.6; margin-bottom: rem-calc(12); margin-left: rem-calc(24); }
+
+dl.project {
+    dt {
+        float: left;
+        clear: left;
+        width: 150px;
+        text-align: right;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+    }
+    dt:after {
+        content: ":";
+    }
+    dd {
+        margin: 0 0 0 160px;
+        padding: 0 0 0.5em 0;
+    }
+}
+
+
+
+/* Quotes
+------------------------------------------------------------------- */
+
+blockquote {
+    position: relative;
+    border: none;
+    margin: 0 30px 30px 30px;
+    p {
+        font-style: italic;
+        text-align: initial;
+    }
+
+    &:before, &:after {
+        font-size: 80px;
+        line-height: 0;
+        position: absolute;
+        color: $secondary-color;
+    }
+    &:before {
+        content: "\00BB";
+        left: -26px;
+        top: auto;
+    }
+    &:after {
+        content: "\00AB";
+        right: -26px;
+        bottom: 20px;
+    }
+    cite:before {
+        content: "\2014 \0020"
+    }
+}
+
+cite {
+    padding-top: 5px;
+}
+
+q {
+    font-style: italic;
+    color: $blockquote-font-color;
+}
+
+button, .button {
+    letter-spacing: 1px;
+}
+
+mark {
+    background: invert($body-bg);
+    color: $body-bg;
+    font-weight: bold;
+    font-size: 0.9em;
+    padding: 2px;
+}
+
+
+
+/* Typography for Articles
+------------------------------------------------------------------- */
+
+.subheadline {
+    font-size: rem-calc(16);
+    margin: 0;
+    text-transform: uppercase;
+}
+.teaser {
+    font-size: rem-calc(20);
+}
+.big-teaser {
+    font-style: italic; font-weight: 300;
+}
+.big-teaser a {
+    font-style: italic; font-weight: 400;
+}
+
+/* Smaller Fontsize for Bigteaser on small devices */
+@media only screen {
+    .big-teaser {
+        font-size: rem-calc(20);
+    }
+}
+@media only screen and (min-width: 40.063em) {
+    .big-teaser         {
+        font-size: rem-calc(29);
+    }
+}
+
+
+
+/* Additional typographical elements
+------------------------------------------------------------------- */
+
+.sans           { font-family: $font-family-sans-serif; }
+.serif          { font-family: $font-family-serif; }
+
+.font-size-h1   { font-size: $font-size-h1; }
+.font-size-h2   { font-size: $font-size-h2; }
+.font-size-h3   { font-size: $font-size-h3; }
+.font-size-h4   { font-size: $font-size-h4; }
+.font-size-h5   { font-size: $font-size-h5; }
+.font-size-p    { font-size: $font-size-p; }
+
+
+
+/* Footnotes
+------------------------------------------------------------------- */
+
+.footnotes:before {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 60px;
+    margin-top: -10px;
+    border-bottom: 1px solid $grey-2;
+}
+.footnotes {
+    margin-top: 60px;
+}
+.footnotes ol { 
+    font-size: $font-size-small;
+}
+.footnotes p {
+    font-size: inherit;
+    margin-bottom: 0;
+}

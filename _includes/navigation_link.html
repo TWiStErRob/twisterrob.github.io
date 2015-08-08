@@ -1,0 +1,90 @@
+{% assign link_url = include.link.url %}
+<!-- start {{ include.link.title }} -->
+{% if link_url contains 'http' %}
+	{% assign domain = '' %}
+{% elsif link_url == '#' %}
+	{% assign domain = '' %}
+{% elsif link_url contains 'site.data.links.' %}
+	{% assign domain = '' %}
+	{% assign link_url = link_url | remove: 'site.data.links.' %}
+	{% assign link_url = site.data.links[link_url] %}
+{% else %}
+	{% assign domain = site.baseurl %}
+{% endif %}
+
+{% if page.url contains '/index.html' %}
+	{% comment %}Slice is not available in this version?!{% endcomment %}
+	{% assign page_url = page.url | remove: '/index.html' | append: '/' %}
+{% else %}
+	{% assign page_url = page.url %}
+{% endif %}
+
+{% if include.link.dropdown == nil %}
+	{% if include.link.side == "right" %}<li class="divider"></li>{% endif %}
+	<li{% if page_url == link_url or page_url contains link_url and link_url != '/' %} class="active"{% endif %}>
+		<a href="{{ domain }}{{ link_url }}"
+			{% if link_url contains 'http' %}target="_blank"{% endif %}
+			{% if include.link.icon %}class="icon-{{include.link.icon}}"{% endif %}
+		>{{ include.link.title | escape }}</a>
+	</li>
+	{% if include.link.side == "left" %}<li class="divider"></li>{% endif %}
+{% else %}
+	{% if include.link.side == "right" %}<li class="divider"></li>{% endif %}
+	<li class="has-dropdown{% if page_url == link_url or page_url contains link_url and link_url != '/' %} active{% endif %}">
+		<a href="{{ domain }}{{ link_url }}"
+			{% if link_url contains 'http' %}target="_blank"{% endif %}
+			{% if include.link.icon %}class="icon-{{include.link.icon}}"{% endif %}
+		>{{ include.link.title | escape }}</a>
+		<ul class="dropdown">
+			{% if include.link.dropdown == "projects" %}
+				{% for project in site.projects %}{% unless project.hidden %}
+					<li{% if project.url == page_url %} class="active"{% endif %}>
+						<a href="{{ site.baseurl }}{{ project.url }}">
+							<img src="{{ site.urlimg }}{{ project.images.icon_small }}" />
+							{{ project.title }}
+						</a>
+					</li>
+				{% endunless %}{% endfor %}
+			{% elsif include.link.dropdown == "blog-categories" %}
+				{% for category_entry in site.categories %}
+					{% assign category_key = category_entry[0] %}
+					{% for category_page in site.pages %}
+						{% if category_page.category == category_key %}
+							{% assign category_data = category_page %}{% break %}
+						{% endif %}
+					{% endfor %}
+					{% capture category_url %}/blog/category/{{ category_key | slugify }}/{% endcapture %}
+					<li{% if category_url == page_url %} class="active"{% endif %}>
+						<a href="{{ site.baseurl }}{{ category_url }}" class="icon-alias-category category-{{ category_key }}">{{ category_data.title | escape }}</a>
+					</li>
+				{% endfor %}
+			{% elsif include.link.dropdown == "blog-tags" %}
+				{% for tag in site.tags %}
+					{% assign tag_key = tag[0] %}
+					{% assign tag_data = site.data.tags[tag_key] %}
+					{% capture tag_url %}/blog/tags/#{{ tag_key | slugify }}{% endcapture %}
+					<li{% if tag_url == page_url %} class="active"{% endif %}>
+						<a href="{{ site.baseurl }}{{ tag_url }}" class="icon-alias-tag tag-{{ tag_key | slugify }}">{{ tag_key | escape }}</a>
+					</li>
+				{% endfor %}
+			{% elsif include.link.dropdown == "blog-years" %}
+				{% for post in site.posts reversed %}
+					{% assign currentyear = post.date | date: '%Y' %}
+					{% if currentyear != year %}
+						{% capture year_url %}/blog/archive/#{{ currentyear }}{% endcapture %}
+						<li{% if year_url == page_url %} class="active"{% endif %}>
+							<a href="{{ site.baseurl }}{{ year_url }}" class="icon-alias-archive">{{ currentyear | escape }}</a>
+						</li>
+						{% assign year = currentyear %}
+					{% endif %}
+				{% endfor %}
+			{% else %}
+				{% for sublink in include.link.dropdown %}
+					{% include navigation_link.html link=sublink %}
+				{% endfor %}
+			{% endif %}
+		</ul>
+	</li>
+	{% if include.link.side == "left" %}<li class="divider"></li>{% endif %}
+{% endif %}
+<!-- end {{ include.link.title }} -->

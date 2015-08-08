@@ -1,0 +1,11 @@
+---
+permalink: /debug.html
+layout: null
+title: "Site Debug"
+# Change true to generate this file!
+published: false
+---
+
+{% for x in site.pages %}
+	{{ x | debug }}
+{% endfor %}
