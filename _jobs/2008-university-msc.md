@@ -1,10 +1,14 @@
 ---
-title: "MSc practice and exam applications"
-type: "School"
-jobtitle: "various small applications to practice for courses"
-hire: 2008-07-28 # felvétel dátuma (ETR)
-from: 2008-09-03 # beíratkozás dátuma (2008/9,1 ETR)
-to: 2010-06-10 # záróvizsga dátuma
+title: MSc&nbsp;degree in Software&nbsp;Engineering
+type: Education
+jobtitle: graduate student
+maintech: Software Engineering
+sector: IT
+location: Szeged, Hungary
+dates:
+  from: 2008-09-08
+  to: 2010-06-10
+employer: {}
 ---
 
 This includes homework, compulsory submittals, researches for in-class presentations, and multiple algorithm visualizations

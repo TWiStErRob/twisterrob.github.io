@@ -1,10 +1,14 @@
 ---
-title: "BSc practice and exam applications"
-type: "School"
-jobtitle: "various small applications to practice for courses"
-hire: 2005-07-28 # felvétel dátuma (ETR)
-from: 2005-09-01 # beíratkozás dátuma (2005/6,1 ETR)
-to: 2008-06-17 # záróvizsga dátuma
+title: BSc&nbsp;degree in Software&nbsp;Engineering
+type: Education
+jobtitle: undergraduate student
+maintech: Software Engineering
+sector: IT
+location: Szeged, Hungary
+dates:
+  from: 2005-09-01
+  to: 2008-06-17
+employer: {}
 ---
 
 This includes homework, voluntary homework for extra points and compulsory submittals. Some examples: university course management portal, auction portal
