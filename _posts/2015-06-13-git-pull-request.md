@@ -1,6 +1,6 @@
 ---
 title: "How to do a PR?"
-subheadline: "Work around the quirks"
+subheadline: "Quick walkthrough"
 teaser: "Full process of how I go through a pull request for a GitHub fork."
 category: dev
 tags:

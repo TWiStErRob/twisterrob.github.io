@@ -4,11 +4,13 @@
 #
 # See dev.bat
 
-url: 'http://localhost:4000'
-urlimg: '/dev/images/'
+port: 4001
 
 # Make sure the site is ready to be served in a subfolder with a simple config change
 baseurl: '/dev'
+
+url: 'http://localhost:4001'
+urlimg: '/dev/images/'
 
 # Need to be unsafe for {{ var | debug }} plugin
 safe: false

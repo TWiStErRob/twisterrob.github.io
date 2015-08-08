@@ -19,7 +19,7 @@ slogan: "Professional & Hobby Development site"
 
 
 # The description is used on homepage and in the footer to quickly describe your website. Use a maximum of 150 characters for SEO-purposes.
-description: "Home for all things about and by Róbert Papp (TWiStErRob)."
+description: "Home for all things about and by Róbert&nbsp;Papp (TWiStErRob)."
 
 # Main author of the website
 # See > authors.yml
@@ -36,7 +36,7 @@ improve_content: https://github.com/twisterrob/twisterrob.github.io/issues
 # This URL points directly to the images directory making
 # things easier to link to images in posts and templates. Don't include a slash at the end.
 #
-# Example: <img src="{{ site.urlimg }}{{ post.image.title }}">
+# Example: <img src="{{ site.urlimg }}{{ post.image.title }}" />
 # Markdown-Example for posts ![Image Text]({{ site.urlimg }}image.jpg)
 #
 urlimg: '/images/'
@@ -105,7 +105,7 @@ kramdown:
   toc_levels:     1..6
   toc_panel:      true
   smart_quotes:   lsquo,rsquo,ldquo,rdquo
-  hard_wrap:      false
+  hard_wrap: false
   #enable_coderay: true
   #syntax_highlighter: rouge
 
@@ -133,11 +133,12 @@ excerpt_separator: "<!--more-->"
 # Used › default.html front-matter and comress.html
 # Options › http://jch.penibelst.de
 compress_html:
-  ignore:
-    envs: [development]
   clippings: all
   comments: ["<!-- ", " -->"]
   endings: all
+  profile: false
+  ignore:
+    envs: [development]
 
 # !GitHub pages! ???
 lsi: false

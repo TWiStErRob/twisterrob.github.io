@@ -19,3 +19,6 @@ git:
 liquid:
   title: "Liquid"
   color: '#84BC48'
+google:
+  title: "Google"
+  color: '#1A6EEF'

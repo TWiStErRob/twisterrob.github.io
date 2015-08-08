@@ -16,7 +16,7 @@ breadcrumbs: true
 	{% assign tag = site.data.tags[tag_key] %}
 	{% assign posts = site.tags[tag_key] %}
 	{% unless posts %}{% continue %}{% endunless %}
-	<h3 id="{{ tag_key | slugify }}">
+	<h3 id="{{ tag_key | slugify }}" class="icon-alias-tag tag-{{ tag_key | slugify }}">
 		<a href="#{{ tag_key | slugify }}">{% if tag.title %}{{ tag.title }}{% else %}{{ tag_key }}{% endif %}</a>
 		({% if posts.size %}{{ posts.size }}{% else %}0{% endif %} article{%unless  posts.size == 1%}s{%endunless%})
 	</h3>

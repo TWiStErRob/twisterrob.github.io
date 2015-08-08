@@ -1,5 +1,11 @@
 <script src="{{ site.baseurl }}/assets/js/javascript.min.js"></script>
 
+{% unless page.script.foot == NULL %}
+<script type="text/javascript">//<![CDATA[
+	{% if page.script.foot contains '.js' %}{% include {{ page.script.foot }} %}{% else %}{{ page.script.foot }}{% endif %}
+//]]></script>
+{% endunless %}
+
 {% if page.header.image_fullwidth %}
 <script>
     $("#masthead").backstretch("{{ site.urlimg }}{{ page.header.image_fullwidth }}", {fade: 700});

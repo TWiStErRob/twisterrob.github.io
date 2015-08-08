@@ -9,7 +9,6 @@ breadcrumbs: true
 
 I'm also developing applications at home, to ease the pain of repetitive tasks and help myself (and others) to work/live more efficiently. It's also a good opportunity to keep myself challenged and keep my officially unused technical knowledge fresh. See the list of my [Projects]({{ site.baseurl }}/project/) for more information.
 
-<link rel="stylesheet" href="{{site.baseurl}}/assets/css/timeline.css" />
 <section class="timeline clearfix">
 	<h2 class="timeline-date">The Future</h2>
 	{% assign lastYear = 0 %}
@@ -25,7 +24,11 @@ I'm also developing applications at home, to ease the pain of repetitive tasks a
 				{% else %}
 				<span title="{{ job.dates.from }} &ndash; {{ job.dates.to }}">{{ job_from }}</span>
 				{% endif %}
-				(~{% include datediff.liq begin=job.dates.from end=job.dates.to measure='dynamic' %} {{measure}})
+				{% if job_from != nil and job_to != nil %}
+					(~{% include datediff.liq begin=job.dates.from end=job.dates.to measure='dynamic' %}{{ result }}&nbsp;{{ measure }})
+				{% else %}
+					current
+				{% endif %}
 			</span><br/>
 			<strong>Role</strong>: {{ job.jobtitle }}<br/>
 			<strong>Sector</strong>: {{ job.sector }}<br/>
@@ -34,7 +37,7 @@ I'm also developing applications at home, to ease the pain of repetitive tasks a
 
 		{% assign currentYear = job.dates.from | date: '%Y' %}
 		{% assign diff = currentYear | minus: lastYear %}{% if diff < 0 %}{% assign diff = 0 | minus: diff %}{% endif %}
-		{% if lastYear <> currentYear and diff > 1 %}
+		{% if forloop.first == false and lastYear <> currentYear and diff > 1 %}
 			<h2 class="timeline-date">{{currentYear}}</h2>
 			{% assign lastYear = currentYear %}
 		{% endif %}
@@ -43,5 +46,10 @@ I'm also developing applications at home, to ease the pain of repetitive tasks a
 
 {%comment%}
 {% for job in site.jobs reversed %}{% unless job.hidden %}
- * <span title="{{ job.dates.from }}">{{ job.dates.from | date: '%Y' }}</span> -- <span title="{{ job.dates.to }}">{{ job.dates.to | date: '%Y' }}</span> (~{% include datediff.liq begin=job.dates.from end=job.dates.to measure='dynamic' %} {{measure}}): [**{{ job.title }}**]({{ site.baseurl }}{{ job.url }}){: title="{{ job.type }}: {{ job.jobtitle }} in {{ job.maintech }}"}{% endunless %}{% endfor %}
+ * <span title="{{ job.dates.from }}">{{ job.dates.from | date: '%Y' }}</span>
+   --
+   <span title="{{ job.dates.to }}">{{ job.dates.to | date: '%Y' }}</span>
+   {% include datediff.liq begin=job.dates.from end=job.dates.to measure='dynamic' %}
+   {% if result != 0 %}(~{{ result }}&nbsp;{{ measure }}){% endif %}:
+   [**{{ job.title }}**]({{ site.baseurl }}{{ job.url }}){: title="{{ job.type }}: {{ job.jobtitle }} in {{ job.maintech }}"}{% endunless %}{% endfor %}
 {%endcomment%}

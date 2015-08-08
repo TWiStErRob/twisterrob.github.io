@@ -25,7 +25,7 @@
 		<a href="{{ domain }}{{ link_url }}"
 			{% if link_url contains 'http' %}target="_blank"{% endif %}
 			{% if include.link.icon %}class="icon-{{include.link.icon}}"{% endif %}
-		>{{ include.link.title }}</a>
+		>{{ include.link.title | escape }}</a>
 	</li>
 	{% if include.link.side == "left" %}<li class="divider"></li>{% endif %}
 {% else %}
@@ -34,13 +34,13 @@
 		<a href="{{ domain }}{{ link_url }}"
 			{% if link_url contains 'http' %}target="_blank"{% endif %}
 			{% if include.link.icon %}class="icon-{{include.link.icon}}"{% endif %}
-		>{{ include.link.title }}</a>
+		>{{ include.link.title | escape }}</a>
 		<ul class="dropdown">
 			{% if include.link.dropdown == "projects" %}
 				{% for project in site.projects %}{% unless project.hidden %}
 					<li{% if project.url == page_url %} class="active"{% endif %}>
 						<a href="{{ site.baseurl }}{{ project.url }}">
-							<img src="{{ site.urlimg }}{{ project.images.icon_small }}">
+							<img src="{{ site.urlimg }}{{ project.images.icon_small }}" />
 							{{ project.title }}
 						</a>
 					</li>
@@ -55,7 +55,7 @@
 					{% endfor %}
 					{% capture category_url %}/blog/category/{{ category_key | slugify }}/{% endcapture %}
 					<li{% if category_url == page_url %} class="active"{% endif %}>
-						<a href="{{ site.baseurl }}{{ category_url }}" class="icon-archive category-{{ category_key }}">{{ category_data.title }}</a>
+						<a href="{{ site.baseurl }}{{ category_url }}" class="icon-archive category-{{ category_key }}">{{ category_data.title | escape }}</a>
 					</li>
 				{% endfor %}
 			{% elsif include.link.dropdown == "blog-tags" %}
@@ -64,7 +64,7 @@
 					{% assign tag_data = site.data.tags[tag_key] %}
 					{% capture tag_url %}/blog/tags/#{{ tag_key | slugify }}{% endcapture %}
 					<li{% if tag_url == page_url %} class="active"{% endif %}>
-						<a href="{{ site.baseurl }}{{ tag_url }}" class="icon-price-tag tag-{{ tag_key | slugify }}">{{ tag_key }}</a>
+						<a href="{{ site.baseurl }}{{ tag_url }}" class="icon-alias-tag tag-{{ tag_key | slugify }}">{{ tag_key | escape }}</a>
 					</li>
 				{% endfor %}
 			{% elsif include.link.dropdown == "blog-years" %}
@@ -73,7 +73,7 @@
 					{% if currentyear != year %}
 						{% capture year_url %}/blog/archive/#{{ currentyear }}{% endcapture %}
 						<li{% if year_url == page_url %} class="active"{% endif %}>
-							<a href="{{ site.baseurl }}{{ year_url }}" class="icon-calendar">{{ currentyear }}</a>
+							<a href="{{ site.baseurl }}{{ year_url }}" class="icon-calendar">{{ currentyear | escape }}</a>
 						</li>
 						{% assign year = currentyear %}
 					{% endif %}

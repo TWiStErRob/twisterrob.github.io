@@ -4,8 +4,9 @@
 	<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/styles_feeling_responsive.css" />
 	<script src="{{ site.baseurl }}/assets/js/modernizr.min.js"></script>
 
-	<!-- https://github.com/typekit/webfontloader -->
-	<!-- TODO https://github.com/Phlow/feeling-responsive/issues/19 -->
+	{% comment %}https://github.com/typekit/webfontloader
+	        TODO https://github.com/Phlow/feeling-responsive/issues/19
+	{% endcomment %}
 	<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic|Volkhov:400,700,400italic:latin' rel='stylesheet' type='text/css' />
 
 	{% if site.google_site_verification %}<meta name="google-site-verification" content="{{ site.google_site_verification }}" />{% endif %}
@@ -28,7 +29,7 @@
 	{% if site.alexa_verify_id %}<meta name="alexaVerifyID" content="{{ site.alexa_verify_id }}" />{% endif %}
 
 	<!-- Search Engine Optimization -->
-	{% if page.noindex == true %}<meta name="robots" content="noindex">{% endif %}
+	{% if page.noindex == true %}<meta name="robots" content="noindex" />{% endif %}
 
 	<link type="text/plain" rel="author" href="{{ site.baseurl }}/humans.txt" />
 
@@ -36,8 +37,8 @@
 	<style type="text/css">{{ page.style }}</style>
 	{% endunless %}
 
-	{% unless page.script == NULL %}
+	{% unless page.script.head == NULL %}
 	<script type="text/javascript">//<![CDATA[
-		{{ page.script }}
+		{{ page.script.head }}
 	//]]></script>
 	{% endunless %}

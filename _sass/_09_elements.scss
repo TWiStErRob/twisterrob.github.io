@@ -11,6 +11,7 @@
 - Lazy Load XT
 - Project
 - Frontpage Widget
+- Tags
 
 */
 
@@ -170,13 +171,22 @@ h6[id]:hover:after,
   content: '';
 }
 
-*:target:before {
-  content: " ";
-  display: block;
-  width: 0;
-  height: 0; 
-  padding-top: 50px; 
-  margin-top: -50px;
+*:target:not([id^='fn:']):not([id^='fnref:']) {
+  &::before {
+    display: block;
+    padding-top: 50px;
+    margin-top: -50px;
+  }
+  &:not([class*='icon-'])::before {
+    content: " ";
+    width: 0;
+    height: 0;
+  }
+  &[class*='icon-']::before {
+    width: 0;
+    height: 0;
+    margin-left: -1.2em;
+  }
 }
 
 
@@ -187,6 +197,7 @@ section.project {
   outline: 3px ridge transparent;
   a p {
     color: $text-color;
+    text-align: center;
   }
   &:hover {
     outline: 3px ridge $primary-color;
@@ -219,7 +230,7 @@ section.project {
   }
 }
 
-/* Projects
+/* Frontpage Widget
 ------------------------------------------------------------------- */
 .frontpage-widget img {
   transition-duration: .5s;
@@ -229,5 +240,56 @@ section.project {
     transform: scale(1.1) rotate(2deg) translateZ(0);
     position: relative;
     z-index: 1;
+  }
+}
+
+/* Tags
+------------------------------------------------------------------- */
+.icon-alias-tag:before {
+  @extend .icon-price-tag:before;
+  color: $grey-4;
+  $tag_shadow: black 0px 0px 2px;
+  text-shadow: $tag_shadow;
+  text-shadow: $tag_shadow, $tag_shadow;
+}
+.tag {
+  $tag-size-base: 12;
+  $tag-size-count: 10;
+  $tag-size-height-max: $tag-size-base + $tag-size-count * $tag-size-count / $tag-size-count;
+  @include label($bg: $grey-11, $radius: true);
+  font-weight: bold;
+  font-size: rem-calc($tag-size-base + 0 * 0 / $tag-size-count);
+  margin-top: rem-calc(($tag-size-height-max - $tag-size-base) / 2);
+  margin-bottom: rem-calc(($tag-size-height-max - $tag-size-base) / 2);
+  background-color: $body-bg;
+  color: $text-color;
+  border: 2px solid $grey-11;
+  &:visited {
+      border: 2px solid $grey-11;
+  }
+  &:hover {
+    background-color: $grey-11;
+    color: white;
+  }
+  &:before {
+    @extend .icon-alias-tag:before;
+    padding-right: rem-calc(4);
+  }
+
+  .count {
+    font-size: .83em;
+    vertical-align: sub;
+    &:before {
+      content: '\a0';
+    }
+  }
+
+  @for $i from 1 through $tag-size-count {
+    &.tag-size-#{$i} {
+      $tag-size-height: $tag-size-base + $i * $i / $tag-size-count;
+      font-size: rem-calc($tag-size-height);
+      margin-top: rem-calc( ( $tag-size-height-max - $tag-size-height) / 2);
+      margin-bottom: rem-calc( ( $tag-size-height-max - $tag-size-height) / 2);
+    }
   }
 }

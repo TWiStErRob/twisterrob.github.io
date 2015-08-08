@@ -5,3 +5,5 @@ category: productivity
 title: Productivity
 breadcrumbs: true
 ---
+
+Anything that helps to live my life faster and/or more efficiently.

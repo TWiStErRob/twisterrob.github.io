@@ -13,20 +13,14 @@
 		{% endif %}
 
 		{% if page.categories %}
-			<span class="icon-archive">{% for category in page.categories %}{% capture ignore %}
-				{% for page in site.pages %}
-					{% if page.category == category %}{% assign category_page = page %}{% break %}{% endif %}
-				{% endfor %}
-				{% endcapture %}<a href="{{ site.baseurl }}/blog/category/{{ category }}">{{ category_page.title }}</a>
-				{% unless forloop.last %}·{% endunless %}
-			{% endfor %}</span>
+			<span class="icon-archive">{% include page_categories.html categories=page.categories %}</span>
 		{% endif %}
 
 		<span class="meta-tags">
 			{% for tag in page.tags %}
 				{% capture tag_url %}{{ site.baseurl }}/blog/tags/#{{ tag | slugify }}{% endcapture %}
 				{% capture tag_name %}{% if site.data.tags[tag].title %}{{ site.data.tags[tag].title }}{% else %}{{ tag }}{% endif %}{% endcapture %}
-				<span class="icon-price-tag tag-{{ tag | slugify }}"><a href="{{ tag_url }}">{{ tag_name }}</a></span>
+				<a href="{{ tag_url }}" class="icon-price-tag tag-{{ tag | slugify }}">{{ tag_name }}</a>
 			{% endfor %}
 		</span>
 	</p>

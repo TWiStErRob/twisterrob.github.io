@@ -8,15 +8,21 @@ breadcrumbs: true
 ---
 
 {% for category in site.categories %}
+	{% assign category_key = category[0] %}
 	{% assign category_posts = category[1] %}
+	{% assign category_data = nil %}
 	{% for category_page in site.pages %}
-		{% if category_page.category == category[0] %}
+		{% if category_page.category == category_key %}
 			{% assign category_data = category_page %}{% break %}
 		{% endif %}
 	{% endfor %}
-	<h3 id="{{ category_data.category }}">
-		<a href="{{ site.baseurl }}/blog/category/{{ category_data.category }}/">{{ category_data.title }}</a>
-		({% if category_posts.size %}{{ category_posts.size }}{% else %}0{% endif %}&nbsp;article{%unless category_posts.size == 1%}s{%endunless%})
+	<h3 id="{{ category_key }}" class="icon-archive">
+		{% if category_data %}
+		<a href="{{ site.baseurl }}/blog/category/{{ category_key }}/">{{ category_data.title }}</a>
+		{% else %}
+		{{ category_key | capitalize }}
+		{% endif %}
+		({% if category_posts.size %}{{ category_posts.size }}{% else %}0{% endif %}&nbsp;article{% unless category_posts.size == 1 %}s{% endunless %})
 	</h3>
 	{% if 0 < category_posts.size %}
 	<ul>

@@ -291,8 +291,6 @@ body.video {
     }
 }
 
-$tag-size-base: 12;
-$tag-size-count: 10;
 .tags {
     //width: 85%;
     margin-left: auto;
@@ -303,45 +301,6 @@ $tag-size-count: 10;
         display: inline-block;
     }
 }
-.tag {
-    $tag-size-height-max: $tag-size-base + $tag-size-count * $tag-size-count / $tag-size-count;
-    @include label($bg: $grey-11, $radius: true);
-    font-weight: bold;
-    font-size: rem-calc($tag-size-base + 0 * 0 / $tag-size-count);
-    margin-top: rem-calc(($tag-size-height-max - $tag-size-base) / 2);
-    margin-bottom: rem-calc(($tag-size-height-max - $tag-size-base) / 2);
-    border: 2px solid $grey-11;
-    &:visited {
-        border: 2px solid $grey-11;
-    }
-    &:hover {
-        background-color: $body-bg !important;
-        color: $text-color !important;
-    }
-
-    &:before {
-        @extend .icon-price-tag:before;
-        padding-right: rem-calc(2);
-    }
-
-    .count {
-        font-size: .83em;
-        vertical-align: sub;
-        &:before {
-            content: '\a0';
-        }
-    }
-
-    @for $i from 1 through $tag-size-count {
-      &.tag-size-#{$i} {
-        $tag-size-height: $tag-size-base + $i * $i / $tag-size-count;
-        font-size: rem-calc($tag-size-height);
-        margin-top: rem-calc( ( $tag-size-height-max - $tag-size-height) / 2);
-        margin-bottom: rem-calc( ( $tag-size-height-max - $tag-size-height) / 2);
-      }
-    }
-}
-
 
 /* Jump to top
 ------------------------------------------------------------------- */
@@ -400,8 +359,12 @@ $tag-size-count: 10;
     color: $subfooter-color;
     padding-top: 30px;
     padding-bottom: 10px;
+    .credits p {
+        text-align: left;
+    }
     .credits a {
         color: $subfooter-link-color;
+        border: 0;
         //text-transform: uppercase;
         &:hover {
             color: #fff;

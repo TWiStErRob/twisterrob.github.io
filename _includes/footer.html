@@ -37,17 +37,17 @@
 
 
 			<div class="small-6 medium-3 large-3 columns">
-				{% for thanks_item in site.data.thanks %}
+				{% for network_item in site.data.network %}
 					{% if forloop.first == true %}
-						<h5 class="shadow-black">{{ thanks_item.menu_name }}</h5>
+						<h5 class="shadow-black">{{ network_item.menu_name }}</h5>
 					{% endif %}
 				{% endfor %}
 					
 				<ul class="no-bullet shadow-black">
-				{% for thanks_item in site.data.thanks %}
-					{% if thanks_item.url contains 'http' %}{% assign domain = '' %}{% else %}{% assign domain = site.baseurl %}{% endif %}
-					<li class="thanks" {% if thanks_item.id %}id="thanks-{{ thanks_item.id }}" {% endif %}>
-						<a href="{{ domain }}{{ thanks_item.url }}" {% if thanks_item.url contains 'http' %}target="_blank" {% endif %} title="{{ thanks_item.title }}">{{ thanks_item.name }}</a>
+				{% for network_item in site.data.network %}
+					{% if network_item.url contains 'http' %}{% assign domain = '' %}{% else %}{% assign domain = site.baseurl %}{% endif %}
+					<li class="network" {% if network_item.id %}id="network-{{ network_item.id }}" {% endif %}>
+						<a href="{{ domain }}{{ network_item.url }}" {% if network_item.url contains 'http' %}target="_blank" {% endif %} title="{{ network_item.title }}">{{ network_item.name }}</a>
 					</li>
 				{% endfor %}
 				</ul>
@@ -61,9 +61,10 @@
 		<nav class="row">
 			<section id="subfooter-left" class="b30 small-12 medium-6 columns credits">
 				<p>
-					Created by <a href="{{ site.data.authors[site.author].uri }}">{{ site.data.authors[site.author].name }}</a>
-					with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>
-					based on <a href="http://phlow.github.io/feeling-responsive/">Feeling Responsive</a>.
+					Created with &hearts;
+					by&nbsp;<a href="{{ site.data.authors[site.author].uri }}">{{ site.data.authors[site.author].name | replace: ' ', '&nbsp;' }}</a>
+					with&nbsp;<a href="http://jekyllrb.com/" target="_blank">Jekyll</a>
+					based&nbsp;on&nbsp;<a href="http://phlow.github.io/feeling-responsive/">Feeling&nbsp;Responsive</a>.
 				</p>
 			</section>
 

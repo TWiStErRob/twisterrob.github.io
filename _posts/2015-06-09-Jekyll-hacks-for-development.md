@@ -1,9 +1,10 @@
 ---
 title: "Jekyll enhancements for development"
-subheadline: "Enhancements to make developing a website easier"
+subheadline: "Make developing a website easier"
 teaser: "Have you ever found that Jekyll or one of its components is lacking a feature?"
 category: web
 tags:
+- blog
 - jekyll
 - liquid
 - debug
@@ -12,8 +13,8 @@ tags:
 - collection
 ---
 
-Jekyll is nice if you like the defaults, but as soon as you start customizing you run into walls. Here are some tips to make it less painful.
-
+Jekyll is nice if you like the defaults, but as soon as you start customizing you run into walls. 
+Here are some tips to make it less painful.
 <!--more-->
 
 {% include toc.md %}

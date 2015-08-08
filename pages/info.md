@@ -3,7 +3,6 @@ permalink: /info/
 layout: page
 title: "About"
 subheadline: "Home for all things about and by Róbert&nbsp;Papp (TWiStErRob)."
-show_meta: false
 teaser: "I spent many years developing applications, it's time to publish..."
 header:
   image_fullwidth: header.jpg

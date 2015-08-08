@@ -10,15 +10,21 @@ breadcrumbs: true
 	<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html &gt;</xsl:text>
 	<html>
 	<head>
+		<xsl:text disable-output-escaping="yes"><![CDATA[
 		{% include head.html %}
+		]]></xsl:text>
 	</head>
 	<body id="top-of-page">
+		<xsl:text disable-output-escaping="yes"><![CDATA[
 		{% include navigation.html %}
 		{% include masthead.html %}
 		{% include alert warning=page.disclaimer classes="text-center" %}
+		]]></xsl:text>
 		{{ content }}
+		<xsl:text disable-output-escaping="yes"><![CDATA[
 		{% include footer.html %}
 		{% include footer_scripts.html %}
+		]]></xsl:text>
 	</body>
 	</html>
 </xsl:template>

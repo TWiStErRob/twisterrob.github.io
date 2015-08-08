@@ -47,6 +47,7 @@ a:active {
 a[target='_blank']:after {
     @extend .icon-export:before;
     @extend sup;
+    display: inline;
     margin-left: rem-calc(4);
 }
 
@@ -258,14 +259,6 @@ code, var {
 /* Lists
 ------------------------------------------------------------------- */
 
-ul, ol {
-    margin-left: 20px;
-    padding: 0;
-}
-li {
-    margin-left: 0;
-}
-
 ol.numbered-list {
     counter-reset: list;
     list-style-type: none;
@@ -282,7 +275,6 @@ ol.numbered-list {
 
 .no-bullet {
     list-style: none;
-    margin-left: 0;
 }
 
 li {
@@ -340,22 +332,21 @@ blockquote {
         text-align: initial;
     }
 
-    &:before {
-        content: "\00BB";
+    &:before, &:after {
         font-size: 80px;
         line-height: 0;
         position: absolute;
-        left: -26px;
         color: $secondary-color;
+    }
+    &:before {
+        content: "\00BB";
+        left: -26px;
+        top: auto;
     }
     &:after {
         content: "\00AB";
-        font-size: 80px;
-        line-height: 0;
-        position: absolute;
         right: -26px;
         bottom: 20px;
-        color: $secondary-color;
     }
     cite:before {
         content: "\2014 \0020"
@@ -435,9 +426,21 @@ mark {
 /* Footnotes
 ------------------------------------------------------------------- */
 
+.footnotes:before {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 60px;
+    margin-top: -10px;
+    border-bottom: 1px solid $grey-2;
+}
 .footnotes {
     margin-top: 60px;
 }
 .footnotes ol { 
     font-size: $font-size-small;
+}
+.footnotes p {
+    font-size: inherit;
+    margin-bottom: 0;
 }

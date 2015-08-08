@@ -8,10 +8,9 @@ tags:
 - workaround
 ---
 
-The Android operating system does a thread dump whenever it receives `SIGQUIT` signal.
-However you need an unlocked device to send that signal.
+The Android operating system does a thread dump whenever it receives `SIGQUIT` signal. 
+However you need an unlocked device to send that signal. 
 Fear not, there's a workaround to get the exact same thread dump with a little more effort on a production device with a debuggable application.
-
 <!--more-->
 
 ## Background
@@ -147,7 +146,7 @@ but you can't execute any code in that mode:
 So to have a live breakable point, put the following snippet somewhere in your app:
 
 {% highlight java %}
-new Thread() {
+new Thread("Debug-Breaker") {
 	@Override public void run() {
 		while (true) {
 			try {

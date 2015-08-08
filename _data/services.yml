@@ -18,4 +18,4 @@
 - name: "sitemap.xml"
   url: "/sitemap.xml"
   class: "icon-magnifying-glass"
-  title: "Sitemap for Google Webmastertools"
+  title: "Sitemap for Google Webmaster Tools"

@@ -3,9 +3,9 @@ permalink: /contact/
 layout: page
 title: "Contact"
 meta_title: "Contact Róbert Papp (TWiStErRob)"
-show_meta: false
 teaser: "Want to message me to ask a question or just tell me something?"
-script: 'function rot13(c){return String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26)}'
+script:
+  head: 'function rot13(c){return String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26)}'
 ---
 You can find different ways to get in touch with me below.  
 If you want to know more about me check out the [info page]({{ site.baseurl }}/info/).

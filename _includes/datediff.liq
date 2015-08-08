@@ -51,4 +51,4 @@
 		{% assign date_diff = date_diff | divided_by: 10 %}
 		{{ date_diff | remove: '.0' }}
 	{% endif %}
-{% endcapture %}<!-- {{include.begin}}:{{begin_year}}/{{begin_day}} - {{include.end}}:{{end_year}}/{{end_day}} = {{year_diff}}/{{day_diff}}: {{measure}}-->{{ result | times: 1 }}
+{% endcapture %}{% assign result = result | times: 1 %}<!-- {{include.begin}}:{{begin_year}}/{{begin_day}} - {{include.end}}:{{end_year}}/{{end_day}} = {{year_diff}}/{{day_diff}}: {{measure}}-->

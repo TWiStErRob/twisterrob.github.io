@@ -14,40 +14,40 @@
 *   
 *   This loop works like this:
 *   
-*   1. First we check if there was given a category for filtering › if include.categories == NULL 
+*   1. First we check if there was given a category for filtering › if include.categories == NULL
 *   2. If no category is given for filtering do a general loop.
-*   3. If a category/tag was given, assign category/tag to the variable category/tag › assign category = include.categories 
+*   3. If a category/tag was given, assign category/tag to the variable category/tag › assign category = include.category
 *   
 {% endcomment %}
 
-
-
 {% assign category = include.category %}
 {% assign tag = include.tag %}
+{% assign posts = ',' | split: ',' %}
+
+{% if category == NULL and tag == NULL %}
+	{% assign moreLink = site.baseurl | append: '/blog/archive/' %}
+	{% for post in site.posts                limit:include.entries offset:include.offset %}
+		{% assign posts = posts | push: post %}
+	{% endfor %}
+{% elsif category %}
+	{% assign moreLink = site.baseurl | append: '/blog/category/' %}
+	{% for post in site.categories[category] limit:include.entries offset:include.offset %}
+		{% assign posts = posts | push: post %}
+	{% endfor %}
+{% elsif tag %}
+	{% assign moreLink = site.baseurl | append: '/blog/tag/' %}
+	{% for post in site.tags[tag]            limit:include.entries offset:include.offset %}
+		{% assign posts = posts | push: post %}
+	{% endfor %}
+{% endif %}
+
 <ul class="side-nav">
-
-  {% if category == NULL and tag == NULL %}
-
-    {% for post in site.posts limit:include.entries offset:include.offset %}
-      <li><a href="{{ site.baseurl }}{{ post.url }}">{% if post.subheadline %}{{ post.subheadline }} &middot; {% endif %}<strong>{{ post.title }}</strong></a></li>
-    {% endfor %}
-      <li class="text-right"><a href="{{ site.baseurl }}/blog/archive/"><strong>{{ site.data.language.more }}</strong></a></li>
-
-
-  {% elsif category %}
-    
-    {% for post in site.categories.[category] limit:include.entries offset:include.offset %}
-      <li><a href="{{ site.baseurl }}{{ post.url }}">{% if post.subheadline %}{{ post.subheadline }} &middot; {% endif %}<strong>{{ post.title }}</strong></a></li>
-    {% endfor %}
-      <li class="text-right"><a href="{{ site.baseurl }}/blog/archive/"><strong>{{ site.data.language.more }}</strong></a></li>
-
-
-  {% elsif tag %}
-
-    {% for post in site.tags.[tag] limit:include.entries %}
-      <li><a href="{{ site.baseurl }}{{ post.url }}">{% if post.subheadline %}{{ post.subheadline }} &middot; {% endif %}<strong>{{ post.title }}</strong></a></li>
-    {% endfor %}
-
-  {% endif %}
+	{% for post in posts %}
+		<li><a href="{{ site.baseurl }}{{ post.url }}">
+			<strong>{{ post.title }}</strong>{% if post.subheadline %} &middot; {{ post.subheadline }}{% endif %}
+		</a></li>
+	{% endfor %}
+	{% unless moreLink == blank %}
+		<li class="text-right"><a href="{{ moreLink }}"><strong>{{ site.data.language.more }}</strong></a></li>
+	{% endunless %}
 </ul>
-

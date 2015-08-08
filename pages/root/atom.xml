@@ -1,7 +1,5 @@
 ---
 permalink: /atom.xml
-#redirect_from:
-# - /feed.xml
 layout: null
 title: "Atom Feed"
 ---
@@ -40,7 +38,7 @@ title: "Atom Feed"
 	{% for post in site.posts limit: 10 %}
 		<entry>
 			<id>{{ site.url }}{{ site.baseurl }}{{ post.url }}</id>
-			<title>{{ post.title | markdownify | strip_html | strip_newlines | xml_escape }}</title>
+			<title>{{ post.title | strip_html | strip_newlines | xml_escape }}</title>
 			<link href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" rel="alternate" type="text/html" title="{{ post.title | xml_escape }}" />
 			<updated>{{ post.date | date_to_xmlschema }}</updated>
 

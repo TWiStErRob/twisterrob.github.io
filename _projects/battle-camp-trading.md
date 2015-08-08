@@ -1,5 +1,5 @@
 ---
-title: "Battle Camp: Trading Revamp"
+title: "Battle&nbsp;Camp: Trading&nbsp;Revamp"
 subheadline: "New level of trading"
 teaser: "Revamp for the quick and dirty trading interface PennyPop gave us."
 images:

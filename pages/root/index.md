@@ -26,7 +26,7 @@ widget3:
 ---
 
 {% comment %}
-video: '<a href="#" data-reveal-id="videoModal"><img src="...-302x182.jpg" width="100%" alt=""></a>'
+video: '<a href="#" data-reveal-id="videoModal"><img src="...-302x182.jpg" width="100%" alt="" /></a>'
 <div id="videoModal" class="reveal-modal large" data-reveal="">
   <div class="flex-video widescreen vimeo" style="display: block;">
     <iframe width="1280" height="720" src="https://www.youtube.com/embed/3b5zCFSmVvU" frameborder="0" allowfullscreen></iframe>

@@ -1,30 +1,30 @@
 ---
 permalink: /humans.txt
-title: ""
+title: "Staff Information"
 layout: null
+source: "http://humanstxt.org/Standard.html"
 ---
-{% comment %}http://humanstxt.org/Standard.html{% endcomment %}
 /* TEAM */
-{% assign author = site.data.authors[site.author] %}
-Name: {% if author.name %}{{ author.name }}{% else %}{{ site.author }}{% endif %}
-Role: webmaster, developer, copywriter, designer
-{% if author.uri %}Site: {{ author.uri }}{% endif %}
-{% if author.twitter %}Twitter: {{ author.twitter }}{% endif %}
-
+{% for author_entry in site.data.authors %}{% assign author = author_entry[1] %}
+Name: {% if author.name %}{{ author.name }}{% else %}{{ site.author }}{% endif %}{% if author.siteroles %}
+Role: {{ author.siteroles }}{% endif %}{% if author.uri %}
+Site: {{ author.uri }}{% endif %}{% if author.twitter %}
+Twitter: {{ author.twitter }}{% endif %}
+{% endfor %}
 
 /* THANKS */
 
 Name: Moritz »mo.« Sauer
-Role: Web designer of Theme
+Role: Creator of the Theme
 Site: http://mo.phlow.de/
-Theme: http://phlow.github.io/feeling-responsive/
 Twitter: @phlow
+Theme: http://phlow.github.io/feeling-responsive/
 
 
 /* SITE */
 
 Last Updated: {{ site.time | date:"%Y/%m/%d" }}
 Standards: HTML5, CSS3
-Software: Sublime Text, Chrome, Jekyll, Git, Sass
+Software: Sublime Text, Chrome, Jekyll, Git, Imageoptim, JPEGMini, Gulp.js, Sass
 Components: Foundation Framework, Modernizr, jQuery, Backstretch.js, Reveal
 More: {{ site.url }}{{ site.baseurl }}/project/twisterrob-net
