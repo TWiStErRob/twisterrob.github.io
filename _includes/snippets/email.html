@@ -1,0 +1,105 @@
+{% comment %}
+  Generate a safe mailto link into the document which is undiscoverable to most crawlers to prevent spam.
+  Idea based on http://techblog.tilllate.com/2008/07/20/ten-methods-to-obfuscate-e-mail-addresses-compared/
+  It takes times to do the encoding in Liquid without Jekyll Ruby plugins so generation is disabled in development mode (safe: false)
+
+  Arguments are:
+    * address = 'unescaped@email.address'
+    * safe(optional) = true|false, if not provided it will only be generated if site.safe mode is on
+
+  All whitespaces are removed from main output to make sure it's parsed as inline HTML in markdown.
+  With the ignored capture it's possible to have newlines, indentation and comments during generation
+{% endcomment %}{% unless include.safe or ((include.safe == nil or include.safe == '') and site.safe == true) %}<a href="mailto:{{ include.address }}" target="_blank">{{ include.address }}</a>{% else %}{% capture ignore %}
+
+<!-- ASCII table for &#00; and &#x00; style encoding -->
+{% assign ascii = ',,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, ,!,",#,$,%,&,,(,),*,+,,-,.,/,0,1,2,3,4,5,6,7,8,9,:,;,<,=,>,?,@,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,[,\,],^,_,`,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,{,|,},~,' | split: ',' %}
+{% assign hex = '00,01,02,03,04,05,06,07,08,09,0a,0b,0c,0d,0e,0f,10,11,12,13,14,15,16,17,18,19,1a,1b,1c,1d,1e,1f,20,21,22,23,24,25,26,27,28,29,2a,2b,2c,2d,2e,2f,30,31,32,33,34,35,36,37,38,39,3a,3b,3c,3d,3e,3f,40,41,42,43,44,45,46,47,48,49,4a,4b,4c,4d,4e,4f,50,51,52,53,54,55,56,57,58,59,5a,5b,5c,5d,5e,5f,60,61,62,63,64,65,66,67,68,69,6a,6b,6c,6d,6e,6f,70,71,72,73,74,75,76,77,78,79,7a,7b,7c,7d,7e,7f' | split: ',' %}
+
+<!-- rot18 encoding tables, groups ordered by frequency -->
+{% assign rot0  = '0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z' | split: ',' %}
+{% assign rot18 = '5,6,7,8,9,0,1,2,3,4,n,o,p,q,r,s,t,u,v,w,x,y,z,a,b,c,d,e,f,g,h,i,j,k,l,m,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,A,B,C,D,E,F,G,H,I,J,K,L,M' | split: ',' %}
+{% assign rotC = rot0 | size | minus: 1 %}
+
+<!-- initialize input -->
+{% assign email = include.address %}
+{% assign length = email | size %}
+
+<!-- Generate locations to insert at, %N is nanoseconds, multiply by i to get different numbers per itartion -->
+{% assign locs = "," | split: "," %}
+{% for i in (1..5) %}
+	{% assign loc = site.time | date: "%N" | times: i | modulo: length %}
+	{% assign locs = locs | push: loc %}
+{% endfor %}
+{% assign locs = locs | sort %}
+
+<!-- Generate link text:
+     * some characters will be decimal or hex entity escaped
+     * hidden <span>s will be inserted at random locations with random a-z letters to obfuscate copied text
+-->
+{% assign html = '' %}
+{% assign loop = email | size | minus: 1 %}
+{% for e in (0..loop) %}
+	{% assign char = email | slice: e %}
+	{% assign randomEscape = site.time | date: "%N" | times: e | modulo: 99 %}
+	{% if randomEscape < 40 %}
+		{% for i in (0..127) %}
+			{% if ascii[i] != '' and char == ascii[i] %}
+				{% assign randomEscape = randomEscape | modulo: 2 %}
+				{% if randomEscape == 0 %}
+					{% assign char = i | prepend: '&#' | append: ';' %}
+				{% else %}
+					{% assign char = hex[i] | prepend: '&#x00' | append: ';' %}
+				{% endif %}
+				{% break %}
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+	{% for loc in locs %}
+		{% if e == loc %}
+			{% capture fake %}<span style="font-size:0">&#{{ site.time | date: "%N" | times: loc | modulo: 26 | plus: 97 }};</span>{% endcapture %}
+			{% assign char = char | prepend: fake %}
+			{% break %}
+		{% endif %}
+	{% endfor %}
+	{% assign html = html | append: char %}
+{% endfor %}
+
+<!-- Generate mailto link with some characters decimal or hex entity or percent escaped -->
+{% assign mailto_email = email | prepend: 'mailto:' %}
+{% assign mailto = '' %}
+{% assign loop = mailto_email | size | minus: 1 %}
+{% for e in (0..loop) %}
+	{% assign char = mailto_email | slice: e %}
+	{% assign randomEscape = site.time | date: "%N" | times: e | modulo: 99 %}
+	{% if randomEscape < 60 %}
+		{% for i in (0..127) %}
+			{% if ascii[i] != '' and char == ascii[i] %}
+				{% assign randomEscape = randomEscape | modulo: 3 %}
+				{% if randomEscape == 0 and 6 < e %}
+					{% assign char = hex[i] | prepend: '%'  %}
+				{% elsif randomEscape == 1 %}
+					{% assign char = hex[i] | prepend: '&#x00' | append: ';' %}
+				{% else %}
+					{% assign char = i | prepend: '&#' | append: ';' %}
+				{% endif %}
+				{% break %}
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+	{% assign mailto = mailto | append: char %}
+{% endfor %}
+
+<!-- Assemble final HTML -->
+{% capture html %}<a href="{{ mailto }}" target="_blank">{{ html }}</a>{% endcapture %}
+{% assign htmlEnd = html | size | minus: 1 %}
+
+<!-- Generate JavaScript which will insert the HTML into the dcoument
+     The script is ROT-13 and ROT-5 encoded and then escaped using JavaScript unicode escapes to prevent Jekyll from messing it up.
+     ROT-18 encoding is skipped for [#&;"] characters for performance
+-->
+{% capture rot18 %}{% for h in (0..htmlEnd) %}{% assign char = html | slice: h %}{% unless char == '#' or char == '&' or char == ';' or char == '"' %}{% for i in (0..rotC) %}{% if rot0[i] != nil and char == rot0[i] %}{% assign char = rot18[i] %}{% break %}{% endif %}{% endfor %}{% endunless %}{{ char }}{% endfor %}{% endcapture %}{% assign rotEnd = rot18 | size | minus: 1 %}
+
+{% capture jsEncoded %}{% for r in (0..rotEnd) %}{% assign char = rot18 | slice: r %}{% for i in (0..127) %}{% if ascii[i] != '' and char == ascii[i] %}{% assign char = hex[i] | prepend: '\u00' %}{% break %}{% endif %}{% endfor %}{{ char }}{% endfor %}{% endcapture %}
+
+<!-- end of ignoring all output, output full script below -->
+{% endcapture %}<script type="text/javascript">document.write('{{ jsEncoded }}'.replace(/[0-9]/g, rot5).replace(/[a-zA-Z]/g, rot13));</script>{% endunless %}
