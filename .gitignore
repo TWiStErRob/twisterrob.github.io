@@ -1,7 +1,9 @@
 _site/
 .sass-cache/
+.svn/
 sources/
 Gemfile.lock
 *.iml
-*.ipr
-*.iws
+/*.ipr
+/*.iws
+/*.bat
