@@ -14,7 +14,19 @@
 	</div>
 
 	<div class="panel radius">
-		<h3>Archive</h3>
+		{% assign categories_url = site.baseurl | append: '/blog/category/' %}
+		<h3><a href="{{ categories_url }}">Categories</a></h3>
+		<ul class="no-bullet">
+		{% for category in site.categories %}
+			{% assign category_key = category[0] %}
+			<li class="icon-alias-category">{% include page_categories.html categories=category_key %}</li>
+		{% endfor %}
+		</li>
+	</div>
+
+	<div class="panel radius">
+		{% assign archive_url = site.baseurl | append: '/blog/archive/' %}
+		<h3><a href="{{ archive_url }}">Archive</a></h3>
 		<ul class="no-bullet">
 			{% for post in site.posts reversed %}
 				{% assign currentdate = post.date | date: '%Y-%m' %}
@@ -24,10 +36,10 @@
 					{% assign currentyear = post.date | date: '%Y' %}
 					{% if currentyear != year %}
 						{% unless forloop.first %}</ul></li>{% endunless %}
-						<li class="icon-calendar"><a href="{{ site.baseurl }}/blog/archive/#{{ currentyear }}">{{ currentyear }}</a><ul>
+						<li class="icon-alias-archive"><a href="{{ archive_url }}#{{ currentyear }}">{{ currentyear }}</a><ul>
 						{% assign year = currentyear %}
 					{% endif %}
-					<li>{{ post.date | date: '%m' | times: 1 }}. <a href="{{ site.baseurl }}/blog/archive/#{{ currentdate }}">{{ post.date | date: '%B' }}</a>
+					<li>{{ post.date | date: '%m' | times: 1 }}. <a href="{{ archive_url }}#{{ currentdate }}">{{ post.date | date: '%B' }}</a>
 					{% assign date = currentdate %}
 				{% else %}
 					{% assign count = count | plus: 1 %}

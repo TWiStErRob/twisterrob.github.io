@@ -9,11 +9,11 @@
 		{% endif %}
 
 		{% if page.date %}
-			<time class="icon-calendar" datetime="{{ page.date | date: "%Y-%m-%d" }}" itemprop="datePublished">{{ page.date | date: "%Y-%m-%d" }}</time>
+			<time class="icon-alias-archive" datetime="{{ page.date | date: "%Y-%m-%d" }}" itemprop="datePublished">{{ page.date | date: "%Y-%m-%d" }}</time>
 		{% endif %}
 
 		{% if page.categories %}
-			<span class="icon-archive">{% include page_categories.html categories=page.categories %}</span>
+			<span class="icon-alias-category">{% include page_categories.html categories=page.categories %}</span>
 		{% endif %}
 
 		<span class="meta-tags">

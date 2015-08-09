@@ -26,7 +26,7 @@ description: "Home for all things about and by Róbert&nbsp;Papp (TWiStErRob)."
 author: twisterrob
 
 # This URL is the main address for absolute links. Don't include a slash at the end.
-url: 'http://twisterrob.github.io'
+url: 'http://www.twisterrob.net'
 baseurl: ''
 
 # This is for the editing function in _/includes/improve_content.html
@@ -149,7 +149,7 @@ language: "en"
 
 
 # Docs › http://jekyllrb.com/docs/collections/
-permalink: /blog/:year/:month/:day/:title.html
+permalink: /blog/:year/:month/:title.html
 collections:
   projects:
     output: true
@@ -188,7 +188,7 @@ defaults:
     values:
       show_meta: true
       # sidebar:        # Possible values › left, right › by default there will be no sidebar
-      comments: false # TODO true
+      comments: true
       #author: twisterrob # disable for now, I'm the only one
   -
     scope:
@@ -197,6 +197,7 @@ defaults:
     values:
       layout: project
       breadcrumbs: true
+      comments: true
       images:
         icon: unknown-app-icon-512.png
         icon_small: unknown-app-icon-512.png
@@ -259,15 +260,15 @@ og_type:                            "website"
 #                      /____/                               
 #
 # Used › _includes/comments.html
-disqus_shortname: twisterrob-blog
+disqus_shortname: twisterrob
 
 # More › https://www.google.com/analytics/
 # Used › _includes/footer_scripts.html
-google_analytics_tracking_id: UA-38202353-3
+google_analytics_tracking_id: UA-38202353-4
 
 # More › https://www.tawk.to/knowledgebase/
 #        tawk.to is a free live chat app that lets you monitor and chat 
 #         with visitors on your website or from a free customizable page
 #         To load the script add tawkto: true in front matter of each page
 # Used › _includes/footer_scripts.html
-#tawkto_embed_uri: https://embed.tawk.to/<id>/default
+#tawkto_embed_uri: https://embed.tawk.to/<id>/default<script>

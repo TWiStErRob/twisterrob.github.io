@@ -55,7 +55,7 @@
 					{% endfor %}
 					{% capture category_url %}/blog/category/{{ category_key | slugify }}/{% endcapture %}
 					<li{% if category_url == page_url %} class="active"{% endif %}>
-						<a href="{{ site.baseurl }}{{ category_url }}" class="icon-archive category-{{ category_key }}">{{ category_data.title | escape }}</a>
+						<a href="{{ site.baseurl }}{{ category_url }}" class="icon-alias-category category-{{ category_key }}">{{ category_data.title | escape }}</a>
 					</li>
 				{% endfor %}
 			{% elsif include.link.dropdown == "blog-tags" %}
@@ -73,7 +73,7 @@
 					{% if currentyear != year %}
 						{% capture year_url %}/blog/archive/#{{ currentyear }}{% endcapture %}
 						<li{% if year_url == page_url %} class="active"{% endif %}>
-							<a href="{{ site.baseurl }}{{ year_url }}" class="icon-calendar">{{ currentyear | escape }}</a>
+							<a href="{{ site.baseurl }}{{ year_url }}" class="icon-alias-archive">{{ currentyear | escape }}</a>
 						</li>
 						{% assign year = currentyear %}
 					{% endif %}

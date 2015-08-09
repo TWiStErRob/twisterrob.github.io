@@ -1,6 +1,7 @@
-/.sass-cache
-/_site
-/Gemfile.lock
-/*.iws
-/*.ipr
-/*.iml
+_site/
+.sass-cache/
+sources/
+Gemfile.lock
+*.iml
+*.ipr
+*.iws

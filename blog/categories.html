@@ -16,20 +16,18 @@ breadcrumbs: true
 			{% assign category_data = category_page %}{% break %}
 		{% endif %}
 	{% endfor %}
-	<h3 id="{{ category_key }}" class="icon-archive">
+	<h3 id="{{ category_key }}">
 		{% if category_data %}
-		<a href="{{ site.baseurl }}/blog/category/{{ category_key }}/">{{ category_data.title }}</a>
+		<a href="{{ site.baseurl }}/blog/category/{{ category_key }}/" class="icon-alias-category">{{ category_data.title }}</a>
 		{% else %}
 		{{ category_key | capitalize }}
 		{% endif %}
-		({% if category_posts.size %}{{ category_posts.size }}{% else %}0{% endif %}&nbsp;article{% unless category_posts.size == 1 %}s{% endunless %})
+		{% include snippets/article_count.html list=category_posts %}
 	</h3>
 	{% if 0 < category_posts.size %}
 	<ul>
 	{% for post in category_posts %}
-		<li>
-			<a href="{{ site.baseurl }}{{ post.url }}" title="Read {{ post.title | escape_once }}">{{ post.title }}</a>
-		</li>
+		<li>{% include snippets/post_link.html post=post %}</li>
 	{% endfor %}
 	</ul>
 	{% else %}

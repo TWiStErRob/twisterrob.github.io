@@ -10,7 +10,7 @@ $environment: '{{ jekyll.environment }}';
 
 @import "iconfont.scss";
 [class^='icon-']:before, [class*=' icon-']:before {
-	margin-right: rem-calc(4);
+	margin-right: rem-calc(6);
 }
 
 @import "01_settings_colors.scss";

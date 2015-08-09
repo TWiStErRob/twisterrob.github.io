@@ -16,14 +16,14 @@ breadcrumbs: true
 	{% assign tag = site.data.tags[tag_key] %}
 	{% assign posts = site.tags[tag_key] %}
 	{% unless posts %}{% continue %}{% endunless %}
-	<h3 id="{{ tag_key | slugify }}" class="icon-alias-tag tag-{{ tag_key | slugify }}">
-		<a href="#{{ tag_key | slugify }}">{% if tag.title %}{{ tag.title }}{% else %}{{ tag_key }}{% endif %}</a>
-		({% if posts.size %}{{ posts.size }}{% else %}0{% endif %} article{%unless  posts.size == 1%}s{%endunless%})
+	<h3 id="{{ tag_key | slugify }}">
+		<a href="#{{ tag_key | slugify }}" class="icon-alias-tag tag-{{ tag_key | slugify }}">{% if tag.title %}{{ tag.title }}{% else %}{{ tag_key }}{% endif %}</a>
+		{% include snippets/article_count.html list=posts %}
 	</h3>
 	{% if 0 < posts.size %}
 		<ul>
 		{% for post in posts %}
-			<li><a href="{{ site.baseurl }}{{ post.url }}" title="Read {{ post.title | escape_once }}">{{ post.title }}</a></li>
+			<li>{% include snippets/post_link.html post=post %}</li>
 		{% endfor %}
 		</ul>
 	{% else %}

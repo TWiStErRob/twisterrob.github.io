@@ -17,9 +17,7 @@ subheadline: 'Articles in Category'
 				</ul><h2 id="{{post_year}}">{{ post_year }}</h2><ul>
 			{% endif %}
 		{% endif %}
-		<li>
-		<a href="{{ site.baseurl }}{{ post.url }}" title="Read {{ post.title | escape_once }}">{{ post.title }}</a>
-		</li>
+		<li>{% include snippets/post_link.html post=post %}</li>
 
 		{% if forloop.last %}
 			</ul>
@@ -30,15 +28,13 @@ subheadline: 'Articles in Category'
 {% endif %}
 
 <h2 id="other">Other categories</h2>
-<ul>
+<ul class="quick-links">
 {% for other_category in site.pages %}
-	{% if other_category.category %}
-		{% assign other_category_key = other_category_entry[0] %}
-		{% assign other_category = other_category_entry[1] %}
-		{% assign post_count = site.categories[other_category.category].size %}{% unless post_count %}{% assign post_count = 0 %}{% endunless %}
-		<li {% if other_category.category == page.category %}class="active"{% endif %}>
-			<a href="{{ site.baseurl }}/blog/category/{{ other_category.category }}">{{ other_category.title }}</a>
-			({{ post_count }}&nbsp;article{%unless post_count == 1%}s{%endunless%})
+	{% if other_category.category and other_category.category != page.category %}
+		<li>
+			<a href="{{ site.baseurl }}/blog/category/{{ other_category.category | slugify }}">{{ other_category.title }}</a>
+			{% assign posts = site.categories[other_category.category] %}
+			{% include snippets/article_count.html list=posts %}
 		</li>
 	{% endif %}
 {% endfor %}

@@ -1,3 +1,5 @@
+Visit [twisterrob.net](http://www.twisterrob.net).
+
 # Development Install
 Requires both ruby and devkit on Windows 7 to install native extensions.
 ```bash

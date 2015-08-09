@@ -3,7 +3,7 @@ title: "Articles by date"
 breadcrumbs: true
 permalink: /blog/archive/
 ---
-<ul class="inline-list">
+<ul class="inline-list quick-links">
 {% assign lastyear = '' %}
 {% for post in site.posts reversed %}
 	{% assign currentyear = post.date | date: '%Y' %}
@@ -22,13 +22,13 @@ permalink: /blog/archive/
 		{% unless forloop.first %}</ul>{% endunless %}
 		{% assign currentyear = post.date | date: '%Y' %}
 		{% if currentyear != lastyear %}
-			<h2 id="{{ currentyear }}" class="icon-calendar">{{ currentyear }}</h2>
+			<h2 id="{{ currentyear }}"><span class="icon-alias-archive">{{ currentyear }}</span></h2>
 			{% assign lastyear = currentyear %}
 		{% endif %}
 		<h3 id="{{ currentdate }}">{{ post.date | date: '%Y %B' }}</h3>
 		<ul>
 		{% assign lastdate = currentdate %}
 	{% endif %}
-	<li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+	<li>{% include snippets/post_link.html post=post %}</li>
 	{% if forloop.last %}</ul>{% endif %}
 {% endfor %}

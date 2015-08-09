@@ -1,5 +1,5 @@
 ---
-title: "Home Page"
+title: "My Website"
 subheadline: "Time to publish"
 teaser: "Modern, fast and information-rich web experience."
 images:

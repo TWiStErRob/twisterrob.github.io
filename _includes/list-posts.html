@@ -40,12 +40,13 @@
 		{% assign posts = posts | push: post %}
 	{% endfor %}
 {% endif %}
+{% if include.more %}
+	{% assign moreLink = include.more %}
+{% endif %}
 
 <ul class="side-nav">
 	{% for post in posts %}
-		<li><a href="{{ site.baseurl }}{{ post.url }}">
-			<strong>{{ post.title }}</strong>{% if post.subheadline %} &middot; {{ post.subheadline }}{% endif %}
-		</a></li>
+		<li>{% include snippets/post_link.html post=post showSub=true %}</li>
 	{% endfor %}
 	{% unless moreLink == blank %}
 		<li class="text-right"><a href="{{ moreLink }}"><strong>{{ site.data.language.more }}</strong></a></li>
