@@ -40,10 +40,16 @@ a:focus {
 a:active {
     color: lighten( $primary-color, 20% );
 }
+
 .no-adorn, .no-adorn:hover, .no-adorn:visited {
     border: 0;
     text-decoration: none;
 }
+
+a:not([href]), a[href=''] {
+    cursor: default;
+}
+
 a[target='_blank']:after {
     @extend .icon-export:before;
     @extend sup;

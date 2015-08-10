@@ -18,7 +18,7 @@ layout: page
 			</dd>
 		{% endif %}
 	  	{% if page.urls.site %}<dt>Website</dt><dd>{{ page.urls.site }}</dd>{% endif %}
-	  	{% if page.urls.download %}<dt>Download</dt><dd><a href="{{ page.urls.download }}">{{ page.urls.download }}</a></dd>{% endif %}
+	  	{% if page.urls.download %}<dt>Download</dt><dd><a href="{{ page.urls.download }}" target="_blank">{{ page.urls.download }}</a></dd>{% endif %}
 	  	{% if page.years %}<dt>Years</dt><dd>{{ page.years }}</dd>{% endif %}
 	  	{% if page.urls.sources %}<dt>Download Sources</dt><dd>{{ page.urls.sources }}</dd>{% endif %}
 	  	{% if page.images.screenshots %}<dt>Screenshots</dt><dd><a href="javascript:$('.clearing-thumbs a:first').click();">View</a>{% endif %}

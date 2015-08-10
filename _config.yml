@@ -76,14 +76,18 @@ include: ['.htaccess']
 exclude:
     - Gemfile
     - Gemfile.lock
-    - LICENSE
+    - CNAME
     - README.md
-    - INSTALL.md
-    - "*.bat"
-    - "*.zip"
+    - '*.bat'
+    - '*.zip'
+    - '*.ipr'
+    - '*.iws'
+    - '*.iml'
     - sources
     - .fast-dev
     - .sass-cache
+    - .svn
+    - .git
 
 #       ______                                _           
 #      / ____/___  ____ _   _____  __________(_)___  ____ 
@@ -196,11 +200,12 @@ defaults:
       path: ""
     values:
       layout: project
+      published: true
       breadcrumbs: true
       comments: true
       images:
-        icon: unknown-app-icon-512.png
-        icon_small: unknown-app-icon-512.png
+        icon: projects/unknown-app-icon-512.png
+        icon_small: projects/unknown-app-icon-512.png
   -
     scope:
       type: jobs

@@ -9,7 +9,7 @@
 
   All whitespaces are removed from main output to make sure it's parsed as inline HTML in markdown.
   With the ignored capture it's possible to have newlines, indentation and comments during generation
-{% endcomment %}{% unless include.safe or ((include.safe == nil or include.safe == '') and site.safe == true) %}<a href="mailto:{{ include.address }}" target="_blank">{{ include.address }}</a>{% else %}{% capture ignore %}
+{% endcomment %}{% unless include.safe or (include.safe == nil and site.safe == true) %}<a href="mailto:{{ include.address }}" target="_blank">{{ include.address }}</a>{% else %}{% capture ignore %}
 
 <!-- ASCII table for &#00; and &#x00; style encoding -->
 {% assign ascii = ',,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, ,!,",#,$,%,&,,(,),*,+,,-,.,/,0,1,2,3,4,5,6,7,8,9,:,;,<,=,>,?,@,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,[,\,],^,_,`,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,{,|,},~,' | split: ',' %}
