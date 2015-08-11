@@ -1,0 +1,80 @@
+<script>
+"use strict";
+function hex(i) { return (i+0x10000).toString(16).substr(-4); }
+var encoders = [
+	function plain(c) { return String.fromCharCode(c); },
+	function htmlEntity(c) { return '&#' + c.toString(10) + ';'; },
+	function htmlEntityHexNoPrefix(c) { return '&#x' + c.toString(16) + ';'; },
+	function htmlEntityHexPrefix1(c) { return '&#x' + (c < 128? '0' : '') + c.toString(16) + ';'; },
+	function htmlEntityHexPrefix2(c) { return '&#x' + (c < 128? '00' : '') + c.toString(16) + ';'; }
+];
+var urlEncoders = encoders.concat(
+	function urlPercent(c) { return (c < 256? '%' + (c+0x100).toString(16).substr(-2) : String.fromCharCode(c)); }
+);
+function rnd(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function encode(str, url, fake) {
+	var result = '';
+	var encs = url ? urlEncoders : encoders;
+	for (var i = 0; i < str.length; ++i) {
+		if (fake && Math.random() < 0.15) {
+			var fill = Math.random().toString(36);
+			result += '<span style="font-size:0">' + fill.substring(2, rnd(3, fill.length / 2)) + '</span>';
+		}
+		result += encs[rnd(0, encs.length - 1)](str.charCodeAt(i));
+	}
+	return result;
+}
+function jsunicode(str) {
+	var result = '';
+	for (var i = 0; i < str.length; ++i) {
+		result += '\\u' + (str.charCodeAt(i)+0x10000).toString(16).substr(-4);
+	}
+	return result;
+}
+function process(email) {
+	return '<a href="' + encode('mailto:', false, false) + encode(email, true, false) + '">' + encode(email, false, true) + '</a>';
+}
+function executeEncode() {
+	var email = document.getElementById('email');
+	var result = document.getElementById('result');
+	var rotted = document.getElementById('rotted');
+	var preview = document.getElementById('preview');
+	var encoded = process(email.value);
+	rotted.value = "document.write('" + jsunicode(rot18(encoded)) + "'.replace(/[0-9]/g, rot5).replace(/[a-zA-Z]/g, rot13));";
+	result.value = encoded;
+	preview.innerHTML = rot18(encoded).replace(/[a-zA-Z0-9]/g, rot18);
+	if (document.readyState !== 'complete') {
+		eval(rotted.value);
+	}
+}
+function rot5(c){return c.length>1?c.replace(/[0-9]/g, rot5):String.fromCharCode((c<="9"?57:57)>=(c=c.charCodeAt(0)+5)?c:c-10);}
+function rot13(c){return c.length>1?c.replace(/[a-zA-Z]/g, rot13):String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26);}
+function rot18(c){return c.replace(/[0-9]/g, rot5).replace(/[a-zA-Z]/g, rot13);}
+
+function testRotAlgorithms() {
+	var ascii = '';
+	for(var i = 0; i < 256; ++i) {
+		ascii += String.fromCharCode(i);
+	}
+	console.log(ascii);
+	console.log(rot5(ascii));
+	console.log(rot5(rot5(ascii)) == ascii);
+	console.log(rot13(ascii));
+	console.log(rot13(rot13(ascii)) == ascii);
+	console.log(rot18(ascii));
+	console.log(rot18(rot18(ascii)) == ascii);
+}
+
+</script>
+<input id="email" type="text" value="my@address.xxx" />
+<input id="execute" type="button" onClick="executeEncode()" value="Encode" />
+<input id="test" type="button" onClick="executeEncode(); eval(rotted.value)" value="Test" />
+<br>
+<textarea id="result" rows="10" cols="80"></textarea><br>
+<textarea id="rotted" rows="10" cols="80"></textarea><br>
+<div id="preview"></div>
+<script>
+	execute.click();
+</script>
