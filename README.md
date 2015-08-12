@@ -13,7 +13,7 @@ Note: the version number should match closely what's on: https://pages.github.co
 
 ## First time
 
-```console
+```bash
 devkit$ ruby dk.rb init
 devkit$ edit config.yml # add ruby directory
 devkit$ ruby dk.rb install
@@ -26,19 +26,19 @@ In case of `SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B
 
 ## Run
 
-```console
+```bash
 windows$ cls && dev noskip
 ```
 
 ## Usage
 Update dependencies occasionally by
 
-```console
+```bash
 website$ bundle update
 ```
 
 Check if site build successfully before each commit
 
-```console
+```bash
 webiste$ cls && clean && local noskip
 ```

@@ -33,6 +33,12 @@
   class: icon-twitter
   title: "Follow my tweets on Twitter"
 
+- name: Skype
+  url: skype:twisterrob?chat&topic=twisterrob.net
+  samewindow: true
+  class: icon-skype
+  title: "Call me on Skype"
+
 #- name: Soundcloud
 #  url: http://soundcloud.com/twisterrob
 #  class: icon-soundcloud

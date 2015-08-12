@@ -17,6 +17,17 @@ Check typography variables › _3_typography_settings.scss
 */
 
 
+// need to be separate
+$selection-color: adjust-hue($primary-color, -45deg);
+::-moz-selection {
+    background-color: $selection-color;
+}
+::selection {
+    background-color: $selection-color;
+    &:window-inactive {
+        background-color: desaturate($selection-color, 80%);
+    }
+}
 
 /* Links
 ------------------------------------------------------------------- */

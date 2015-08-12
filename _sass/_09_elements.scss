@@ -158,21 +158,18 @@ img.lazy {
 /* IDs
 ------------------------------------------------------------------- */
 .showId[id]:hover:after,
-h1[id]:hover:after,
-h2[id]:hover:after,
-h3[id]:hover:after,
-h4[id]:hover:after,
-h5[id]:hover:after,
-h6[id]:hover:after,
-.env-development *[id]:not(#up-to-top):not(.row):hover:after {
+h1[id]:not(.noShowId):hover:after,
+h2[id]:not(.noShowId):hover:after,
+h3[id]:not(.noShowId):hover:after,
+h4[id]:not(.noShowId):hover:after,
+h5[id]:not(.noShowId):hover:after,
+h6[id]:not(.noShowId):hover:after,
+.env-development *[id]:not(.noShowId):not(.row):hover:after {
   color: Gray;
   content: '#' attr(id);
   margin-left: 1em;
   font-weight: normal;
   position: absolute;
-}
-.noShowId[id]:hover:after {
-  content: '';
 }
 
 *:target:not([id^='fn:']):not([id^='fnref:']) {
