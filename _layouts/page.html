@@ -44,6 +44,9 @@ format: page
 
 			<footer>
 				{% if page.show_meta == true %}
+				{% include sharer.html %}
+				{% endif %}
+				{% if page.show_meta == true %}
 				{% include lateral_navigation.html previous=page.previous next=page.next up_url="/blog/archive/" up_title=site.data.language.archive %}
 				{% endif %}
 

@@ -1,0 +1,12 @@
+<ul id="sharer" class="row small-block-grid-2 large-block-grid-4">
+{% capture page_url %}{{ site.url }}{{ site.baseurl }}{{ page.url }}{% endcapture %}{% assign page_url = page_url | cgi_escape %}
+{% capture page_title %}{{ page.title | strip_html | strip_newlines }}{% endcapture %}{% assign page_title = page_title | cgi_escape %}
+{% for sharer in site.data.share %}
+	<li class="share-block"><a
+	       title="{{ sharer[1].title }}"
+	       href="{{ sharer[1].link | replace: '<link>', page_url | replace: '<title>', page_title }}"
+	       class="share-link share-{{ sharer[0] }}"
+	       target="_blank"
+	    >{{ sharer[1].name }}</a></li>
+{% endfor %}
+</ul>

@@ -302,6 +302,23 @@ body.video {
     }
 }
 
+#sharer {
+  margin-bottom: $paragraph-margin-bottom;
+  .share-block {
+    padding: 0.25em !important;
+    .share-link {
+      display: block;
+      text-align: center;
+
+      text-decoration: none;
+      border: none;
+    }
+    a:after {
+      content: '';
+    }
+  }
+}
+
 /* Jump to top
 ------------------------------------------------------------------- */
 
@@ -411,8 +428,6 @@ body.video {
         }
     }
 }
-
-
 
 /* CSS-Classes to add margin at top or bottom
 ------------------------------------------------------------------- */
