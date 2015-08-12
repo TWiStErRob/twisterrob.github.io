@@ -319,6 +319,23 @@ body.video {
   }
 }
 
+#post-nav {
+  margin-bottom: $paragraph-margin-bottom;
+}
+
+@media only screen {
+  article[itemscope] > header {
+    border-bottom: 2px ridge $primary-color;
+    margin-bottom: $paragraph-margin-bottom;
+  }
+
+  article[itemscope] > footer {
+    margin-top: $paragraph-margin-bottom;
+    border-top: 2px ridge $primary-color;
+    padding-top: $paragraph-margin-bottom;
+  }
+}
+
 /* Jump to top
 ------------------------------------------------------------------- */
 
