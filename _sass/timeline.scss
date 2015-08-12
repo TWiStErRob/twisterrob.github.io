@@ -17,7 +17,7 @@ section.timeline {
 		$timeline-spine-height: 15%;
 		$timeline-spine-width: 4px;
 		background: $timeline-line-color;
-		background: -webkit-linear-gradient(top,rgba(80,80,80,0) 0,$timeline-line-color 8%,$timeline-line-color 92%,rgba(80,80,80,0) 100%);
+		background: -webkit-linear-gradient(top, rgba(80,80,80,0) 0, $timeline-line-color 8%, $timeline-line-color 92%, rgba(80,80,80,0) 100%);
 		content: "";
 		display: block;
 		height: 100% + $timeline-spine-height;
@@ -28,7 +28,7 @@ section.timeline {
 		width: $timeline-spine-width;
 		z-index: 0;
 		filter: alpha(opacity=80);
-		opacity: .80
+		opacity: .80;
 	}
 
 	.timeline-date {
@@ -139,6 +139,7 @@ section.timeline {
 				border-bottom: 1px solid $timeline-box-color;
 			}
 		}
+
 		@media only screen and (max-width: 64.063em) {
 			&.left, &.right {
 				float: none !important;
@@ -168,6 +169,30 @@ section.timeline {
 				margin: 15px auto;
 				max-width: 90%;
 			}
+		}
+	}
+
+	@media print {
+		&:after {
+			background: black !important;
+			border: 1px solid black;
+			height: 100%;
+			top: 0;
+		}
+		.timeline-date {
+			border-color: black !important;
+			background: white !important;
+		}
+		.timeline-box {
+			border-color: black !important;
+			page-break-inside: avoid;
+		}
+		.timeline-box:after {
+			border-color: black !important;
+		}
+		.timeline-box .left:before,
+		.timeline-box .right:before {
+			box-shadow: 0 0 0 3px $timeline-point-color-lowlight !important;
 		}
 	}
 }

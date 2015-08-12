@@ -429,6 +429,18 @@ body.video {
     }
 }
 
+@media print {
+    @page { margin: 0.32in; } // TODO https://github.com/zurb/foundation/issues/6834
+    #navigation,
+    #masthead, #masthead-with-pattern, #masthead-with-background-color, #masthead-with-text, #masthead-no-image-header,
+    .breadcrumbs,
+    .sidebar, #post-nav, #sharer, #pagination, #up-to-top,
+    #footer-content, #footer, #subfooter {
+        display: none !important;
+    }
+}
+
+
 /* CSS-Classes to add margin at top or bottom
 ------------------------------------------------------------------- */
 

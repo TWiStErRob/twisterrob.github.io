@@ -57,6 +57,17 @@ a[target='_blank']:after {
     margin-left: rem-calc(4);
 }
 
+@media print {
+  a {
+    border: none !important;
+    text-decoration: underline !important;
+  }
+  a[href]:after { // extend style in _type > @print to allow in-url breaks
+    word-wrap: break-word;
+    white-space: pre;
+    font-size: $base-font-size * 0.8;
+  }
+}
 
 /* Customize Foundation Typography
 ------------------------------------------------------------------- */
@@ -67,6 +78,10 @@ p {
     -ms-hyphens: auto;
     hyphens: auto;
     text-align: justify;
+    -webkit-text-align-last: start;
+    -moz-text-align-last: start;
+    -ms-text-align-last: start;
+    text-align-last: start;
 }
 p a,
 article a {
@@ -102,7 +117,14 @@ p.button a {
     top: -1px !important;
 }
 
-
+@media print {
+  *:before, *:after {
+    background: transparent !important; // from _type > @print > *
+    color: $black !important;           // from _type > @print > *
+    box-shadow: none !important;        // from _type > @print > *
+    text-shadow: none !important;       // from _type > @print > *
+  }
+}
 
 /* Headlines
 ------------------------------------------------------------------- */
@@ -203,12 +225,21 @@ pre {
     padding: rem-calc(4) rem-calc(7) rem-calc(3) rem-calc(4);
     border-radius: $global-radius;
     line-height: 1.2;
+    max-height: 350px;
     color: $code-color;
     background-color: $code-background-color;
-    border: 3px ridge darken($primary-color, 33%);
-
-    max-height: 350px;
-    overflow: auto;
+    &:active {
+        max-height: none;
+    }
+    @media not print {
+      border: 3px ridge darken($primary-color, 33%);
+    }
+    @media print {
+      max-height: none;
+      code {
+        white-space: pre-wrap;
+      }
+    }
 
     code {
         border: 0;
@@ -248,6 +279,9 @@ div.highlight[title]:before {
   text-align: center;
   display: block;
   border: 3px ridge darken($primary-color, 33%);
+  @media print {
+    border: 1px solid $aluminum !important; // from _type > @print > pre
+  }
   background-color: scale-color($header-font-color, $lightness: -90%);
   color: $header-font-color;
   border-bottom: none;
@@ -256,7 +290,9 @@ div.highlight[title]:before {
 code, var {
     //box-shadow: 0 0 1px 1px $primary-color;
     //background: darken($primary-color, 35%);
-    border: 1px ridge darken($primary-color, 10%);
+    @media not print {
+      border: 1px ridge darken($primary-color, 10%);
+    }
     padding: 3px;
     font-style: normal;
     font-size: rem-calc(14);

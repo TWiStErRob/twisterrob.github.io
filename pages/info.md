@@ -13,7 +13,7 @@ header:
 ## Me
 
 {% comment %} Including the two pictures is a hack, because there's no way use the Foundation Grid (needs a container with row) {% endcomment %}
-![picture of me]({{ site.urlimg }}me.jpg){: .left .show-for-large-up width="200"}
+![picture of me]({{ site.urlimg }}me.jpg){: .left .show-for-large-up .hide-for-print width="200"}
 ![picture of me]({{ site.urlimg }}me.jpg){: .center .hide-for-large-up width="250"}
 Hi, my name is *Róbert&nbsp;Sándor&nbsp;Papp*, mostly known as *TWiStErRob* online and *Robi* among my friends and collegaues. I was born and raised in *Hungary*, then fled to *London*.
 

@@ -90,6 +90,10 @@ ul#markdown-toc {
     @include alert-style($todo-color);
     text-shadow: none;
   }
+
+  @media print {
+    border: 3px solid $aluminum !important;
+  }
 }
 
 
