@@ -193,7 +193,7 @@ defaults:
       show_meta:
         info: true
         sharer: true
-        navigation: true
+        navigation: 'snippets/lateral_navigation_blog.html'
         comments: true
       # sidebar:        # Possible values › left, right › by default there will be no sidebar
       #author: twisterrob # disable for now, I'm the only one
@@ -221,6 +221,7 @@ defaults:
       breadcrumbs: true
       show_meta:
         sharer: true
+        navigation: 'snippets/lateral_navigation_job.html'
   -
     scope:
       path: blog/category/

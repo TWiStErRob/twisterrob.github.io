@@ -101,14 +101,18 @@ ul#markdown-toc {
 /* Button
 ------------------------------------------------------------------- */
 
-button, .button         { letter-spacing: 1px; }
-  button.grey, .button.grey { background: $grey-10; }
-  button.grey:hover,
-  button.grey:focus,
-  .button.grey:hover,
-  .button.grey:focus      { background-color: $grey-16; }
-
-
+button, .button {
+  letter-spacing: 1px;
+  &.grey {
+    background: $grey-10;
+    &:hover, &:focus {
+      background-color: $grey-16;
+    }
+  }
+  &.prev, &.next {
+    width: 100%;
+  }
+}
 
 /* Side-Nav
 ------------------------------------------------------------------- */

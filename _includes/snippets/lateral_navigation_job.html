@@ -1,0 +1,19 @@
+{% assign prevJob = nil %}
+{% assign prevJobFound = false %}
+{% assign nextJob = nil %}
+{% assign nextJobFound = false %}
+{% for job in site.jobs %}
+	{% if nextJobFound == true %}
+		{% assign nextJob = job %}
+		{% break %}
+	{% endif %}
+	{% if page == job %}
+		{% assign prevJobFound = true %}
+		{% assign nextJobFound = true %}
+	{% endif %}
+	{% if prevJobFound == false %}
+		{% assign prevJob = job %}
+	{% endif %}
+{% endfor %}
+
+{% include lateral_navigation.html previous=prevJob next=nextJob up_url="/work/" up_title="All Work" %}

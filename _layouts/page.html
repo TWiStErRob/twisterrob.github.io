@@ -47,7 +47,7 @@ format: page
 				{% include sharer.html %}
 				{% endif %}
 				{% if page.show_meta.navigation %}
-				{% include lateral_navigation.html previous=page.previous next=page.next up_url="/blog/archive/" up_title=site.data.language.archive %}
+				{% include {{page.show_meta.navigation}} %}
 				{% endif %}
 
 				{% if page.show_meta.comments %}
