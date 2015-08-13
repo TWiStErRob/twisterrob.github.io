@@ -1,3 +1,5 @@
+# gradle build
+
 #http://jekyllrb.com/docs/configuration/
 
 # ASCII-Font › http://patorjk.com/software/taag/#p=display&f=Slant&t=Phlow
@@ -69,25 +71,40 @@ paginate_path: "blog/page:num"
 # This means that ```java will not work because it requires https://github.com/mvdbos/kramdown-with-pygments
 safe: true
 
-exclude: []
+# Include/Exclude these files from production _site
 include: ['.htaccess']
 
-# Exclude these files from your production _site
+# . files and folders are excluded by default,
+# but --watch and serve are regenerating if they're not explicitly excluded.
+# See > https://github.com/jekyll/jekyll/issues/3913
 exclude:
-    - Gemfile
-    - Gemfile.lock
-    - CNAME
-    - README.md
-    - '*.bat'
-    - '*.zip'
-    - '*.ipr'
-    - '*.iws'
-    - '*.iml'
-    - sources
-    - .fast-dev
-    - .sass-cache
-    - .svn
-    - .git
+  # GitHub
+  - .git
+  - .gitignore
+  - CNAME
+  - README.md
+  # Build Artifacts and byproducts
+  - .sass-cache
+  - .gradle
+  - _site
+  # Build Scripts and Dependencies
+  - build.gradle
+  - Gemfile
+  - Gemfile.lock
+  # _config*.yml doesn't work
+  - _config_local.yml
+  - _config_dev.yml
+  # Projects Files
+  - '*.ipr'
+  - '*.iws'
+  - '*.iml'
+  - .classpath
+  - .project
+  - '*.sublime-project'
+  # Random stuff
+  - sources
+  - .svn
+  - .git
 
 #       ______                                _           
 #      / ____/___  ____ _   _____  __________(_)___  ____ 

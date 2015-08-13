@@ -2,20 +2,20 @@
 # This config-file is only for development.
 # It helps to give a faster turnaround on local development as well as turning off code compation to be easier to debug.
 #
-# See dev.bat
-
-port: 4001
+# gradle serve dev OR gradle fastDev[Style]
 
 # Make sure the site is ready to be served in a subfolder with a simple config change
 baseurl: '/dev'
 
-url: 'http://localhost:4001'
+url: 'http://localhost:4000'
 urlimg: '/dev/images/'
 
 # Need to be unsafe for {{ var | debug }} plugin
 safe: false
 
 skip_boilerplate: true
+show_drafts: true
+unpublished: true
 
 sass:
   # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
