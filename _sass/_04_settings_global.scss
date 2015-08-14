@@ -1370,10 +1370,14 @@ $table-head-bg: $grey-2;
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // $include-html-top-bar-classes: $include-html-classes;
+$topbar-dropdown-bg: $ci-6; // Background Mobile Navigation
+$topbar-dropdown-link-color: #000;
+$topbar-dropdown-link-bg: $secondary-color;
+
 
 // Background color for the top bar
-$topbar-bg-color: #fff;
-$topbar-bg: $topbar-bg-color;
+$topbar-bg-color: $secondary-color;
+// $topbar-bg: $topbar-bg-color;
 
 // Height and margin
 $topbar-height: rem-calc(50);
@@ -1387,24 +1391,26 @@ $topbar-title-font-size: rem-calc(19);
 // $topbar-dropdown-bg: $oil;
 // $topbar-dropdown-link-color: $white;
 // $topbar-dropdown-link-bg: $ci-2;
+$topbar-dropdown-link-bg-hover: #fff;
 // $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;
-// $topbar-dropdown-toggle-color: $ci-2;
+$topbar-dropdown-toggle-color: $primary-color;
 // $topbar-dropdown-toggle-alpha: 0.4;
+$topbar-dropdown-toggle-color: darken($secondary-color, 20%);
 
 // Set the link colors and styles for top-level nav
-// $topbar-link-color: #000;
-// $topbar-link-color-hover: #000;
-// $topbar-link-color-active: #000;
-// $topbar-link-color-active-hover: #000;
+$topbar-link-color: #000;
+$topbar-link-color-hover: #000;
+$topbar-link-color-active: #000;
+$topbar-link-color-active-hover: #000;
 // $topbar-link-weight: $font-weight-normal;
 $topbar-link-font-size: rem-calc(15);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
 // $topbar-link-bg: $topbar-bg;
 // $topbar-link-bg-color-hover: #ff0;
-// $topbar-link-bg-hover: #f00;
-// $topbar-link-bg-active: $primary-color;
-// $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
+$topbar-link-bg-hover: #fff;
+$topbar-link-bg-active: $primary-color;
+$topbar-link-bg-active-hover: #fff;
 // $topbar-link-font-family: $body-font-family;
 $topbar-link-text-transform: uppercase;
 // $topbar-link-padding: $topbar-height / 3;
@@ -1414,18 +1420,19 @@ $topbar-link-text-transform: uppercase;
 // $topbar-button-font-size: 0.75rem;
 // $topbar-button-top: 7px;
 
-// $topbar-dropdown-label-color: #f77;
+$topbar-dropdown-label-color: $ci-2;
 // $topbar-dropdown-label-text-transform: uppercase;
 // $topbar-dropdown-label-font-weight: $font-weight-bold;
 // $topbar-dropdown-label-font-size: rem-calc(10);
 // $topbar-dropdown-label-bg: $oil;
 
 // Top menu icon styles
+
 $topbar-menu-link-transform: uppercase;
 // $topbar-menu-link-font-size: rem-calc(13);
 // $topbar-menu-link-weight: $font-weight-bold;
-// $topbar-menu-link-color: $white;
-// $topbar-menu-icon-color: $white;
+$topbar-menu-link-color: #000;
+$topbar-menu-icon-color: #000;
 // $topbar-menu-link-color-toggled: $ci-6;
 // $topbar-menu-icon-color-toggled: $ci-6;
 
