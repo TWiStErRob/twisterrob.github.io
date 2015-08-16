@@ -5,8 +5,9 @@
   url: /
   side: left
 
-- title: Work XP
+- title: Work
   icon: lab-flask
+  url: /work/
   side: left
   dropdown:
   - title: CV (PDF)
@@ -28,7 +29,7 @@
   - title: Other Sites (old)
     icon: browser
     dropdown:
-    - title: Old Homepage (2005-2007)
+    - title: Old Homepage (2005–2007)
       url: http://twisterrob.uw.hu/mypage
     - title: LESS Attractive! (2012)
       url: http://twisterrob.net/dev/less
@@ -40,7 +41,7 @@
       url: http://twisterrob.net/italian
     - title: Regex Sandbox
       url: http://regex.twisterrob.net
-    - title: Old Website (2005-2007)
+    - title: Old Website (2005–2007)
       url: http://twisterrob.uw.hu
 
 - title: Blog

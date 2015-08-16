@@ -1,5 +1,5 @@
 ---
-title: "Project Name"
+title: "Project Name"
 subheadline: "Short, catcy phrase"
 teaser: "Describe in a sentence what it does."
 images:

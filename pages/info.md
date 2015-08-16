@@ -17,7 +17,7 @@ header:
 ![picture of me]({{ site.urlimg }}me.jpg){: .center .hide-for-large-up width="250"}
 Hi, my name is *Róbert&nbsp;Sándor&nbsp;Papp*, mostly known as *TWiStErRob* online and *Robi* among my friends and collegaues. I was born and raised in *Hungary*, then fled to *London*.
 
-I'm an experienced senior&nbsp;software&nbsp;engineer with a masters degree from the University&nbsp;of Szeged&nbsp;(Hungary). I'm efficient, fast, perfectionist and I pay excessive attention to details when it comes to my work.
+I'm an experienced senior&nbsp;software&nbsp;engineer with a masters degree from the University&nbsp;of Szeged&nbsp;(Hungary). I'm efficient, fast, a perfectionist and I pay excessive attention to details when it comes to my work.
 {: .clearfix}
 
 

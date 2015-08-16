@@ -1,5 +1,5 @@
 ---
-title: MSc&nbsp;degree in Software&nbsp;Engineering
+title: MSc degree in Software Engineering
 type: Education
 jobtitle: graduate student
 maintech: Software Engineering

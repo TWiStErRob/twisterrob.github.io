@@ -1,5 +1,5 @@
 ---
-title: EPAM &mdash; Bank
+title: EPAM — Bank
 type: Company
 jobtitle: software development engineer
 maintech: Java EE

@@ -1,5 +1,5 @@
 ---
-title: "Google&nbsp;Calendar Printer"
+title: "Google Calendar Printer"
 subheadline: "Lean, compact layout"
 teaser: "Prints your chosen calendar with picked range and time zone."
 images:

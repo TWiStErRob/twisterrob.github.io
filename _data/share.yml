@@ -25,3 +25,8 @@ facebook:
   color: '#3B5998'
   title: "Share on Facebook"
   link: 'https://www.facebook.com/sharer/sharer.php?u=<link>'
+#linkedin:
+#  name: "LinkedIn"
+#  color: '#0077B5'
+#  title: "Share on LinkedIn"
+#  link: 'http://www.linkedin.com/shareArticle?mini=true&url=<link>'

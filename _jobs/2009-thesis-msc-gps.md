@@ -1,5 +1,5 @@
 ---
-title: GPS&nbsp;Track&nbsp;Analyzer
+title: GPS Track Analyzer
 type: Thesis
 jobtitle: graduate student
 maintech: WPF.NET

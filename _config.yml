@@ -197,7 +197,7 @@ defaults:
   -
     scope:
       type: pages
-      path: ""
+      path: ''
     values:
       # sidebar:        # Possible values › left, right › by default there will be no sidebar
       show_meta:
@@ -205,7 +205,7 @@ defaults:
   -
     scope:
       type: posts
-      path: ""        
+      path: ''
     values:
       show_meta:
         info: true
@@ -217,9 +217,10 @@ defaults:
   -
     scope:
       type: projects
-      path: ""
+      path: ''
     values:
       layout: project
+      title_suffix: "a project by Róbert Papp (TWiStErRob)"
       published: true
       breadcrumbs: true
       images:
@@ -232,20 +233,22 @@ defaults:
   -
     scope:
       type: jobs
-      path: ""
+      path: ''
     values:
       layout: job
+      title_suffix: "a former workplace of Róbert Papp"
       breadcrumbs: true
       show_meta:
         sharer: true
         navigation: 'snippets/lateral_navigation_job.html'
   -
     scope:
-      path: blog/category/
+      path: 'blog/category'
     values:
       #permalink: /blog/:category/ # will be available in 3.0, see https://github.com/jekyll/jekyll/pull/3320
+      layout: blog_by_category
       breadcrumbs: true
-      title: Category Details
+      title_suffix: "category details"
       show_meta:
         sharer: true
         comments: true

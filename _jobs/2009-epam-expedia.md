@@ -1,5 +1,5 @@
 ---
-title: EPAM &mdash; Expedia
+title: EPAM — Expedia
 type: Company
 jobtitle: software development engineer
 maintech: Java, C++ and .NET

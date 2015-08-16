@@ -1,6 +1,6 @@
 ---
 permalink: /work/
-title: "Róbert Papp's work experience"
+title: "Róbert Papp's work experience"
 breadcrumbs: true
 ---
 <span class="icon-install"></span> Download my [CV]({{ site.data.links.cv-view }}){:target="_blank"} as a [PDF]({{ site.data.links.cv-download }}).  
@@ -13,7 +13,7 @@ I'm also developing applications at home, to ease the pain of repetitive tasks a
 	<h2 class="timeline-date">The Future</h2>
 	{% assign lastYear = 0 %}
 	{% for job in site.jobs reversed %}{% unless job.hidden %}
-		<a href="{{ site.baseurl }}{{ job.url }}" title="{{ job.type }}: {{ job.jobtitle }} in {{ job.maintech }}">
+		<a href="{{ site.baseurl }}{{ job.url }}" title="Click for more details">
 		<article class="timeline-box {% if job.type == 'Company' %}left{% else %}right{% endif %}">
 			<h3>{{ job.title }}</h3>
 			<span class="icon-calendar">

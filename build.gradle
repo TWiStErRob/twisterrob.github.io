@@ -146,6 +146,7 @@ task noskip(type: JekyllSetup) {
 task skip(type: JekyllSetup) {
 	description = "Add --skip-initial-build to serve command (default is ${build.skip? "added" : "removed"})";
 	action = { it.skip = true }
+	noskip.mustRunAfter skip
 }
 task notrace(type: JekyllSetup) {
 	description = "Remove --trace argument from jekyll (default is ${build.trace? "added" : "removed"})";
@@ -154,6 +155,7 @@ task notrace(type: JekyllSetup) {
 task trace(type: JekyllSetup) {
 	description = "Add --trace argument to jekyll (default is ${build.trace? "added" : "removed"})";
 	action = { it.trace = true }
+	notrace.mustRunAfter trace
 }
 task noverbose(type: JekyllSetup) {
 	description = "Remove --trace argument from jekyll (default is ${build.verbose? "added" : "removed"})";
@@ -162,6 +164,7 @@ task noverbose(type: JekyllSetup) {
 task verbose(type: JekyllSetup) {
 	description = "Add --trace argument to jekyll (default is ${build.verbose? "added" : "removed"})";
 	action = { it.verbose = true }
+	noverbose.mustRunAfter verbose
 }
 
 class JekyllSetup extends DefaultTask {

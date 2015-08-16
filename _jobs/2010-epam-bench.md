@@ -1,5 +1,5 @@
 ---
-title: EPAM &mdash; Bench
+title: EPAM — Bench
 type: Company
 jobtitle: software development engineer
 maintech: Java, .NET, PHP

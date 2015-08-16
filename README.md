@@ -27,7 +27,7 @@ In case of `SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B
 ## Run
 
 ```bash
-windows$ cls && dev noskip
+windows$ gradle serve dev noskip
 ```
 
 ## Usage
@@ -40,5 +40,5 @@ website$ bundle update
 Check if site build successfully before each commit
 
 ```bash
-webiste$ cls && clean && local noskip
+webiste$ gradle preCommitServe local
 ```
