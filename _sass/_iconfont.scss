@@ -26,6 +26,7 @@
 .icon-archive:before,
 .icon-back-in-time:before,
 .icon-blackboard:before,
+.icon-browser:before,
 .icon-calendar:before,
 .icon-chevron-down:before,
 .icon-chevron-left:before,
@@ -71,63 +72,65 @@
 .icon-archive:before { content: "\f100"; }
 .icon-back-in-time:before { content: "\f101"; }
 .icon-blackboard:before { content: "\f102"; }
-.icon-calendar:before { content: "\f103"; }
-.icon-chevron-down:before { content: "\f104"; }
-.icon-chevron-left:before { content: "\f105"; }
-.icon-chevron-right:before { content: "\f106"; }
-.icon-chevron-up:before { content: "\f107"; }
-.icon-edit:before { content: "\f108"; }
-.icon-export:before { content: "\f109"; }
-.icon-facebook:before { content: "\f10a"; }
-.icon-github:before { content: "\f10b"; }
-.icon-google-play:before { content: "\f10c"; }
-.icon-google-plus:before { content: "\f10d"; }
-.icon-graduation-cap:before { content: "\f10e"; }
-.icon-home:before { content: "\f10f"; }
-.icon-install:before { content: "\f110"; }
-.icon-lab-flask:before { content: "\f111"; }
-.icon-linkedin:before { content: "\f112"; }
-.icon-magnifying-glass:before { content: "\f113"; }
-.icon-mail:before { content: "\f114"; }
-.icon-open-book:before { content: "\f115"; }
-.icon-paypal:before { content: "\f116"; }
-.icon-price-tag:before { content: "\f117"; }
-.icon-rss:before { content: "\f118"; }
-.icon-skype:before { content: "\f119"; }
-.icon-tree:before { content: "\f11a"; }
-.icon-trophy:before { content: "\f11b"; }
-.icon-twitter:before { content: "\f11c"; }
-.icon-v-card:before { content: "\f11d"; }
-.icon-youtube:before { content: "\f11e"; }
+.icon-browser:before { content: "\f103"; }
+.icon-calendar:before { content: "\f104"; }
+.icon-chevron-down:before { content: "\f105"; }
+.icon-chevron-left:before { content: "\f106"; }
+.icon-chevron-right:before { content: "\f107"; }
+.icon-chevron-up:before { content: "\f108"; }
+.icon-edit:before { content: "\f109"; }
+.icon-export:before { content: "\f10a"; }
+.icon-facebook:before { content: "\f10b"; }
+.icon-github:before { content: "\f10c"; }
+.icon-google-play:before { content: "\f10d"; }
+.icon-google-plus:before { content: "\f10e"; }
+.icon-graduation-cap:before { content: "\f10f"; }
+.icon-home:before { content: "\f110"; }
+.icon-install:before { content: "\f111"; }
+.icon-lab-flask:before { content: "\f112"; }
+.icon-linkedin:before { content: "\f113"; }
+.icon-magnifying-glass:before { content: "\f114"; }
+.icon-mail:before { content: "\f115"; }
+.icon-open-book:before { content: "\f116"; }
+.icon-paypal:before { content: "\f117"; }
+.icon-price-tag:before { content: "\f118"; }
+.icon-rss:before { content: "\f119"; }
+.icon-skype:before { content: "\f11a"; }
+.icon-tree:before { content: "\f11b"; }
+.icon-trophy:before { content: "\f11c"; }
+.icon-twitter:before { content: "\f11d"; }
+.icon-v-card:before { content: "\f11e"; }
+.icon-youtube:before { content: "\f11f"; }
 
 $font-iconfont-archive: "\f100";
 $font-iconfont-back-in-time: "\f101";
 $font-iconfont-blackboard: "\f102";
-$font-iconfont-calendar: "\f103";
-$font-iconfont-chevron-down: "\f104";
-$font-iconfont-chevron-left: "\f105";
-$font-iconfont-chevron-right: "\f106";
-$font-iconfont-chevron-up: "\f107";
-$font-iconfont-edit: "\f108";
-$font-iconfont-export: "\f109";
-$font-iconfont-facebook: "\f10a";
-$font-iconfont-github: "\f10b";
-$font-iconfont-google-play: "\f10c";
-$font-iconfont-google-plus: "\f10d";
-$font-iconfont-graduation-cap: "\f10e";
-$font-iconfont-home: "\f10f";
-$font-iconfont-install: "\f110";
-$font-iconfont-lab-flask: "\f111";
-$font-iconfont-linkedin: "\f112";
-$font-iconfont-magnifying-glass: "\f113";
-$font-iconfont-mail: "\f114";
-$font-iconfont-open-book: "\f115";
-$font-iconfont-paypal: "\f116";
-$font-iconfont-price-tag: "\f117";
-$font-iconfont-rss: "\f118";
-$font-iconfont-skype: "\f119";
-$font-iconfont-tree: "\f11a";
-$font-iconfont-trophy: "\f11b";
-$font-iconfont-twitter: "\f11c";
-$font-iconfont-v-card: "\f11d";
-$font-iconfont-youtube: "\f11e";
+$font-iconfont-browser: "\f103";
+$font-iconfont-calendar: "\f104";
+$font-iconfont-chevron-down: "\f105";
+$font-iconfont-chevron-left: "\f106";
+$font-iconfont-chevron-right: "\f107";
+$font-iconfont-chevron-up: "\f108";
+$font-iconfont-edit: "\f109";
+$font-iconfont-export: "\f10a";
+$font-iconfont-facebook: "\f10b";
+$font-iconfont-github: "\f10c";
+$font-iconfont-google-play: "\f10d";
+$font-iconfont-google-plus: "\f10e";
+$font-iconfont-graduation-cap: "\f10f";
+$font-iconfont-home: "\f110";
+$font-iconfont-install: "\f111";
+$font-iconfont-lab-flask: "\f112";
+$font-iconfont-linkedin: "\f113";
+$font-iconfont-magnifying-glass: "\f114";
+$font-iconfont-mail: "\f115";
+$font-iconfont-open-book: "\f116";
+$font-iconfont-paypal: "\f117";
+$font-iconfont-price-tag: "\f118";
+$font-iconfont-rss: "\f119";
+$font-iconfont-skype: "\f11a";
+$font-iconfont-tree: "\f11b";
+$font-iconfont-trophy: "\f11c";
+$font-iconfont-twitter: "\f11d";
+$font-iconfont-v-card: "\f11e";
+$font-iconfont-youtube: "\f11f";

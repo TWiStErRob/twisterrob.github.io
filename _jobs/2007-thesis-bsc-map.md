@@ -1,5 +1,5 @@
 ---
-title: Map&nbsp;Application for mobile
+title: Map Application for mobile
 type: Thesis
 jobtitle: undergraduate student
 maintech: Java ME

@@ -90,6 +90,10 @@ ul#markdown-toc {
     @include alert-style($todo-color);
     text-shadow: none;
   }
+
+  @media print {
+    border: 3px solid $aluminum !important;
+  }
 }
 
 
@@ -97,14 +101,18 @@ ul#markdown-toc {
 /* Button
 ------------------------------------------------------------------- */
 
-button, .button         { letter-spacing: 1px; }
-  button.grey, .button.grey { background: $grey-10; }
-  button.grey:hover,
-  button.grey:focus,
-  .button.grey:hover,
-  .button.grey:focus      { background-color: $grey-16; }
-
-
+button, .button {
+  letter-spacing: 1px;
+  &.grey {
+    background: $grey-10;
+    &:hover, &:focus {
+      background-color: $grey-16;
+    }
+  }
+  &.prev, &.next {
+    width: 100%;
+  }
+}
 
 /* Side-Nav
 ------------------------------------------------------------------- */
@@ -154,21 +162,18 @@ img.lazy {
 /* IDs
 ------------------------------------------------------------------- */
 .showId[id]:hover:after,
-h1[id]:hover:after,
-h2[id]:hover:after,
-h3[id]:hover:after,
-h4[id]:hover:after,
-h5[id]:hover:after,
-h6[id]:hover:after,
-.env-development *[id]:not(#up-to-top):not(.row):hover:after {
+h1[id]:not(.noShowId):hover:after,
+h2[id]:not(.noShowId):hover:after,
+h3[id]:not(.noShowId):hover:after,
+h4[id]:not(.noShowId):hover:after,
+h5[id]:not(.noShowId):hover:after,
+h6[id]:not(.noShowId):hover:after,
+.env-development *[id]:not(.noShowId):not(.row):hover:after {
   color: Gray;
   content: '#' attr(id);
   margin-left: 1em;
   font-weight: normal;
   position: absolute;
-}
-.noShowId[id]:hover:after {
-  content: '';
 }
 
 *:target:not([id^='fn:']):not([id^='fnref:']) {

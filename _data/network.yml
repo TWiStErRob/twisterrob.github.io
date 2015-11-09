@@ -1,6 +1,6 @@
 - menu_name: "Thanks"
 
-- name: "Icons by Daniel Bruce"
+- name: "Icons by Daniel Bruce"
   url: "http://entypo.com/"
   title: "Entypo+ — carefully crafted premium pictograms"
 
@@ -8,6 +8,6 @@
   url: "http://foundation.zurb.com/"
   title: "The most advanced responsive front-end framework in the world."
 
-- name: "Using Backstretch by Scott Robbin"
+- name: "Using Backstretch by Scott Robbin"
   url: "http://srobbin.com/jquery-plugins/backstretch/"
   title: "A dynamic background helper plugin"

@@ -1,10 +1,10 @@
 <div id="up-to-top" class="row">
 	<div class="small-12 columns">
 		<a href="#top-of-page">{{ site.data.language.go_top }}</a>
-	</div><!-- /.small-12.columns -->
-</div><!-- /.row -->
+	</div>
+</div>
 
-<footer id="footer-content" class="bg-grau">
+<footer id="footer-content">
 	<div id="footer">
 		<div class="row">
 			<div class="medium-6 large-5 columns">
@@ -15,7 +15,7 @@
 					<br />
 					<a href="{{ site.baseurl }}/info/">{{ site.data.language.more }}</a>
 				</p>
-			</div><!-- /.large-6.columns -->
+			</div>
 
 
 			<div class="small-6 medium-3 large-3 large-offset-1 columns">
@@ -33,7 +33,7 @@
 					</li>
 				{% endfor %}
 				</ul>
-			</div><!-- /.large-4.columns -->
+			</div>
 
 
 			<div class="small-6 medium-3 large-3 columns">
@@ -51,8 +51,8 @@
 					</li>
 				{% endfor %}
 				</ul>
-			</div><!-- /.large-3.columns -->
-		</div><!-- /.row -->
+			</div>
+		</div>
 
 	</div><!-- /#footer -->
 
@@ -71,7 +71,12 @@
 			<section id="subfooter-right" class="small-12 medium-6 columns social-icons">
 				<ul class="inline-list">
 				{% for social_item in site.data.socialmedia %}
-					<li><a href="{{ social_item.url }}" target="_blank" class="{{ social_item.class }}" title="{{ social_item.title }}">{{ social_item.name }}</a></li>
+					<li><a
+						href="{{ social_item.url }}"
+						{% unless social_item.samewindow %} target="_blank"{% endunless %}
+						class="{{ social_item.class }}"
+						title="{{ social_item.title }}"
+					>{{ social_item.name }}</a></li>
 				{% endfor %}
 				</ul>
 			</section>

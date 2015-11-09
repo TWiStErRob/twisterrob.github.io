@@ -4,37 +4,21 @@
       <li class="name">
       <h1 class="show-for-small-only"><a href="{{ site.baseurl }}/" class="icon-tree"> {{ site.title }}</a></h1>
     </li>
-       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Navigation" to just have icon alone -->
       <li class="toggle-topbar menu-icon"><a href="#"><span>Navigation</span></a></li>
     </ul>
     <section class="top-bar-section">
-      {% comment %}
-          ____  _       __    __     _   __            _             __  _           
-         / __ \(_)___ _/ /_  / /_   / | / /___ __   __(_)___ _____ _/ /_(_)___  ____ 
-        / /_/ / / __ `/ __ \/ __/  /  |/ / __ `/ | / / / __ `/ __ `/ __/ / __ \/ __ \
-       / _, _/ / /_/ / / / / /_   / /|  / /_/ /| |/ / / /_/ / /_/ / /_/ / /_/ / / / /
-      /_/ |_/_/\__, /_/ /_/\__/  /_/ |_/\__,_/ |___/_/\__, /\__,_/\__/_/\____/_/ /_/ 
-              /____/                                 /____/                          
-      {% endcomment %}
-      <ul class="right">
+      <ul class="left">
         {% for link in site.data.navigation %}
-          {% if link.side == 'right' %}
+          {% if link.side == 'left' %}
             {% include navigation_link.html link=link %}
           {% endif %}
         {% endfor %}
       </ul>
 
-      {% comment %}
-          __         ______     _   __            _             __  _           
-         / /   ___  / __/ /_   / | / /___ __   __(_)___ _____ _/ /_(_)___  ____ 
-        / /   / _ \/ /_/ __/  /  |/ / __ `/ | / / / __ `/ __ `/ __/ / __ \/ __ \
-       / /___/  __/ __/ /_   / /|  / /_/ /| |/ / / /_/ / /_/ / /_/ / /_/ / / / /
-      /_____/\___/_/  \__/  /_/ |_/\__,_/ |___/_/\__, /\__,_/\__/_/\____/_/ /_/ 
-                                                /____/                          
-      {% endcomment %}
-      <ul class="left">
+      <ul class="right">
         {% for link in site.data.navigation %}
-          {% if link.side == 'left' %}
+          {% if link.side == 'right' %}
             {% include navigation_link.html link=link %}
           {% endif %}
         {% endfor %}

@@ -1,3 +1,5 @@
+# gradle build
+
 #http://jekyllrb.com/docs/configuration/
 
 # ASCII-Font › http://patorjk.com/software/taag/#p=display&f=Slant&t=Phlow
@@ -69,21 +71,40 @@ paginate_path: "blog/page:num"
 # This means that ```java will not work because it requires https://github.com/mvdbos/kramdown-with-pygments
 safe: true
 
-exclude: []
+# Include/Exclude these files from production _site
 include: ['.htaccess']
 
-# Exclude these files from your production _site
+# . files and folders are excluded by default,
+# but --watch and serve are regenerating if they're not explicitly excluded.
+# See > https://github.com/jekyll/jekyll/issues/3913
 exclude:
-    - Gemfile
-    - Gemfile.lock
-    - LICENSE
-    - README.md
-    - INSTALL.md
-    - "*.bat"
-    - "*.zip"
-    - sources
-    - .fast-dev
-    - .sass-cache
+  # GitHub
+  - .git
+  - .gitignore
+  - CNAME
+  - README.md
+  # Build Artifacts and byproducts
+  - .sass-cache
+  - .gradle
+  - _site
+  # Build Scripts and Dependencies
+  - build.gradle
+  - Gemfile
+  - Gemfile.lock
+  # _config*.yml doesn't work
+  - _config_local.yml
+  - _config_dev.yml
+  # Projects Files
+  - '*.ipr'
+  - '*.iws'
+  - '*.iml'
+  - .classpath
+  - .project
+  - '*.sublime-project'
+  # Random stuff
+  - sources
+  - .svn
+  - .git
 
 #       ______                                _           
 #      / ____/___  ____ _   _____  __________(_)___  ____ 
@@ -176,45 +197,61 @@ defaults:
   -
     scope:
       type: pages
-      path: ""
+      path: ''
     values:
-      show_meta: false
       # sidebar:        # Possible values › left, right › by default there will be no sidebar
-      comments: false
+      show_meta:
+        sharer: true
   -
     scope:
       type: posts
-      path: ""        
+      path: ''
     values:
-      show_meta: true
+      show_meta:
+        info: true
+        sharer: true
+        navigation: 'snippets/lateral_navigation_blog.html'
+        comments: true
       # sidebar:        # Possible values › left, right › by default there will be no sidebar
-      comments: true
       #author: twisterrob # disable for now, I'm the only one
   -
     scope:
       type: projects
-      path: ""
+      path: ''
     values:
       layout: project
+      title_suffix: "a project by Róbert Papp (TWiStErRob)"
+      published: true
       breadcrumbs: true
-      comments: true
       images:
-        icon: unknown-app-icon-512.png
-        icon_small: unknown-app-icon-512.png
+        icon: projects/unknown-app-icon-512.png
+        icon_small: projects/unknown-app-icon-512.png
+      show_meta:
+        info: true
+        sharer: true
+        comments: true
   -
     scope:
       type: jobs
-      path: ""
+      path: ''
     values:
       layout: job
+      title_suffix: "a former workplace of Róbert Papp"
       breadcrumbs: true
+      show_meta:
+        sharer: true
+        navigation: 'snippets/lateral_navigation_job.html'
   -
     scope:
-      path: blog/category/
+      path: 'blog/category'
     values:
       #permalink: /blog/:category/ # will be available in 3.0, see https://github.com/jekyll/jekyll/pull/3320
+      layout: blog_by_category
       breadcrumbs: true
-      title: Category Details
+      title_suffix: "category details"
+      show_meta:
+        sharer: true
+        comments: true
 
 
 #     _____ __________ 

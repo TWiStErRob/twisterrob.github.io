@@ -71,41 +71,6 @@ $body-font-color: 	$text-color;
 $body-bg: 			$grey-14;
 
 
-
-/* Topbar-Navigation
-------------------------------------------------------------------- */
-
-$topbar-bg-color: #fff;
-
-$topbar-dropdown-toggle-color: $primary-color;
-
-$topbar-link-color: #000;
-$topbar-link-color-hover: #000;
-$topbar-link-color-active: #000;
-$topbar-link-color-active-hover: #000;
-
-$topbar-dropdown-label-color: $ci-2;
-$topbar-dropdown-link-bg-hover: $primary-color;
-$topbar-dropdown-toggle-color: darken($secondary-color, 20%);
-
-$topbar-link-bg-active: $warning-color; // Active Navigation Link
-$topbar-link-bg-hover: $primary-color;
-$topbar-link-bg-active-hover: $warning-color;
-
-
-$topbar-dropdown-bg: $ci-6; // Background Mobile Navigation
-$topbar-dropdown-link-color: #000;
-$topbar-dropdown-link-bg: $secondary-color;
-
-$topbar-menu-link-color-toggled: $ci-1;
-$topbar-menu-icon-color-toggled: $ci-1;
-$topbar-menu-link-color: #000;
-$topbar-menu-icon-color: #000;
-$topbar-menu-link-color-toggled: $ci-6;
-$topbar-menu-icon-color-toggled: $ci-6;
-
-
-
 /* Footer
 ------------------------------------------------------------------- */
 
@@ -117,7 +82,6 @@ $footer-header-color: $secondary-color;
 $subfooter-bg: $grey-12;
 $subfooter-color: $grey-6;
 $subfooter-link-color: $grey-6;
-
 
 
 /* Code

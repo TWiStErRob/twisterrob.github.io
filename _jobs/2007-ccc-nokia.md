@@ -1,5 +1,5 @@
 ---
-title: CCC &mdash; Nokia
+title: CCC — Nokia
 type: Company
 jobtitle: software development engineer in Java, manual and automated tester
 maintech: Java, Swing

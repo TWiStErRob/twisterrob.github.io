@@ -1,7 +1,7 @@
-<div id="page-meta" class="t30">
+{% assign author = site.data.authors[page.author] %}
+{% if author or page.date or page.categories or page.tags %}
+<div id="page-meta">
 	<p>
-		{% comment %}Look up the author details up from the site config and output author details if exists.{% endcomment %}
-		{% assign author = site.data.authors[page.author] %}
 		{% if author %}
 			<span itemprop="author" itemscope itemtype="http://schema.org/Person">
 				<a href="{{ author.url }}" itemprop="name" class="icon-edit" target="_blank">{{ author.name }}</a>
@@ -9,19 +9,24 @@
 		{% endif %}
 
 		{% if page.date %}
-			<time class="icon-alias-archive" datetime="{{ page.date | date: "%Y-%m-%d" }}" itemprop="datePublished">{{ page.date | date: "%Y-%m-%d" }}</time>
+			<a href="{{ site.baseurl }}/blog/archive/#{{ page.date | date: "%Y-%m" }}">
+				<time class="icon-alias-archive" datetime="{{ page.date | date: "%Y-%m-%d" }}" itemprop="datePublished">{{ page.date | date: "%Y-%m-%d" }}</time>
+			</a>
 		{% endif %}
 
 		{% if page.categories %}
 			<span class="icon-alias-category">{% include page_categories.html categories=page.categories %}</span>
 		{% endif %}
 
-		<span class="meta-tags">
-			{% for tag in page.tags %}
-				{% capture tag_url %}{{ site.baseurl }}/blog/tags/#{{ tag | slugify }}{% endcapture %}
-				{% capture tag_name %}{% if site.data.tags[tag].title %}{{ site.data.tags[tag].title }}{% else %}{{ tag }}{% endif %}{% endcapture %}
-				<a href="{{ tag_url }}" class="icon-price-tag tag-{{ tag | slugify }}">{{ tag_name }}</a>
-			{% endfor %}
-		</span>
+		{% if page.tags %}
+			<span class="meta-tags">
+				{% for tag in page.tags %}
+					{% capture tag_url %}{{ site.baseurl }}/blog/tags/#{{ tag | slugify }}{% endcapture %}
+					{% capture tag_name %}{% if site.data.tags[tag].title %}{{ site.data.tags[tag].title }}{% else %}{{ tag }}{% endif %}{% endcapture %}
+					<a href="{{ tag_url }}" class="icon-price-tag tag-{{ tag | slugify }}">{{ tag_name }}</a>
+				{% endfor %}
+			</span>
+		{% endif %}
 	</p>
 </div>
+{% endif %}

@@ -1,5 +1,5 @@
 ---
-title: "Battle&nbsp;Camp: Trading&nbsp;Revamp"
+title: "Battle Camp: Trading Revamp"
 subheadline: "New level of trading"
 teaser: "Revamp for the quick and dirty trading interface PennyPop gave us."
 images:
@@ -13,7 +13,7 @@ images:
     - url: 'projects/bc-trade/bc-trade-after.jpg'
       title: 'After applying this script'
 urls:
-  download: http://twisterrob.net/dev/bc/bc-trade.user.js
+  download: https://drive.google.com/uc?id=0B5qTNPgq_ll5LUJ0LVVlQW9SN2M&export=download
 ---
 
 {% include toc.md %}

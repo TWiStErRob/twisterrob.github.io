@@ -25,3 +25,15 @@ You can reach me at {% include snippets/email.html address=email %} where you ca
 ## Social contacts
 
 You can also find me on various social sites, check them out at the [bottom of the page](#subfooter).
+
+## Options
+I should be online on most of the social services, if my Android phone has an internet connection, so I'll receive a notification about most of them.
+
+ * If you want to send me a message use the above form.
+ * If you want a reply supply your email address.
+ * If you want a live conversation, either:
+   * Go to my Google+ profile and click the little Hangout/Message button below my picture
+   * Go to my Facebook profile and send a message  
+     (sadly, [it'll go to my Other folder](https://www.facebook.com/help/398578543552207) so I won't necessarily notice it)
+   * Chat me up on Skype
+ * If I don't respond you can always send me an email requesting to be online on one of the above

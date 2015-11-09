@@ -1,5 +1,5 @@
 ---
-title: BSc&nbsp;degree in Software&nbsp;Engineering
+title: BSc degree in Software Engineering
 type: Education
 jobtitle: undergraduate student
 maintech: Software Engineering

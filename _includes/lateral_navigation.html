@@ -1,19 +1,19 @@
-<div id="post-nav" class="row">
-	<div class="small-5 columns text-left">
+<nav id="post-nav" class="row">
+	<div class="medium-5 columns text-left">
 		{% if include.previous.url %}
 			<a class="button small radius prev" href="{{ site.baseurl }}{{ include.previous.url }}">&laquo; {{ include.previous.title }}</a>
 		{%else%}
 			&nbsp;
 		{% endif %}
 	</div>
-	<div class="small-2 columns text-center">
-		<a class="radius button small" href="{{ site.baseurl }}{{ include.up_url }}">{{ include.up_title }}</a>
+	<div class="medium-2 columns text-center">
+		<a class="button small radius expand" href="{{ site.baseurl }}{{ include.up_url }}">{{ include.up_title }}</a>
 	</div>
-	<div class="small-5 columns text-right">
+	<div class="medium-5 columns text-right">
 		{% if include.next.url %}
 			<a class="button small radius next" href="{{ site.baseurl }}{{ include.next.url }}">{{ include.next.title }} &raquo;</a>
 		{%else%}
 			&nbsp;
 		{% endif %}
 	</div>
-</div>
+</nav>

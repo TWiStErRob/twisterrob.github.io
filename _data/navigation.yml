@@ -5,12 +5,12 @@
   url: /
   side: left
 
-- title: Work (CV)
+- title: Work
   icon: lab-flask
   url: /work/
   side: left
   dropdown:
-  - title: PDF
+  - title: CV (PDF)
     icon: graduation-cap
     url: site.data.links.cv-view
   - title: Past Jobs
@@ -24,7 +24,25 @@
   icon: install
   url: /project/
   side: left
-  dropdown: projects
+  dropdown:
+  - special: projects
+  - title: Other Sites (old)
+    icon: browser
+    dropdown:
+    - title: Old Homepage (2005–2007)
+      url: http://twisterrob.uw.hu/mypage
+    - title: LESS Attractive! (2012)
+      url: http://twisterrob.net/dev/less
+    - title: Reference Projects (2006)
+      url: http://twisterrob.net/ref
+    - title: Project Earthquake (2004)
+      url: http://twisterrob.uw.hu/peq/eng/index_eng.htm
+    - title: Learn Italian in Hungarian (2004)
+      url: http://twisterrob.net/italian
+    - title: Regex Sandbox
+      url: http://regex.twisterrob.net
+    - title: Old Website (2005–2007)
+      url: http://twisterrob.uw.hu
 
 - title: Blog
   icon: open-book
@@ -34,15 +52,18 @@
   - title: Categories
     icon: archive
     url: /blog/category/
-    dropdown: blog-categories
+    dropdown:
+    - special: blog-categories
   - title: Tags
     icon: price-tag
     url: /blog/tags/
-    dropdown: blog-tags
+    dropdown:
+    - special: blog-tags
   - title: Archive
     icon: back-in-time
     url: /blog/archive/
-    dropdown: blog-years
+    dropdown:
+    - special: blog-years
 #  - title: Notes
 #    icon: blackboard
 #    url: /blog/notes/

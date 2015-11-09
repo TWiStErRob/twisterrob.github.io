@@ -1,5 +1,5 @@
 ---
-title: OpenBet &mdash; Betfair
+title: OpenBet — Betfair
 type: Company
 jobtitle: software developer
 maintech: TCL, Informix, Linux

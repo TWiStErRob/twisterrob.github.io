@@ -12,6 +12,8 @@ urls:
   googleplay: net.twisterrob.inventory
 ---
 
+{% include alert alert='This app is not publicly released *yet*.' %}
+
 {% include toc.md %}
 
 ## Inception

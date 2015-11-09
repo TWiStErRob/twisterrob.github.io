@@ -9,7 +9,7 @@ source: "http://humanstxt.org/Standard.html"
 Name: {% if author.name %}{{ author.name }}{% else %}{{ site.author }}{% endif %}{% if author.siteroles %}
 Role: {{ author.siteroles }}{% endif %}{% if author.uri %}
 Site: {{ author.uri }}{% endif %}{% if author.twitter %}
-Twitter: {{ author.twitter }}{% endif %}
+Twitter: @{{ author.twitter }}{% endif %}
 {% endfor %}
 
 /* THANKS */

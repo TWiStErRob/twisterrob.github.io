@@ -26,28 +26,31 @@ format: page
 					{% if page.subheadline %}<p class="subheadline">{{ page.subheadline }}</p>{% endif %}
 					<h1>{{ page.title }}</h1>
 				</span>
+
+
+				{% if page.teaser %}
+				<p class="teaser" itemprop="description">
+					{{ page.teaser }}
+				</p>
+				{% endif %}
+				{% if page.show_meta.info %}
+				{% include meta_information.html %}
+				{% endif %}
 			</header>
 
-
-			{% if page.teaser %}
-			<p class="teaser" itemprop="description">
-				{{ page.teaser }}
-			</p>
-			{% endif %}
-			{% if page.show_meta == true %}
-			{% include meta_information.html %}
-			{% endif %}
-
-			<span itemprop="articleSection">
+			<div itemprop="articleSection">
 			{{ content }}
-			</span>
+			</div>
 
 			<footer>
-				{% if page.show_meta == true %}
-				{% include lateral_navigation.html previous=page.previous next=page.next up_url="/blog/archive/" up_title=site.data.language.archive %}
+				{% if page.show_meta.sharer %}
+				{% include sharer.html %}
+				{% endif %}
+				{% if page.show_meta.navigation %}
+				{% include {{page.show_meta.navigation}} %}
 				{% endif %}
 
-				{% if page.comments == true %}
+				{% if page.show_meta.comments %}
 				{% include comments.html %}
 				{% endif %}
 			</footer>

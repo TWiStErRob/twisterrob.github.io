@@ -58,15 +58,15 @@ body.video {
     box-shadow: 0 2px 3px 0 rgba(0,0,0,.2);
 
     [class^='icon-']:before, [class*=' icon-']:before {
-        margin-right: rem-calc(10);
+        margin-right: rem-calc(8);
         font-size: rem-calc(20);
     }
 
     li img {
-        width: 32px;
-        height: 32px;
+        width: rem-calc(20);
+        height: rem-calc(20);
         max-width: initial;
-        margin-right: rem-calc(10);
+        margin-right: rem-calc(8);
     }
 }
 
@@ -302,6 +302,40 @@ body.video {
     }
 }
 
+#sharer {
+  margin-bottom: $paragraph-margin-bottom;
+  .share-block {
+    padding: 0.25em !important;
+    .share-link {
+      display: block;
+      text-align: center;
+
+      text-decoration: none;
+      border: none;
+    }
+    a:after {
+      content: '';
+    }
+  }
+}
+
+#post-nav {
+  margin-bottom: $paragraph-margin-bottom;
+}
+
+@media only screen {
+  article[itemscope] > header {
+    border-bottom: 2px ridge $primary-color;
+    margin-bottom: $paragraph-margin-bottom;
+  }
+
+  article[itemscope] > footer {
+    margin-top: $paragraph-margin-bottom;
+    border-top: 2px ridge $primary-color;
+    padding-top: $paragraph-margin-bottom;
+  }
+}
+
 /* Jump to top
 ------------------------------------------------------------------- */
 
@@ -412,6 +446,16 @@ body.video {
     }
 }
 
+@media print {
+    @page { margin: 0.32in; } // TODO https://github.com/zurb/foundation/issues/6834
+    #navigation,
+    #masthead, #masthead-with-pattern, #masthead-with-background-color, #masthead-with-text, #masthead-no-image-header,
+    .breadcrumbs,
+    .sidebar, #post-nav, #sharer, #pagination, #up-to-top,
+    #footer-content, #footer, #subfooter {
+        display: none !important;
+    }
+}
 
 
 /* CSS-Classes to add margin at top or bottom

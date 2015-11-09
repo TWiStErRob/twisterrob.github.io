@@ -1,5 +1,5 @@
 ---
-title: CCC &mdash; Neste&nbsp;Oil
+title: CCC — Neste Oil
 type: Company
 jobtitle: software development engineer
 maintech: ".NET"

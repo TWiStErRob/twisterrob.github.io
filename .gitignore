@@ -1,9 +1,9 @@
 _site/
 .sass-cache/
 .svn/
+.gradle/
 sources/
 Gemfile.lock
 *.iml
 /*.ipr
 /*.iws
-/*.bat
