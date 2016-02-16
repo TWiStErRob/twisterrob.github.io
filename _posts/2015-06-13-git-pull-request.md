@@ -39,32 +39,34 @@ As easy as pressing ![Fork button on GitHub](data:image/png;base64,
 
 Click the [HTTPS](javascript:;) link below the clone URL box and then copy the ***HTTPS** clone URL* which can be then used to clone a repo:
 
-{% highlight console %}
+```shell
 me@laptop$ git clone https://github.com/me/repo-name.git .
 Cloning into '.'...
-{% endhighlight %}
+```
 
 Immediately after this I go back to the original repository (where I forked from) and repeat the [HTTPS](#) link copying and add the remote:
-{% highlight console %}
+
+```shell
 me@laptop$ git remote add -f mint https://github.com/stranger/repo-name.git # -f == immediate fetch
 Updating mint
 me@laptop$ git remote set-url --push mint DISALLOWED
-{% endhighlight %}
+```
+
 This is useful if the original repo is active and you want to keep up to date. I call it `mint` (after the adjective in "mint&nbsp;condition"), because the normal clone operation creates an `origin` remote, also mint suggests to keep it clean.
 
-{% highlight console %}
+```shell
 me@laptop$ git remote -v # == git remote --verbose show
 mint    https://github.com/stranger/repo-name.git (fetch)
 mint    DISALLOWED (push)
 origin  https://github.com/me/repo-name.git (fetch)
 origin  https://github.com/me/repo-name.git (push)
-{% endhighlight %}
+```
 
 ## Update remote
 
 `stranger-head-branch` is usually the `master` branch and `my-pr-branch`'s name is highly correlated with what your PR is representing.
 
-{% highlight console %}
+```shell
 me@laptop$ git checkout stranger-head-branch
 Switched to branch 'stranger-head-branch'
 
@@ -81,12 +83,13 @@ First, rewinding head to replay your work on top of it...
 Applying: Commit message 1
 Applying: Commit message 2
 ...
-{% endhighlight %}
+```
 
 ## Create PR
-{% highlight console %}
+
+```shell
 me@laptop$ git push --all
-{% endhighlight %}
+```
 
 Upon success just go to the original repo or your fork on GitHub and you should see a <mark>Your recently pushed branches:</mark> tip with a <mark>Compare & pull request<mark> button.
 

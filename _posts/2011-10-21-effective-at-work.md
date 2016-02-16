@@ -54,10 +54,13 @@ Of course the above is true here too, you can make a sacrafice and learn what th
 ## Help others to help yourself!
 Write more comments and JavaDoc at sensitive places, it'll pay of in the long run: many times it helps a lot interpreting your own code.
 Additionally don't go writing
-{% highlight java %}
+
+```java
 /** Gets the name. */
 public void getName();
-{% endhighlight %} style comments, the lack of that comment saves time for anyone reading the code by not having a <q>Thank you Captain&nbsp;Obvious!</q> moment.
+```
+
+style comments, the lack of that comment saves time for anyone reading the code by not having a <q>Thank you Captain&nbsp;Obvious!</q> moment.
 
 Fill in the description or message field with a meaningful declaration of what you did; this applies to version control commit, wiki edit, file upload, etc.
 
@@ -73,7 +76,7 @@ When writing something:
  * you can safely assume that people are busy/lazy so a [TL;DR](#tldr) section will brigthen their day
  * it's worth formatting even the emails you write, for example:  
    again, more people read your email so it may worth investing that 1 minute extra effort to make it easily comprehensible.
-   * copy-paste highlighted code from <abbr>IDE</abbr>
+   * copy-paste highlighted code from IDE
    * or at least set font to a monospace one for code, classnames and method names
    * I usually color-code related things
      e.g. when I refer to a blue circle on a picture encompassing a button labeled <mark>Save</mark> I write: <q>the <span style="color:cyan">Save button</span> is misplaced</q>.

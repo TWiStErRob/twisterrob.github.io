@@ -80,6 +80,10 @@ a[target='_blank']:after {
   }
 }
 
+.clickable {
+    cursor: $cursor-pointer-value;
+}
+
 /* Customize Foundation Typography
 ------------------------------------------------------------------- */
 
@@ -285,7 +289,7 @@ pre {
   white-space: pre-wrap;
 }
 
-div.highlight[title]:before {
+.highlight[title]::before, .highlighter-rouge[title]::before {
   content: attr(title);
   text-align: center;
   display: block;
@@ -307,6 +311,11 @@ code, var {
     padding: 3px;
     font-style: normal;
     font-size: rem-calc(14);
+    text-shadow: none;
+}
+
+kbd {
+    text-shadow: 1px 1px 3px white;
 }
 
 /* Lists
