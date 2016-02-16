@@ -24,7 +24,7 @@ This bookmarklet is designed for the *Just-Eat menu pages* (updated for 2015 des
 
 The removed dishes are logged to the Console in the browser's Developer Tools.
 
-{% highlight javascript %}
+```javascript
 $.expr[':']['non-veggie'] = function(elem, i, match) {
 	var text = (elem.textContent || elem.innerText || $(elem).text() || "");
 	return new RegExp(match[3], 'i').test(text) && /* prevent removing "vegetarian lamb" */
@@ -96,7 +96,8 @@ for(var idx = 0; idx < nonVeg.length; ++idx) {
 }
 removeEmptyTitles();
 $('#menu-navigation .current-menu-item > a').text("Menu, filtered: (V)")
-{% endhighlight %}{: #JustEat-GoGreen}
+```
+{: #JustEat-GoGreen}
 
 This is a best effort implementation which only works in English menus and I take no responsibility if the script breaks the page or leaves some non-vegetarian dishes on the menu. Please report any omissions and other issues with the script.
 

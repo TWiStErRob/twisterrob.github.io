@@ -21,28 +21,28 @@ There are a few sources on the Internet on how to make a thread dump in Android,
 
 If you try to send a signal on a non-rooted/non-dev device you'll get:
 
-{% highlight console %}
+```shell
 me@laptop$ adb shell "ps | grep twister"
 USER     PID   PPID  VSIZE  RSS     WCHAN    PC         NAME
 u0_a504   10904 278   914108 23164 ffffffff 00000000 S net.twisterrob.app
 
 me@laptop$ adb shell kill -s SIGQUIT 10904
 /system/bin/sh: kill: 10904: Operation not permitted
-{% endhighlight %}
+```
 
 [An answer](http://stackoverflow.com/a/17737101/253468) to [How to stop an android application from adb without force-stop or root?](http://stackoverflow.com/q/17736188/253468) suggests to use `run-as`:
 
-{% highlight console %}
+```shell
 me@laptop$ adb shell run-as net.twisterrob.app kill -3 10904
 run-as: Package 'net.twisterrob.app' is unknown
-{% endhighlight %}
+```
 
 while the OP states that `force-stop` and `am kill` is ruled out, we could use them here:
 
-{% highlight console %}
+```shell
 me@laptop$ adb shell am force-stop net.twisterrob.app
 me@laptop$ adb shell am kill --user all net.twisterrob.app
-{% endhighlight %}
+```
 ...the first really kills the app, and the second does nothing, in any case there's no thread dump.
 
 
@@ -53,7 +53,7 @@ A solution for the above issues follows, based on the fact that you have control
 ### Step 0: Fake a UI lock-down
 To have something to validate that we have the right information I suggest to lock on a known object. So later we'll see who/where and when locked. I put the following into my main Activity's `onCreate`:
 
-{% highlight java %}
+```java
 // we want to see what "this" is in a thread dump
 synchronized (this) {
 	try {
@@ -62,7 +62,7 @@ synchronized (this) {
 		e.printStackTrace();
 	}
 }
-{% endhighlight %}
+```
 
 ### Step 1: Always available debugger break entry point
 If you want a thread dump you probably have a deadlock in your code in which case it might not be trivial to know when and where to stop the code execution. You'll need to start a background thread in your app so that you can stop the execution any time and be able to mess around in immediate mode too.
@@ -145,7 +145,7 @@ but you can't execute any code in that mode:
 
 So to have a live breakable point, put the following snippet somewhere in your app:
 
-{% highlight java %}
+```java
 new Thread("Debug-Breaker") {
 	@Override public void run() {
 		while (true) {
@@ -157,16 +157,16 @@ new Thread("Debug-Breaker") {
 		}
 	}
 }.start();
-{% endhighlight %}
+```
 
 Anywhere is ok that you know will surely execute before you need the thread dump.
 Even an button's event handler will work.
 I choose to put mine in:
 
-{% highlight java %}
+```java
 public class App extends Application {
 	@Override public void onCreate() {
-{% endhighlight %}
+```
 
 *Don't forget to register it in your manifest: `<application android:name=".App"`.*
 
@@ -343,49 +343,50 @@ The breakpoint should be hit immediately:
 
 Now there's a context you can execute code in, go to <mark>Run > Evaluate Expression...</mark> and enter:
 
-{% highlight java %}
+```java
 android.os.Process.sendSignal(android.os.Process.myPid(), android.os.Process.SIGNAL_QUIT)
-{% endhighlight %}
+```
 
 In the Android LogCat view you'll see the following information printed:
 
-{% highlight text %}
+```text
 04-13 16:36:21.971  10904-10954/net.twisterrob.app I/Process﹕ Sending signal. PID: 10904 SIG: 3
 04-13 16:36:21.971  10904-10909/net.twisterrob.app I/dalvikvm﹕ threadid=3: reacting to signal 3
 04-13 16:36:22.061  10904-10909/net.twisterrob.app I/dalvikvm﹕ Wrote stack traces to '/data/anr/traces.txt'
-{% endhighlight %}
+```
 The app may be still running at this point, but it doesn't matter any more. Feel free to detach debugger and/or stop it on the phone.
 
 
 ### Step 3: Acquire thread dump
 Now it should be a simple `pull` from your device like this, but hey it's not that simple...
 
-{% highlight console %}
+```shell
 me@laptop$ adb pull /data/anr/traces.txt
 failed to copy '/data/anr/traces.txt' to './traces.txt': Permission denied
-{% endhighlight %}
+```
 
 for some reason I wasn't able to copy the file, but I can read it... so it's simple after all:
 
-{% highlight console %}
+```shell
 me@laptop$ adb shell "cat /data/anr/traces.txt" > traces.txt
-{% endhighlight %}
+```
 
 
 ### Step 4: Read thread dump
 Now if you open <samp>traces.txt</samp> on you machine and scroll from the bottom you should find your app:
 
-{% highlight text %}
+```text
 ----- pid 10904 at 2015-04-13 17:16:40 -----
 Cmd line: net.twisterrob.app
 
 ... lots of stack traces of threads ...
 
 ----- end 10904 -----
-{% endhighlight %}
+```
 
-Here's the UI thread's state, remember in [Step 0](#step-0-fake-a-ui-lock-down) I synchronized on `this`, see line #6:
-{% highlight text linenos=inline hl_lines=6 %}
+Here's the UI thread's state, remember in [Step 0](#step-0-fake-a-ui-lock-down) I synchronized on `this`, see line #6 (starting with "waiting on"):
+
+```text
 "main" prio=5 tid=1 WAIT
     | group="main" sCount=1 dsCount=0 obj=0x418ccea0 self=0x417c7388
     | sysTid=13183 nice=-11 sched=0/0 cgrp=apps handle=1074684244
@@ -396,7 +397,8 @@ Here's the UI thread's state, remember in [Step 0](#step-0-fake-a-ui-lock-down) 
     at net.twisterrob.app.MainActivity.onCreate(MainActivity.java:45)
     at android.app.Activity.performCreate(Activity.java:5426)
     ...
-{% endhighlight %}
+```
+
 
 
 ## Summary

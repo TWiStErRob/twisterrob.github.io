@@ -6,7 +6,8 @@ layout: compress
 <head>
 	{% include head.html %}
 </head>
-<body id="top-of-page" class="{{ page.format }} env-{{ jekyll.environment }}">
+{% comment %}TODO do we need both .formats? {% endcomment %}
+<body id="top-of-page" class="{{ layout.format }}{{ page.format }} env-{{ jekyll.environment }}">
 	{% if site.skip_boilerplate or page.skip_boilerplate %}{% assign skip_boilerplate = true %}{% else %}{% assign skip_boilerplate = false %}{% endif %}
 	{% if page.url == '/index.html' %}{% assign skip_boilerplate = false %}{% endif %}
 	{% unless skip_boilerplate %}

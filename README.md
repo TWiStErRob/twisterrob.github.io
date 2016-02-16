@@ -13,12 +13,12 @@ Note: the version number should match closely what's on: https://pages.github.co
 
 ## First time
 
-```bash
-devkit$ ruby dk.rb init
-devkit$ edit config.yml # add ruby directory
-devkit$ ruby dk.rb install
-anywhere$ gem install bundler
-website$ bundle install # takes about 5 minutes
+```shell
+me@devkit$ ruby dk.rb init
+me@devkit$ edit config.yml # add ruby directory
+me@devkit$ ruby dk.rb install
+me@anywhere$ gem install bundler
+me@website$ bundle install # takes about 5 minutes
 ```
 
 In case of `SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed` follow [these instructions](https://gist.github.com/luislavena/f064211759ee0f806c88).
@@ -26,19 +26,20 @@ In case of `SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B
 
 ## Run
 
-```bash
-windows$ gradle serve dev noskip
+```shell
+me@windows$ unsubst bundle exec jekyll serve --config _config.yml,_config_local.yml,_config_dev.yml --trace --skip-initial-build
+me@windows$ gradle serve dev noskip
 ```
 
 ## Usage
 Update dependencies occasionally by
 
-```bash
-website$ bundle update
+```shell
+me@website$ bundle update
 ```
 
 Check if site build successfully before each commit
 
-```bash
-webiste$ gradle preCommitServe local
+```shell
+me@webiste$ gradle preCommitServe local
 ```

@@ -46,7 +46,27 @@ urlimg: '/images/'
 # Logo size is 600x80 pixels
 logo: "logo-600x80.png"
 
+# !github-pages! mandatory › https://github.com/github/pages-gem/pull/209/files#diff-cf14018a1aaa4e035fa62ce1aee9018aR12
+# Also see https://github.com/github/pages-gem/issues/208
+whitelist:
+  - jekyll-redirect-from
+  - jekyll-mentions
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-coffeescript
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-gist
+  - jemoji
+
 gems:
+# !github-pages! optional › https://help.github.com/articles/using-jekyll-with-pages/#configuring-jekyll
+# !github-pages! mandatory › https://github.com/github/pages-gem/pull/209/files#diff-cf14018a1aaa4e035fa62ce1aee9018aR5
+  - jekyll-coffeescript
+  - jekyll-gist
+  - jekyll-paginate
+# !github-pages! optional › https://help.github.com/articles/using-jekyll-with-pages/#configuring-jekyll
+# TODO is it used?
   - jekyll-redirect-from
 
 #      _____ __                  __                
@@ -65,18 +85,21 @@ unpublished: false
 # Paginates all X entries
 paginate: 10
 # Pagination path › Important for blog page in /blog/ to work
-paginate_path: "blog/page:num"
+paginate_path: "/blog/page:num/"
 
-# !GitHub pages! Disable custom plugins and ignore symbolic links
+# !github-pages! mandatory › https://help.github.com/articles/using-jekyll-with-pages/#configuration-settings-you-cannot-change
+# Disables custom plugins and ignore symbolic links
 # This means that ```java will not work because it requires https://github.com/mvdbos/kramdown-with-pygments
 safe: true
+# !github-pages! mandatory provided › https://help.github.com/articles/using-jekyll-with-pages/#configuration-settings-you-cannot-change
+#source: '.' # auto-set
 
 # Include/Exclude these files from production _site
 include: ['.htaccess']
 
 # . files and folders are excluded by default,
 # but --watch and serve are regenerating if they're not explicitly excluded.
-# See > https://github.com/jekyll/jekyll/issues/3913
+# See › https://github.com/jekyll/jekyll/issues/3913
 exclude:
   # GitHub
   - .git
@@ -113,6 +136,13 @@ exclude:
 #    \____/\____/_/ /_/|___/\___/_/  /____/_/\____/_/ /_/ 
 #                                                         
 quiet: false
+excerpt_separator: "<!--more-->"
+
+# Theme works best with Kramdown (using the table of contents function)
+markdown: kramdown
+# !github-pages! mandatory › https://help.github.com/articles/using-jekyll-with-pages/#configuration-settings-you-cannot-change
+# Since Jekyll 3 the default highlighter is Rouge (replaced Pygments.rb in v44)
+highlighter: rouge
 
 # More › http://kramdown.gettalong.org/quickref.html
 # Options › http://kramdown.gettalong.org/options.html
@@ -126,17 +156,26 @@ kramdown:
   toc_levels:     1..6
   toc_panel:      true
   smart_quotes:   lsquo,rsquo,ldquo,rdquo
-  hard_wrap: false
-  #enable_coderay: true
-  #syntax_highlighter: rouge
+  hard_wrap:      false
+  # https://github.com/jekyll/jekyll/pull/4090
+  syntax_highlighter: rouge
 
-  coderay:
-    coderay_wrap:              div
-    coderay_line_numbers:      inline
-    coderay_line_number_start: 1
-    coderay_tab_width:         4
-    coderay_bold_every:        10
-    coderay_css:               style
+  # Rouge Highlighter in Kramdown › http://kramdown.gettalong.org/syntax_highlighter/rouge.html
+  # span, block element options fall back to global
+  syntax_highlighter_opts:
+    # Rouge Options › https://github.com/jneen/rouge#full-options
+    #debug: false
+    #parent: ''
+    css_class: 'highlight'
+    default_lang: text
+    disable: false
+    span:
+      disable: false
+    block:
+      #wrap: true
+      #line_numbers: true
+      #start_line: 1
+      disable: false
 
 # More › http://sass-lang.com
 # Options › http://jekyllrb.com/docs/assets/#sassscss
@@ -145,11 +184,6 @@ sass:
   sass_dir: _sass
   # Options › http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
   style: :compressed # :nested | :expanded | :compact | :compressed
-
-# Theme works best with Kramdown (using the table of contents function)
-markdown: kramdown
-highlight: pygments
-excerpt_separator: "<!--more-->"
 
 # Used › default.html front-matter and comress.html
 # Options › http://jch.penibelst.de
@@ -161,7 +195,11 @@ compress_html:
   ignore:
     envs: [development]
 
-# !GitHub pages! ???
+# !github-pages! mandatory › https://help.github.com/articles/using-jekyll-with-pages/#configuration-settings-you-cannot-change
+# Since Jekyll 3 the default highlighter is Rouge (replaced Pygments.rb in v44)
+incremental: false
+# !github-pages! mandatory › https://help.github.com/articles/using-jekyll-with-pages/#configuration-settings-you-cannot-change
+# TODO what is this?
 lsi: false
 
 
@@ -309,3 +347,12 @@ google_analytics_tracking_id: UA-38202353-4
 #         To load the script add tawkto: true in front matter of each page
 # Used › _includes/footer_scripts.html
 #tawkto_embed_uri: https://embed.tawk.to/<id>/default<script>
+
+gist:
+  # !github-pages! mandatory › https://help.github.com/articles/using-jekyll-with-pages/#configuration-settings-you-cannot-change
+  noscript: false
+
+# !github-pages! provided › https://help.github.com/articles/repository-metadata-on-github-pages/
+# See local override for testing data
+github:
+  - stuff

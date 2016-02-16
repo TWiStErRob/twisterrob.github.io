@@ -16,7 +16,7 @@ This little script loads the whole list and then removes all "Free" items, leavi
 <!--more-->
 [^1]
 
-{% highlight javascript %}
+```javascript
 var sort = true;
 
 function clean() {
@@ -54,6 +54,7 @@ function check() {
 }
 
 check();
-{% endhighlight %}{: #GooglePlay-RemoveFreeOrders}
+```
+{: #GooglePlay-RemoveFreeOrders}
 
 [^1]: {% include snippets/bookmarklet.html %}

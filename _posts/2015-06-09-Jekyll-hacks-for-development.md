@@ -26,14 +26,16 @@ I'm sure you've met this line if you started <kbd>jekyll serve</kbd> at least on
 
 Now, if you're like me, you immediate ask the question: <q>What are those files?</q>, especially when it says multiple files changed and you only changed one.
 
-{% highlight ruby %}
+```ruby
 removed.each { |file| Jekyll.logger.info("Changes:", "Removed #{file.slice(site.source.length + 1, file.length)}"); }
 added.each { |file| Jekyll.logger.info("Changes:", "Added #{file.slice(site.source.length + 1, file.length)}"); }
 modified.each { |file| Jekyll.logger.info("Changes:", "Modified #{file.slice(site.source.length + 1, file.length)}"); }
 print Jekyll.logger.message("Regenerating:", "#{n} file#{n>1?"s":""} changed at #{t.strftime("%Y-%m-%d %H:%M:%S")} ")
-{% endhighlight %}{: title="RUBY_HOME\lib\ruby\gems\2.2.0\gems\jekyll-watch-1.2.1\lib\jekyll\watcher.rb@40"}
+```
+{: title="RUBY_HOME\lib\ruby\gems\2.2.0\gems\jekyll-watch-1.2.1\lib\jekyll\watcher.rb@40"}
 
-{% highlight text %}
+
+```text
 ...
      Changes: Added _posts/2015-06-09-Jekyll-hacks-for-development
 Regenerating: 1 file changed at 2015-06-09 15:18:56 ...done in 3.220606 seconds.
@@ -44,19 +46,19 @@ Regenerating: 2 files changed at 2015-06-09 15:19:00 ...done in 3.286006 seconds
 Regenerating: 1 file changed at 2015-06-09 15:20:27 ...done in 3.239607 seconds.
      Changes: Modified _posts/2015-06-09-Jekyll-hacks-for-development.md
 Regenerating: 1 file changed at 2015-06-09 15:20:53 ...done in 3.246334 seconds.
-{% endhighlight %}{: title="Resulting log after the change, more informative, isn't it?"}
+```
+{: title="Resulting log after the change, more informative, isn't it?"}
 
 *The paths are relative to <samp>Auto-regeneration: enabled for '...'</samp>.*
 
 ## Debugging Liquid
-When copy-pasting-building a site from articles found on the internet you'll most likely find yourself wondering: <q>Why is it not working?</q>  
-There's a built-in `| inspect`, but it just dumps the text without any escaping or formatting, messing up HTML pages.  
+When copy-pasting-building a site from articles found on the internet you'll most likely find yourself wondering: <q>Why is it not working?</q>.
+There's a built-in `| inspect`, but it just dumps the text without any escaping or formatting, messing up HTML pages.
 Luckily Jade Dominguez included a [little plugin](https://github.com/plusjade/jekyll-bootstrap/blob/master/_plugins/debug.rb) in his bootstrap which would come to the rescue in this case. The following is a more advanced version of his plugin.
 
 {% include alert warning='This <strong>is</strong> compatible with GitHub Pages! The default mode of Jekyll is unsafe, but GitHub starts it with <code>--safe</code>. So plugins can be used during local development; just don\'t forget to remove <code> | debug</code>s before commit.' %}
 
-{% highlight ruby %}
-{% raw %}
+```ruby{% raw %}
 # A simple way to inspect liquid template variables.
 # Based on: https://github.com/plusjade/jekyll-bootstrap/blob/master/_plugins/debug.rb
 # The filters below can be used anywhere liquid syntax is parsed (templates, includes, posts/pages/collections)
@@ -138,50 +140,50 @@ module Jekyll
 end # Jekyll
 
 Liquid::Template.register_filter(Jekyll::DebugFilter)
-{% endraw %}
-{% endhighlight %}
+```{% endraw %}
 
 ### Debugging Example Walkthrough
 
 Suppose there's a [tags data file](http://www.minddust.com/post/tags-and-categories-on-github-pages/) in the [format I suggested](https://github.com/minddust/minddust.github.io/issues/5):
-{% highlight yaml %}
+
+```yaml
 tag1:
   name: "Tag 1 Long Name"
 tag2:
   name: "Tag 2 Long Name"
-{% endhighlight %}{: title="_data/tags.yaml"}
+```
+{: title="_data/tags.yaml"}
 
 ... and you're trying to list all the tags on the site, like [<cite>LovesTha</cite> did](https://github.com/minddust/minddust.github.io/issues/5#issuecomment-125376549):
-{% highlight liquid %}
-{% raw %}
+
+```liquid{% raw %}
 <ul>
 	{% for tag in site.data.tags %}
 	<li><a href='/blog/tag/{{ tag }}/'>{{ tag.name }}</a></li>
 	{% endfor %}
 </ul>
-{% endraw %}
-{% endhighlight %}{: title="Problematic code"}
+```{% endraw %}
+{: title="Problematic code"}
 
-{% highlight html %}
+```html
 <ul>
 	<li><a href='/blog/tag/tag1{"name"=>"Tag 1 Long Name"}/'></a></li>
 	<li><a href='/blog/tag/tag2{"name"=>"Tag 2 Long Name"}/'></a></li>
 </ul>
-{% endhighlight %}{: title="Resulting HTML"}
+```
+{: title="Resulting HTML"}
 
-For some reason `{%raw%}{{tag}}{%endraw%}` comes up as <samp>tag1{"name"=>"Tag&nbsp;1 Long&nbsp;Name"}</samp> instead of the expected <samp>tag1</samp> and `{%raw%}{{tag.name}}{%endraw%}` is empty.  
-Let's augment the code to see what's going wrong (the argument to `debug` and `dump_*` is optional):
+For some reason {%raw%}`{{tag}}`{%endraw%} comes up as <samp>tag1{"name"=>"Tag&nbsp;1 Long&nbsp;Name"}</samp> instead of the expected <samp>tag1</samp> and {%raw%}`{{tag.name}}`{%endraw%} is empty. Let's augment the code to see what's going wrong (the argument to `debug` and `dump_*` is optional):
 
-{% highlight liquid %}
-{% raw %}
-{{ site.data.tags| debug: "data.tags" }}
+```liquid{% raw %}
+{{ site.data.tags | debug: "data.tags" }}
 <ul>
 	{% for tag in site.data.tags %}
-	<li><a href='/blog/tag/{{ tag }}/'>{{ tag.name| dump_text }}</a>{{ tag| dump_html: forloop.index }}</li>
+	<li><a href='/blog/tag/{{ tag }}/'>{{ tag.name | dump_text }}</a>{{ tag | dump_html: forloop.index }}</li>
 	{% endfor %}
 </ul>
-{% endraw %}
-{% endhighlight %}{: title="Augmented code"}
+```{% endraw %}
+{: title="Augmented code"}
 
 ... and here's how it looks like on the page:
 
@@ -199,39 +201,37 @@ Let's augment the code to see what's going wrong (the argument to `debug` and `d
 From the above the following is revealed:
 
  * the iteration was correctly going through the Hash (map) as expected
- * `{%raw%}{{tag.name}}{%endraw%}` is <samp>nil</samp> displayed as an empty string
+ * {%raw%}`{{tag.name}}`{%endraw%} is <samp>nil</samp> displayed as an empty string
  * at each iteration <var>tag</var> is an array and not the key of the hash
 
- {% include alert tip='In Liquid a hash entry is stored as <samp>[key, value]</samp>; compare to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in#Examples" target="_blank">for..in loop in JavaScript</a>.' %}
+{% include alert tip='In Liquid a hash entry is stored as <samp>[key, value]</samp>; compare to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in#Examples" target="_blank">for..in loop in JavaScript</a>.' %}
 
 Based on the above it's clear that the code must be changed to correctly read the value from the entry:
 
-{% highlight liquid %}
-{% raw %}
+```liquid{% raw %}
 {% for tag_entry in site.data.tags %}
     {% assign tag_key = tag_entry[0] %}
     {% assign tag_data = tag_entry[1] %}
     <li><a href="/blog/tag/{{ tag_key }}/">{{ tag_data.name }}</a></li>
 {% endfor %}
-{% endraw %}
-{% endhighlight %}{: title="Fixed code"}
+```{% endraw %}
+{: title="Fixed code"}
 
 ### More Debugging options
 
 In case you're generating something other than HTML, `dump_text` and `dump_console` come in handy.  
 {% include alert warning="Different languages have different rules, make sure you escape everything accordingly.<br/>For example XML comments cannot contain <samp>--</samp> so it's required to strip (<code>|&nbsp;remove:&nbsp;'--'</code>) or collapse them (<code>|&nbsp;replace:&nbsp;'--',&nbsp;'-'</code>) to make parsers happy." %}
 
-{% highlight xml %}
-{% raw %}
+```liquid{% raw %}
 <url>
 	<!-- {{ link | dump_text | remove: '--' }} -->
 	<loc>{{ site.url }}{{ site.baseurl }}{{ link.url | dump_console: "original" | remove: 'index.html' | dump_console: "stripped" }}</loc>
 	...
 </url>
-{% endraw %}
-{% endhighlight %}{: title="Example debugging of sitemap.xml"}
+```{% endraw %}
+{: title="Example debugging of sitemap.xml"}
 
-{% highlight xml %}
+```xml
 <url>
 	<!-- (Hash){...
 		"dir"=>"/blog",
@@ -239,16 +239,18 @@ In case you're generating something other than HTML, `dump_text` and `dump_conso
 		"path"=>"blog/index.html",
 		"url"=>"/blog/index.html"} -->
 	<loc>http://localhost:4000/dev/blog/</loc>
-{% endhighlight %}{: title="Sample from sitemap.xml"}
+```
+{: title="Sample from sitemap.xml"}
 
-{% highlight text %}
+```text
      Regenerating: 1 file changed at 2015-07-29 14:16:06
 original: (String)"/blog/index.html"
 stripped: (String)"/blog/"
 original: (String)"/blog/tags/"
 stripped: (String)"/blog/tags/"
 ...
-{% endhighlight %}{: title="Sample console dump from sitemap.xml"}
+```
+{: title="Sample console dump from sitemap.xml"}
 
 {% include alert tip='It\'s also worth looking at <a href="https://github.com/octopress/debugger">Octopress Debugger</a> which offers different features.' %}
 
@@ -261,10 +263,9 @@ Not all the filters documented are available when using an older version of eith
  * Liquid <samp>lib/ruby/gems/2.2.0/gems/liquid-2.6.2/lib/liquid/standardfilters.rb</samp>
 
 ### Working With Arrays
-By default Liquid doesn't have array manipulation, but our friends and Jekyll were kind enough to implement it, and we can even create new arrays with the `split` trick.
+By default Liquid [doesn't have array manipulation](https://github.com/Shopify/liquid/issues/523), but our friends at Jekyll were kind enough to implement it, and we can even create new arrays with the `split` trick.
 
-{% highlight liquid %}
-{% raw %}
+```liquid{% raw %}
 {% assign r = "," | split: ","    | dump_console: "new array" %}
 {% assign r = r   | push: "c"     | dump_console: "insert last" %}
 {% assign r = r   | push: "d"     | dump_console: "insert last" %}
@@ -275,10 +276,10 @@ By default Liquid doesn't have array manipulation, but our friends and Jekyll we
 {% assign r = r   | unshift: "z"  | dump_console: "insert first" %}
 {% assign r = r   | push: "a"     | dump_console: "insert last" %}
 {% assign r = r   | sort          | dump_console: "order by contents" %}
-{% endraw %}
-{% endhighlight %}{: title="Array Manipulation"}
+```{% endraw %}
+{: title="Array Manipulation"}
 
-{% highlight bash %}
+```bash
 insert last: (Array)["c"]
 insert last: (Array)["c", "d"]
 insert first: (Array)["b", "c", "d"]
@@ -288,8 +289,21 @@ remove last 1: (Array)["c"]
 insert first: (Array)["z", "c"]
 insert last: (Array)["z", "c", "a"]
 order by contents: (Array)["a", "c", "z"]
-{% endhighlight %}{: title="Output"}
+```
+{: title="output"}
 
+### Liquid code highlight
+Luckily the page's code is first run through Liquid and then kramdown, so it's possible to use liquid tags to generate the markdown code. Based on this it's also possible to nest them weirdly, notice that the <code>```</code> pair is interleaving with the `raw`/`endraw` tags; I prefer this because the markdown indentation is natural, only the end of the line is a little different.
+
+{% comment %}Outputting endraw requires some trickery: http://blog.slaks.net/2013-06-10/jekyll-endraw-in-code/{% endcomment %}
+{% assign endraw_literal = '{% endraw %' | append: '}' %}
+```liquid{% raw %}
+```liquid{% raw %}
+{% assign var = other_var | sort | split: ' ' %}
+```{% endraw %}{{ endraw_literal }}{% raw %}
+{: title="caption of code"}
+```{% endraw %}
+{: title="output is similar to this block"}
 
 ## Liquid Error Messages
 {% include alert todo='Maybe http://saimonmoore.com/tumblog/200612/debugging-liquid-templates.html can help with this.' %}
@@ -299,8 +313,7 @@ Among other modifications made to my tags display, I wanted to sort tags case in
 
 Not knowing which line gave the error, I tried to fix and remove parts of the file which were dealing with numbers like <samp>0&nbsp;<&nbsp;post.size</samp>. After many minutes of trying I found out that the above line gives the message and the problem is that I missed the quotes on `downcase`: quotes are required for map as method are called via reflection.
 
-{% highlight liquid %}
-{%raw%}
+```liquid{% raw %}
 {% assign tag_words = site_tags | split: ',' | map: downcase | sort %}
-{%endraw%}
-{% endhighlight %}
+```{% endraw %}
+
