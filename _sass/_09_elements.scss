@@ -197,6 +197,10 @@ section.project {
   a p {
     color: $text-color;
     text-align: center;
+    -webkit-text-align-last: center;
+    -moz-text-align-last: center;
+    -ms-text-align-last: center;
+    text-align-last: center;
   }
   &:hover {
     outline: 3px ridge $primary-color;

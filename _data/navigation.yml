@@ -26,6 +26,9 @@
   side: left
   dropdown:
   - special: projects
+  - title: POC & Bodge
+    dropdown:
+      - special: projects-other
   - title: Other Sites (old)
     icon: browser
     dropdown:

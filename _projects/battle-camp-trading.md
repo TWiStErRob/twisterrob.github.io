@@ -1,7 +1,8 @@
 ---
-title: "Battle Camp: Trading Revamp"
+title: "Battle&nbsp;Camp: Trading&nbsp;Revamp"
 subheadline: "New level of trading"
 teaser: "Revamp for the quick and dirty trading interface PennyPop gave us."
+type: bodge
 images:
   icon: projects/bc-trade/bc-trade-logo.png
   icon_small: projects/bc-trade/bc-icon.png
@@ -12,7 +13,7 @@ images:
       title: 'Before applying this script'
     - url: 'projects/bc-trade/bc-trade-after.jpg'
       title: 'After applying this script'
-urls:
+links:
   download: https://drive.google.com/uc?id=0B5qTNPgq_ll5LUJ0LVVlQW9SN2M&export=download
 ---
 
@@ -22,10 +23,11 @@ urls:
 In short: they moved the Facebook Trading App to their Support site, but it was in a hurry and it's unfinished/unpolished. Here's a detailed breakdown:
 
  * **before April 2015**: Battle Camp Trading has been a [Facebook App](https://apps.facebook.com/battlecampapp) for long.
- * **April**: Facebook disabled the App <q>due to an issue with its third-party developer</q>, it's been "temporarily unavailable" since then.
- * **mid-April**: After PennyPop acknowledged the issue, they tried to [reinstate it](https://www.facebook.com/BattleCampApp/photos/a.207360366076774.69481.207322356080575/713998605412945/), but without luck, so they went with Plan B:
- * **18th April**: PennyPop [published](https://www.facebook.com/BattleCampApp/photos/a.207360366076774.69481.207322356080575/716224051857067/) an extremely minimalistic quick and dirty solution to get people back on trading again at [support.pennypop.com](http://support.pennypop.com/player/trading).
- * **31st May**: After weeks of trading and waiting for them to finish the app, I decided to re-style the monster selection on the trading pages.
+ * **April 2015**: Facebook disabled the App <q>due to an issue with its third-party developer</q>, it's been "temporarily unavailable" since then.
+ * **mid-April 2015**: After PennyPop acknowledged the issue, they tried to [reinstate it](https://www.facebook.com/BattleCampApp/photos/a.207360366076774.69481.207322356080575/713998605412945/), but without luck, so they went with Plan B:
+ * **18th April 2015**: PennyPop [published](https://www.facebook.com/BattleCampApp/photos/a.207360366076774.69481.207322356080575/716224051857067/) an extremely minimalistic quick and dirty solution to get people back on trading again at [support.pennypop.com](http://support.pennypop.com/player/trading).
+ * **31st May 2015**: After weeks of trading and waiting for them to finish the app, I decided to re-style the monster selection on the trading pages.
+ * **Feb 2016**: they maintained status quo, the script still works
 
 ## Installation
 
@@ -35,7 +37,7 @@ In short: they moved the Facebook Trading App to their Support site, but it was 
 	* <a href="https://addons.mozilla.org/en-us/firefox/addon/greasemonkey/">GreaseMonkey</a> from Mozilla Add-ons
 	* <a href="https://addons.opera.com/en/extensions/details/violent-monkey/">Violent Monkey</a> from Opera add-ons
  0. Add <a href="bc-trade.user.js">Battle Camp trading userscript</a>
- 0. Enjoy a new level of trading
+ 0. Enjoy a new level of trading in <mark>Trading</mark> at [support.pennypop.com](http://support.pennypop.com/)
 
 ## Disclaimer
 This is a one-day hack having my best efforts put into it, it may break any time in the future as Battle Camp changes the trading process. I claim no responsibility to any potential damage caused.

@@ -9,18 +9,21 @@ layout: page
   </div>
   <div class="small-12 medium-9 large-8 columns">
   	<dl class="project">
-  		{% if page.urls.googleplay %}
+  		{% if page.links.googleplay %}
+  			{% assign googleplay_tracking = '&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1' %}
+  			{% assign googleplay_badge = 'https://play.google.com/intl/en_us/badges/images/apps/en-play-badge-border.png' %}
 		  	<dt>Download</dt><dd>
-		  		{% comment %}Maybe add &rdid={{ page.urls.googleplay }} to the link{% endcomment %}
-		  		<a href="https://play.google.com/store/apps/details?id={{ page.urls.googleplay }}" class="no-adorn" target="_blank">
-					<img alt="Android app on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
+		  		{% comment %}Maybe add &rdid={{ page.links.googleplay }} to the link{% endcomment %}
+		  		<a href="https://play.google.com/store/apps/details?id={{ page.links.googleplay }}{{ googleplay_tracking }}" class="no-adorn" target="_blank">
+					<img alt="Get it on Google Play" width="50%" src="{{ googleplay_badge }}" />
 				</a>
 			</dd>
 		{% endif %}
-	  	{% if page.urls.site %}<dt>Website</dt><dd>{{ page.urls.site }}</dd>{% endif %}
-	  	{% if page.urls.download %}<dt>Download</dt><dd><a href="{{ page.urls.download }}" target="_blank">Download</a></dd>{% endif %}
+	  	{% if page.links.site %}<dt>Website</dt><dd><a href="{{ page.links.site }}">{{ page.links.site }}</a></dd>{% endif %}
+	  	{% if page.links.view %}<dt>Live</dt><dd><a href="{{ page.links.view }}" target="_blank">Check it out!</a></dd>{% endif %}
+	  	{% if page.links.download %}<dt>Download</dt><dd><a href="{{ page.links.download }}" target="_blank">Download</a></dd>{% endif %}
 	  	{% if page.years %}<dt>Years</dt><dd>{{ page.years }}</dd>{% endif %}
-	  	{% if page.urls.sources %}<dt>Download Sources</dt><dd>{{ page.urls.sources }}</dd>{% endif %}
+	  	{% if page.links.sources %}<dt>Download Sources</dt><dd>{{ page.links.sources }}</dd>{% endif %}
 	  	{% if page.images.screenshots %}<dt>Screenshots</dt><dd><a href="javascript:$('.clearing-thumbs a:first').click();">View</a>{% endif %}
   	</dl>
   </div>

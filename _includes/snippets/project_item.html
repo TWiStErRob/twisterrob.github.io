@@ -1,0 +1,16 @@
+<li>
+	<section aria-labelledby="{{ project.title | slugify }}" class="project">
+		<a href="{{ site.baseurl }}{{ project.url }}">
+			<header>
+				<h3 id="{{ project.title | slugify }}" class="title"><div class="center">{{ project.title }}</div></h3>
+				<p class="subheadline">{{project.subheadline}}</p>
+			</header>
+			<figure>
+				<img src="{{ site.urlimg }}{{ project.images.icon }}" alt="{{ project.title }}" />
+			</figure>
+			<footer>
+				<p class="teaser">{{ project.teaser }}</p>
+			</footer>
+		</a>
+	</section>
+</li>
