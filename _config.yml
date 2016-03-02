@@ -114,16 +114,17 @@ exclude:
   - build.gradle
   - Gemfile
   - Gemfile.lock
-  # _config*.yml doesn't work
-  - _config_local.yml
-  - _config_dev.yml
+  # _config*.yml      # doesn't work, see https://github.com/jekyll/jekyll-watch/issues/34
+  - _config_local.yml # need to explicitly exclude all configs https://github.com/jekyll/jekyll-watch/issues/35
+  - _config_dev.yml   # need to explicitly exclude all configs https://github.com/jekyll/jekyll-watch/issues/35
   # Projects Files
-  - '*.ipr'
-  - '*.iws'
-  - '*.iml'
+  - .idea
+  - www.twisterrob.net.ipr # should be '*.ipr', see https://github.com/jekyll/jekyll-watch/issues/34
+  - www.twisterrob.net.iws # should be '*.ipr', see https://github.com/jekyll/jekyll-watch/issues/34
+  - www.twisterrob.net.iml # should be '*.ipr', see https://github.com/jekyll/jekyll-watch/issues/34
   - .classpath
   - .project
-  - '*.sublime-project'
+  - www.twisterrob.net.sublime-project # should be '*.sublime-project', see https://github.com/jekyll/jekyll-watch/issues/34
   # Random stuff
   - sources
   - .svn

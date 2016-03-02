@@ -69,7 +69,10 @@ task fastStyle(dependsOn: fastStyleCopyCachedCSS) {
 	afterEvaluate { tasks.serve.mustRunAfter fastStyle }
 
 	onlyIf { fastStyleCopyCachedCSS.state.didWork || fastStyleCopyCachedCSS.state.skipMessage == 'UP-TO-DATE' }
-	doLast { if (!slow.renameTo(ignored)) { throw new IOException("Cannot rename ${slow} to ${ignored}.") } }
+	doLast {
+		if (slow.exists() && ignored.exists() && slow.text == ignored.text) { ignored.delete(); }
+		if (!slow.renameTo(ignored)) { throw new IOException("Cannot rename ${slow} to ${ignored}.") }
+	}
 	outputs.upToDateWhen { !slow.exists() && ignored.exists() }
 }
 task slowStyleRemoveCachedCSS(type: Delete) {

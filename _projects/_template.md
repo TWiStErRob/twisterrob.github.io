@@ -18,6 +18,7 @@ links:
   googleplay: net.twisterrob.package
   download: http://...
 published: false
+released: false
 ---
 
 {% include toc.md %}

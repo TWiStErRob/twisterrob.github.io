@@ -1,5 +1,5 @@
 ---
-title: "Google&nbsp;Calendar Printer"
+title: "Google Calendar Printer"
 subheadline: "Lean, compact layout"
 teaser: "Prints your chosen calendar with picked range and time zone."
 type: bodge
@@ -35,15 +35,16 @@ One day we wanted to print an agenda for a week for events held at a venue. Goog
 
 ## Examples
 {% assign year = site.time | date: '%Y' | times: 1 %}
- * [Days]({{ page.links.download }}#!&calendar=%23daynum%40group.v.calendar.google.com)
- * [Next Moon phases]({{ page.links.download }}#!&calendar=ht3jlfaac5lfd6263ulfh4tql8%40group.calendar.google.com&lang=en)
- * [Upcoming Namedays (Hungary)]({{ page.links.download }}#!&calendar=03g7gm39atboogh5lgedpd8ntc@group.calendar.google.com&lang=hu)
- * [Holidays in {{year}} (HU)]({{ page.links.download }}#!&calendar=hu.hungarian%23holiday%40group.v.calendar.google.com&from={{year}}-01-01&to={{year}}-12-31&lang=hu)
- * [Holidays in {{year}} (UK)]({{ page.links.download }}#!&calendar=en.uk%23holiday%40group.v.calendar.google.com&from={{year}}-01-01&to={{year}}-12-31&lang=en_GB)
- * [Holidays in {{year}} (US)]({{ page.links.download }}#!&calendar=en.usa%23holiday%40group.v.calendar.google.com&from={{year}}-01-01&to={{year}}-12-31&lang=en_US)
- * [Sun (Szeged)]({{ page.links.download }}#!&calendar=i_91.120.28.2%23sunrise%40group.v.calendar.google.com&lang=hu)
- * [Sun (London)]({{ page.links.download }}#!&calendar=i_109.68.196.188%23sunrise%40group.v.calendar.google.com&lang=en_GB)
- * [Google Dev calendar]({{ page.links.download }}#!&calendar=developer-calendar%40google.com&from=2013-01-01&to={{year}}-12-31)
+ * [Your Personal Calendar]({{ page.links.view }}#!&calendar=primary) (needs authentication)
+ * [Days]({{ page.links.view }}#!&calendar=%23daynum%40group.v.calendar.google.com) (public)
+ * [Next Moon phases]({{ page.links.view }}#!&calendar=ht3jlfaac5lfd6263ulfh4tql8%40group.calendar.google.com&lang=en) (public)
+ * [Upcoming Namedays (Hungary)]({{ page.links.view }}#!&calendar=03g7gm39atboogh5lgedpd8ntc@group.calendar.google.com&lang=hu) (public)
+ * [Holidays in {{year}} (HU)]({{ page.links.view }}#!&calendar=hu.hungarian%23holiday%40group.v.calendar.google.com&from={{year}}-01-01&to={{year}}-12-31&lang=hu) (public)
+ * [Holidays in {{year}} (UK)]({{ page.links.view }}#!&calendar=en.uk%23holiday%40group.v.calendar.google.com&from={{year}}-01-01&to={{year}}-12-31&lang=en_GB) (public)
+ * [Holidays in {{year}} (US)]({{ page.links.view }}#!&calendar=en.usa%23holiday%40group.v.calendar.google.com&from={{year}}-01-01&to={{year}}-12-31&lang=en_US) (public)
+ * [Sun (Szeged)]({{ page.links.view }}#!&calendar=i_91.120.28.2%23sunrise%40group.v.calendar.google.com&lang=hu) (public)
+ * [Sun (London)]({{ page.links.view }}#!&calendar=i_109.68.196.188%23sunrise%40group.v.calendar.google.com&lang=en_GB) (public)
+ * [Google Dev calendar]({{ page.links.view }}#!&calendar=developer-calendar%40google.com&from=2013-01-01&to={{year}}-12-31) (public)
 
 {% comment %}
 ## Used

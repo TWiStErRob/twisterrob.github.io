@@ -11,9 +11,8 @@ images:
 #      title: ...
 links:
   googleplay: net.twisterrob.inventory
+released: false
 ---
-
-{% include alert alert='This app is not publicly released *yet*.' %}
 
 {% include toc.md %}
 

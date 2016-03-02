@@ -89,46 +89,39 @@ though output may be highlighted weirdly
 Here's a <q>short quotation</q> which is in the middle of a sentence.
 
 > This is a long quotation by someone, normal markdown formatting rules apply:  
-  **strong**, *em*, _em, ***strong em***, <b>html bold</b>, `code`
+  **strong**, *em*, _em_, ***strong em***, <b>html bold</b>, `code`, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>
   <cite>TWiStErRob</cite>
 
 > <samp>Program output text</samp> <cite>output from [file.name](http://sources.com/path/to/file.name#line=123) in [library](http://library.com/)</cite>
 
 
 ## Alerts
+All `alert`s support markdown and their names are all lowercase, because they're used as CSS classes, for example TODO is `alert todo=`. The <q>TODO:</q> prefix is not automatically inserted, it's for name calling only here.
+{% include alert alert='Alert:  
+    This is like any normal markdown, even when used from non-markdown context:  
+    **strong**, *em*, _em_, ***strong em***, <b>html bold</b>, `code`, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>.' %}
 
-{% include alert alert='Alert:<br/>
-    There\'s no markdown support here, so formatting is <a href="#">manual</a>:
-    <br/>
-    <strong>strong</strong>, <em>em</em>, <code>code</code>, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>.' %}
+{% include alert warning='Warning: call out a caveat that\'s easy to trigger  
+    This is like any normal markdown, even when used from non-markdown context:  
+    **strong**, *em*, _em_, ***strong em***, <b>html bold</b>, `code`, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>.' %}
 
-{% include alert warning='Warning: call out a caveat that\'s easy to trigger<br/>
-    There\'s no markdown support here, so formatting is <a href="#">manual</a>:
-    <br/>
-    <strong>strong</strong>, <em>em</em>, <code>code</code>, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>.' %}
+{% include alert info='Info: supplementary information, for example links to further reading or documentation.  
+    This is like any normal markdown, even when used from non-markdown context:  
+    **strong**, *em*, _em_, ***strong em***, <b>html bold</b>, `code`, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>.' %}
 
-{% include alert info='Info: supplementary information, for example links to further reading or documentation.<br/>
-    There\'s no markdown support here, so formatting is <a href="#">manual</a>:
-    <br/>
-    <strong>strong</strong>, <em>em</em>, <code>code</code>, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>.' %}
+{% include alert success='Success:  
+    This is like any normal markdown, even when used from non-markdown context:  
+    **strong**, *em*, _em_, ***strong em***, <b>html bold</b>, `code`, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>.' %}
 
-{% include alert success='Success:<br/>
-    There\'s no markdown support here, so formatting is <a href="#">manual</a>:
-    <br/>
-    <strong>strong</strong>, <em>em</em>, <code>code</code>, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>.' %}
+{% include alert text='Text:  
+    This is like any normal markdown, even when used from non-markdown context:  
+    **strong**, *em*, _em_, ***strong em***, <b>html bold</b>, `code`, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>.' %}
 
-{% include alert text='Text:<br/>
-    There\'s no markdown support here, so formatting is <a href="#">manual</a>:
-    <br/>
-    <strong>strong</strong>, <em>em</em>, <code>code</code>, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>.' %}
-
-{% include alert todo='TODO: reminder to myself that something needs to be done here<br/>
-    There\'s no markdown support here, so formatting is <a href="#">manual</a>:
-    <br/>
-    <strong>strong</strong>, <em>em</em>, <code>code</code>, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>.' %}
+{% include alert todo='TODO: reminder to myself that something needs to be done here  
+    This is like any normal markdown, even when used from non-markdown context:  
+    **strong**, *em*, _em_, ***strong em***, <b>html bold</b>, `code`, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>.' %}
 
 {% include alert terminal='Terminal:<br/>
-    There\'s no markdown support here, so formatting is <a href="#">manual</a>:
-    <br/>
-    <strong>strong</strong>, <em>em</em>, <code>code</code>, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>.' %}
+    This is like any normal markdown, even when used from non-markdown context:  
+    **strong**, *em*, _em_, ***strong em***, <b>html bold</b>, `code`, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>.' %}
 

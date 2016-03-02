@@ -1,6 +1,17 @@
 ---
 layout: page
 ---
+
+{%  if page.published != true %}
+	{% include alert alert='This project is not publicly visible! Remove `published: false` from frontmatter.' %}
+{%  endif  %}
+
+{%  if page.released != true %}
+	{%  assign message = "This project is not publicly released, *yet*. " | append: " Feel free to [nag me]("
+	                     | append: site.baseurl | append: "/contact) if you\'re insterested." %}
+	{% include alert warning = message %}
+{%  endif  %}
+
 <div class="row">
   <div class="small-12 medium-3 large-4 columns">
   	<figure>
