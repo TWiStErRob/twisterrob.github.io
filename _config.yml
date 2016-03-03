@@ -261,6 +261,7 @@ defaults:
       layout: project
       title_suffix: "a project by Róbert Papp (TWiStErRob)"
       published: true
+      released: true
       breadcrumbs: true
       images:
         icon: projects/unknown-app-icon-512.png

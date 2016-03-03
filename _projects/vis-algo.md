@@ -4,7 +4,7 @@ subheadline: "Interactive heap-sift demonstration"
 teaser: "Framework to demonstrate algorithms and the data they work on."
 type: poc
 images:
-  icon: projects/vis-algo/icon.png
+  icon: projects/vis-algo/logo.png
   icon_small: projects/vis-algo/icon.png
   screenshots:
     - url: 'projects/vis-algo/sum.png'
