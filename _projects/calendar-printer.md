@@ -10,7 +10,7 @@ images:
     - url: 'projects/calendar-printer/india_twisterrob.png'
       title: My take on printing the same data
 links:
-  view: http://twisterrob.net/dev/google-calendar
+  view: http://web.twisterrob.net/calendar-printer/
 ---
 
 ## Inception
