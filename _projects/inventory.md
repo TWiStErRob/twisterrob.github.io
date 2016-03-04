@@ -2,17 +2,17 @@
 title: "Magic Home Inventory"
 subheadline: "Remember and find your stuff"
 teaser: "Categorized and hierarchical inventory with advanced search and visualization."
+type: app
 images:
   icon: projects/inventory/icon-512.png
   icon_small: projects/inventory/icon-mdpi.png
 #  screenshots:
 #    - url: 'projects/inventory/....jpg'
 #      title: ...
-urls:
+links:
   googleplay: net.twisterrob.inventory
+released: false
 ---
-
-{% include alert alert='This app is not publicly released *yet*.' %}
 
 {% include toc.md %}
 

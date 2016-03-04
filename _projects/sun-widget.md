@@ -2,6 +2,7 @@
 title: "Sun Position Widget"
 subheadline: "Where's the sun?"
 teaser: "Learn and predict the Sun's altitude wherever you are."
+type: app
 images:
   icon: projects/sun-widget/icon-512.png
   icon_small: projects/sun-widget/icon-mdpi.png
@@ -12,7 +13,7 @@ images:
       title: Civil dusk with no space for last update time
     - url: 'projects/sun-widget/Tablet 10 %231.jpg'
       title: Sunset with no space for time of day nor last update time
-urls:
+links:
   googleplay: net.twisterrob.sun
 ---
 
@@ -72,7 +73,7 @@ The widget will display the following part of the day, each with a corresponding
 
 
 ## Read more
- * [about Twilights](http://en.wikipedia.org/wiki/Twilight) (not the movies) 
+ * [about Twilights](http://en.wikipedia.org/wiki/Twilight) (not the movies)
  * [the Math](#calculating-the-angle)
  * [Light Pollution ☹](http://www.mensjournal.com/magazine/where-did-all-the-stars-go-20131115?page=2)
  * [UV/B and Vitamin D benefits](http://articles.mercola.com/sites/articles/archive/2012/09/29/sun-exposure-vitamin-d-production-benefits.aspx), [also here](http://articles.mercola.com/sites/articles/archive/2012/03/26/maximizing-vitamin-d-exposure.aspx)

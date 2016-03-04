@@ -1,19 +1,27 @@
 ---
-title: "Project Name"
+title: "Project Name"
 subheadline: "Short, catcy phrase"
 teaser: "Describe in a sentence what it does."
+type: app|bodge|poc
 images:
   icon: projects/project-name/icon-512.png
   icon_small: projects/project-name/icon-mdpi.png
+  inline:
+    name1: relative-url-needing-urlimg-prefix-when-used
+    name2: absolute-url
   screenshots:
     - url: 'projects/project-name/filename.png'
       title: screenshot title 1
     - url: 'projects/project-name/filename.png'
       title: screenshot title 2
-urls:
+links:
   googleplay: net.twisterrob.package
   download: http://...
+  view: http://...
+  site: http://...
+  sources: http://...
 published: false
+released: false
 ---
 
 {% include toc.md %}

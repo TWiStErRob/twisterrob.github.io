@@ -22,7 +22,7 @@
 *
 * You can also call for additional classes to be put on the alert div:
 *
-*     {% include alert success="Yay! you did it!" classes='round' %}
+*     {% include alert success='Yay! you did it!' classes='round' %}
 *
 {% endcomment %}
 {% for entry in include %}
