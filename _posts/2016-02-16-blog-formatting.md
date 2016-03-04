@@ -2,7 +2,7 @@
 title: "Formatting used in this blog"
 subheadline: "Cheat sheet for formatting tags"
 teaser: "All-in-one visual medley of most formatting options I use in markdown on this website."
-category: productivity
+category: web
 tags:
 - blog
 - jekyll
