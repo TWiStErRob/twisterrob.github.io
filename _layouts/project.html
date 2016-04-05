@@ -2,13 +2,18 @@
 layout: page
 ---
 
-{%  if page.published != true %}
+{% if page.published != true %}
 	{% include alert alert='This project is not publicly visible! Remove `published: false` from frontmatter.' %}
-{%  endif  %}
+{% endif %}
+
+
+{% if page.deprecation %}
+	{% capture message %}**Deprecation**: {{page.deprecation}}{% endcapture %}
+	{% include alert warning = message %}
+{% endif %}
 
 {%  if page.released != true %}
-	{%  assign message = "This project is not publicly released, *yet*. " | append: " Feel free to [nag me]("
-	                     | append: site.baseurl | append: "/contact) if you\'re insterested." %}
+	{% capture message %}This project is not publicly released, *yet*. Feel free to [nag me]({{site.baseurl}}/contact) if you're insterested.{% endcapture %}
 	{% include alert warning = message %}
 {%  endif  %}
 
