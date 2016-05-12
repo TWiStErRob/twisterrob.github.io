@@ -8,12 +8,12 @@ layout: page
 
 
 {% if page.deprecation %}
-	{% include alert warning = page.deprecation %}
+	{% capture message %}**Deprecation**: {{page.deprecation}}{% endcapture %}
+	{% include alert warning = message %}
 {% endif %}
 
 {%  if page.released != true %}
-	{%  assign message = "This project is not publicly released, *yet*. " | append: " Feel free to [nag me]("
-	                     | append: site.baseurl | append: "/contact) if you\'re insterested." %}
+	{% capture message %}This project is not publicly released, *yet*. Feel free to [nag me]({{site.baseurl}}/contact) if you're insterested.{% endcapture %}
 	{% include alert warning = message %}
 {%  endif  %}
 

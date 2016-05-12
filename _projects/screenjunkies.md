@@ -21,7 +21,7 @@ images:
       title: Page view on a big screen
 links:
   view: https://twisterrob-screenjunkies.herokuapp.com/
-deprecation: 'This app has been partially made irrelevant by http://www.screenjunkies.com/shows.\nMy version is still more compact and easier to browse.'
+deprecation: 'This app has been partially made irrelevant by [ScreenJunkies.com All Shows listing](http://www.screenjunkies.com/shows).<br/>My version is still more compact and easier to browse if it still works.'
 ---
 
 {% include toc.md %}
