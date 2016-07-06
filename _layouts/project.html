@@ -40,7 +40,7 @@ layout: page
 	  	{% if page.links.download %}<dt>Download</dt><dd><a href="{{ page.links.download }}" target="_blank">Download</a></dd>{% endif %}
 	  	{% if page.years %}<dt>Years</dt><dd>{{ page.years }}</dd>{% endif %}
 	  	{% if page.links.sources %}<dt>Download Sources</dt><dd>{{ page.links.sources }}</dd>{% endif %}
-	  	{% if page.images.screenshots %}<dt>Screenshots</dt><dd><a href="javascript:$('.clearing-thumbs a:first').click();">View</a>{% endif %}
+	  	{% if page.images.screenshots %}<dt>Screenshots</dt><dd><a href="#screenshots" onclick="$('.clearing-thumbs img:first').click(); return false;">View</a>{% endif %}
   	</dl>
   </div>
 </div>

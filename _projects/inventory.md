@@ -6,12 +6,27 @@ type: app
 images:
   icon: projects/inventory/icon-512.png
   icon_small: projects/inventory/icon-mdpi.png
-#  screenshots:
-#    - url: 'projects/inventory/....jpg'
-#      title: ...
+  inline:
+    typos: projects/inventory/Phone %235 Category aid.jpg
+  screenshots:
+    - url: projects/inventory/Phone %231 Home Screen.jpg
+      title: "Home Screen with shortcuts to belongings"
+    - url: projects/inventory/Phone %232 Items.jpg
+      title: "Item listing"
+    - url: projects/inventory/Phone %233 Categories.jpg
+      title: "Category browser showing main categories"
+    - url: projects/inventory/Phone %234 Sunburst.jpg
+      title: "Sunburst diagram of a small sample inventory"
+    - url: projects/inventory/Phone %235 Category aid.jpg
+      title: "Category suggestions showing ability to match typos in names"
+    - url: projects/inventory/Phone %236 Subcategories.jpg
+      title: "Subcategory drill-down with item count in each category"
+    - url: projects/inventory/Phone %237 Selection.jpg
+      title: "Multi-selection capabilities for items"
+    - url: projects/inventory/Phone %238 Move.jpg
+      title: "Move dialog for relocating items"
 links:
   googleplay: net.twisterrob.inventory
-released: false
 ---
 
 {% include toc.md %}
@@ -64,7 +79,7 @@ Another method that came up involved: going to the local supermarket, scanning a
 The categories evolved a lot during these months and the final result is a multi-tiered categorization which means that the user can chose how deep they want to assign the categories.
 
 #### Suggestions
-The research turned out to be so deep that --- as a side effect --- a new feature arose: automatic category suggestions. This means that whenever a new item is created the category can quite possibly be predicted.
+The research turned out to be so deep that --- as a side effect --- a new feature arose: automatic category suggestions. This means that whenever a new item is created, the category can quite possibly be predicted. I used a trie data structure to store all the keywords and a clever matching algorithm to allow for character mismatches in during lookup. A reasonable implementation is to allow at most 2 of any of the following mismatches: insert character, delete character, change character, swap two consecutive characters. This allows to match wild typos as can be seen on [one of the screenshots]({{site.urlimg}}{{page.images.inline.typos}}){:onclick="$('.clearing-thumbs li img[src="{{site.urlimg}}{{page.images.inline.typos}}"]').click(); return false;"}. Based on these matches a list of possible categories can be presented for the user to choose from.
 
 ### Validation
 As a proof that the model is feasible and the categories are a fit for a "normal" home (I guess I live in one, but who knows ;) I started a full inventory of everything I own resulting in more than 1600 entries.

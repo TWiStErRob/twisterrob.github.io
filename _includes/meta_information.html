@@ -1,5 +1,5 @@
 {% assign author = site.data.authors[page.author] %}
-{% if author or page.date != site.time or page.categories != empty or page.tags != empty %}
+{% if author or page.date or page.categories != empty or page.tags != empty %}
 <div id="page-meta">
 	<p>
 		{% if author %}
@@ -7,7 +7,7 @@
 				<a href="{{ author.url }}" itemprop="name" class="icon-edit" target="_blank">{{ author.name }}</a>
 			</span>
 		{% endif %}
-		{% if page.date != site.time %}
+		{% if page.date %}
 			<a href="{{ site.baseurl }}/blog/archive/#{{ page.date | date: "%Y-%m" }}">
 				<time class="icon-alias-archive" datetime="{{ page.date | date: "%Y-%m-%d" }}" itemprop="datePublished">{{ page.date | date: "%Y-%m-%d" }}</time>
 			</a>
