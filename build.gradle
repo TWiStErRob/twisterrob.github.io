@@ -192,6 +192,7 @@ class Jekyll extends Exec {
 	boolean trace = true
 	boolean verbose = false
 	boolean skip = false
+	boolean incremental = true
 	String jekyllTask
 	private final List<String> configs = ['_config.yml']
 	
@@ -222,6 +223,7 @@ class Jekyll extends Exec {
 			configs.join(','),
 			trace? '--trace' : '',
 			verbose? '--verbose' : '',
+			incremental? '--incremental' : '',
 			jekyllTask == 'serve' && skip? '--skip-initial-build': ''] + args)
 		super.exec();
 	}

@@ -8,5 +8,5 @@
 url: 'http://localhost:4000'
 
 # Disable when not in production
-google_analytics_tracking_id:
-disqus_shortname:
+google_analytics_tracking_id: false
+disqus_shortname: false
