@@ -34,7 +34,7 @@ I like to watch the content the awesome ScreenJunkies&nbsp;Team creates, but the
 > I already watched the latest <mark>Honest Trailer Commentaries</mark> yesterday, but prior to that I didn't watch the show for a few weeks. I want to watch the one episode before the latest that I missed.
 
 Let's see what issues come up when trying to achieve that. (click the image to watch the screen recording[^large-gif]):
-[![ScreenJunkies site]({{site.urlimg}}{{page.images.inline.sj}} "ScreenJunkies website - click for animation"){:onClick="this.src='{{sj.video}}'"}]({{page.images.inline.sjv}}){:onClick="return false;"}
+[![ScreenJunkies site]({{site.urlimg}}{{page.images.inline.sj}} "ScreenJunkies website - click for animation"){:onClick="this.src='{{page.images.inline.sjv}}'"}]({{page.images.inline.sjv}}){:onClick="return false;"}
 
 Things to notice:
 
@@ -51,9 +51,9 @@ Things to notice:
 
 I wanted to be able to get rid of these issues and I also wanted a better listing for the shows' episodes. Here's what I ended up with (click the image to watch the screen recording[^large-gif]):
 
-[![Episode Guide page]({{site.urlimg}}{{page.images.inline.my}} "My take on ScreenJunkies' data - click for animation"){:onClick="this.src='{{my.video}}'"}]({{page.images.inline.myv}}){:onClick="return false;"}
+[![Episode Guide page]({{site.urlimg}}{{page.images.inline.my}} "My take on ScreenJunkies' data - click for animation"){:onClick="this.src='{{page.images.inline.myv}}'"}]({{page.images.inline.myv}}){:onClick="return false;"}
 
-[^large-gif]: I didn't wan't to include the original GIF here, because it's a few megabytes large.
+[^large-gif]: I didn't wan't to include the original GIF here, because it's a few megabytes large. May take a while to load.
 
 ### Kickoff
 I sent a few feedbacks to ScreenJunkies support, and they said <q>Thank you for writing, we appreciate your feedback.</q>. I guess they will take it into account, but it may take a long time as I'm guessing that the website is not maintained in-house. It's also possible I'm the only one who cares about ease of use, in which case they won't change the site, so after the last response I just decided to go ahead and brew something myself.
@@ -67,7 +67,7 @@ These were my goals during implementation:
  * fast loading
  * don't hammer their website with constant scraping
 
-Possible future improvements, which out of scope for now:
+Possible future improvements, which are out of scope for now:
 
  * Show schedule calendar to visually show when each show has a new episode, like a desktop calendar.
  * Episode times to be able to display ["this week", "last week", "this month" type lists](https://www.youtube.com/feed/subscriptions).  
