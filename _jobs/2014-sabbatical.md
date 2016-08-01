@@ -29,6 +29,8 @@ Most notable [projects]({{ site.baseurl }}/project) are:
    Android app to test Android Color Filters with live preview.
  * **[Sun Position Widget]({{ site.baseurl }}/project/sun-widget/)**  
    Android widget to show the Sun's angle.
+ * **[Better London Travel - Range Map]({{ site.baseurl }}/project/local-travel/)**  
+   Android app to see how far you can go from an arbitrary point using the Tube.
  * **Android Gradle plugin**  
    an advanced Gradle build plugin to help streamline my Android projects' build process and countless build scripts.
  * **Gradle Build graph visualization**  
@@ -76,6 +78,6 @@ along with the mandatory tech channels:
 
 *During these projects I reported numerous bugs and issues at the appropriate places and contributed some PRs as well.*
 
-**Technologies**: Android, Java, Gradle, Ruby, Liquid, HTML, CSS, SASS
+**Most notable technologies**: Android, Java, Gradle, JavaScript, Node.JS, Ruby, Liquid, HTML, CSS, SASS.
 
-**Tools used**: Android Studio, IntelliJ IDEA, Jekyll, Chrome Developer Tools, Sublime Text
+**Most used tools**: Android Studio, IntelliJ IDEA, Jekyll, Chrome Developer Tools, Sublime Text
