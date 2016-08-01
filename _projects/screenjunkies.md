@@ -86,13 +86,13 @@ $('.episode.sj').remove();
 {:title="Remove free episodes"}
 
 ```javascript
-var nonWatched = [2589021, 2959057, 2959059, 2894403, 2589022, 2894409, 2968406];
+var nonWatched = ['mundy-night-raw', 'knocking-dead', 'whats-in-the-box'];
 for (var i = 0; i < nonWatched.length; ++i) {
-	var dataid = '[data-id=' + nonWatched[i] + ']';
-	$('h2' + dataid + ' + p + .episodes').remove(); // episode listing
-	$('h2' + dataid + ' + p').remove();             // show description
-	$('h2' + dataid).remove();                      // show title
-	$('#shows li' + dataid).remove();               // show image on top
+	var dataid = '[data-slug=' + nonWatched[i] + ']';
+	$('a' + dataid + ' + p + .episodes').remove(); // episode listing
+	//$('a' + dataid + ' + p').remove();             // show description
+	$('a' + dataid).remove();                      // show title
+	//$('#shows li' + dataid).remove();              // show image on top
 }
 ```
 {:title="Remove unwatched shows (IDs from url when you click a show)"}
@@ -100,11 +100,11 @@ for (var i = 0; i < nonWatched.length; ++i) {
 ```javascript
 // Warning: the order of the displayed episodes may change (unlikely) which can break this
 var watched = { // showID: watchedCount
-	2900325: 50, // Honest Trailer Commentaries
-	2959060: 15  // Does It Hold Up?
+	'honest-trailer-commentaries': 50,
+	'does-it-hold-up': 15
 };
 for (var id in watched) { if (Object.prototype.hasOwnProperty.call(watched, id)) {
-	$('h2[data-id=' + id + '] + p + .episodes .episode:lt(' + watched[id] + ')').remove();
+	$('a[data-slug=' + id + '] + p + .episodes .episode:lt(' + watched[id] + ')').remove();
 } }
 ```
 {:title="Remove watched episodes (IDs from url when you click a show)"}
