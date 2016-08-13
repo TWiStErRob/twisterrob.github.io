@@ -4,8 +4,9 @@ subheadline: "Spoiler alert: not available out of the box"
 teaser: "A saga of finding out, that I can't use them without external dependencies."
 category: android
 tags:
-- xml
+- debug
 - workaround
+- xml
 ---
 
 I wanted to do a simple check to see whether Xalan's extension functions are available. This would've helped speeding up an XML-to-CSV transformation a bit.
