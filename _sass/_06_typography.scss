@@ -244,7 +244,7 @@ pre {
     color: $code-color;
     background-color: $code-background-color;
     &:active {
-        max-height: none;
+        //max-height: none; // TODO annoying and impossible to scroll
     }
     @media not print {
       border: 3px ridge darken($primary-color, 33%);
