@@ -44,7 +44,8 @@ After running it on my Android phone it just kept spewing `NullPointerException`
 
 Everything was still working, but I don't like warnings, so I started looking for the root cause.
 
-## Debugging and breakpoints
+
+## Xalan Version
 
 The source code is not available in the Android SDK. This means that it's nearly impossible to comperehend what's going on and use the stepping facilities of the IDE. I didn't even know where the exception is coming from, because there's no stack trace.
 
@@ -59,9 +60,11 @@ Class
 
 The answer was: <q>Serializer Java 2.7.1</q> on both a 2.3.7 and a 5.0.0 device. So I tried to reproduce the issue on my desktop, but the `function-available` call worked real good when using `xalan:xalan:2.7.1`. **The problem was only reproducible on the phone.** So now, I knew the version of Xalan, and added it to my source path so the IDE can handle debugging. As usual with Android source code, there are some problems with line alignment. I still couldn't set meaningful breakpoints, but it was possible to set method breakpoints, however slow.
 
-## Finding the source
+
+## Finding the Sources
 
 So the official Xalan release is not the one I needed. A quick Google search for `TransformerImpl.java` revealed that it was once available as `/luni/src/main/java/...` in the AOSP [platform/libcore](https://android.googlesource.com/platform/libcore) repository. I tried to get the latest by simply jumping to the `master` branch, but it wasn't there. Quick cloning and `git log -- luni/...` showed me that the whole `org.apache.xalan` package was moved to `/apache-xml` in [f029395](https://android.googlesource.com/platform/libcore/+/f029395dff382fc4dcba0689fd948ec06644e1f0). That one still wasn't on the `master` branch, so another `git log` revelated that it was deleted and moved to an <q>external</q> repository in [e590b9c](https://android.googlesource.com/platform/libcore/+/e590b9c7ecbe9b35c33fd2d101b1abc6bd7d1489). At first I was puzzled by what that means, but after a quick look at the [repository listing](https://android.googlesource.com/?format=HTML) I found [platform/external/apache-xml](https://android.googlesource.com/platform/external/apache-xml/). Finally this one contained up-to-date code for [Lollipop](https://android.googlesource.com/platform/external/apache-xml/+/refs/heads/lollipop-release).
+
 
 ## Finally Debugging
 
@@ -150,6 +153,7 @@ xalanTransformer.setExtensionsTable(sroot); // default visibility
 ```
 
 It's worth noting that this code cannot be executed as is, because the compile classpath doesn't have these classes. However, it's a trivial conversion to reflective calls.
+
 
 ## Summary
 This indeed fixed the problem, however it is not a good solution, even if you accept reflective hacks. The problem being that even though the XSLT ran, and there was no error, the `test="function-available"` check still evaluated to `false` and the `<xsl:template>` version was used. I now think it's pointless to do the hack to ensure an extension table, because the only place where `replaceAll` could have benefit, it doesn't work. In the end I just removed the Xalan Java Extension and swallowed the XSLT 1.0-compatible workaround.
