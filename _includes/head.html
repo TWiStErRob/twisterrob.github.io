@@ -30,7 +30,7 @@
 	{% if site.alexa_verify_id %}<meta name="alexaVerifyID" content="{{ site.alexa_verify_id }}" />{% endif %}
 
 	<!-- Search Engine Optimization -->
-	{% if page.noindex == true %}<meta name="robots" content="noindex" />{% endif %}
+	{% if page.noindex == true or layout.noindex == true %}<meta name="robots" content="noindex" />{% endif %}
 
 	<link type="text/plain" rel="author" href="{{ site.baseurl }}/humans.txt" />
 
