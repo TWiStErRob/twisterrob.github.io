@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # for some reason omitting the version defaults to 0
-gem 'github-pages', '>= 78'
+gem 'github-pages', '>= 96'
 gem 'pygments.rb'
 
 # http://jekyllrb.com/docs/windows/#auto-regeneration
