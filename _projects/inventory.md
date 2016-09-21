@@ -119,6 +119,11 @@ The HTML conversion XSLT file can be found in each exported ZIP file, so based o
 
 ## History
 
+### 1.1.1#2203 (2016-09-20)
+ * Fix: Property images were associated to the wrong belonging when importing a local ZIP file from device.
+ * Fix: Remove colors from texts to prevent crashes on exotic Android versions.
+ * Enhancement: Use material design error for editing a belonging's name.
+
 ### 1.1.0#2193 (2016-09-19)
  * Feature: Ability to import/export from/to any external source (incl. Drive, Dropbox) [#37].
  * Feature: Proper background import/export with notifications and all.
@@ -130,7 +135,7 @@ The HTML conversion XSLT file can be found in each exported ZIP file, so based o
  * Fix: Few suggestion improvements.
  * Fix: Minor additions and fixes to help (Navigation, Backup, Tips).
  * Fix: some images were not removed when some belongings were deleted: some space may free up after upgrade.
- * Fix: that single crash reported.  
+ * Fix: that single crash reported about HTC One M8 not knowing what "gray" is.  
    *(Please send the error reports if it pops up. The app doesn't have Internet premission, so I can't send automatic crash reports.)*
  * Fix: Lessen probabilty of technical messages showing up.
  * Fix: don't include any logging classes, more agressive ProGuard
