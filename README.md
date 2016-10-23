@@ -22,6 +22,7 @@ me@website$ bundle install # takes about 5 minutes
 ```
 
 In case of `SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed` follow [these instructions](https://gist.github.com/luislavena/f064211759ee0f806c88).
+If there's the same SSL issue, for example when using `jekyll-gist`, then [try this](https://gist.github.com/fnichol/867550#the-manual-way-boring).
 
 
 ## Run

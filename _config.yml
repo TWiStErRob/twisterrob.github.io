@@ -191,7 +191,9 @@ sass:
 compress_html:
   clippings: all
   comments: ["<!-- ", " -->"]
+  startings: []
   endings: all
+  blanklines: false
   profile: false
   ignore:
     envs: [development]

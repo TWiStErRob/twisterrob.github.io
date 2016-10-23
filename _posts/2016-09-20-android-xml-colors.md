@@ -2572,3 +2572,8 @@ Note: on new platforms the color will be black, so be careful if you have a dark
 
 …
 : Please share if you find more minimal-code workarounds, I'll add it here!
+
+
+## References
+
+ * [Original conversation and investigation](http://stackoverflow.com/questions/9635435/change-word-color-in-resource-string/11577658#comment40124504_11577658)

@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
 # for some reason omitting the version defaults to 0
-gem 'github-pages', '>= 96'
-gem 'pygments.rb'
+gem 'github-pages', '>= 98'
 
 # http://jekyllrb.com/docs/windows/#auto-regeneration
 # for --watch to work on Windows
