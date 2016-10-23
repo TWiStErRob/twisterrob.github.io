@@ -24,7 +24,7 @@ Most notable [projects]({{ site.baseurl }}/project) are:
  * **[My website]({{ site.url }}{{ site.baseurl }}/)**  
    based on Jekyll. Reimagination and port of my former Blog and Website.
  * **[Stack Overflow](https://stackoverflow.com/users/253468/twisterrob?tab=profile)**  
-   I achieved top 0.67% during 2016 Q1-2 reaching 10k reputation mostly under *Android*, *Java* and *Gradle* tags. I was top 2% during the 2014 -- 2015 period.
+   I achieved top 0.6% during 2016 reaching 10k reputation mostly under *Android*, *Java* and *Gradle* tags. I was top 2% during the 2014 -- 2015 period.
  * **[Android Color Filters]({{ site.baseurl }}/project/color-filters/)**  
    Android app to test Android Color Filters with live preview.
  * **[Sun Position Widget]({{ site.baseurl }}/project/sun-widget/)**  
@@ -35,13 +35,18 @@ Most notable [projects]({{ site.baseurl }}/project) are:
    an advanced Gradle build plugin to help streamline my Android projects' build process and countless build scripts.
  * **Gradle Build graph visualization**  
    to display task as they're running, which helps to see progress visually
+ * **[regex101.com](http://regex101.com)**  
+   helped [Firas Dib](https://se.linkedin.com/in/firas-dib-6a86a868) (the author) with a few issues and ideas
  * **Email cleanup**  
    I cleaned up my old mailboxes, folders and labels; migrating about 10000 emails and manually deleting more than 30000 useless notifications and subscriptions. I also properly introduced the empty inbox policy, and a better workflow, to deal with incomming messages really quickly.  
    *Google's [GMail Search expressions](https://support.google.com/mail/answer/7190) and [keyboard shortcuts](https://support.google.com/mail/answer/6594) are awesome!*
  * **Interview preparation**  
    To (re-)gain a deeper understanding of algorithms and data structures:
    * I fastracked through Princeton's and Stanford's Algorithms 1 and 2 courses.
-   * I solved 200+ problems on [leetcode.com](http://leetcode.com) and various other random problems as practice.
+   * I solved
+     * 200+ problems on [leetcode.com](http://leetcode.com)
+     * numerous challenges on [hackerrank.com](http://hackerrank.com)
+     * various other random problems and implemented complex algorithms as practice
  * **Widening my World-view**  
    I'm an active YouTube subscriber, following multiple high quality educational channels (I highly recommend any of these):
 [Vsauce](https://www.youtube.com/user/Vsauce),
@@ -78,6 +83,6 @@ along with the mandatory tech channels:
 
 *During these projects I reported numerous bugs and issues at the appropriate places and contributed some PRs as well.*
 
-**Most notable technologies**: Android, Java, Gradle, JavaScript, Node.JS, Ruby, Liquid, HTML, CSS, SASS.
+**Most notable technologies**: Android, Java, Gradle, JavaScript, Node.JS, Jekyll, Ruby, Liquid, HTML, CSS, SASS.
 
-**Most used tools**: Android Studio, IntelliJ IDEA, Jekyll, Chrome Developer Tools, Sublime Text
+**Most used tools**: Android Studio, IntelliJ IDEA, Chrome Developer Tools, Sublime Text
