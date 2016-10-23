@@ -10,3 +10,9 @@ url: 'http://localhost:4000'
 # Disable when not in production
 google_analytics_tracking_id: false
 disqus_shortname: false
+
+liquid:
+  # :lax acts like liquid 2.5 and silently ignores malformed tags in most cases.
+  # :warn is the default and will give deprecation warnings when invalid syntax is used.
+  # :strict will enforce correct syntax.
+  error_mode: strict

@@ -7,10 +7,8 @@
 url: 'http://localhost:4000'
 
 # Make sure the site is ready to be served in a subfolder with a simple config change
-# `baseurl` is broken in Jekyll 3.x, fixed in Jekyll 3.2.0
-# waiting for https://github.com/jekyll/jekyll/pull/4953 to be released to pages-gem
-#baseurl: '/dev'
-#urlimg: '/dev/images/'
+baseurl: '/dev'
+urlimg: '/dev/images/'
 
 # Need to be unsafe for {{ var | debug }} plugin
 safe: false
