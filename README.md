@@ -28,7 +28,7 @@ If there's the same SSL issue, for example when using `jekyll-gist`, then [try t
 ## Run
 
 ```shell
-me@windows$ unsubst bundle exec jekyll serve --config _config.yml,_config_local.yml,_config_dev.yml --trace --skip-initial-build
+me@windows$ unsubst bundle exec jekyll serve --config _config.yml,_config_local.yml,_config_dev.yml --trace --skip-initial-build --incremental
 me@windows$ gradle serve dev noskip
 ```
 
