@@ -34,7 +34,7 @@
 	{% if include.link.side == "left" %}<li class="divider"></li>{% endif %}
 {% else %}
 	{% if include.link.side == "right" %}<li class="divider"></li>{% endif %}
-	<li class="has-dropdown{% if page_url == link_url or page_url contains link_url and link_url != '/' %} active{% endif %}">
+	<li class="{% if include.link.dropdown %}has-dropdown {% endif %}{% if page_url == link_url or page_url contains link_url and link_url != '/' %} active{% endif %}">
 		{{ linkHTML }}
 		<ul class="dropdown">
 			{% for sublink in include.link.dropdown %}
