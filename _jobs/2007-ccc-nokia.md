@@ -1,7 +1,7 @@
 ---
 title: CCC — Nokia
 type: Company
-jobtitle: software development engineer in Java, manual and automated tester
+role: software development engineer in Java, manual and automated tester
 maintech: Java, Swing
 sector: telecommunications
 location: Szeged, Hungary

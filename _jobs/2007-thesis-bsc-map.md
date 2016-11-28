@@ -1,7 +1,7 @@
 ---
 title: Map Application for mobile
 type: Thesis
-jobtitle: undergraduate student
+role: undergraduate student
 maintech: Java ME
 sector: travel
 location: Szeged, Hungary

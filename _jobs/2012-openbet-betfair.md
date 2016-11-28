@@ -1,7 +1,7 @@
 ---
 title: OpenBet — Betfair
 type: Company
-jobtitle: software developer
+role: software developer
 maintech: TCL, Informix, Linux
 sector: online betting
 location: London, UK

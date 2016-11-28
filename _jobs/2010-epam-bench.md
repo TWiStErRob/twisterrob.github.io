@@ -1,7 +1,7 @@
 ---
 title: EPAM — Bench
 type: Company
-jobtitle: software development engineer
+role: software development engineer
 maintech: Java, .NET, PHP
 sector: IT
 location: Szeged, Hungary

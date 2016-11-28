@@ -1,7 +1,7 @@
 ---
 title: MSc degree in Software Engineering
 type: Education
-jobtitle: graduate student
+role: graduate student
 maintech: Software Engineering
 sector: IT
 location: Szeged, Hungary

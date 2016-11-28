@@ -1,18 +1,26 @@
 ---
 title: Sabbatical
 type: Company
-jobtitle: multitalented senior software engineer
+role: multitalented senior software engineer
 maintech: Android, Web
 sector: IT
 location: Szentes
 dates:
   from: 2014-07-08
-  to: 
+  to: 2016-12-05
 employer:
   onsite: true
 ---
 
 After my last job I planned to take a short break of a few months which extended to more than a year. I was developing new applications, learning new technologies, cleaning up my environment. Most of the work I've done involved Android, the Web, and various open-source projects on GitHub.
+
+Links to my public profiles:
+
+ * [Google Play Store](https://play.google.com/store/apps/dev?id=7995455198986011414)
+ * [LinkedIn](https://uk.linkedin.com/in/papproberts)
+ * [GitHub](https://github.com/TWiStErRob?tab=overview) (Most notable contributions: [Glide code](https://github.com/bumptech/glide/commits/master?author=twisterrob), [Glide issues](https://github.com/bumptech/glide/issues?utf8=%E2%9C%93&q=involves%3Atwisterrob))
+ * [StackOverflow](https://stackoverflow.com/users/253468/twisterrob?tab=profile)
+ * [Facebook](https://www.facebook.com/TWiStErRob)
 
 Most notable [projects]({{ site.baseurl }}/project) are:
 
@@ -23,7 +31,7 @@ Most notable [projects]({{ site.baseurl }}/project) are:
    code contributions and exhaustive daily issue support.
  * **[My website]({{ site.url }}{{ site.baseurl }}/)**  
    based on Jekyll. Reimagination and port of my former Blog and Website.
- * **[Stack Overflow](https://stackoverflow.com/users/253468/twisterrob?tab=profile)**  
+ * **[StackOverflow](https://stackoverflow.com/users/253468/twisterrob?tab=profile)**  
    I achieved top 0.6% during 2016 reaching 10k reputation mostly under *Android*, *Java* and *Gradle* tags. I was top 2% during the 2014 -- 2015 period.
  * **[Android Color Filters]({{ site.baseurl }}/project/color-filters/)**  
    Android app to test Android Color Filters with live preview.
@@ -44,8 +52,8 @@ Most notable [projects]({{ site.baseurl }}/project) are:
    To (re-)gain a deeper understanding of algorithms and data structures:
    * I fastracked through Princeton's and Stanford's Algorithms 1 and 2 courses.
    * I solved
-     * 200+ problems on [leetcode.com](http://leetcode.com)
-     * numerous challenges on [hackerrank.com](http://hackerrank.com)
+     * 200+ problems on [leetcode.com](https://leetcode.com/twisterrob)
+     * numerous challenges on [hackerrank.com](https://www.hackerrank.com/TWiStErRob)
      * various other random problems and implemented complex algorithms as practice
  * **Widening my World-view**  
    I'm an active YouTube subscriber, following multiple high quality educational channels (I highly recommend any of these):

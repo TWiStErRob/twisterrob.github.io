@@ -1,7 +1,7 @@
 ---
 title: EPAM — Bank
 type: Company
-jobtitle: software development engineer
+role: software development engineer
 maintech: Java EE
 sector: corporate banking
 location: Szeged, Hungary; London, UK
