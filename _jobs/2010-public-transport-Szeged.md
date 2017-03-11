@@ -1,7 +1,7 @@
 ---
 title: Szeged public transport
 type: Personal
-jobtitle: multitalented software engineer
+role: multitalented software engineer
 maintech: Android
 sector: travel
 location: Szeged, Hungary

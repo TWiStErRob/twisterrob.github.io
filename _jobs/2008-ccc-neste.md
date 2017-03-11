@@ -1,7 +1,7 @@
 ---
 title: CCC — Neste Oil
 type: Company
-jobtitle: software development engineer
+role: software development engineer
 maintech: ".NET"
 sector: telecommunications
 location: Szeged, Hungary

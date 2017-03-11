@@ -30,7 +30,7 @@ I'm also developing applications at home, to ease the pain of repetitive tasks a
 					current
 				{% endif %}
 			</span><br/>
-			<strong>Role</strong>: {{ job.jobtitle }}<br/>
+			<strong>Role</strong>: {{ job.role }}<br/>
 			<strong>Sector</strong>: {{ job.sector }}<br/>
 			<strong>Main technologies</strong>: {{ job.maintech }}
 		</article></a>
@@ -51,5 +51,5 @@ I'm also developing applications at home, to ease the pain of repetitive tasks a
    <span title="{{ job.dates.to }}">{{ job.dates.to | date: '%Y' }}</span>
    {% include datediff.liq begin=job.dates.from end=job.dates.to measure='dynamic' %}
    {% if result != 0 %}(~{{ result }}&nbsp;{{ measure }}){% endif %}:
-   [**{{ job.title }}**]({{ site.baseurl }}{{ job.url }}){: title="{{ job.type }}: {{ job.jobtitle }} in {{ job.maintech }}"}{% endunless %}{% endfor %}
+   [**{{ job.title }}**]({{ site.baseurl }}{{ job.url }}){: title="{{ job.type }}: {{ job.role }} in {{ job.maintech }}"}{% endunless %}{% endfor %}
 {%endcomment%}

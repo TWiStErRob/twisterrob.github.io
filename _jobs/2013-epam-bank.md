@@ -1,7 +1,7 @@
 ---
 title: EPAM — Bank
 type: Company
-jobtitle: senior software engineer
+role: senior software engineer
 maintech: Oracle, Java, SmartGWT
 sector: investment banking
 location: London, UK

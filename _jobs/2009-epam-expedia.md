@@ -1,7 +1,7 @@
 ---
 title: EPAM — Expedia
 type: Company
-jobtitle: software development engineer
+role: software development engineer
 maintech: Java, C++ and .NET
 sector: online travelling
 location: Szeged, Hungary

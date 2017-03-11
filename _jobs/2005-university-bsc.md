@@ -1,7 +1,7 @@
 ---
 title: BSc degree in Software Engineering
 type: Education
-jobtitle: undergraduate student
+role: undergraduate student
 maintech: Software Engineering
 sector: IT
 location: Szeged, Hungary

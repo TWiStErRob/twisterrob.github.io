@@ -1,13 +1,13 @@
 ---
 title: Sabbatical
 type: Company
-jobtitle: multitalented senior software engineer
+role: multitalented senior software engineer
 maintech: Android, Web
 sector: IT
 location: Szentes
 dates:
   from: 2014-07-08
-  to: 
+  to: 2016-12-05
 employer:
   onsite: true
 ---

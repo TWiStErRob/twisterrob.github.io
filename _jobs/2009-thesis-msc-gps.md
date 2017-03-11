@@ -1,7 +1,7 @@
 ---
 title: GPS Track Analyzer
 type: Thesis
-jobtitle: graduate student
+role: graduate student
 maintech: WPF.NET
 sector: travel
 location: Szeged, Hungary

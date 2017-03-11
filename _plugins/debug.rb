@@ -86,19 +86,19 @@ module DebugFilter
 		string_close = '&quot;</span>'
 		# Fix `},\n{` -> `}, {`
 		pretty = pretty.gsub(/^(#{indent_regex}*)#{rq(object_close_middle)}\n\1#{rq(object_open)}/,
-		                     "\\1#{object_close_middle} #{object_open}")
+				"\\1#{object_close_middle} #{object_open}")
 		# Fix `[\n"` -> `[ "`
 		pretty = pretty.gsub(/#{rq(array_open)}\n(#{indent_regex}*)#{rq(string_open)}/,
-		                     "#{array_open} #{string_open}")
+				"#{array_open} #{string_open}")
 		# Fix `,\n"` -> `, "`
 		pretty = pretty.gsub(/#{rq(array_middle)}\n(#{indent_regex}*)#{rq(string_open)}/,
-		                     "#{array_middle} #{string_open}")
+				"#{array_middle} #{string_open}")
 		# Fix `"\n]` -> `" ]`
 		pretty = pretty.gsub(/#{rq(string_close)}\n(#{indent_regex}*)#{rq(array_close)}/,
-		                     "#{string_close} #{array_close}")
+				"#{string_close} #{array_close}")
 		# Fix `"\n],` -> `" ],`
 		pretty = pretty.gsub(/#{rq(string_close)}\n(#{indent_regex}*)#{rq(array_close_middle)}/,
-		                     "#{string_close} #{array_close_middle}")
+				"#{string_close} #{array_close_middle}")
 		return pretty
 	end
 
@@ -129,11 +129,12 @@ Liquid::Template.register_filter(DebugFilter)
 
 # noinspection RubyUnnecessaryReturnStatement
 module JekyllRedirectFrom
-	class RedirectPage < Jekyll::Page
-		def to_s
-			return "<#{self.class} #{File.join(self.dir, self.name)}>"
-		end
-	end
+# TOFIX gems/jekyll-redirect-from-0.12.1/lib/jekyll-redirect-from/generator.rb:27:in `block in generate_redirect_from': undefined method `redirect_from' for JekyllRedirectFrom::RedirectPage:Class (NoMethodError)
+#	class RedirectPage
+#		def to_s
+#			return "<#{self.class} #{File.join(self.dir, self.name)}>"
+#		end
+#	end
 end
 
 # noinspection RubyUnnecessaryReturnStatement

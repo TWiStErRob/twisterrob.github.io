@@ -1,7 +1,7 @@
 ---
 title: Glide
 type: Personal
-jobtitle: contributor, issue support
+role: contributor, issue support
 maintech: Android, communication
 sector: IT
 location: Szentes
