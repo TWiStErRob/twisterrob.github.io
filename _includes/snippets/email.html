@@ -95,7 +95,7 @@ TODO script will only work if Liquid 3.0 comes out on GitHub pages because it re
 {% capture html %}<a href="{{ mailto }}" target="_blank">{{ html }}</a>{% endcapture %}
 {% assign htmlEnd = html | size | minus: 1 %}
 
-<!-- Generate JavaScript which will insert the HTML into the dcoument
+<!-- Generate JavaScript which will insert the HTML into the document
      The script is ROT-13 and ROT-5 encoded and then escaped using JavaScript unicode escapes to prevent Jekyll from messing it up.
      ROT-18 encoding is skipped for [#&;"] characters for performance
 -->

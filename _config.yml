@@ -46,7 +46,7 @@ urlimg: '/images/'
 # Logo size is 600x80 pixels
 logo: "logo-600x80.png"
 
-# !github-pages! mandatory › https://github.com/github/pages-gem/pull/209/files#diff-cf14018a1aaa4e035fa62ce1aee9018aR12
+# !github-pages! mandatory › https://github.com/github/pages-gem/blob/jekyll-v3-4-2/lib/github-pages/plugins.rb#L19-L37
 # Also see https://github.com/github/pages-gem/issues/208
 whitelist:
   - jekyll-redirect-from
@@ -60,13 +60,11 @@ whitelist:
   - jemoji
 
 gems:
-# !github-pages! optional › https://help.github.com/articles/using-jekyll-with-pages/#configuring-jekyll
-# !github-pages! mandatory › https://github.com/github/pages-gem/pull/209/files#diff-cf14018a1aaa4e035fa62ce1aee9018aR5
-  - jekyll-coffeescript
-  - jekyll-gist
+# !github-pages! optional › https://github.com/github/pages-gem/blob/jekyll-v3-4-2/lib/github-pages/plugins.rb#L6-L16
+# paginate and paginate_path in _config is used
   - jekyll-paginate
-# !github-pages! optional › https://help.github.com/articles/using-jekyll-with-pages/#configuring-jekyll
-# TODO is it used?
+# !github-pages! optional › https://help.github.com/articles/configuring-jekyll/
+# Provides redirect_from: in frontmatter for path aliases
   - jekyll-redirect-from
 
 #      _____ __                  __                
@@ -110,6 +108,7 @@ exclude:
   - .sass-cache
   - .gradle
   - _site
+  - _drafts/_*
   # Build Scripts and Dependencies
   - build.gradle
   - Gemfile
