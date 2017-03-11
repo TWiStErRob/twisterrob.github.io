@@ -117,6 +117,37 @@ I've included an HTML and a CSV file for human consumption to cover the most bas
 It's easy to convert the exported data to any format necessary, though this mostly requires some kind of programming, for example writing an XSLT stylesheet.
 The HTML conversion XSLT file can be found in each exported ZIP file, so based on that it should be simple to create any kind of output. The CSV conversion XSLT file is only available in the APK file.
 
+## Privacy Policy
+
+The Magic Home Inventory app (the app) allows the user (You) to enter information about personal belongings.
+
+### Camera permission
+{: .no_toc }
+This permission authorizes the app to take photos using Your device's camera(s).
+The captured images are used as visual identification of Your belongings.
+
+### Storage of user data
+{: .no_toc }
+The information You input is stored on the device\'s local storage mechanisms, as opposed to Cloud Storage.
+However it is possible through various ways to directly or indirectly export Your data and make it available for external parties.
+From the moment Your data leaves the app via Backup or Export, the app has no control over that data, and hence third party terms and policies will apply.
+
+### Third-party services
+{: .no_toc }
+Currently there are no third party integrations (including analytics and ads) that allow data to leave the app without user action.
+This may change in the future, in which case:
+
+ * there will be an update available for the app 
+ * this Privacy Policy will be updated
+
+### Future Changes
+{: .no_toc }
+If I decide to change this Privacy Policy, I will post those changes on this page.
+
+### Contact
+{: .no_toc }
+If there are still unanswered question or You want to chat about privacy of Your data, feel free to [contact me]({{site.baseurl}}/contact).
+
 ## History
 
 ### 1.1.1#2203 (2016-09-20)
