@@ -150,6 +150,11 @@ If there are still unanswered question or You want to chat about privacy of Your
 
 ## History
 
+### 1.1.2#2292 (2017-07-28)
+{: #v11202292-2}
+ * Fix: Forgot bump staged rollout to 100%, so only half the users got the release.  
+   Thanks to Michael L. for alerting me! (excellent example of useful feedback)
+
 ### 1.1.2#2292 (2017-03-13)
 {: #v11202292}
  * Feature: Add Privacy Policy in accordance with Google Play Store requirements.
