@@ -49,7 +49,7 @@ Everything was still working, but I don't like warnings, so I started looking fo
 
 The source code is not available in the Android SDK. This means that it's nearly impossible to comperehend what's going on and use the stepping facilities of the IDE. I didn't even know where the exception is coming from, because there's no stack trace.
 
-So I set out to figure out which version of Xalan is running on the device, so I can get the sources. I found that calling `org.apache.xml.serializer.Version.main(new String[0])` would give me the answer. It's not possible to call this from code, not even from an Evaluate while debugging, but the problem was only that it wasn't know to IDEA, so this worked:
+So I set out to figure out which version of Xalan is running on the device, so I can get the sources. I found that calling `org.apache.xml.serializer.Version.main(new String[0])` would give me the answer. It's not possible to call this from code, not even from an Evaluate while debugging, but the problem was only that it wasn't known to IDEA, so this worked:
 
 ```java
 Class
