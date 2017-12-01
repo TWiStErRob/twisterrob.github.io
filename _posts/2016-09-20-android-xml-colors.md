@@ -1,6 +1,6 @@
 ---
 title: "Color support for XML string resources in Android"
-subheadline: "Spoiler alert: not available out of the box"
+subheadline: "at it's worst"
 teaser: "I challenge you to find anything more inconsistent than this!"
 category: android
 tags:
