@@ -11,6 +11,8 @@ tags:
 
 So you read somewhere that Android supports `<font>` tags to color `string` resources, when used with `Resources#getText()`? Well, yeah, except...<!--more-->
 
+... there's no uniform way across SDK platform versions to represent "this text should be red" with just a String resource.
+
 Following is a summary and excerpt of the code handling XML font colors in Android. I tried to make it easier to digest than just raw code. The codes did not change between the listed versions unless otherwise noted.
 The sources come from
 
@@ -24,7 +26,7 @@ The sources come from
 ## API Level 10, 14---17
 Attribute names
 : `fgcolor`  
-(via `XmlUtils.convertValueToUnsignedInt -> parseLong`
+(via `XmlUtils.convertValueToUnsignedInt -> parseLong`)
 
 Base prefixes
 : `0` (octal), `0x` (hexadecimal), `#` (hexadecimal)
@@ -204,7 +206,7 @@ convertValueToInt(CharSequence charSeq, int defaultValue)
 ```
 
 
-## API Level 23---24
+## API Level 23---28
 
 Attribute names
 : `fgcolor`, `color`  
@@ -2561,7 +2563,7 @@ The above solutions work on all 3 variants of code: the old platforms understand
 Note: this will probably crash on special cases.
 
 `<font fgcolor="#FFFF0000" color="-#00010000">`
-: If you don't care about new platforms... (Who does that?), then you can use this to support anything below API 23. Old platforms understand `fgcolor=ARGB` correctly, and the not-so-old ones support the negative hack.
+: If you don't care about new platforms... (Who does that?!), then you can use this to support anything below API 23. Old platforms understand `fgcolor=ARGB` correctly, and the not-so-old ones support the negative hack.
 Note: on new platforms the color will be black, so be careful if you have a dark theme.
 
 `<font fgcolor="#7FFF0000">`

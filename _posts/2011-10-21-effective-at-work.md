@@ -36,7 +36,7 @@ If something takes 1 hour every single day or slows you down by 20%, then once t
    filter what's not relevant to you, e.g. <q>other team's environment down</q>;  
    if it's really important your collegaues will tell you anyway
  * **keyboard shortcuts**  
-   you just have to learn them once, you'll forget what you don't use anyway)
+   you just have to learn them once, you'll forget what you don't use anyway
  * **preferences/settings/menus**
    it's worth going through IDE settings/menus to learn what's available, anything may come in handy later
 
@@ -48,11 +48,11 @@ When modifying static content (`.css`, `.js`, `.html`) it's usually not required
 
 When you're naughty and don't apply yourself to do TDD and write your tests at the end of the development you can save a lot of time by not compiling the test classes, meaning the compation time is halved. You can also skip running unit tests when you're just manually testing the product.
 
-Of course the above is true here too, you can make a sacrafice and learn what the system is tolerant of, where can hack around a little to save time. The only problematic thing is when the system changes without your knowledge and some often practiced method just fails. When that happens you may have some trouble and you need to sacrifice again to adjust your method, but it's usually incomparable to the daily amount you saved prior and in the future.
+Of course the above is true here too, you can make a sacrifice and learn what the system is tolerant of, where can hack around a little to save time. The only problematic thing is when the system changes without your knowledge and some often practiced method just fails. When that happens you may have some trouble and you need to sacrifice again to adjust your method, but it's usually incomparable to the daily amount you saved prior and in the future.
 
 
 ## Help others to help yourself!
-Write more comments and JavaDoc at sensitive places, it'll pay of in the long run: many times it helps a lot interpreting your own code.
+Write more comments and JavaDoc at sensitive places, it will pay off in the long run: many times it helps a lot interpreting your own code.
 Additionally don't go writing
 
 ```java
@@ -64,7 +64,7 @@ style comments, the lack of that comment saves time for anyone reading the code 
 
 Fill in the description or message field with a meaningful declaration of what you did; this applies to version control commit, wiki edit, file upload, etc.
 
-Small things count: with a well-named variable, that no-one asks about in an in-person code review, you saved <var>team members</var> man-minutes for the team, and it took you only 10&nbsp;seconds to come up with. It also helps a great deal for anyone trying to understand that code, saving minutes again. Code is read by many and written by few. Look out for spelling mistakes to not confuse others and also prevent others spending time correcting it, because it's already correct --- looking at you <mark>Grammar&nbsp;Nazis</mark> ;).
+Small things count: with a well-named variable, that no-one asks about in an in-person code review, you saved <var>team members</var> man-minutes for the team, and it took you only 10&nbsp;seconds to come up with. It also helps a great deal for anyone trying to understand that code, saving minutes again. Code is read by many and written by few. Look out for spelling mistakes to not confuse others and also prevent others spending time correcting it, because it will already be correct --- looking at you <mark>Grammar&nbsp;Nazis</mark> ;).
 
 
 ## Emphasize the essence!
@@ -77,7 +77,7 @@ When writing something:
  * it's worth formatting even the emails you write, for example:  
    again, more people read your email so it may worth investing that 1 minute extra effort to make it easily comprehensible.
    * copy-paste highlighted code from IDE
-   * or at least set font to a monospace one for code, classnames and method names
+   * or at least set font to a monospace one for code, class names and method names
    * I usually color-code related things
      e.g. when I refer to a blue circle on a picture encompassing a button labeled <mark>Save</mark> I write: <q>the <span style="color:cyan">Save button</span> is misplaced</q>.
 
@@ -102,7 +102,7 @@ I see it a lot that people spend hours trying to make something work, ask your c
 ## There may be more...
 If something is not clear, use this joker tip:
 
-All these look insignificant improvements and waste of time, but if all of these tips save you only 10 minutes a day, then you already saved an hour that you can spend on working on something else. To be honest in many of these you're actually saving time for others, but you're part of team. If everyone follows some of these tips you may end up saving a lot of time in the long run, for example: <samp>4&nbsp;people &times; 5&nbsp;days &times; 1&nbsp;hour = 20&nbsp;hours</samp> in just a week.
+All these look insignificant improvements and waste of time, but if all of these tips save you only 10 minutes a day, then you already saved an hour that you can spend on working on something else. To be honest in many of these you're actually saving time for others, but you're part of a team. If everyone follows some of these tips you may end up saving a lot of time in the long run, for example: <samp>4&nbsp;people&nbsp;team &times;, 5&nbsp;working&nbsp;days &times; 1&nbsp;hour savings = 20&nbsp;hours</samp> in just a week.
 
 *[TDD]: Test Driven Development
 *[IDE]: Integrated Development Environment
