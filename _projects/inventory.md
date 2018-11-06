@@ -160,12 +160,12 @@ If there are still unanswered question or You want to chat about privacy of Your
  * Feature: Add Privacy Policy in accordance with Google Play Store requirements.
  * Feature: Added a lot of self-tests (not visible to users), to prevent breaking app functionality.
  * Enhancement: ~30 keywords improvements for better suggestions.
- * [Enhancement](https://github.com/TWiStErRob/TWiStErRob/issues/76): Rotate camera buttons more naturally.
- * [Enhancement](https://github.com/TWiStErRob/TWiStErRob/issues/84): Better camera behavior on low-end devices.
+ * [Enhancement](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/76): Rotate camera buttons more naturally.
+ * [Enhancement](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/84): Better camera behavior on low-end devices.
  * Fix: Re-added missing attribution and licences section in About.
  * Fix: Improved error messages for Samsung Marshmallow+ devices.
  * Fix: Crash when displaying image in non-compliant Gallery apps (e.g. on Alcatel Pixi 4)
- * [Fix](https://github.com/TWiStErRob/TWiStErRob/issues/83): Prevent crash when sharing with low resources.
+ * [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/83): Prevent crash when sharing with low resources.
  * Fix: Other very minor fixes, and internal improvements
 
 ### 1.1.1#2203 (2016-09-20)
@@ -176,12 +176,12 @@ If there are still unanswered question or You want to chat about privacy of Your
 
 ### 1.1.0#2193 (2016-09-19)
 {: #v11002193}
- * [Feature](https://github.com/TWiStErRob/TWiStErRob/issues/37): Ability to import/export from/to any external source (incl. Drive, Dropbox).
+ * [Feature](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/37): Ability to import/export from/to any external source (incl. Drive, Dropbox).
  * Feature: Proper background import/export with notifications and all.
  * Feature: Add human readable HTML (web page) and CSV (Excel) files to backup ZIPs.
  * Feature: Show details page automatically when opening a search result (most likely looking for location).
  * Feature: Added a lot of tests to cover the functionality and prevent breaking changes.
- * [Enancement](https://github.com/TWiStErRob/TWiStErRob/issues/42): Show which lists the items are on in details view.
+ * [Enancement](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/42): Show which lists the items are on in details view.
  * Enancement: Use ▶ instead of > to signify containment.
  * Fix: Few suggestion improvements.
  * Fix: Minor additions and fixes to help (Navigation, Backup, Tips).
