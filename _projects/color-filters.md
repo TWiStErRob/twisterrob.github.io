@@ -32,3 +32,39 @@ The built-in input methods take up too much spaces so I decided to try to implem
 
 ### Palette
 After Lollipop came out the Android libraries were updated and they added support for Palette. I decided to work it into the app because it's similarly visual and the it fit right into the architecture.
+
+
+## History
+
+### 2.0.0#2710 (2018-10-21)
+{: #v20002710}
+ * [Feature]({{site.baseurl}}/blog/2016/09/android-xml-colors.html): font resource investigation (only in debug)
+ * [Enhancement](https://github.com/TWiStErRob/net.twisterrob.colorfilters/issues/6): update all versions, target Pie
+ * [Enhancement](https://github.com/TWiStErRob/net.twisterrob.colorfilters/issues/5): Kotlin, latest build system
+ * [Fix](https://github.com/TWiStErRob/net.twisterrob.colorfilters/issues/7): Colored UI elements were black on Marshmallow and above
+ * [Fix](https://github.com/TWiStErRob/net.twisterrob.colorfilters/issues/8): Truncated text on Lollipop and above
+ * [Fix](https://github.com/TWiStErRob/net.twisterrob.colorfilters/issues/4): drag and drop crash
+
+### 1.2.0#2463 (2017-12-21)
+{: #v11102463}
+ * _unreleased_
+ * Enhancement: modularization
+ * Enhancement: basic tests
+
+### 1.1.0#1636 (2015-06-02)
+{: #v11001636}
+ * Feature: Added Palette support
+ * Enhancement: Ability to hide images to gain space
+ * Fix: Better number format support for non-latin locales  
+   Use programmer number format everywhere
+ * Fix: rotation and other lifecycle fixes
+ * Fix: jumpy labels when sliders change
+
+### 1.0.0#1339 (2014-10-28)
+{: #v10001339}
+ * Initial release with 3 Color Filters
+ * Build with Lollipop
+
+### 1.0.0#1324 (2014-10-25)
+{: #v10001324}
+ * Initial release preparation
