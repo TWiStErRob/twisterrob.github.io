@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # for some reason omitting the version defaults to 0
-gem 'github-pages', '>= 127'
+gem 'github-pages', '= 193', group: :jekyll_plugins
 
 # http://jekyllrb.com/docs/windows/#auto-regeneration
 # for --watch to work on Windows
