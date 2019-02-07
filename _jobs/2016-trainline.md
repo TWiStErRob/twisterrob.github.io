@@ -10,8 +10,8 @@ dates:
 employer: {}
 ---
 
-Trainline is UKs leading rail ticket provider. I'm working on the Android mobile team to make the flagship Android app better.
+Trainline is the UK's leading rail ticket distributor. I'm working on the Android mobile team to make the flagship Android app better.
 
-**Technologies**: Android, Java, MVP, Dagger, RxJava, Retrofit
+**Technologies**: Android, Java, Gradle, MVP, Dagger, RxJava, Retrofit, Espresso, JUnit, Mockito, JFixture
 
-**Tools used**: Android Studio, git, Jira, Trello, Outlook
+**Tools**: Android Studio, Git, Slack, Jira, Trello, Outlook
