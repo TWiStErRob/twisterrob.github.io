@@ -36,8 +36,13 @@ After Lollipop came out the Android libraries were updated and they added suppor
 
 ## History
 
+### 2.0.0#2722 (2019-02-07)
+{: #v20002722}
+ * [Fix](https://github.com/TWiStErRob/net.twisterrob.colorfilters/issues/9): Permissions update (request when needed) and remove write storage
+
 ### 2.0.0#2710 (2018-10-21)
 {: #v20002710}
+ * _unreleased_
  * [Feature]({{site.baseurl}}/blog/2016/09/android-xml-colors.html): font resource investigation (only in debug)
  * [Enhancement](https://github.com/TWiStErRob/net.twisterrob.colorfilters/issues/6): update all versions, target Pie
  * [Enhancement](https://github.com/TWiStErRob/net.twisterrob.colorfilters/issues/5): Kotlin, latest build system
