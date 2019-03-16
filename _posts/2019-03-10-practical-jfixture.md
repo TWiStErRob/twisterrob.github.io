@@ -10,21 +10,21 @@ tags:
 ---
 
 Tests need data, let's see how can we create them using [JFixture](https://github.com/FlexTradeUKLtd/jfixture).<!--more--> 
-In this article I'll go through some practical usage patterns of JFixture, and compare those to some other alternatives.
+In this article we'll go through some practical usage patterns of JFixture, and compare those to some other alternatives.
 
-## Intro
+## Introduction
 
 > JFixture is a Java library to assist in the writing of Unit Tests, particularly when following Test Driven Development. It generates types based on the concept of 'constrained non-determinism', which is an implementation of the [Generated Value](http://xunitpatterns.com/Generated%20Value.html) xUnit test pattern.
 <cite>[JFixture README.md](https://github.com/FlexTradeUKLtd/jfixture)</cite>
 
-What this really means, is that JFixture can create any data object with very little developer effort, here's an example:
+In practice this means, is that JFixture can create any data object with very little developer effort, here's an example:
 ```java
-private final JFixture fixture = new JFixture();
+private val fixture = JFixture()
 
-@Test public void test() {
-    Journey fixtJourney = fixture.create(Journey.class);
+@Test fun test() {
+    val fixtJourney: Journey = fixture();
 
-    Model result = sut.process(fixtJourney);
+    val result = sut.process(fixtJourney);
 
     assertNotNull(result);
 }
@@ -40,7 +40,7 @@ I chose JUnit Jupiter and Mockito + Mockito Kotlin as the testing frameworks in 
 ' %}
 
 ## Motivation
-Here's a question: when reading the below two setup approaches, which of them convey it better what setup the test needs in order to verify a certain behavior?
+Here's a question: Which of the following two approaches conveys the relevant test setup better?
 ```kotlin
 val fixtJourney = Journey(
     "",
@@ -76,7 +76,7 @@ val fixtJourney = fixture.create(Journey::class.java)
 ## The need for JFixture
 
 ### From the ground up
-Let's image we're writing a user interface for displaying some info based on a journey. Journey data is coming from a data source, and we do some transformation on it to display it on the UI.
+Let's imagine we're writing a user interface for displaying some info based on a journey. Journey data is coming from a data source, and we transform it to display it on the UI.
 
 Let's start with a simple data structure:
 ```kotlin
@@ -89,7 +89,7 @@ data class Journey(
 data class Model(/*...*/)
 ```
 {: title="data models"}
-additionally let's say this is the class that orchestrates the loading and displaying:
+Additionally, let's say this is the class that orchestrates the loading and displaying:
 ```kotlin
 class JourneyPresenter(
     private val view: JourneyView,
@@ -100,13 +100,11 @@ class JourneyPresenter(
         dataSource
             .getById(journeyId)
             .map(mapper)
-            .subscribe { model ->
-                view.show(model)
-            }
+            .subscribe { model -> view.show(model) }
     }
 }
 ```
-here are the collaborator interfaces for completeness (using something like RxJava's `Single`):
+Here are the collaborator interfaces for completeness (using RxJava's `Single`):
 ```kotlin
 interface JourneyView {
     fun show(model: Model)
@@ -385,15 +383,15 @@ override fun invoke(journey: Journey) = Model(
 )
 ```
 {: title="JourneyMapper"}
-If we were to use the classic approach, tests for this would get unweildy. Builders are a bit better, but testing for multiple counts in a parameterized test still requires some form of looping, or a custom factory just to create a certain amount of legs. With JFixture this is supported out of the box for any type:
+If we were to use the classic approach, tests for this would get unwieldy. Builders are a bit better, but testing for multiple counts in a parameterized test still requires some form of looping, or a custom factory just to create a certain amount of legs. With JFixture this is supported out of the box for any type:
 ```kotlin
 @CsvSource("1, 0", "2, 1", "3, 2", "4, 3")
 @ParameterizedTest
 fun `changeCount is mapped correctly`(legCount: Int, expectedChanges: Int) {
     fixture.customise().repeatCount(legCount)
-    val journey: Journey = fixture()
+    val fixtJourney: Journey = fixture()
 
-    val result = sut.invoke(journey)
+    val result = sut.invoke(fixtJourney)
 
     assertThat(result.changeCount, equalTo(expectedChanges))
 }
@@ -420,9 +418,9 @@ The tests for this involve setting all the leg modes to `TRAIN`. With the builde
 ```kotlin
 @Test fun `trainOnly is true for TRAIN-only journey`() {
     fixture.customise().sameInstance(TransportMode::class.java, TRAIN)
-    val journey: Journey = fixture()
+    val fixtJourney: Journey = fixture()
 
-    val result = sut.invoke(journey)
+    val result = sut.invoke(fixtJourney)
 
     assertThat(result.trainOnly, equalTo(true))
 }
@@ -437,9 +435,9 @@ We need to test another scenario though: when there are no `TRAIN` legs. In this
     fixture.customise().lazyInstance(TransportMode::class.java) {
         fixture.create().fromList(*Enum.valuesExcluding(TRAIN))
     }
-    val journey: Journey = fixture()
+    val fixtJourney: Journey = fixture()
 
-    val result = sut.invoke(journey)
+    val result = sut.invoke(fixtJourney)
 
     assertThat(result.trainOnly, equalTo(false))
 }
@@ -476,12 +474,13 @@ fun Any.setField(name: String, value: Any?) {
 An example usage would look like this:
 ```kotlin
 @Test fun `duration returns time for whole journey`() {
-    val journey: Journey = fixture()
-    journey.legs.last().setField("arrival", journey.legs.first().departure.plusMinutes(15))
+    val expectedMinutes: Int = fixture()
+    val fixtJourney: Journey = fixture()
+    fixtJourney.legs.last().setField("arrival", fixtJourney.legs.first().departure.plusMinutes(expectedMinutes))
 
-    val result = sut.invoke(journey)
+    val result = sut.invoke(fixtJourney)
 
-    assertThat(result.length, equalTo(Duration.of(15, ChronoUnit.MINUTES)))
+    assertThat(result.length, equalTo(Duration.of(expectedMinutes, ChronoUnit.MINUTES)))
 }
 ```
 You can see that it gives us the benefit of "naturally" mutating objects that are otherwise immutable.
@@ -531,8 +530,8 @@ data class Journey(
 {: title="Adding passengers to data type"}
 
 ```kotlin
-val journey: Journey = fixture()
-journey.setField("passengers", fixture.createList<Passenger>(size = 2))
+val fixtJourney: Journey = fixture()
+fixtJourney.setField("passengers", fixture.createList<Passenger>(size = 2))
 ```
 {: title="Creating a specific number of passengers"}
 
@@ -649,7 +648,7 @@ Tip: even when using annotated setup, it's possible the combine the two framewor
 @Mock lateinit var mockMapper: (Journey) -> Model
 
 @Fixture lateinit var fixtJourneyId: String
-@Spy @Fixture lateinit var fixtJourney: Journey
+@Spy @Fixture lateinit var spyJourney: Journey
 @Fixture lateinit var fixtModel: Model
 
 private lateinit var fixture: JFixture
@@ -715,10 +714,10 @@ public interface FluentCustomisation {
 `Class<*>` implements `Type` so when the `instance` argument is not a subclass of `T` in `clazz`, the overload resolution finds the `Type` overload.
 
 ### Flaky tests
-One of the main benefits of JFixture is reproducability through constrained non-determinism.
+One of the main benefits of JFixture is reproducibility through constrained non-determinism.
 In practice this means that if it fails on one computer (e.g. CI) it'll fail the same way on another (e.g. dev machine).
-Mind you that determinism doesn't mean immediate reproducability, but eventual.
-Don't fret though, it's not as bad as the [inifinite monkey theorem](https://en.wikipedia.org/wiki/Infinite_monkey_theorem) states.
+Mind you that determinism doesn't mean immediate reproducibility, but eventual.
+Don't fret though, it's not as bad as the [infinite monkey theorem](https://en.wikipedia.org/wiki/Infinite_monkey_theorem) states.
 In practice, we observed that if we see a flaky test on the CI, we can simply run the test a 100 times and we'll see some failures:
 
 ![Run/Debug Configurations > JUnit > Configuration > Repeat > N Times](data:image/png;base64,
@@ -905,27 +904,38 @@ In practice, we observed that if we see a flaky test on the CI, we can simply ru
 
 Here's an example flaky test that will pass 90% of the time:
 ```kotlin
-enum class Type { Type0, Type1, Type2, Type3, Type4, Type5, Type6, Type7, Type8, Type9 }
+enum class Type { Other, Type1, Type2, Type3, Type4, Type5, Type6, Type7, Type8, Type9 }
 
+fun Type.isValidType() = this != Other
+```
+{: title="Production code"}
+```kotlin
 @Test fun flaky90() {
     val fixture = JFixture()
+    val fixtType: Type = fixture()
 
-    val type: Type = fixture()
+    val result = fixtType.isValidType()
 
-    assertNotEquals(Type0, type)
+    assertTrue(result)
 }
 ```
+{: title="Test code"}
 This could mean that if you run the test a few times, and the code reviewer runs it,
 and the CI runs it; it's still going to pass all those times, but then when you merge to `master`, it fails.
 The above example is over-simplified, but even the most complex flaky tests we had of this type weren't that hard to debug and fix.
+Notice that the reason for failure is assuming what the fixture will generate.
+If this `isValidType` is used in an `if`, that behavior will trigger 90% of the time.
+To fix this test, we need to use `valuesExcluding` technique described in [Property Customisation](#property-customisation) section,
+and write a separate test for `Other` specifically.
+Mind you that in some cases we need to consider that the `isValidType`'s' input should be parameterised to test all possibilities --- not just a random one ---, but that's a topic for another time.
 
 ## Conclusion
 Introducing JFixture to an existing project is a big leap, but we think it's worth the effort and the learning curve is not that bad.
-There will be times when you scratch your heads, but you'll learn something new each time, until you develop a solid usage pattern.
+There will be times when you scratch your heads, but you'll learn something new each time, until you develop a solid stable usage pattern.
 I personally found it very useful to debug into JFixture when something is wrong.
 Give it a whirl and let me know how you found it.
 
 ## References
  * [JFixture library's GitHub repository](https://github.com/FlexTradeUKLtd/jfixture)
  * [JFixture library's documentation](https://github.com/FlexTradeUKLtd/jfixture/wiki)
- * [Example code used](https://github.com/TWiStErRob/TWiStErRob/tree/master/JFixturePlayground/src/test/java/net/twisterrob/test/jfixture/examples/journey)
+ * [Example code used](https://github.com/TWiStErRob/TWiStErRob/tree/master/JFixturePlayground)
