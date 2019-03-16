@@ -128,6 +128,7 @@ exclude:
   - sources
   - .svn
   - .git
+  - System Volume Information
 
 #       ______                                _           
 #      / ____/___  ____ _   _____  __________(_)___  ____ 
