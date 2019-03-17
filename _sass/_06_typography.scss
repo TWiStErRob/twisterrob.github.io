@@ -314,7 +314,8 @@ code, var {
     padding: rem-calc(1.5) rem-calc(2) rem-calc(0.5) rem-calc(2);
     font-style: normal;
     letter-spacing: rem-calc(-0.5);
-    font-size: rem-calc(14);
+    // use em instead of rem to make sure inline code in headings is relative
+    font-size: 0.875em;
     // disable shadow inside alert-box
     text-shadow: none;
 }
