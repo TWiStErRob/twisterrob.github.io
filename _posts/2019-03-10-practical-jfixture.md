@@ -294,8 +294,8 @@ When we call `fixture.create(Class)`, JFixture tries numerous ways to create our
  * public factory method with the least number of arguments
  * package visible constructor with the least number of arguments
 
-{% include alert info='
-Pro tip: "with least number of arguments" can be changed with
+{% include alert tip='Pro tip:
+<q>public constructor with the least number of arguments</q> can be changed to <q>most</q> when a class has overloaded constructors:
 ```kotlin
 fixture.customise(GreedyConstructorCustomisation(SomeType::class.java))
 ```
@@ -313,22 +313,26 @@ Notice that while this may seems like a lot to digest at first, we're usually on
 #### Benefits: No builder required
 JFixture is a builder by itself, except it adapts to the shape of your code automatically.
 
- * **less code to write**  
+less code to write  
+: ^
    We can save a lot of code that would just create our objects by using the library.
 
- * **less code to maintain**  
+less code to maintain  
+: ^
    Every time a new property is added all the usages of the class has to be revised and the constructor calls/builders adjusted.
    Most of the time these are unrelated places and the new field doesn't affect behavior of the tests, yet we still have to modify them.
    With builders the situation is much better, than the classic or factory approach, but maintenance is still needed.
 
- * **customization of objects is still possible**  
-   the flexibility of the builder is that we can pick which parts to be set and how.
+customization of objects is still possible
+: ^
+   The flexibility of the builder is that we can pick which parts to be set and how.
    For example a `TRAIN`-only journey with multiple legs; this is still easily possible.
 
 #### Benefits: Data is randomized
 Don't worry, it's the [good type of random](https://github.com/FlexTradeUKLtd/jfixture#overview).
 
- * **no conflicts from random data**  
+no conflicts from random data  
+: ^
    Consider this simple thing:
    ```kotlin
    val journeys = setOf(
@@ -340,7 +344,8 @@ Don't worry, it's the [good type of random](https://github.com/FlexTradeUKLtd/jf
    With the hand-built builders we would have to write random code ourselves to get this to pass.
    What's even worse: it could sometimes pass and sometimes wouldn't pass, depending on what time it is now and how fast our computer is.
 
- * **more confidence in verification**  
+more confidence in verification  
+: ^
    With the current builder implementation
    ```kotlin
    fixtJourney.legs[0].origin.name == fixtJourney.legs[1].origin.name
@@ -401,7 +406,7 @@ fun `changeCount is mapped correctly`(legCount: Int, expectedChanges: Int) {
 the default is&nbsp;[<var>3</var>](https://github.com/FlexTradeUKLtd/jfixture/blob/master/jfixture/src/main/java/com/flextrade/jfixture/MultipleCount.java).
 ' %}
 {% include alert warning='
-Warning: This actually doesn\'t scale well, but good enough for simple tests.  
+Warning: This actually does not scale well, but good enough for simple tests.  
 More on this in ["Fine-grained repetition"](#fine-grained-repetition).
 ' %}
 
@@ -426,7 +431,7 @@ The tests for this involve setting all the leg modes to `TRAIN`. With the builde
 }
 ```
 {% include alert info='
-`sameInstance` is a built-in method that can be used to make sure a type is always resolved to the same instance.
+`sameInstance` is a built-in method that can be used to make sure a type is **always** resolved to **the same** instance.
 ' %}
 
 We need to test another scenario though: when there are no `TRAIN` legs. In this case each leg should have a mode of anything but `TRAIN`. Here's a way to do this:
@@ -447,14 +452,12 @@ We need to test another scenario though: when there are no `TRAIN` legs. In this
 `fromList` will pick an item from the array.
 ' %}
 
-{% include alert warning='
-`Enum.valuesExcluding` is not in a library, it\'s one of the few utilities we use to make parameterized tests and fixturing nicer:
+`Enum.valuesExcluding` is not in a library, it's one of the few utilities we use to make parameterized tests and fixturing nicer:
 ```kotlin
 inline fun <reified E : Enum<E>>
 Enum.Companion.valuesExcluding(vararg excluded: E): Array<E> =
     (enumValues<E>().toList() - excluded).toTypedArray()
 ```
-' %}
 
 You may notice that this `lazyInstance` + `fromList` + `valuesExcluding` combination has potential for re-use, and you're right:
 it is possible to extract customization logic via `SpecimenSupplier` and/or `Customization` interfaces.
@@ -494,9 +497,12 @@ fixture.customise().intercept(Leg::class.java) {
     it.setField("arrival", it.departure.plusMinutes(fixture<Long>()))
 }
 ```
+{% include alert info='
+`intercept` is a built-in method that lets you mutate the created object further after creation. It will be called once for each instance.
+' %}
 
 {% include alert warning='
-JFixture has a `propertyOf` customisation which we could use instead of `setField`, but it\'s a no-go when using immutable classes. It\'ll only work on `var`s, not `val`s.
+JFixture has a `propertyOf` customisation which we could use instead of `setField`, but it\'s a no-go when using immutable classes. It will only work on `var`s, not `val`s.
 ' %}
 
 ### Fine-grained property customization
@@ -535,29 +541,23 @@ fixtJourney.setField("passengers", fixture.createList<Passenger>(size = 2))
 ```
 {: title="Creating a specific number of passengers"}
 
-{% include alert warning='
 `createList` is not a library function, it is one of the extensions we added to help us create lists in a very simple way. JFixture being designed for Java has some quirks in Kotlin, hiding it in utility functions helps to deal with it nicely:
 ```kotlin
-@Suppress("UNCHECKED_CAST") // can\'t have List<T>::class literal, so need to cast
+@Suppress("UNCHECKED_CAST") // can't have List<T>::class literal, so need to cast
 inline fun <reified T : Any> JFixture.createList(size: Int = 3): List<T> =
     this.collections().createCollection(List::class.java as Class<List<T>>, T::class.java, size)
 ```
-' %}
 
 ## Best practices
 Now that we have the tools, here are some tips to prevent hurting ourselves.
 
 ### Shared JFixture
-It might be tempting to create a globals:
-```kotlin
-val fixture = JFixture() // top-level
-// or
-object fixture : JFixture() { ... }
-```
-... but try not to.
+It might be tempting to create a globals, but try not to.
 It's not worth the hours of debugging when you accidentally end up with the wrong fixtured data because another test customised in a counter-productive way.
 ```kotlin
-private val fixture = JFixture()
+val fixture = JFixture()
+// or
+object fixture : JFixture() { ... }
 
 @TestMethodOrder(Random::class)
 class SharedStateTest {
@@ -582,10 +582,8 @@ private lateinit var fixture: JFixture
     fixture = JFixture()
 }
 ```
-{% include alert warning='
-Note: having `private val fixture = JFixture()` inside the class may be not enough,
+Note that having `private val fixture = JFixture()` inside the class may be not enough,
 because the test runner may create an instance per test class, not per test method: Google&nbsp;`@TestInstance(PER_CLASS)`.
-' %}
 
 ### Sharing data setup
 That being said, sharing setup is a good idea.
