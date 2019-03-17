@@ -29,7 +29,7 @@ private val fixture = JFixture()
     assertNotNull(result);
 }
 ```
-Compare this to the classic approach where we would need to create each object individually filling in the properties with dummy values, and potentially creating constants for these values. No matter how deep or complicated it gets, JFixture usually finds a way to create an instance with all the data filled in.
+Compare this to the classic approach where we would need to create each object individually, filling in the properties with dummy values, and potentially creating constants for these values. No matter how deep or complicated it gets, JFixture usually finds a way to create an instance with all the data filled in.
 ```kotlin
 val journey = Journey(
     "",
@@ -61,8 +61,8 @@ Everything you see here applies to Java as well (unless it\'s about using some K
 ' %}
 
 ## The need for JFixture
-In this section we'll go through developing and testing a fictious component.
-Starting from simple, getting more complicated, finding solutions to problems that come up on the way.
+In this section, we'll go through developing and testing a fictitious component.
+Starting simply, and getting more complicated, we'll finding solutions to problems that come up on the way.
 
 ### From the ground up
 Let's imagine we're writing a user interface for displaying some info based on a journey. Journey data is coming from a data source, and we transform it to display it on the UI.
@@ -105,7 +105,7 @@ interface DataSource<T> {
 {: title="collabolators"}
 
 To test this, we will need to mock the collaborators and stub their inputs and return values.
-Mind you, that we're testing the data flow here: `dataSource` &rarr; `mapper` &rarr; `view`.
+Mind you, we're testing the data flow here: `dataSource` &rarr; `mapper` &rarr; `view`.
 At this point, we don't really care what the data is, as long as it's of the right type:
 ```kotlin
 private val mockView: JourneyView = mock()
@@ -128,14 +128,14 @@ You might notice, some of the declarations are missing, namely `fixtJourneyId`, 
 
 ### Classic approach
 Usually when we're faced with a problem of creating an instance of a class, we use instantiation (the good old `new` in Java).
-The simplest way to fulfill the missing pieces above is this:
+The simplest way to fill in the missing pieces above is this:
 ```kotlin
 private val fixtJourneyId = ""
 private val fixtJourney = Journey("", "", "")
 private val fixtModel = Model("", 0, 0)
 ```
 {: title="Classic data setup for test"}
-Here, we filled in the values, so that it compiles. At the same time we, don't really care about what the values are, so we mostly use default values such as use empty strings, `false`, or `0`s.
+Here, we filled in the values, so that it compiles. At the same time, we don't really care about what the values are, so we mostly use default values such as use empty strings, `false`, or `0`s.
 
 ### More complex model
 Let's expand our extremely simple model to a more realistic example:
@@ -267,7 +267,7 @@ Remember `JourneyBuilder` we created just now? Turns out a very similar effect c
 ```kotlin
 private val fixtJourney: Journey = fixture.create(Journey::class.java)
 ```
-... but what does this do? and what are the benefits? That's what I'll explore next.
+... but what does this do? and what are the benefits? That's what we'll explore next.
 
 #### How does JFixture create an object?
 When we call `fixture.create(Class)`, JFixture tries numerous ways to create our objects:
@@ -308,9 +308,9 @@ less code to write
 
 less code to maintain  
 : ^
-   Every time a new property is added all the usages of the class has to be revised and the constructor calls/builders adjusted.
+   Every time a new property is added all the usages of the class have to be revised and the constructor calls/builders adjusted.
    Most of the time these are unrelated places and the new field doesn't affect behavior of the tests, yet we still have to modify them.
-   With builders the situation is much better, than the classic or factory approach, but maintenance is still needed.
+   With builders the situation is much better than the classic or factory approach, but maintenance is still needed.
 
 customization of objects is still possible
 : ^
@@ -335,11 +335,12 @@ no conflicts from random data
 
 more confidence in verification  
 : ^
+   Let's imagine we have a bug, and the production code is using the wrong leg to calculate the origin station's name. With the current builder implementation each leg's station names are all the same. This means that we could easily end up with a false positive verification. JFixture puts different data everywhere, so it would catch the problem:
    With the current builder implementation
    ```kotlin
-   fixtJourney.legs[0].origin.name == fixtJourney.legs[1].origin.name
+   // same as   fixtJourney.legs[i].origin.name
+   assertEquals(fixtJourney.legs[0].origin.name, model.origin)
    ```
-   so when checking `assertEquals(fixtJourney.legs[0].origin.name, model.origin)` we could get a false positive, if the production code is using the wrong leg.
 
 #### A note on Kotlin
 Writing `fixture.create(Journey::class.java)` over and over again gets old really fast. In Kotlin we can do better:
@@ -477,7 +478,7 @@ An example usage would look like this:
 ```
 You can see that it gives us the benefit of "naturally" mutating objects that are otherwise immutable.
 Additionally it really focuses on the bits that we care about and leaves everything else up to JFixture.
-The reflection may look counter-productive, but in the rare occurrence we rename properties or change types of properties the tests will fail at runtime;
+The reflection may look counter-productive, but in the rare instance we rename properties or change types of properties the tests will fail at runtime;
 which is slower to detect than a compile error, but we're still protected from false positives.
 
 Sometimes each object has to contain self-consistent data, for example: each leg has to be a non-zero length travel. In this case `intercept` comes in handy combined with `setField`:
@@ -495,7 +496,7 @@ JFixture has a `propertyOf` customisation which we could use instead of `setFiel
 ' %}
 
 ### Fine-grained property customization
-There's an interesting thing about `lazyInstance`: it affects every single object created from the given `fixture` factory. This may be unwanted and needs to be resolved.
+Here's the thing about `lazyInstance`: it affects every single object created from the given `fixture` factory. This may be unwanted, and needs to be resolved.
 Let's consider what happens if there are `Passengers` in the system:
 ```kotlin
 data class Passenger(
@@ -530,7 +531,7 @@ fixtJourney.setField("passengers", fixture.createList<Passenger>(size = 2))
 ```
 {: title="Creating a specific number of passengers"}
 
-`createList` is not a library function, it is one of the extensions we added to help us create lists in a very simple way. JFixture being designed for Java has some quirks in Kotlin, hiding it in utility functions helps to deal with it nicely:
+`createList` is not a library function, it is one of the extensions we added to help us create lists in a very simple way. JFixture --- being designed for Java --- has some quirks in Kotlin, so hiding them in utility functions helps to write nicer code:
 ```kotlin
 @Suppress("UNCHECKED_CAST") // can't have List<T>::class literal, so need to cast
 inline fun <reified T : Any> JFixture.createList(size: Int = 3): List<T> =
@@ -541,8 +542,8 @@ inline fun <reified T : Any> JFixture.createList(size: Int = 3): List<T> =
 Now that we have the tools, here are some tips to prevent hurting ourselves.
 
 ### Shared JFixture
-It might be tempting to create a globals, but try not to.
-It's not worth the hours of debugging when you accidentally end up with the wrong fixtured data because another test customised in a counter-productive way.
+It might be tempting to create globals, but try not to.
+It's not worth the hours of debugging when you accidentally end up with the wrong fixtured data because another test customised it in a counter-productive way.
 ```kotlin
 val fixture = JFixture()
 // or
@@ -561,17 +562,17 @@ class SharedStateTest {
     }
 }
 ```
-In the above example the `fixture` file-global property out-lives the test's lifecycle and leaks the `""` customization to the other test, which expects `JFixture`'s default behavior.
+In the above example the `fixture` global property outlives the test's lifecycle and leaks the `""` customization to the other test, which expects `JFixture`'s default behavior.
 This expectation is usually implicit when writing fixtured tests.
 
-As seen above even sharing state between a single test class' methods is risky. We always use non-static `JFixture` instance set up in `@BeforeEach` to prevent cross-test customizations:
+As seen above, sharing state between a single test class' methods is risky. We always use non-static `JFixture` instance set up in `@BeforeEach` to prevent cross-test customizations:
 ```kotlin
 private lateinit var fixture: JFixture
 @BeforeEach fun setUp() {
     fixture = JFixture()
 }
 ```
-Note that having `private val fixture = JFixture()` inside the class may be not enough,
+Note that having `private val fixture = JFixture()` inside the class may not be enough,
 because the test runner may create an instance per test class, not per test method: Google&nbsp;`@TestInstance(PER_CLASS)`.
 
 ### Sharing data setup
@@ -601,10 +602,11 @@ class MyFixture : JFixture() {
 It helps:
  * sharing customizations
  * sharing fixture related utility methods  
-   (Not so beneficial when we can use Kotlin extension methods, but it is in Java.)
- * if you go with encapsulation over inheritance you can create an API better fitting your style
+   (not so beneficial when we can use Kotlin extension methods, but it is in Java)
+ * creating a better API fitting your style  
+   (if you go with encapsulation over inheritance)
 
-That said, we are not using this pattern, because we prefer easily discoverable and focused test setup.
+That said, we are not using this pattern, because we prefer easily discoverable and focused test setups.
 
 ### Stubbing fixture behavior
 Let's see what happens if our data classes have calculated properties, for example:
@@ -628,7 +630,7 @@ Beware: when using `spy`s, we must always use the `doReturn(result).when(spy).me
 otherwise the real method gets called, which can cause problems.
 ' %}
 
-Tip: even when using annotated setup, it's possible the combine the two frameworks:
+Tip: even when using annotated setup, it's possible to combine the two frameworks:
 ```kotlin
 @Mock lateinit var mockView: JourneyView
 @Mock lateinit var mockDataSource: DataSource<Journey>
@@ -654,7 +656,7 @@ private lateinit var sut: JourneyPresenter
 The important thing here is to have `initMocks` **after** `initFixtures`.
 
 ## Culprits
-No tool is without its drawbacks, here are some interesting problems we encountered while using JFixture.
+No tool is without its drawbacks --- here are some interesting problems we have encountered while using JFixture.
 
 ### Kotlin generics interoperability
 Kotlin makes every usage of a generic `out T` (e.g. `kotlin.collections.List<T>`) automatically appear in the class files as `? extends T`.
@@ -696,8 +698,8 @@ public interface FluentCustomisation {
 
 ### Flaky tests
 One of the main benefits of JFixture is reproducibility through constrained non-determinism.
-In practice this means that if it fails on one computer (e.g. CI) it'll fail the same way on another (e.g. dev machine).
-Mind you that determinism doesn't mean immediate reproducibility, but eventual.
+In practice this means that if tests fail on one computer (e.g. CI) they'll fail the same way on another (e.g. dev machine).
+Mind you, this failure may not be immediate, but it's eventually reproducible.
 Don't fret though, it's not as bad as the [infinite monkey theorem](https://en.wikipedia.org/wiki/Infinite_monkey_theorem) states.
 In practice, we observed that if we see a flaky test on the CI, we can simply run the test a 100 times and we'll see some failures:
 
@@ -923,7 +925,7 @@ Notice that the reason for failure is assuming what the fixture will generate.
 If this `isValidType` is used in an `if`, that behavior will trigger 90% of the time.
 To fix this test, we need to use `valuesExcluding` technique described in [Property Customisation](#property-customisation) section,
 and write a separate test for `Other` specifically.
-Mind you that in some cases we need to consider that the `isValidType`'s' input should be parameterised to test all possibilities --- not just a random one ---, but that's a topic for another time.
+Bear in mind that in some cases we need to consider that the `isValidType`'s input should be parameterised to test all possibilities (not just a random one), but that's a topic for another time.
 
 ## Conclusion
 Introducing JFixture to an existing project is a big leap, but we think it's worth the effort and the learning curve is not that bad.
