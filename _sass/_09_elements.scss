@@ -63,7 +63,7 @@ ul#markdown-toc {
   p {
     margin-bottom: 0;
     display: inline;
-  } 
+  }
   a {
     text-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
     border-bottom: 1px dotted #fff;
@@ -252,21 +252,21 @@ section.project {
   display: initial;
 }
 .icon-alias-category::before {
-  @extend .icon-archive:before;
+  @extend .icon-archive, :before;
   color: $grey-4;
   $tag_shadow: black 0px 0px 2px;
   text-shadow: $tag_shadow;
   text-shadow: $tag_shadow, $tag_shadow;
 }
 .icon-alias-archive::before {
-  @extend .icon-calendar:before;
+  @extend .icon-calendar, :before;
   color: $grey-4;
   $tag_shadow: black 0px 0px 2px;
   text-shadow: $tag_shadow;
   text-shadow: $tag_shadow, $tag_shadow;
 }
 .icon-alias-tag::before {
-  @extend .icon-price-tag:before;
+  @extend .icon-price-tag, :before;
   color: $grey-4;
   $tag_shadow: black 0px 0px 2px;
   text-shadow: $tag_shadow;
@@ -292,7 +292,7 @@ section.project {
     color: white;
   }
   &:before {
-    @extend .icon-alias-tag::before;
+    @extend .icon-alias-tag, ::before;
     padding-right: rem-calc(4);
   }
 
