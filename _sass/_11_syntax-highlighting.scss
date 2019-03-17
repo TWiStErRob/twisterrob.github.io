@@ -3,20 +3,24 @@
 
 /* string */        pre .str, code .str { color: #FF8000; }
 /* keyword */       pre .kwd, code .kwd { color: #B0B0FF; font-weight: bold; }
-/* comment */       pre .com, code .com { color: #B3CECD; } 
-/* type */          pre .typ, code .typ { color: #FFFFED; } 
-/* literal */       pre .lit, code .lit { color: #FF00FF; font-weight: bold; } 
-/* punctuation */   pre .pun, code .pun { color: #E1FFBF; } 
-/* plaintext */     pre .pln, code .pln { color: #FFFFFF; } 
-/* xml tag */       pre .tag, code .tag { color: #B0B0FF; font-weight: bold; } 
-/* xml attr name */ pre .atn, code .atn { color: #00FF85; } 
-/* xml attr value */pre .atv, code .atv { color: #FF8000; } 
-/* decimal */       pre .dec, code .dec { color: #FF00FF; } 
+/* comment */       pre .com, code .com { color: #B3CECD; }
+/* type */          pre .typ, code .typ { color: #FFFFED; }
+/* literal */       pre .lit, code .lit { color: #FF00FF; font-weight: bold; }
+/* punctuation */   pre .pun, code .pun { color: #E1FFBF; }
+/* plaintext */     pre .pln, code .pln { color: #FFFFFF; }
+/* xml tag */       pre .tag, code .tag { color: #B0B0FF; font-weight: bold; }
+/* xml attr name */ pre .atn, code .atn { color: #00FF85; }
+/* xml attr value */pre .atv, code .atv { color: #FF8000; }
+/* decimal */       pre .dec, code .dec { color: #FF00FF; }
 
 .highlight {
 	tab-size: 4;
 	.hll   /* Highligh Line */               { border: 1px ridge $primary-color; padding: 2px; }
-	.err   /* Error */                       { color: #a61717; background-color: #e3d2d2; padding: 2px 1px; }
+	.err   /* Error */                       {
+		color: #a61717; background-color: #e3d2d2; padding: 2px 1px;
+		/* Kotlin's `special name` and fun <reified T> syntaxes make highlighter barf */
+		.language-kotlin & { color: #FFFF80; background-color: inherit; padding: 0; }
+	}
 	.w     /* Text.Whitespace */             { color: #bbb; }
 	.p     /* Punctuation */                 { color: #FFFF80; }
 	.o     /* Operator */                    { color: #FFFF80; }
@@ -58,7 +62,7 @@
 	.nl    /* Name.Label */                  { color: #C1FF00; }
 	.nn    /* Name.Namespace */              { color: #FFFFBF; font-style: italic; }
 	.nx    /* Name.Other */                  { color: #EEEEEE; }
-	.py    /* Name.Property */               { color: red; }
+	.py    /* Name.Property */               { color: #C1FF00; }
 	.nt    /* Name.Tag */                    { color: #B0B0FF; }
 	.nv    /* Name.Variable */               { color: #6AFF00; }
 	.vc    /* Name.Variable.Class */         { color: #FF7985; }

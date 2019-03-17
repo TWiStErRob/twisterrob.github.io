@@ -91,7 +91,7 @@ Applying: Commit message 2
 me@laptop$ git push --all
 ```
 
-Upon success just go to the original repo or your fork on GitHub and you should see a <mark>Your recently pushed branches:</mark> tip with a <mark>Compare & pull request<mark> button.
+Upon success just go to the original repo or your fork on GitHub and you should see a <mark>Your recently pushed branches:</mark> tip with a <mark>Compare & pull request</mark> button.
 
 Review changes, fill in description and you're good to go.
 

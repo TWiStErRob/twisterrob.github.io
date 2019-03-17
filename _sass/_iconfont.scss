@@ -6,6 +6,7 @@
   font-family: "iconfont";
   src: url("../fonts/iconfont.eot");
   src: url("../fonts/iconfont.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/iconfont.woff2") format("woff2"),
        url("../fonts/iconfont.woff") format("woff"),
        url("../fonts/iconfont.ttf") format("truetype"),
        url("../fonts/iconfont.svg#iconfont") format("svg");
@@ -23,6 +24,7 @@
 [data-icon]:before { content: attr(data-icon); }
 
 [data-icon]:before,
+.icon-alarm:before,
 .icon-archive:before,
 .icon-back-in-time:before,
 .icon-blackboard:before,
@@ -32,6 +34,7 @@
 .icon-chevron-left:before,
 .icon-chevron-right:before,
 .icon-chevron-up:before,
+.icon-cone:before,
 .icon-edit:before,
 .icon-export:before,
 .icon-facebook:before,
@@ -40,14 +43,17 @@
 .icon-google-plus:before,
 .icon-graduation-cap:before,
 .icon-home:before,
+.icon-info:before,
 .icon-install:before,
 .icon-lab-flask:before,
+.icon-light-bulb:before,
 .icon-linkedin:before,
 .icon-magnifying-glass:before,
 .icon-mail:before,
 .icon-open-book:before,
 .icon-paypal:before,
 .icon-price-tag:before,
+.icon-right:before,
 .icon-rss:before,
 .icon-skype:before,
 .icon-tree:before,
@@ -69,6 +75,7 @@
   font-smoothing: antialiased;
 }
 
+.icon-alarm:before { content: "\f120"; }
 .icon-archive:before { content: "\f100"; }
 .icon-back-in-time:before { content: "\f101"; }
 .icon-blackboard:before { content: "\f102"; }
@@ -78,6 +85,7 @@
 .icon-chevron-left:before { content: "\f106"; }
 .icon-chevron-right:before { content: "\f107"; }
 .icon-chevron-up:before { content: "\f108"; }
+.icon-cone:before { content: "\f122"; }
 .icon-edit:before { content: "\f109"; }
 .icon-export:before { content: "\f10a"; }
 .icon-facebook:before { content: "\f10b"; }
@@ -86,14 +94,17 @@
 .icon-google-plus:before { content: "\f10e"; }
 .icon-graduation-cap:before { content: "\f10f"; }
 .icon-home:before { content: "\f110"; }
+.icon-info:before { content: "\f124"; }
 .icon-install:before { content: "\f111"; }
 .icon-lab-flask:before { content: "\f112"; }
+.icon-light-bulb:before { content: "\f126"; }
 .icon-linkedin:before { content: "\f113"; }
 .icon-magnifying-glass:before { content: "\f114"; }
 .icon-mail:before { content: "\f115"; }
 .icon-open-book:before { content: "\f116"; }
 .icon-paypal:before { content: "\f117"; }
 .icon-price-tag:before { content: "\f118"; }
+.icon-right:before { content: "\f128"; }
 .icon-rss:before { content: "\f119"; }
 .icon-skype:before { content: "\f11a"; }
 .icon-tree:before { content: "\f11b"; }
@@ -102,6 +113,7 @@
 .icon-v-card:before { content: "\f11e"; }
 .icon-youtube:before { content: "\f11f"; }
 
+$font-iconfont-alarm: "\f120";
 $font-iconfont-archive: "\f100";
 $font-iconfont-back-in-time: "\f101";
 $font-iconfont-blackboard: "\f102";
@@ -111,6 +123,7 @@ $font-iconfont-chevron-down: "\f105";
 $font-iconfont-chevron-left: "\f106";
 $font-iconfont-chevron-right: "\f107";
 $font-iconfont-chevron-up: "\f108";
+$font-iconfont-cone: "\f122";
 $font-iconfont-edit: "\f109";
 $font-iconfont-export: "\f10a";
 $font-iconfont-facebook: "\f10b";
@@ -119,14 +132,17 @@ $font-iconfont-google-play: "\f10d";
 $font-iconfont-google-plus: "\f10e";
 $font-iconfont-graduation-cap: "\f10f";
 $font-iconfont-home: "\f110";
+$font-iconfont-info: "\f124";
 $font-iconfont-install: "\f111";
 $font-iconfont-lab-flask: "\f112";
+$font-iconfont-light-bulb: "\f126";
 $font-iconfont-linkedin: "\f113";
 $font-iconfont-magnifying-glass: "\f114";
 $font-iconfont-mail: "\f115";
 $font-iconfont-open-book: "\f116";
 $font-iconfont-paypal: "\f117";
 $font-iconfont-price-tag: "\f118";
+$font-iconfont-right: "\f128";
 $font-iconfont-rss: "\f119";
 $font-iconfont-skype: "\f11a";
 $font-iconfont-tree: "\f11b";

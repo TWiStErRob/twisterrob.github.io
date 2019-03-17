@@ -19,7 +19,7 @@ This post describes how I included prettified and easily copiable bookmarklet co
 ## Example
 Short summary of
 <a class="bookmarklet" href="#ID-of-code">bookmarklet name</a>[^1]
-(grab "bookmarklet name" to your bookmarks bar).
+(drag & drop "bookmarklet name" to your bookmarks bar).
 
 ```javascript
 /* display an alert */

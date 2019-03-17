@@ -60,10 +60,18 @@ ul#markdown-toc {
 .alert-box {
   font-family: $font-family-sans-serif;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
-  p {
-    margin-bottom: 0;
+  p:first-child {
+    // let the icon wrap nicely
     display: inline;
-  } 
+  }
+    > {
+        // some blocks shouldn't have a bottom margin, it puts too much space at the end inside the box
+        p:last-child,
+        ul:last-child,
+        .highlighter-rouge:last-child > .highlight > pre {
+            margin-bottom: 0;
+        }
+    }
   a {
     text-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
     border-bottom: 1px dotted #fff;
@@ -74,21 +82,50 @@ ul#markdown-toc {
   &.terminal {
     @include alert-style($terminal-color);
     font-family: $font-family-monospace;
-    &:before {
-      content: "$ ";
-      color: $ci-6;
-    }
   }
   &.text {
     @include alert-style($grey-2);
     text-shadow: none;
   }
   &.tip {
-    @extend .alert-box.info;
+    @include alert-style($info-color);
   }
   &.todo {
     @include alert-style($todo-color);
     text-shadow: none;
+  }
+
+  &::before {
+    margin-right: rem-calc(6);
+    font-size: rem-calc(22);
+  }
+  &.terminal::before {
+    content: "$";
+    color: $ci-6;
+  }
+  $alert-icon-opacity: 1;
+  &.alert::before {
+    @extend .icon-alarm, :before;
+    color: opacify($alert-color, $alert-icon-opacity);
+  }
+  &.warning::before {
+    @extend .icon-cone, :before;
+    color: opacify($warning-color, $alert-icon-opacity);
+  }
+  &.info::before {
+    @extend .icon-info, :before;
+    color: opacify($info-color, $alert-icon-opacity);
+  }
+  &.success::before {
+    @extend .icon-right, :before;
+    color: opacify($success-color, $alert-icon-opacity);
+  }
+  &.tip::before {
+    @extend .icon-light-bulb, :before;
+    color: opacify($info-color, $alert-icon-opacity);
+  }
+  &.todo::before {
+    @extend .icon-lab-flask, :before;
   }
 
   @media print {
@@ -120,7 +157,7 @@ button, .button {
 .side-nav li.title { text-transform: uppercase;}
 .side-nav li { border-top: 1px solid $grey-3;}
 .side-nav li a:not(.button) { border-bottom: 0; padding: 0.4375rem 0rem; }
-.side-nav li a:not(.button):hover, .side-nav li a:not(.button):focus { background: darken($primary-color, 50%); }
+//.side-nav li a:not(.button):hover, .side-nav li a:not(.button):focus { background: darken($primary-color, 50%); }
 
 .homepage p { margin: 0; padding: 0; color: $grey-10; }
 
@@ -252,21 +289,21 @@ section.project {
   display: initial;
 }
 .icon-alias-category::before {
-  @extend .icon-archive:before;
+  @extend .icon-archive, :before;
   color: $grey-4;
   $tag_shadow: black 0px 0px 2px;
   text-shadow: $tag_shadow;
   text-shadow: $tag_shadow, $tag_shadow;
 }
 .icon-alias-archive::before {
-  @extend .icon-calendar:before;
+  @extend .icon-calendar, :before;
   color: $grey-4;
   $tag_shadow: black 0px 0px 2px;
   text-shadow: $tag_shadow;
   text-shadow: $tag_shadow, $tag_shadow;
 }
 .icon-alias-tag::before {
-  @extend .icon-price-tag:before;
+  @extend .icon-price-tag, :before;
   color: $grey-4;
   $tag_shadow: black 0px 0px 2px;
   text-shadow: $tag_shadow;
@@ -292,7 +329,7 @@ section.project {
     color: white;
   }
   &:before {
-    @extend .icon-alias-tag::before;
+    @extend .icon-alias-tag, ::before;
     padding-right: rem-calc(4);
   }
 

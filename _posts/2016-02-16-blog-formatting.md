@@ -109,6 +109,10 @@ All `alert`s support markdown and their names are all lowercase, because they're
     This is like any normal markdown, even when used from non-markdown context:  
     **strong**, *em*, _em_, ***strong em***, <b>html bold</b>, `code`, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>.' %}
 
+{% include alert tip='Tip: call out something non-trivial that could help.  
+    This is like any normal markdown, even when used from non-markdown context:  
+    **strong**, *em*, _em_, ***strong em***, <b>html bold</b>, `code`, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>.' %}
+
 {% include alert success='Success:  
     This is like any normal markdown, even when used from non-markdown context:  
     **strong**, *em*, _em_, ***strong em***, <b>html bold</b>, `code`, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>.' %}
@@ -124,4 +128,3 @@ All `alert`s support markdown and their names are all lowercase, because they're
 {% include alert terminal='Terminal:<br/>
     This is like any normal markdown, even when used from non-markdown context:  
     **strong**, *em*, _em_, ***strong em***, <b>html bold</b>, `code`, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>.' %}
-

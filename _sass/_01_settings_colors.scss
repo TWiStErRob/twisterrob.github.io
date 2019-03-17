@@ -30,7 +30,7 @@ $ci-6: #A1D044;     // green
 $primary-color: $ci-3;
 $secondary-color: $ci-6;
 
-$alert-opacity: 0.8;
+$alert-opacity: 0.2;
 $alert-color: rgba(#BD0623, $alert-opacity);
 $success-color: rgba(#21AA0E, $alert-opacity);
 $warning-color: rgba(#D6810A, $alert-opacity);
@@ -87,6 +87,7 @@ $subfooter-link-color: $grey-6;
 /* Code
 ------------------------------------------------------------------- */
 
-$code-color: white;
-$code-background-color: black; //scale-color($secondary-color, $lightness: 70%);
-// also see _11_syntax-highlighting.scss 
+$code-color: $text-color;
+$code-background-color: rgba(black, 0.3);//scale-color($body-bg, $lightness: -50%);
+$code-border-color: rgba($code-background-color, 0.1);
+// also see _11_syntax-highlighting.scss

@@ -1,4 +1,4 @@
-/* TOC – Typography 
+/* TOC – Typography
 
 Check typography variables › _3_typography_settings.scss
 
@@ -62,7 +62,7 @@ a:not([href]), a[href=''] {
 }
 
 a[target='_blank']:after {
-    @extend .icon-export:before;
+    @extend .icon-export, :before;
     @extend sup;
     display: inline;
     margin-left: rem-calc(4);
@@ -87,7 +87,7 @@ a[target='_blank']:after {
 /* Customize Foundation Typography
 ------------------------------------------------------------------- */
 
-p { 
+p {
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
     -ms-hyphens: auto;
@@ -149,8 +149,10 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
     padding: 0;
 
-    &:target, &:target > * {
-        color: $topbar-link-bg-active !important;
+    @media only screen {
+        &:target, &:target > * {
+            color: $topbar-link-bg-active !important;
+        }
     }
 }
 
@@ -234,7 +236,7 @@ td {
 
 /* Code
 ------------------------------------------------------------------- */
-
+$code-border: 3px ridge transparentize(darken($primary-color, 40%), 0.5);
 pre {
     margin-bottom: rem-calc(20);
     padding: rem-calc(4) rem-calc(7) rem-calc(3) rem-calc(4);
@@ -243,11 +245,14 @@ pre {
     max-height: 350px;
     color: $code-color;
     background-color: $code-background-color;
+    .alert-box & {
+        background-color: opacify($code-background-color, 0.3);
+    }
     &:active {
         //max-height: none; // TODO annoying and impossible to scroll
     }
     @media not print {
-      border: 3px ridge darken($primary-color, 33%);
+        border: $code-border;
     }
     @media print {
       max-height: none;
@@ -261,7 +266,7 @@ pre {
         padding: 0;
         line-height: 1.2;
         font-size: rem-calc(14);
-        background: black;
+        background: transparent;
         box-shadow: none;
         color: inherit;
         text-shadow: none;
@@ -274,7 +279,10 @@ pre {
     }
 
     &::-webkit-scrollbar-thumb {
-        background: darken($primary-color, 20%);
+        background: darken($primary-color, 40%);
+        @media print {
+            background: rgba(black, 0.3);
+        }
         background-clip: padding-box;
         border-radius: 1ex;
         border: 2px solid transparent;
@@ -290,27 +298,25 @@ pre {
 }
 
 .highlight[title]::before, .highlighter-rouge[title]::before {
-  content: attr(title);
-  text-align: center;
-  display: block;
-  border: 3px ridge darken($primary-color, 33%);
-  @media print {
-    border: 1px solid $aluminum !important; // from _type > @print > pre
-  }
-  background-color: scale-color($header-font-color, $lightness: -90%);
-  color: $header-font-color;
-  border-bottom: none;
+    content: attr(title);
+    text-align: center;
+    display: block;
+    border: $code-border;
+    @media print {
+        border: 1px solid $aluminum !important; // from _type > @print > pre
+    }
+    background-color: transparentize(scale-color($header-font-color, $lightness: -90%), 0.5);
+    color: darken($header-font-color, 20%);
+    border-bottom: none;
 }
 
 code, var {
-    //box-shadow: 0 0 1px 1px $primary-color;
-    //background: darken($primary-color, 35%);
-    @media not print {
-      border: 1px ridge darken($primary-color, 10%);
-    }
-    padding: 3px;
+    padding: rem-calc(1.5) rem-calc(2) rem-calc(0.5) rem-calc(2);
     font-style: normal;
-    font-size: rem-calc(14);
+    letter-spacing: rem-calc(-0.5);
+    // use em instead of rem to make sure inline code in headings is relative
+    font-size: 0.875em;
+    // disable shadow inside alert-box
     text-shadow: none;
 }
 
@@ -498,7 +504,7 @@ mark {
 .footnotes {
     margin-top: 60px;
 }
-.footnotes ol { 
+.footnotes ol {
     font-size: $font-size-small;
 }
 .footnotes p {

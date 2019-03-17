@@ -10,7 +10,7 @@ script:
 ---
 
 Google Play is providing a <a href="https://play.google.com/store/account" target="_blank">nice list of Orders</a>, 
-however I couldn't care less about *Free* books app installations as <mark>My Orders</mark>. 
+however I couldn't care less about *Free* books app installations as <mark>My Orders</mark>.
 This little script loads the whole list and then removes all "Free" items, leaving you only the pricy ones: 
 <a class="bookmarklet" href="#GooglePlay-RemoveFreeOrders">Google Play: Remove free Orders</a>.
 <!--more-->
