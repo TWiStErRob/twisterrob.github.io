@@ -694,24 +694,18 @@ The problem here is using the wrong `initFixtures` overload.
 When we create and customize a `JFixture` instance, we need to call `initFixtures(this, fixture)`; otherwise `initFixtures` will create a new uncustomised `JFixture` instance.
 
 ### Beware of overloads
-Let's say we want to write the following:
 ```kotlin
 fixture.customise().useSubType(CharSequence::class.java, String::class.java)
-```
-but accidentally end up writing this:
-```kotlin
 fixture.customise().sameInstance(CharSequence::class.java, String::class.java)
 ```
-a subtle difference when it's one of the hundreds of lines of test code.
-
-Sadly, this compiles, and when triggered it throws a `ClassCastException`. This is because `sameInstance` has an overload that matches the arguments:
+Let's say we wanted to use `useSubType`, but accidentally used `sameInstance`. This makes a subtle difference when it's one of the hundreds of lines of test code. Sadly, this compiles, and when JFixture tries to create an instance of `CharSequence`, it throws a `ClassCastException`: cannot cast `Class<String>` to `CharSequence`. This is because `sameInstance` has an overload that matches the arguments:
 ```java
 public interface FluentCustomisation {
     <T> FluentCustomisation sameInstance(Class<T> clazz, T instance);
     <T> FluentCustomisation sameInstance(Type type, T instance);
 }
 ```
-`Class<*>` implements `Type` so when the `instance` argument is not a subclass of `T` in `clazz`, the overload resolution finds the `Type` overload.
+`Class<*>` implements `Type` so when the `instance` argument is not a subclass of `T` in `clazz`, the overload resolution finds the `Type` overload and `T` becomes `Class<String>`.
 
 ### Flaky tests
 One of the main benefits of JFixture is reproducibility through constrained non-determinism.
