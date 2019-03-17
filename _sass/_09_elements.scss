@@ -74,21 +74,50 @@ ul#markdown-toc {
   &.terminal {
     @include alert-style($terminal-color);
     font-family: $font-family-monospace;
-    &:before {
-      content: "$ ";
-      color: $ci-6;
-    }
   }
   &.text {
     @include alert-style($grey-2);
     text-shadow: none;
   }
   &.tip {
-    @extend .alert-box.info;
+    @include alert-style($info-color);
   }
   &.todo {
     @include alert-style($todo-color);
     text-shadow: none;
+  }
+
+  &::before {
+    margin-right: rem-calc(6);
+    font-size: rem-calc(22);
+  }
+  &.terminal::before {
+    content: "$";
+    color: $ci-6;
+  }
+  $alert-icon-opacity: 1;
+  &.alert::before {
+    @extend .icon-alarm, :before;
+    color: opacify($alert-color, $alert-icon-opacity);
+  }
+  &.warning::before {
+    @extend .icon-cone, :before;
+    color: opacify($warning-color, $alert-icon-opacity);
+  }
+  &.info::before {
+    @extend .icon-info, :before;
+    color: opacify($info-color, $alert-icon-opacity);
+  }
+  &.success::before {
+    @extend .icon-right, :before;
+    color: opacify($success-color, $alert-icon-opacity);
+  }
+  &.tip::before {
+    @extend .icon-light-bulb, :before;
+    color: opacify($info-color, $alert-icon-opacity);
+  }
+  &.todo::before {
+    @extend .icon-lab-flask, :before;
   }
 
   @media print {

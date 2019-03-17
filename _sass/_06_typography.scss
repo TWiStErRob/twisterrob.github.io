@@ -1,4 +1,4 @@
-/* TOC – Typography 
+/* TOC – Typography
 
 Check typography variables › _3_typography_settings.scss
 
@@ -87,7 +87,7 @@ a[target='_blank']:after {
 /* Customize Foundation Typography
 ------------------------------------------------------------------- */
 
-p { 
+p {
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
     -ms-hyphens: auto;
@@ -243,6 +243,10 @@ pre {
     max-height: 350px;
     color: $code-color;
     background-color: $code-background-color;
+    .alert-box & {
+        background-color: opacify($code-background-color, 0.3);
+        margin-bottom: 0;
+    }
     &:active {
         //max-height: none; // TODO annoying and impossible to scroll
     }
@@ -261,7 +265,7 @@ pre {
         padding: 0;
         line-height: 1.2;
         font-size: rem-calc(14);
-        background: black;
+        background: transparent;
         box-shadow: none;
         color: inherit;
         text-shadow: none;
@@ -297,20 +301,17 @@ pre {
   @media print {
     border: 1px solid $aluminum !important; // from _type > @print > pre
   }
-  background-color: scale-color($header-font-color, $lightness: -90%);
+  background-color: transparentize(scale-color($header-font-color, $lightness: -80%), 0.5);
   color: $header-font-color;
   border-bottom: none;
 }
 
 code, var {
-    //box-shadow: 0 0 1px 1px $primary-color;
-    //background: darken($primary-color, 35%);
-    @media not print {
-      border: 1px ridge darken($primary-color, 10%);
-    }
-    padding: 3px;
+    padding: rem-calc(1.5) rem-calc(2) rem-calc(0.5) rem-calc(2);
     font-style: normal;
+    letter-spacing: rem-calc(-0.5);
     font-size: rem-calc(14);
+    // disable shadow inside alert-box
     text-shadow: none;
 }
 
@@ -498,7 +499,7 @@ mark {
 .footnotes {
     margin-top: 60px;
 }
-.footnotes ol { 
+.footnotes ol {
     font-size: $font-size-small;
 }
 .footnotes p {
