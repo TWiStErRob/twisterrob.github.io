@@ -60,9 +60,13 @@ ul#markdown-toc {
 .alert-box {
   font-family: $font-family-sans-serif;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
-  p {
-    margin-bottom: 0;
+  p:first-child {
+    // let the icon wrap nicely
     display: inline;
+  }
+  > :last-child {
+    // code and p blocks shouldn't have a bottom margin, it puts too much space at the end inside the box
+    margin-bottom: 0;
   }
   a {
     text-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
