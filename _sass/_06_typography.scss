@@ -62,7 +62,7 @@ a:not([href]), a[href=''] {
 }
 
 a[target='_blank']:after {
-    @extend .icon-export:before;
+    @extend .icon-export, :before;
     @extend sup;
     display: inline;
     margin-left: rem-calc(4);

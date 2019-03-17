@@ -347,7 +347,7 @@ body.video {
     visibility: hidden;
 }
 #up-to-top a:after {
-    @extend .icon-chevron-up:before;
+    @extend .icon-chevron-up, :before;
     visibility: visible;
     font-size: 24px;
     padding: 5px;
