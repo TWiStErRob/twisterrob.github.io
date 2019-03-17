@@ -29,20 +29,9 @@ private val fixture = JFixture()
     assertNotNull(result);
 }
 ```
-No matter how deep or complicated it gets, JFixture usually finds a way to create an instance with all the data filled in.
-
-{% include alert info='
-Note: the above is the only Java example; in this article I used Kotlin as the primary language, because of its conciseness.
-JFixture was written for the JVM, so was Kotlin, so they\'re easily interoperable.
-Everything you see here applies to Java as well (unless it\'s about using some Kotlin language feature).
-
-I chose JUnit Jupiter and Mockito + Mockito Kotlin as the testing frameworks in this article.
-' %}
-
-## Motivation
-Here's a question: Which of the following two approaches conveys the relevant test setup better?
+Compare this to the classic approach where we would need to create each object individually filling in the properties with dummy values, and potentially creating constants for these values. No matter how deep or complicated it gets, JFixture usually finds a way to create an instance with all the data filled in.
 ```kotlin
-val fixtJourney = Journey(
+val journey = Journey(
     "",
     listOf(
         Leg(
@@ -62,18 +51,18 @@ val fixtJourney = Journey(
     )
 )
 ```
-{: title="classic approach"}
-
-```kotlin
-fixture.customise().sameInstance(TransportMode::class.java, TransportMode.TRAIN)
-val fixtJourney = fixture.create(Journey::class.java)
-```
-{: title="customised JFixture"}
-> At this point you probably don't know how JFixture works; yet, hopefully, you can easily figure out what happens in the above example. <cite>me</cite>
 
 {% include toc.md %}
 
+{% include alert info='
+Note: In this article I chose JUnit&nbsp;Jupiter and Mockito + Mockito&nbsp;Kotlin as the testing frameworks and Kotlin as the language, because of its conciseness.
+While JFixture was written for the JVM with Java in mind it works for Kotlin too due to Kotlin\'s awesome interoperability.
+Everything you see here applies to Java as well (unless it\'s about using some Kotlin language feature).
+' %}
+
 ## The need for JFixture
+In this section we'll go through developing and testing a fictious component.
+Starting from simple, getting more complicated, finding solutions to problems that come up on the way.
 
 ### From the ground up
 Let's imagine we're writing a user interface for displaying some info based on a journey. Journey data is coming from a data source, and we transform it to display it on the UI.
