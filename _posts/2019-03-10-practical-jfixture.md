@@ -214,8 +214,6 @@ Cool, it works! Using code looks clean, but is that scalable? How many factory m
 So then, let's move on to the next solution... _builders_! The perfect tool to solve all our issues in terms of maintainability, is it not?
 It alleviates the repetition and allows dynamism for creating objects; for example something like this would help with `Journey`s:
 ```kotlin
-fun journey() = JourneyBuilder()
-
 class JourneyBuilder(
     private var id: String = "",
     private val legs: MutableList<Leg> = mutableListOf()
@@ -223,25 +221,21 @@ class JourneyBuilder(
     fun build() = Journey(id, legs)
 
     fun setId(id: String): JourneyBuilder = this.apply { this.id = id }
+    fun addLeg(leg: Leg): JourneyBuilder = this.apply { legs.add(leg) }
+}
 
-    fun addLeg() = LegBuilder()
+class LegBuilder(
+    private var origin: Stop = Stop("", ""),
+    private var departure: LocalDateTime = LocalDateTime.now(),
+    private var mode: TransportMode = TransportMode.WALK,
+    private var destination: Stop = Stop("", ""),
+    private var arrival: LocalDateTime = LocalDateTime.now()
+) {
+    fun build() = Leg(origin, departure, mode, destination, arrival)
 
-    inner class LegBuilder(
-        private var origin: Stop = Stop("", ""),
-        private var departure: LocalDateTime = LocalDateTime.now(),
-        private var mode: TransportMode = TransportMode.WALK,
-        private var destination: Stop = Stop("", ""),
-        private var arrival: LocalDateTime = LocalDateTime.now()
-    ) {
-
-        fun build() = Leg(origin, departure, mode, destination, arrival)
-
-        fun setOrigin(origin: Stop): LegBuilder = this.apply { this.origin = origin }
-        fun setMode(mode: TransportMode): LegBuilder = this.apply { this.mode = mode }
-        // ...
-
-        fun finish() = this@JourneyBuilder.also { it.legs.add(build()) }
-    }
+    fun setOrigin(origin: Stop): LegBuilder = this.apply { this.origin = origin }
+    fun setMode(mode: TransportMode): LegBuilder = this.apply { this.mode = mode }
+    // ...
 }
 ```
 {: title="Re-using code by implementing complex builder classes"}
@@ -250,11 +244,9 @@ Phew, that was a lot of code to type --- and I didn't even write out all the pro
 
 Anyway, let's use this builder to replace the factory:
 ```kotlin
-private val fixtJourney = journey()
-    .addLeg()
-    .finish()
-    .addLeg()
-    .finish()
+private val fixtJourney = JourneyBuilder()
+    .addLeg(LegBuilder().build())
+    .addLeg(LegBuilder().build())
     .build()
 ```
 {: title="Simple, yet dynamic builder usage"}
@@ -325,8 +317,8 @@ no conflicts from random data
    Consider this simple thing:
    ```kotlin
    val journeys = setOf(
-       journey().addLeg().finish().build(),
-       journey().addLeg().finish().build()
+       JourneyBuilder().addLeg(LegBuilder().build()).build(),
+       JourneyBuilder().addLeg(LegBuilder().build()).build()
    )
    assertThat(journeys, hasSize(2))
    ```
@@ -572,8 +564,10 @@ private lateinit var fixture: JFixture
     fixture = JFixture()
 }
 ```
+If we share `fixture` like this and put customisations into the `setUp` method, we could end up with not fully self-contained tests. Your milage may vary on how much shared setup is acceptable in your project. This is a similar decision to how/where `mock()` variables are set up and stubbed.
+
 Note that having `private val fixture = JFixture()` inside the class may not be enough,
-because the test runner may create an instance per test class, not per test method: Google&nbsp;`@TestInstance(PER_CLASS)`.
+because the test runner may create an instance per test class, not per test method: Google&nbsp;`@TestInstance(PER_CLASS)` for more information on when this could break down.
 
 ### Sharing data setup
 That being said, sharing setup is a good idea.
