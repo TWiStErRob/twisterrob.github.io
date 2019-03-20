@@ -55,7 +55,7 @@ val journey = Journey(
 {% include toc.md %}
 
 {% include alert info='
-Note: In this article I chose JUnit&nbsp;Jupiter and Mockito + Mockito&nbsp;Kotlin as the testing frameworks and Kotlin as the language, because of its conciseness.
+Note: In this article I use JUnit&nbsp;Jupiter and Mockito + Mockito&nbsp;Kotlin as the testing frameworks; and Kotlin as the language, because of its conciseness.
 While JFixture was written for the JVM with Java in mind it works for Kotlin too due to Kotlin\'s awesome interoperability.
 Everything you see here applies to Java as well (unless it\'s about using some Kotlin language feature).
 ' %}
@@ -166,7 +166,7 @@ Now let's update our classic approach:
 ```kotlin
 private val fixtJourney = Journey("", emptyList())
 ```
-OK... I took a shortcut here, but what will happen if can't assume to have an empty list there?
+OK... I took a shortcut here, but what will happen if we can't assume to have an empty list there?
 Say, the production code needs to loop through the list and we need to check the outcome based on that.
 Let's go with the assumption that we need at least 2 legs:
 ```kotlin
@@ -515,7 +515,7 @@ fixture.customise().intercept(Passenger::class.java) {
 ```
 
 ### Fine-grained repetition
-Similarly `repeatCount` is a tricky one. It changes each collection's size at once, which is probably not what we want. For example I may need to test 2 passengers over 3 legs:
+Similarly `repeatCount` is a tricky one. It changes each collection's size at once, which is probably not what we want. For example we may need to test 2 passengers over 3 legs:
 ```kotlin
 data class Journey(
     // ...,
@@ -931,7 +931,7 @@ Bear in mind that in some cases we need to consider that the `isValidType`'s inp
 Introducing JFixture to an existing project is a big leap, but we think it's worth the effort and the learning curve is not that bad.
 There will be times when you scratch your heads, but you'll learn something new each time, until you develop a solid stable usage pattern.
 I personally found it very useful to debug into JFixture when something is wrong.
-Give it a whirl and let me know how you found it.
+Give it a whirl and let me know how you find the framework.
 
 ## References
  * [JFixture library's GitHub repository](https://github.com/FlexTradeUKLtd/jfixture)
