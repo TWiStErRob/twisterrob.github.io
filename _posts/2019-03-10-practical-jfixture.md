@@ -1,7 +1,7 @@
 ---
 title: "Practical JFixture"
 subheadline: "How to use it to help you write clean, focused tests"
-teaser: "Magic one-liner with powerful behavior"
+teaser: "Magic one-liner with powerful behaviour"
 category: dev
 tags:
 - test
@@ -208,7 +208,7 @@ private fun createLeg() = Leg(
 )
 ```
 {: title="Re-using code with factory method"}
-Cool, it works! Using code looks clean, but is that scalable? How many factory methods should we create to cover all the model types. Is it easily maintainable? How many variations of the same factory method should we have to satisfy all the test scenarios? Okay, we could parameterise each factory method by passing in the params that we are interested in; we could even leverage Kotlin's default parameters for functions. But..., what happens if it's a complex model? How many parameters and/or overloads should we have?
+Cool, it works! Using code looks clean, but is that scalable? How many factory methods should we create to cover all the model types. Is it easily maintainable? How many variations of the same factory method should we have to satisfy all the test scenarios? Okay, we could parameterise each factory method by passing in the parameters that we are interested in; we could even leverage Kotlin's default parameters for functions. But..., what happens if it's a complex model? How many parameters and/or overloads should we have?
 
 ### Enter builders
 So then, let's move on to the next solution... _builders_! The perfect tool to solve all our issues in terms of maintainability, is it not?
@@ -301,15 +301,15 @@ less code to write
 less code to maintain  
 : ^
    Every time a new property is added all the usages of the class have to be revised and the constructor calls/builders adjusted.
-   Most of the time these are unrelated places and the new field doesn't affect behavior of the tests, yet we still have to modify them.
+   Most of the time these are unrelated places and the new field doesn't affect behaviour of the tests, yet we still have to modify them.
    With builders the situation is much better than the classic or factory approach, but maintenance is still needed.
 
-customization of objects is still possible
+customisation of objects is still possible
 : ^
    The flexibility of the builder is that we can pick which parts to be set and how.
    For example a `TRAIN`-only journey with multiple legs; this is still easily possible.
 
-#### Benefits: Data is randomized
+#### Benefits: Data is randomised
 Don't worry, it's the [good type of random](https://github.com/FlexTradeUKLtd/jfixture#overview).
 
 no conflicts from random data  
@@ -370,7 +370,7 @@ override fun invoke(journey: Journey) = Model(
 )
 ```
 {: title="JourneyMapper"}
-If we were to use the classic approach, tests for this would get unwieldy. Builders are a bit better, but testing for multiple counts in a parameterized test still requires some form of looping, or a custom factory just to create a certain amount of legs. With JFixture this is supported out of the box for any type:
+If we were to use the classic approach, tests for this would get unwieldy. Builders are a bit better, but testing for multiple counts in a parameterised test still requires some form of looping, or a custom factory just to create a certain amount of legs. With JFixture this is supported out of the box for any type:
 ```kotlin
 @CsvSource("1, 0", "2, 1", "3, 2", "4, 3")
 @ParameterizedTest
@@ -392,7 +392,7 @@ Warning: This actually does not scale well, but good enough for simple tests.
 More on this in ["Fine-grained repetition"](#fine-grained-repetition).
 ' %}
 
-### Property customization
+### Property customisation
 Let's look at how we can calculate if the journey is train-only:
 ```kotlin
 override fun invoke(journey: Journey) = Model(
@@ -401,7 +401,7 @@ override fun invoke(journey: Journey) = Model(
 )
 ```
 {: title="JourneyMapper"}
-The tests for this involve setting all the leg modes to `TRAIN`. With the builders approach we could use `LegBuilder.setMode`, with JFixture we just say: "all transport modes are `TRAIN`":
+The tests for this involve setting all the leg modes to `TRAIN`. With the builders approach we could use `LegBuilder.setMode`, with JFixture we just say: <q>all transport modes are `TRAIN`</q>:
 ```kotlin
 @Test fun `trainOnly is true for TRAIN-only journey`() {
     fixture.customise().sameInstance(TransportMode::class.java, TRAIN)
@@ -434,7 +434,7 @@ We need to test another scenario though: when there are no `TRAIN` legs. In this
 `fromList` will pick an item from the array.
 ' %}
 
-`Enum.valuesExcluding` is not in a library, it's one of the few utilities we use to make parameterized tests and fixturing nicer:
+`Enum.valuesExcluding` is not in a library, it's one of the few utilities we use to make parameterised tests and fixturing nicer:
 ```kotlin
 inline fun <reified E : Enum<E>>
 Enum.Companion.valuesExcluding(vararg excluded: E): Array<E> =
@@ -442,7 +442,7 @@ Enum.Companion.valuesExcluding(vararg excluded: E): Array<E> =
 ```
 
 You may notice that this `lazyInstance` + `fromList` + `valuesExcluding` combination has potential for re-use, and you're right:
-it is possible to extract customization logic via `SpecimenSupplier` and/or `Customization` interfaces.
+it is possible to extract customisation logic via `SpecimenSupplier` and/or `Customisation` interfaces.
 
 ### Mutating the immutable
 I warn you, things are going to get controversial.
@@ -468,9 +468,9 @@ An example usage would look like this:
     assertThat(result.length, equalTo(Duration.of(expectedMinutes, ChronoUnit.MINUTES)))
 }
 ```
-You can see that it gives us the benefit of "naturally" mutating objects that are otherwise immutable.
+You can see that it gives us the benefit of <q>naturally</q> mutating objects that are otherwise immutable.
 Additionally it really focuses on the bits that we care about and leaves everything else up to JFixture.
-The reflection may look counter-productive, but in the rare instance we rename properties or change types of properties the tests will fail at runtime;
+The reflection may look counter-productive, but in the rare instance we rename properties or change types of properties the tests will fail at run-time;
 which is slower to detect than a compile error, but we're still protected from false positives.
 
 Sometimes each object has to contain self-consistent data, for example: each leg has to be a non-zero length travel. In this case `intercept` comes in handy combined with `setField`:
@@ -487,7 +487,7 @@ fixture.customise().intercept(Leg::class.java) {
 JFixture has a `propertyOf` customisation which we could use instead of `setField`, but it\'s a no-go when using immutable classes. It will only work on `var`s, not `val`s.
 ' %}
 
-### Fine-grained property customization
+### Fine-grained property customisation
 Here's the thing about `lazyInstance`: it affects every single object created from the given `fixture` factory. This may be unwanted, and needs to be resolved.
 Let's consider what happens if there are `Passengers` in the system:
 ```kotlin
@@ -554,17 +554,17 @@ class SharedStateTest {
     }
 }
 ```
-In the above example the `fixture` global property outlives the test's lifecycle and leaks the `""` customization to the other test, which expects `JFixture`'s default behavior.
+In the above example the `fixture` global property outlives the test's lifecycle and leaks the `""` customisation to the other test, which expects `JFixture`'s default behaviour.
 This expectation is usually implicit when writing fixtured tests.
 
-As seen above, sharing state between a single test class' methods is risky. We always use non-static `JFixture` instance set up in `@BeforeEach` to prevent cross-test customizations:
+As seen above, sharing state between a single test class' methods is risky. We always use non-static `JFixture` instance set up in `@BeforeEach` to prevent cross-test customisations:
 ```kotlin
 private lateinit var fixture: JFixture
 @BeforeEach fun setUp() {
     fixture = JFixture()
 }
 ```
-If we share `fixture` like this and put customisations into the `setUp` method, we could end up with not fully self-contained tests. Your milage may vary on how much shared setup is acceptable in your project. This is a similar decision to how/where `mock()` variables are set up and stubbed.
+If we share `fixture` like this and put customisations into the `setUp` method, we could end up with not fully self-contained tests. Your mileage may vary on how much shared setup is acceptable in your project. This is a similar decision to how/where `mock()` variables are set up and stubbed.
 
 Note that having `private val fixture = JFixture()` inside the class may not be enough,
 because the test runner may create an instance per test class, not per test method: Google&nbsp;`@TestInstance(PER_CLASS)` for more information on when this could break down.
@@ -580,10 +580,10 @@ For example, if all the tests create objects which have `CharSequence` fields, t
     }
 }
 ```
-Notice that it's only the code being shared, not the runtime objects.
+Notice that it's only the code being shared, not the run-time objects.
 
 ### Centralized Fixture
-Taking it a step further, it's very likely we'll end up having very common customizations.
+Taking it a step further, it's very likely we'll end up having very common customisations.
 `CharSequence`&nbsp;&rarr;&nbsp;`String` is a good example; it could occur often in Android.
 It is recommended to create a custom type that builds on JFixture:
 ```kotlin
@@ -594,7 +594,7 @@ class MyFixture : JFixture() {
 }
 ```
 It helps:
- * sharing customizations
+ * sharing customisations
  * sharing fixture related utility methods  
    (not so beneficial when we can use Kotlin extension methods, but it is in Java)
  * creating a better API fitting your style  
@@ -602,11 +602,11 @@ It helps:
 
 That said, we are not using this pattern, because we prefer easily discoverable and focused test setups.
 
-### Stubbing fixture behavior
+### Stubbing fixture behaviour
 Let's see what happens if our data classes have calculated properties, for example:
 ```kotlin
 data class Journey(
-	// ...
+    // ...
     val legs: List<Leg>,
 ) {
     val changeCount get() = legs.size - 1
@@ -661,7 +661,7 @@ The workaround we use is adding `@JvmSuppressWildcards` on the field declaration
 ```
 
 ### Customise the right JFixture
-When using the annotated setup, it's quite easy to end up using the wrong `JFixture` instance and wonder why none of our customizations work:
+When using the annotated setup, it's quite easy to end up using the wrong `JFixture` instance and wonder why none of our customisations work:
 ```kotlin
 @Fixture lateinit var fixtModel: Model
 
@@ -674,7 +674,7 @@ private lateinit var fixture: JFixture
 }
 ```
 The problem here is using the wrong `initFixtures` overload.
-When we create and customize a `JFixture` instance, we need to call `initFixtures(this, fixture)`; otherwise `initFixtures` will create a new uncustomised `JFixture` instance.
+When we create and customise a `JFixture` instance, we need to call `initFixtures(this, fixture)`; otherwise `initFixtures` will create a new non-customised `JFixture` instance.
 
 ### Beware of overloads
 ```kotlin
@@ -916,8 +916,8 @@ This could mean that if you run the test a few times, and the code reviewer runs
 and the CI runs it; it's still going to pass all those times, but then when you merge to `master`, it fails.
 The above example is over-simplified, but even the most complex flaky tests we had of this type weren't that hard to debug and fix.
 Notice that the reason for failure is assuming what the fixture will generate.
-If this `isValidType` is used in an `if`, that behavior will trigger 90% of the time.
-To fix this test, we need to use `valuesExcluding` technique described in [Property Customisation](#property-customisation) section,
+If this `isValidType` is used in an `if`, that behaviour will trigger 90% of the time.
+To fix this test, we need to use `valuesExcluding` technique described in the [Property Customisation](#property-customisation) section,
 and write a separate test for `Other` specifically.
 Bear in mind that in some cases we need to consider that the `isValidType`'s input should be parameterised to test all possibilities (not just a random one), but that's a topic for another time.
 
