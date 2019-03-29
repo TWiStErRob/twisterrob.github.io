@@ -62,7 +62,7 @@ Everything you see here applies to Java as well (unless it\'s about using some K
 
 ## The need for JFixture
 In this section, we'll go through developing and testing a fictitious component.
-Starting simply, and getting more complicated, we'll finding solutions to problems that come up on the way.
+Starting simply, and getting more complicated, we'll find solutions to problems that come up on the way.
 
 ### From the ground up
 Let's imagine we're writing a user interface for displaying some info based on a journey. Journey data is coming from a data source, and we transform it to display it on the UI.
@@ -138,7 +138,7 @@ private val fixtModel = Model("", 0, 0)
 Here, we filled in the values, so that it compiles. At the same time, we don't really care about what the values are, so we mostly use default values such as use empty strings, `false`, or `0`s.
 
 ### More complex model
-Let's expand our extremely simple model to a more realistic example:
+Let's expand our very simple model to a more realistic example:
 ```kotlin
 data class Journey(
     val id: String,
@@ -195,7 +195,7 @@ private val fixtJourney = Journey(
 What can we observe so far? Instantiate one `Leg`, instantiate multiple `Stop`s, pick an `TransportMode` to use; and then instantiate another leg, and so forth. It's simply too much to write, read, and maintain; and when we scale it, there's repetition.
 
 ### Enter factories
-What do we do when we see repeated code? we extract methods/classes. So we go on and refactor our code to introduce a _factory method_ for leg creation:
+What do we do when we see repeated code? We extract methods/classes. So we go on and refactor our code to introduce a _factory method_ for leg creation:
 ```kotlin
 private val fixtJourney = Journey("", listOf(createLeg(), createLeg()))
 
@@ -322,8 +322,8 @@ no conflicts from random data
    )
    assertThat(journeys, hasSize(2))
    ```
-   With the hand-built builders we would have to write random code ourselves to get this to pass.
-   What's even worse: it could sometimes pass and sometimes wouldn't pass, depending on what time it is now and how fast our computer is.
+   With the hand-built builders we would have to write randomising code ourselves to get this to pass.
+   What's even worse: sometimes it would pass, sometimes it wouldn't; depending on what time it is now and how fast our computer is.
 
 more confidence in verification  
 : ^
@@ -649,7 +649,7 @@ private lateinit var sut: JourneyPresenter
 {: title="JourneyPresenterTest"}
 The important thing here is to have `initMocks` **after** `initFixtures`.
 
-## Culprits
+## Pitfalls
 No tool is without its drawbacks --- here are some interesting problems we have encountered while using JFixture.
 
 ### Kotlin generics interoperability
