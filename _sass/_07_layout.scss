@@ -433,7 +433,7 @@ body.video {
             text-shadow: none;
         }
         &:after {
-            display: none;
+            display: none !important;
         }
     }
     @media #{$large-up} {
