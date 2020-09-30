@@ -1,7 +1,7 @@
-Visit [twisterrob.net](http://www.twisterrob.net).
+Visit the web[twisterrob.net](http://www.twisterrob.net).
 
 
-# Development Install
+# Development Installation requirement
 Requires both [ruby](http://rubyinstaller.org/downloads/) and [devkit](http://rubyinstaller.org/downloads/) on [Windows 7 x64](http://corlewsolutions.com/articles/article-19-install-ruby-on-windows-7-32-bit-or-64-bit) to install native extensions.
 
 
