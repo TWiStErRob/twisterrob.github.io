@@ -111,9 +111,11 @@ h1, h2, h3, h4, h5, h6 {
         font-weight: normal;
         border: 0;
     }
-    & + ul > li > a, & + ol > li > a {
-        font-weight: normal;
-        border: 0;
+    & + ul > li, & + ol > li {
+        & > a, & > ul > li > a, & > ol > li > a {
+            font-weight: normal;
+            border: 0;
+        }
     }
 }
 p a.button,
