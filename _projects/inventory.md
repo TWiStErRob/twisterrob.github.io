@@ -150,13 +150,86 @@ If there are still unanswered question or You want to chat about privacy of Your
 
 ## History
 
-### 1.1.2#2292 (2017-07-28)
+<!--
+ * Known issues with target=29:
+   * Using Search doesn't immediately show keyboard on Andorid 10+, need to tap on "Search items" to get a keyboard.
+-->
+### [1.1.3#3191](https://github.com/TWiStErRob/net.twisterrob.inventory/milestone/14?closed=1) (2020-11-01)
+{: #v11303191}
+ * Feature: Support Android 9 (API 28), while keeping Gingerbread (2.3.7 API 10) compatibility.
+   * [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/169): Permissions issues in Camera.
+   * [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/159): Permissions issues in Backup.
+   * Fix: ongoing notification for Backup and add notification channel support
+ * [Feature](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/147): Warning for users on old devices.
+   * App version 1.1.3 (this) will stay active and work down to Gingerbread (2.3.7 API 10) just like before, but will receive no more updates.
+   * App version 1.2.0 (next) will drop support for version below Lollipop (5.0 API 21).
+ * [Feature](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/143): Navigate to home screen from any depth via long press on top left "up" button.
+ * [Enhancement](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/125): XSD schema for backup XML format is now included in the app / backup ZIP  
+   Validating output based on this schema before finishing backup to be sure it's valid.
+ * [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/101): Widen landscape move dialog to be useful. _(Thanks Barry L for the report!)_
+ * [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/77): Flash not working after rotation.
+ * [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/148): Cannot pick images from Gallery on Android 10. _(Thanks for the numerous reports!)_
+ * [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/149): GMail integration when sending feedback (e.g. missing subject).
+ * Small improvements here and there.
+   * Feature: Jump to any folder in backup (tappable header).
+   * Enhancement: Tiny improvements to some icons.
+   * Enhancement: 28 keyword improvements for better suggestions.  
+   * Enhancement: Better handling of Settings screen actions.
+   * [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/87): Document what "Recents" is about
+   * [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/129): Forget previous image in Camera to prevent weird behaviors.
+   * [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/132): Cannot pick images from Gallery when process is killed.  
+     _(Thanks Alberto P for the very detailed report!)_
+   * [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/124): Fix generating invalid backup when a list references an item with name containing `--`.
+   * Fix: Improved some error messages to show instead of SQL errors.  
+     _(If you see an techie SQL error, please send me a screenshot. Thanks Dave S. for doing so already!)_
+   * Fix: crashes reported via Crash reporting in Android (e.g. 
+       [#161](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/161),
+       [#162](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/162)
+     )
+   * Fix: camera crash for devices without flash
+ * Lots of internal technical changes
+   * Use newer build tools (AGP 3.4.2, Gradle 5.6.4).
+   * Use a more modern internal structure for build scripts.
+   * Use included builds instead of substitution hack.
+   * Update some libraries to get better support for new Android versions.
+   * Clean up new lint warnings.
+   * Strict compilation checks.
+   * Improved code documentation.
+   * [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/163): Fix/suppress some StrictMode warnings on API 28+.
+   * Use new SVG library and have an easy upgrade validation path.
+   * Better architectural and code patterns.
+   * Fix AAPT2 breaking changes (`$` in name and resource merging).
+   * Android app is now split up into feature modules (a rough start).
+   * Helper libraries exploded into many small libraries.
+ * Improved self-tests (not visible to users) to prevent breaking app functionality. (100+ things)
+   * Improve tests around selection, images, Backup, external export, Settings.
+   * Fix permission issues in tests.
+   * Better waiting between interactions (Glide, activities).
+   * Better packaging of tests.
+   * Fixed a lot of randomly failing flaky tests. (e.g.
+       [#140](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/140),
+       [#150](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/150),
+       [#151](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/151),
+       [#152](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/152),
+       [#153](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/153),
+       [#154](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/154),
+       [#155](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/155),
+       [#157](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/157)
+     )
+   * Fixed most version-related failures in tests.
+   * Better failures if something goes wrong.
+   * Updated test libraries to latest compatible versions  
+     (Mockito 3.2.4, Robolectric 4.3.1, PowerMock 2.0.4, JUnit 4.13, Espresso 3.0.1)
+
+### [1.1.2#2292](https://github.com/TWiStErRob/net.twisterrob.inventory/milestone/13?closed=1) (2017-07-28)
 {: #v11202292-2}
  * Fix: Forgot bump staged rollout to 100%, so only half the users got the release.  
-   Thanks to Michael L. for alerting me! (excellent example of useful feedback)
+   _Thanks to Michael L. for alerting me! (Excellent example of useful feedback.)_
 
-### 1.1.2#2292 (2017-03-13)
+### [1.1.2#2292](https://github.com/TWiStErRob/net.twisterrob.inventory/milestone/13?closed=1) (2017-03-13)
 {: #v11202292}
+ * Known issues:
+   * Cannot import image from gallery on Android 10, fixed in [1.1.3](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/148)
  * Feature: Add Privacy Policy in accordance with Google Play Store requirements.
  * Feature: Added a lot of self-tests (not visible to users), to prevent breaking app functionality.
  * Enhancement: ~30 keywords improvements for better suggestions.
@@ -168,13 +241,13 @@ If there are still unanswered question or You want to chat about privacy of Your
  * [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/83): Prevent crash when sharing with low resources.
  * Fix: Other very minor fixes, and internal improvements
 
-### 1.1.1#2203 (2016-09-20)
+### [1.1.1#2203](https://github.com/TWiStErRob/net.twisterrob.inventory/milestone/10?closed=1) (2016-09-20)
 {: #v11102203}
  * Fix: Property images were associated with the wrong belonging when importing a local ZIP file from device.
  * Fix: Remove colors from texts to prevent crashes on exotic Android versions.
  * Enhancement: Use material design error for editing a belonging's name.
 
-### 1.1.0#2193 (2016-09-19)
+### [1.1.0#2193](https://github.com/TWiStErRob/net.twisterrob.inventory/milestone/10?closed=1) (2016-09-19)
 {: #v11002193}
  * [Feature](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/37): Ability to import/export from/to any external source (incl. Drive, Dropbox).
  * Feature: Proper background import/export with notifications and all.
@@ -187,7 +260,7 @@ If there are still unanswered question or You want to chat about privacy of Your
  * Fix: Minor additions and fixes to help (Navigation, Backup, Tips).
  * Fix: some images were not removed when some belongings were deleted: some space may free up after upgrade.
  * Fix: that single crash reported about HTC One M8 not knowing what "gray" is.  
-   *(Please send the error reports if it pops up. The app doesn't have Internet premission, so I can't send automatic crash reports.)*
+   _(Please send the error reports if it pops up. The app doesn't have Internet premission, so I can't send automatic crash reports.)_
  * Fix: Lessen probabilty of technical messages showing up.
  * Fix: don't include any logging classes, more agressive ProGuard
 
