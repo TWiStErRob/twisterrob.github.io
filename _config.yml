@@ -28,7 +28,7 @@ description: "Home for all things about and by Róbert&nbsp;Papp (TWiStErRob)."
 author: twisterrob
 
 # This URL is the main address for absolute links. Don't include a slash at the end.
-url: 'http://www.twisterrob.net'
+url: 'https://www.twisterrob.net'
 baseurl: ''
 
 # This is for the editing function in _/includes/improve_content.html
