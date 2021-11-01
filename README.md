@@ -60,6 +60,7 @@ GHPages:
  * 161 Whitelist jekyll-octicons (#483) https://github.com/github/pages-gem/pull/483
  * 86-192: rouge 1.11.1 -> 2.2.1
  * kramdown 1.13.2 -> 1.17.0
+
 Jekyll 3.5
  * Sitemaps for static files
  * Liquid 4: https://github.com/Shopify/liquid/blob/master/History.md#400--2016-12-14--branch-4-0-stable
@@ -68,8 +69,10 @@ Jekyll 3.5
  * The gems key in the _config.yml is now plugins.
  * Filters like sort now allow you to sort based on a subvalue, e.g. {% assign sorted = site.posts | sort: "image.alt_text" %}.
  * layout: null -> layout: none (null = default, none = no layout)
+
 Jekyll 3.6
  * Rouge 2 support, but note you can continue to use Rouge 1
+
 Jekyll 3.7
  * --livereload
  * slugify latin
