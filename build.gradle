@@ -2,7 +2,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 
 buildscript {
 	repositories {
-		jcenter()
+		mavenCentral()
 	}
 	dependencies {
 		classpath 'org.yaml:snakeyaml:1.15'
@@ -54,10 +54,10 @@ task fastStyleCopyCachedCSS(type: Copy) {
 
 	from fastSource
 	into 'assets/css'
-	onlyIf { 
+	onlyIf {
 		if (!fastSource.exists()) {
 			logger.warn("There's no rendered CSS file: ${fastSource}")
-			return false;
+			return false
 		}
 		return true
 	}
@@ -70,7 +70,7 @@ task fastStyle(dependsOn: fastStyleCopyCachedCSS) {
 
 	onlyIf { fastStyleCopyCachedCSS.state.didWork || fastStyleCopyCachedCSS.state.skipMessage == 'UP-TO-DATE' }
 	doLast {
-		if (slow.exists() && ignored.exists() && slow.text == ignored.text) { ignored.delete(); }
+		if (slow.exists() && ignored.exists() && slow.text == ignored.text) { ignored.delete() }
 		if (!slow.renameTo(ignored)) { throw new IOException("Cannot rename ${slow} to ${ignored}.") }
 	}
 	outputs.upToDateWhen { !slow.exists() && ignored.exists() }
@@ -85,7 +85,11 @@ task slowStyle(dependsOn: slowStyleRemoveCachedCSS) {
 	afterEvaluate { tasks.build.mustRunAfter slowStyle }
 	afterEvaluate { tasks.serve.mustRunAfter slowStyle }
 
-	doLast { if (!ignored.renameTo(slow)) { throw new IOException("Cannot rename ${ignored} to ${slow}.") } }
+	doLast {
+		if (!ignored.renameTo(slow)) {
+			throw new IOException("Cannot rename ${ignored} to ${slow}.")
+		}
+	}
 	outputs.upToDateWhen { !ignored.exists() && slow.exists() }
 }
 
@@ -138,41 +142,43 @@ task local(type: JekyllSetup) {
 task dev(type: JekyllSetup, dependsOn: local) {
 	description = "Use _config_dev.yml overrides and sets JEKYLL_ENV to development"
 	action = {
-		it.config '_config_dev.yml';
+		it.config '_config_dev.yml'
 		it.environment 'JEKYLL_ENV', 'development'
 	}
 }
 task noskip(type: JekyllSetup) {
-	description = "Remove --skip-initial-build from serve command (default is ${build.skip? "added" : "removed"})";
+	description = "Remove --skip-initial-build from serve command (default is ${build.skip? "added" : "removed"})"
 	action = { it.skip = false }
 }
 task skip(type: JekyllSetup) {
-	description = "Add --skip-initial-build to serve command (default is ${build.skip? "added" : "removed"})";
+	description = "Add --skip-initial-build to serve command (default is ${build.skip? "added" : "removed"})"
 	action = { it.skip = true }
 	noskip.mustRunAfter skip
 }
 task notrace(type: JekyllSetup) {
-	description = "Remove --trace argument from jekyll (default is ${build.trace? "added" : "removed"})";
+	description = "Remove --trace argument from jekyll (default is ${build.trace? "added" : "removed"})"
 	action = { it.trace = false }
 }
 task trace(type: JekyllSetup) {
-	description = "Add --trace argument to jekyll (default is ${build.trace? "added" : "removed"})";
+	description = "Add --trace argument to jekyll (default is ${build.trace? "added" : "removed"})"
 	action = { it.trace = true }
 	notrace.mustRunAfter trace
 }
 task noverbose(type: JekyllSetup) {
-	description = "Remove --trace argument from jekyll (default is ${build.verbose? "added" : "removed"})";
+	description = "Remove --trace argument from jekyll (default is ${build.verbose? "added" : "removed"})"
 	action = { it.verbose = false }
 }
 task verbose(type: JekyllSetup) {
-	description = "Add --trace argument to jekyll (default is ${build.verbose? "added" : "removed"})";
+	description = "Add --trace argument to jekyll (default is ${build.verbose? "added" : "removed"})"
 	action = { it.verbose = true }
 	noverbose.mustRunAfter verbose
 }
 
 class JekyllSetup extends DefaultTask {
 	static final GROUP = "Jekyll Param"
-	Closure action
+
+	@Input
+	Action<JekyllSetup> action
 
 	JekyllSetup() {
 		group = GROUP
@@ -182,20 +188,31 @@ class JekyllSetup extends DefaultTask {
 	}
 
 	@TaskAction
-	public void setup() {
+	void setup() {
 		project.tasks.withType(Jekyll).all(action)
 	}
 }
 
 class Jekyll extends Exec {
 	static final GROUP = "Jekyll"
+
+	@Input
 	boolean trace = true
+
+	@Input
 	boolean verbose = false
+
+	@Input
 	boolean skip = false
+
+	@Input
 	boolean incremental = true
+
+	@Input
 	String jekyllTask
+
 	private final List<String> configs = ['_config.yml']
-	
+
 	Jekyll() {
 		group = GROUP
 		def excludes = new org.yaml.snakeyaml.Yaml().load(new File(project.rootDir, '_config.yml').text).exclude
@@ -219,13 +236,13 @@ class Jekyll extends Exec {
 			'exec',
 			'jekyll',
 			jekyllTask,
-			configs.size? '--config' : '',
+			!configs.isEmpty() ? '--config' : '',
 			configs.join(','),
 			trace? '--trace' : '',
 			verbose? '--verbose' : '',
 			incremental? '--incremental' : '',
 			jekyllTask == 'serve' && skip? '--skip-initial-build': ''] + args)
-		super.exec();
+		super.exec()
 	}
 
 	void config(String file) {

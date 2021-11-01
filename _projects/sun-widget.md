@@ -15,6 +15,7 @@ images:
       title: Sunset with no space for time of day nor last update time
 links:
   googleplay: net.twisterrob.sun
+  sources: https://github.com/TWiStErRob/net.twisterrob.sun
 ---
 
 {% include toc.md %}
@@ -77,3 +78,13 @@ The widget will display the following part of the day, each with a corresponding
  * [the Math](#calculating-the-angle)
  * [Light Pollution ☹](http://www.mensjournal.com/magazine/where-did-all-the-stars-go-20131115?page=2)
  * [UV/B and Vitamin D benefits](http://articles.mercola.com/sites/articles/archive/2012/09/29/sun-exposure-vitamin-d-production-benefits.aspx), [also here](http://articles.mercola.com/sites/articles/archive/2012/03/26/maximizing-vitamin-d-exposure.aspx)
+
+## History
+See [releases on GitHub](https://github.com/TWiStErRob/net.twisterrob.sun/releases) for more details.
+
+### [1.0.0#1339](https://github.com/TWiStErRob/net.twisterrob.sun/releases/tag/v1.0.0) (2014-10-18)
+{: #v10001339}
+ * Initial release
+ * Feature: Multiple widgets
+ * Feature: show-hide timing and name
+ * Feature: manually select threshold

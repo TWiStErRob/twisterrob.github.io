@@ -18,31 +18,32 @@ layout: page
 {%  endif  %}
 
 <div class="row">
-  <div class="small-12 medium-3 large-4 columns">
-  	<figure>
-  		<img src="{{ site.urlimg }}{{ page.images.icon }}" alt="Icon of {{ page.title }}" />
-  	</figure>
-  </div>
-  <div class="small-12 medium-9 large-8 columns">
-  	<dl class="project">
-  		{% if page.links.googleplay %}
-  			{% assign googleplay_tracking = '&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1' %}
-  			{% assign googleplay_badge = 'https://play.google.com/intl/en_us/badges/images/apps/en-play-badge-border.png' %}
-		  	<dt>Download</dt><dd>
-		  		{% comment %}Maybe add &rdid={{ page.links.googleplay }} to the link{% endcomment %}
-		  		<a href="https://play.google.com/store/apps/details?id={{ page.links.googleplay }}{{ googleplay_tracking }}" class="no-adorn" target="_blank">
-					<img alt="Get it on Google Play" width="50%" src="{{ googleplay_badge }}" />
-				</a>
-			</dd>
-		{% endif %}
-	  	{% if page.links.site %}<dt>Website</dt><dd><a href="{{ page.links.site }}">{{ page.links.site }}</a></dd>{% endif %}
-	  	{% if page.links.view %}<dt>Live</dt><dd><a href="{{ page.links.view }}" target="_blank">Check it out!</a></dd>{% endif %}
-	  	{% if page.links.download %}<dt>Download</dt><dd><a href="{{ page.links.download }}" target="_blank">Download</a></dd>{% endif %}
-	  	{% if page.years %}<dt>Years</dt><dd>{{ page.years }}</dd>{% endif %}
-	  	{% if page.links.sources %}<dt>Download Sources</dt><dd>{{ page.links.sources }}</dd>{% endif %}
-	  	{% if page.images.screenshots %}<dt>Screenshots</dt><dd><a href="#screenshots" onclick="$('.clearing-thumbs img:first').click(); return false;">View</a>{% endif %}
-  	</dl>
-  </div>
+	<div class="small-12 medium-3 large-4 columns">
+		<figure>
+			<img src="{{ site.urlimg }}{{ page.images.icon }}" alt="Icon of {{ page.title }}" />
+		</figure>
+	</div>
+	<div class="small-12 medium-9 large-8 columns">
+		<dl class="project">
+			{% if page.links.googleplay %}
+				{% assign googleplay_tracking = '&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1' %}
+				{% assign googleplay_badge = 'https://play.google.com/intl/en_us/badges/images/apps/en-play-badge-border.png' %}
+				<dt>Download</dt>
+				<dd>
+					{% comment %}Maybe add &rdid={{ page.links.googleplay }} to the link{% endcomment %}
+					<a href="https://play.google.com/store/apps/details?id={{ page.links.googleplay }}{{ googleplay_tracking }}" class="no-adorn" target="_blank">
+						<img alt="Get it on Google Play" width="50%" src="{{ googleplay_badge }}" />
+					</a>
+				</dd>
+			{% endif %}
+			{% if page.links.site %}<dt>Website</dt><dd><a href="{{ page.links.site }}">{{ page.links.site }}</a></dd>{% endif %}
+			{% if page.links.view %}<dt>Live</dt><dd><a href="{{ page.links.view }}" target="_blank">Check it out!</a></dd>{% endif %}
+			{% if page.links.download %}<dt>Download</dt><dd><a href="{{ page.links.download }}" target="_blank">Download</a></dd>{% endif %}
+			{% if page.years %}<dt>Years</dt><dd>{{ page.years }}</dd>{% endif %}
+			{% if page.links.sources %}<dt>Sources Code</dt><dd><a href="{{ page.links.sources }}" target="_blank">Look at sources</a></dd>{% endif %}
+			{% if page.images.screenshots %}<dt>Screenshots</dt><dd><a href="#screenshots" onclick="$('.clearing-thumbs img:first').click(); return false;">View</a>{% endif %}
+		</dl>
+	</div>
 </div>
 
 {% if page.images.screenshots %}
