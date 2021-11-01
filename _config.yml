@@ -111,6 +111,9 @@ exclude:
   - _drafts/_*
   # Build Scripts and Dependencies
   - build.gradle
+  - gradle
+  - gradlew
+  - gradlew.bat
   - Gemfile
   - Gemfile.lock
   # _config*.yml      # doesn't work, see https://github.com/jekyll/jekyll-watch/issues/34
