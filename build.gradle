@@ -2,7 +2,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 
 buildscript {
 	repositories {
-		jcenter()
+		mavenCentral()
 	}
 	dependencies {
 		classpath 'org.yaml:snakeyaml:1.15'
@@ -54,7 +54,7 @@ task fastStyleCopyCachedCSS(type: Copy) {
 
 	from fastSource
 	into 'assets/css'
-	onlyIf { 
+	onlyIf {
 		if (!fastSource.exists()) {
 			logger.warn("There's no rendered CSS file: ${fastSource}")
 			return false;
@@ -85,7 +85,11 @@ task slowStyle(dependsOn: slowStyleRemoveCachedCSS) {
 	afterEvaluate { tasks.build.mustRunAfter slowStyle }
 	afterEvaluate { tasks.serve.mustRunAfter slowStyle }
 
-	doLast { if (!ignored.renameTo(slow)) { throw new IOException("Cannot rename ${ignored} to ${slow}.") } }
+	doLast {
+		if (!ignored.renameTo(slow)) {
+			throw new IOException("Cannot rename ${ignored} to ${slow}.")
+		}
+	}
 	outputs.upToDateWhen { !ignored.exists() && slow.exists() }
 }
 
@@ -195,7 +199,7 @@ class Jekyll extends Exec {
 	boolean incremental = true
 	String jekyllTask
 	private final List<String> configs = ['_config.yml']
-	
+
 	Jekyll() {
 		group = GROUP
 		def excludes = new org.yaml.snakeyaml.Yaml().load(new File(project.rootDir, '_config.yml').text).exclude
