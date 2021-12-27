@@ -83,18 +83,18 @@ The widget will display the following part of the day, each with a corresponding
 See [releases on GitHub](https://github.com/TWiStErRob/net.twisterrob.sun/releases) for more details.
 
 ### [1.1.0#????](https://github.com/TWiStErRob/net.twisterrob.sun/milestone/1?closed=1) (2021-12-27)
-{: #v11000000}
-* [Fix](https://github.com/TWiStErRob/net.twisterrob.sun/pull/14): Revive build using latest convention plugins & CI
-* [Fix](https://github.com/TWiStErRob/net.twisterrob.sun/pull/15): Change line endings from CRLF to LF in all files.
-* [Feature](https://github.com/TWiStErRob/net.twisterrob.sun/pull/13): Add Readme
-* [Feature](https://github.com/TWiStErRob/net.twisterrob.sun/pull/16): Modularize the app
-* [Feature](https://github.com/TWiStErRob/net.twisterrob.sun/pull/19): AndroidX
-* [Feature](https://github.com/TWiStErRob/net.twisterrob.sun/pull/20): Quality
-* [Fix #8](https://github.com/TWiStErRob/net.twisterrob.sun/pull/21): Android Gradle Plugin 7
-* Internal
-  * [Experimental](https://github.com/TWiStErRob/net.twisterrob.sun/pull/18): Add Paparazzi a bit of refactoring
-  * [Experimental](https://github.com/TWiStErRob/net.twisterrob.sun/pull/22): Paparazzi 0.8.0 -> 0.9.0
-* [Fix #9](https://github.com/TWiStErRob/net.twisterrob.sun/pull/23): Target Android 12/SDK 31/S
+{: #v11000069}
+* Feature: Support Android 12 (API 31/S) while keeping Ice Cream Sandwich (4.0 API 14) compatibility
+  * [Fix](https://github.com/TWiStErRob/net.twisterrob.sun/pull/23): Target Android 12/SDK 31/S
+  * [Fix](https://github.com/TWiStErRob/net.twisterrob.sun/pull/19): AndroidX
+* Internal technical changes
+  * [Feature](https://github.com/TWiStErRob/net.twisterrob.sun/pull/14): Build using latest convention plugins, including [quality](https://github.com/TWiStErRob/net.twisterrob.sun/pull/20), [build](https://github.com/TWiStErRob/net.twisterrob.sun/pull/21) with Android Gradle Plugin 7
+  * [Feature](https://github.com/TWiStErRob/net.twisterrob.sun/pull/14): Add CI
+  * [Enhancement](https://github.com/TWiStErRob/net.twisterrob.sun/pull/16): Modularize the app
+* Small internal improvements
+  * [Enhancement](https://github.com/TWiStErRob/net.twisterrob.sun/pull/13): Add Readme
+  * [Fix](https://github.com/TWiStErRob/net.twisterrob.sun/pull/15): Change line endings from CRLF to LF in all files.
+  * [Experimental](https://github.com/TWiStErRob/net.twisterrob.sun/pull/18): Add Paparazzi 0.8.0, [upgrade](https://github.com/TWiStErRob/net.twisterrob.sun/pull/22) to 0.9.0
 
 
 ### [1.0.0#1339](https://github.com/TWiStErRob/net.twisterrob.sun/releases/tag/v1.0.0) (2014-10-18)
