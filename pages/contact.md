@@ -20,14 +20,13 @@ You can reach me at {% include snippets/email.html address=email %} where you ca
 {% endif %}
 
 <p><iframe src="https://docs.google.com/forms/d/1cG89BafxKwdxv9kzS-C_MjZfte0Ldlz37vr0m2U77jA/viewform?embedded=true"
-           width="100%" height="715" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">Loading...</iframe></p>
+           width="100%" height="935" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes">Loading...</iframe></p>
 
 ## Social contacts
 
 You can also find me on various social sites, check them out at the [bottom of the page](#subfooter).
 
-## Options
-I should be online on most of the social services, if my Android phone has an internet connection, so I'll receive a notification about most of them.
+I should be online on most of them, if my Android phone has an internet connection, so I'll receive a notification about most of them.
 
  * If you want to send me a message use the above form.
  * If you want a reply supply your email address.
@@ -36,4 +35,4 @@ I should be online on most of the social services, if my Android phone has an in
    * Go to my Facebook profile and send a message  
      (sadly, [it'll go to my Other folder](https://www.facebook.com/help/398578543552207) so I won't necessarily notice it)
    * Chat me up on Skype
- * If I don't respond you can always send me an email requesting to be online on one of the above
+ * If I don't respond you can always email me requesting to be online on one of the above.
