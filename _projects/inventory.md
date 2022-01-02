@@ -109,9 +109,12 @@ This type of list is better than a generic list, because it's made of YOUR stuff
 #### Sunburst diagram
 I really liked to browse some apps where I could see what's on my phone's internal memory, what's occupying space. The inventory applies a similar hierarchical concept than those of files and folders, so I set out try to visualize how my stuff looks like. The results are flashy :)
 
-## Working with exports
+## User Guide
+You can find most of the relevant usage information inside the app: tap <mark>☰</mark> and select <mark>About & Help</mark>.
 
-The export the app makes is made to work with the app. Since XML is a generic human readable text file format, it's easy to convert it to anything.
+### Working with exports (techie)
+
+The export the app makes is made to work with the app. Since XML is a generic human-readable text file format, it's easy to convert it to anything.
 I've included an HTML and a CSV file for human consumption to cover the most basic cases: sharing the export with others, browse the export on the computer, do some statistics (Excel) on the inventory.
 
 It's easy to convert the exported data to any format necessary, though this mostly requires some kind of programming, for example writing an XSLT stylesheet.
@@ -146,7 +149,7 @@ If I decide to change this Privacy Policy, I will post those changes on this pag
 
 ### Contact
 {: .no_toc }
-If there are still unanswered question, or You want to chat about privacy of Your data, feel free to [contact me]({{site.baseurl}}/contact).
+If there are still unanswered questions, or You want to chat about privacy of Your data, feel free to [contact me]({{site.baseurl}}/contact).
 
 ## History
 
