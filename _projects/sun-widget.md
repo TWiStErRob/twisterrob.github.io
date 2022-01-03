@@ -82,6 +82,12 @@ The widget will display the following part of the day, each with a corresponding
 ## History
 See [releases on GitHub](https://github.com/TWiStErRob/net.twisterrob.sun/releases) for more details.
 
+### [1.1.0#b02a853](https://github.com/TWiStErRob/net.twisterrob.sun/releases/tag/v1.1.0) (2022-01-03)
+{: #v11000069}
+ * Code is now open source in https://github.com/TWiStErRob/net.twisterrob.sun
+ * Feature: Support Android 12 while keeping Ice Cream Sandwich (4.0) compatibility
+ * Enhancement: internal technical changes to get the technology up to speed with 2021.
+
 ### [1.0.0#1339](https://github.com/TWiStErRob/net.twisterrob.sun/releases/tag/v1.0.0) (2014-10-18)
 {: #v10001339}
  * Initial release
