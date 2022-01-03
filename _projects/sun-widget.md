@@ -79,6 +79,34 @@ The widget will display the following part of the day, each with a corresponding
  * [Light Pollution ☹](http://www.mensjournal.com/magazine/where-did-all-the-stars-go-20131115?page=2)
  * [UV/B and Vitamin D benefits](http://articles.mercola.com/sites/articles/archive/2012/09/29/sun-exposure-vitamin-d-production-benefits.aspx), [also here](http://articles.mercola.com/sites/articles/archive/2012/03/26/maximizing-vitamin-d-exposure.aspx)
 
+## Privacy Policy
+
+The Sun Position Widget (the app) allows the user (You) to check an estimation of the Sun's position in the sky.
+
+### Location permission
+{: .no_toc }
+This permission authorizes the app to know where Your device is located in order to calculate the angle of the Sun. This is necessary because the Sun's apparent position is different from different vantage points on Earth.
+
+### Storage of user data
+{: .no_toc }
+The captured location data stays in the runtime memory of the app and is only used for astronomical calculations.
+
+### Third-party services
+{: .no_toc }
+Currently there are no third party integrations (including analytics and ads) that allow data to leave the app without user action.
+This may change in the future, in which case:
+
+* there will be an update available for the app
+* this Privacy Policy will be updated
+
+### Future Changes
+{: .no_toc }
+If I decide to change this Privacy Policy, I will post those changes on this page.
+
+### Contact
+{: .no_toc }
+If there are still unanswered questions, or You want to chat about privacy of Your data, feel free to [contact&nbsp;me]({{site.baseurl}}/contact).
+
 ## History
 See [releases on GitHub](https://github.com/TWiStErRob/net.twisterrob.sun/releases) for more details.
 
