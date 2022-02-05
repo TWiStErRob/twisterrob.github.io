@@ -1,11 +1,11 @@
-_site/
-.sass-cache/
-.svn/
-.idea/
-.gradle/
-sources/
-Gemfile.lock
-*.iml
-/*.ipr
+/.git
+/.sass-cache
+/.gradle
+/_site
+/Gemfile.lock
 /*.iws
+/*.ipr
+/*.iml
+/.idea
 /.jekyll-metadata
+/System Volume Information
