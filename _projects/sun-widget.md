@@ -110,6 +110,12 @@ If there are still unanswered questions, or You want to chat about privacy of Yo
 ## History
 See [releases on GitHub](https://github.com/TWiStErRob/net.twisterrob.sun/releases) for more details.
 
+### [1.2.0#7d706b5](https://github.com/TWiStErRob/net.twisterrob.sun/releases/tag/v1.2.0) (2022-02-05)
+{: #v12000077}
+ * Fix: Widget not refreshing ("No location available")
+ * Enhancement: small UI improvements
+ * Enhancement: internal technical changes to get the technology up to speed with 2021.
+
 ### [1.1.0#b02a853](https://github.com/TWiStErRob/net.twisterrob.sun/releases/tag/v1.1.0) (2022-01-03)
 {: #v11000069}
  * Code is now open source in https://github.com/TWiStErRob/net.twisterrob.sun
