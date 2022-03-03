@@ -110,6 +110,11 @@ If there are still unanswered questions, or You want to chat about privacy of Yo
 ## History
 See [releases on GitHub](https://github.com/TWiStErRob/net.twisterrob.sun/releases) for more details.
 
+### [1.2.1#fa87837](https://github.com/TWiStErRob/net.twisterrob.sun/releases/tag/v1.2.1) (2022-02-28)
+{: #v12100086}
+ * Enhancement: allow resizing of widget
+ * Fix: more compliant way to refresh
+
 ### [1.2.0#7d706b5](https://github.com/TWiStErRob/net.twisterrob.sun/releases/tag/v1.2.0) (2022-02-05)
 {: #v12000077}
  * Fix: Widget not refreshing ("No location available")
