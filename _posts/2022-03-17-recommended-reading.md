@@ -1,0 +1,24 @@
+---
+title: "Recommended reading"
+subheadline: "a living document"
+teaser: "Inspiring content, see inside!"
+category: dev
+tags:
+- collection
+---
+
+Collection of things I've read during the years, and I keep referring back to them.<!--more--> I either agree with their content, or they have material I can refer back to. These articles have made me a better software engineer, colleague or just straight up person.
+
+The pages are in no particular order, just randomly thrown here.
+If I get inspiration I might write some actual recommendations, until then, just read on!
+
+ * [Ben Balter: Removing a feature is a feature](https://ben.balter.com/2016/07/21/removing-a-feature-is-a-feature/)
+ * [Ned Batchelder: Comments should be sentences](https://nedbatchelder.com/blog/201401/comments_should_be_sentences.html)
+ * [Krzysztof Hasiński: Please, oh please, use git pull --rebase](https://coderwall.com/p/7aymfa/please-oh-please-use-git-pull-rebase)
+ * [Trisha Gee: Code Smells series from IntelliJ Blog](https://blog.jetbrains.com/idea/2017/08/code-smells-null/)  
+   (⚠ The series is a long read, but well worth the time!)
+ * [The XY Problem](https://xyproblem.info)
+ * [nohello: please don't say just hello in chat](https://nohello.net/)  
+   (probably the original version: https://www.nohello.com/)
+ * [~~Android Lint User Guide~~](https://developer.android.com/studio/write/lint) &rarr; [Android Lint Documentation](http://googlesamples.github.io/android-custom-lint-rules/book.md.html)
+ * [Tom Scott: The Art of the Bodge](https://www.youtube.com/watch?v=lIFE7h3m40U)
