@@ -19,6 +19,8 @@ links:
   googleplay: net.twisterrob.colorfilters
 ---
 
+{% include toc.md %}
+
 ## Inception
 There are some good and fast image manipulation tools in Android, but the documentation is not enough. One has to know the math behind. I'm a visual mind and I like to see how something behaves once I change it. The problem is that calibrating Colors means changing the color and re-building and re-deploying the app on a device which takes a long time to do. So I decided to make an app where I can change the parameters to some methods and see the result immediately.
 
@@ -62,16 +64,17 @@ If I decide to change this Privacy Policy, I will post those changes on this pag
 If there are still unanswered questions, or You want to chat about privacy of Your data, feel free to [contact&nbsp;me]({{site.baseurl}}/contact).
 
 ## History
+See [releases on GitHub](https://github.com/TWiStErRob/net.twisterrob.colorfilters/releases) for more details.
 
-### 3.0.0 (coming)
+### [3.0.0](https://github.com/TWiStErRob/net.twisterrob.colorfilters/releases/tag/untagged-ca0869e6b1490354dd45) (coming)
 {: #v30000000}
- * https://github.com/TWiStErRob/net.twisterrob.colorfilters/releases/tag/untagged-ca0869e6b1490354dd45
+ * Feature: Source code is public on [GitHub](https://github.com/TWiStErRob/net.twisterrob.colorfilters)
 
-### 2.0.0#2722 (2019-02-07)
+### [2.0.0#2722](https://github.com/TWiStErRob/net.twisterrob.colorfilters/releases/tag/v2.0.0) (2019-02-07)
 {: #v20002722}
  * [Fix](https://github.com/TWiStErRob/net.twisterrob.colorfilters/issues/9): Permissions update (request when needed) and remove write storage
 
-### 2.0.0#2710 (2018-10-21)
+### [2.0.0#2710](https://github.com/TWiStErRob/net.twisterrob.colorfilters/releases/tag/v2.0.0-pre) (2018-10-21)
 {: #v20002710}
  * _unreleased_
  * [Feature]({{site.baseurl}}/blog/2016/09/android-xml-colors.html): font resource investigation (only in debug)
@@ -81,13 +84,13 @@ If there are still unanswered questions, or You want to chat about privacy of Yo
  * [Fix](https://github.com/TWiStErRob/net.twisterrob.colorfilters/issues/8): Truncated text on Lollipop and above
  * [Fix](https://github.com/TWiStErRob/net.twisterrob.colorfilters/issues/4): drag and drop crash
 
-### 1.2.0#2463 (2017-12-21)
+### [1.2.0#2463](https://github.com/TWiStErRob/net.twisterrob.colorfilters/releases/tag/v1.2.0-pre) (2017-12-21)
 {: #v11002463}
  * _unreleased_
  * Enhancement: modularization
  * Enhancement: basic tests
 
-### 1.1.0#1636 (2015-06-02)
+### [1.1.0#1636](https://github.com/TWiStErRob/net.twisterrob.colorfilters/releases/tag/v1.1.0) (2015-06-02)
 {: #v11001636}
  * Feature: Added Palette support
  * Enhancement: Ability to hide images to gain space
@@ -96,11 +99,11 @@ If there are still unanswered questions, or You want to chat about privacy of Yo
  * Fix: rotation and other lifecycle fixes
  * Fix: jumpy labels when sliders change
 
-### 1.0.0#1339 (2014-10-28)
+### [1.0.0#1339](https://github.com/TWiStErRob/net.twisterrob.colorfilters/releases/tag/v1.0.0) (2014-10-28)
 {: #v10001339}
  * Initial release with 3 Color Filters
  * Build with Lollipop
 
-### 1.0.0#1324 (2014-10-25)
+### [1.0.0#1324](https://github.com/TWiStErRob/net.twisterrob.colorfilters/releases/tag/v1.0.0-pre) (2014-10-25)
 {: #v10001324}
  * Initial release preparation
