@@ -63,6 +63,10 @@ If there are still unanswered questions, or You want to chat about privacy of Yo
 
 ## History
 
+### 3.0.0 (coming)
+{: #v30000000}
+ * https://github.com/TWiStErRob/net.twisterrob.colorfilters/releases/tag/untagged-ca0869e6b1490354dd45
+
 ### 2.0.0#2722 (2019-02-07)
 {: #v20002722}
  * [Fix](https://github.com/TWiStErRob/net.twisterrob.colorfilters/issues/9): Permissions update (request when needed) and remove write storage
