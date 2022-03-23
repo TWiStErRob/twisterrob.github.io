@@ -78,7 +78,7 @@ If there are still unanswered questions, or You want to chat about privacy of Yo
  * [Fix](https://github.com/TWiStErRob/net.twisterrob.colorfilters/issues/4): drag and drop crash
 
 ### 1.2.0#2463 (2017-12-21)
-{: #v11102463}
+{: #v11002463}
  * _unreleased_
  * Enhancement: modularization
  * Enhancement: basic tests
