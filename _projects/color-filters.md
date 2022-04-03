@@ -66,9 +66,11 @@ If there are still unanswered questions, or You want to chat about privacy of Yo
 ## History
 See [releases on GitHub](https://github.com/TWiStErRob/net.twisterrob.colorfilters/releases) for more details.
 
-### [3.0.0](https://github.com/TWiStErRob/net.twisterrob.colorfilters/releases/tag/untagged-ca0869e6b1490354dd45) (coming)
-{: #v30000000}
- * Feature: Source code is public on [GitHub](https://github.com/TWiStErRob/net.twisterrob.colorfilters)
+### [3.0.0](https://github.com/TWiStErRob/net.twisterrob.colorfilters/releases/tag/v3.0.0) (2022-04-02)
+{: #v30000165}
+ * [Feature](https://github.com/TWiStErRob/net.twisterrob.colorfilters/issues/16): Source code is public on [GitHub](https://github.com/TWiStErRob/net.twisterrob.colorfilters)
+ * Enhancement: build improvements
+ * Enhancement: tech upgrades
 
 ### [2.0.0#2722](https://github.com/TWiStErRob/net.twisterrob.colorfilters/releases/tag/v2.0.0) (2019-02-07)
 {: #v20002722}
