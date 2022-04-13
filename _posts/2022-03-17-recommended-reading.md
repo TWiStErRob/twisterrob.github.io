@@ -20,5 +20,6 @@ If I get inspiration I might write some actual recommendations, until then, just
  * [The XY Problem](https://xyproblem.info)
  * [nohello: please don't say just hello in chat](https://nohello.net/)  
    (probably the original version: https://www.nohello.com/)
+ * [French vs. English punctuation rules (the French perspective)](https://leconjugueur.lefigaro.fr/ukponctuationtypographie.php)
  * [~~Android Lint User Guide~~](https://developer.android.com/studio/write/lint) &rarr; [Android Lint Documentation](http://googlesamples.github.io/android-custom-lint-rules/book.md.html)
  * [Tom Scott: The Art of the Bodge](https://www.youtube.com/watch?v=lIFE7h3m40U)
