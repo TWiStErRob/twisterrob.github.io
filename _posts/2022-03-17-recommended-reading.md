@@ -24,3 +24,4 @@ If I get inspiration I might write some actual recommendations, until then, just
  * [~~Android Lint User Guide~~](https://developer.android.com/studio/write/lint) &rarr; [Android Lint Documentation](http://googlesamples.github.io/android-custom-lint-rules/book.md.html)
  * [Tom Scott: The Art of the Bodge](https://www.youtube.com/watch?v=lIFE7h3m40U)
  * [Marcin Moskala: Kotlin not-to-do list (after the book Effective Kotlin)](https://www.youtube.com/watch?v=2ffR1h4BejQ)
+ * [Description of test-only, contextual and absolute selectors](https://css-tricks.com/front-end-test-element-locators/)
