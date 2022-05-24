@@ -25,3 +25,4 @@ If I get inspiration I might write some actual recommendations, until then, just
  * [Tom Scott: The Art of the Bodge](https://www.youtube.com/watch?v=lIFE7h3m40U)
  * [Marcin Moskala: Kotlin not-to-do list (after the book Effective Kotlin)](https://www.youtube.com/watch?v=2ffR1h4BejQ)
  * [Description of test-only, contextual and absolute selectors](https://css-tricks.com/front-end-test-element-locators/)
+ * [Zac Sweers: You are not blocked](https://www.zacsweers.dev/you-are-not-blocked/)
