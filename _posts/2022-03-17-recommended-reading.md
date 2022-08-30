@@ -26,3 +26,4 @@ If I get inspiration I might write some actual recommendations, until then, just
  * [Marcin Moskala: Kotlin not-to-do list (after the book Effective Kotlin)](https://www.youtube.com/watch?v=2ffR1h4BejQ)
  * [Description of test-only, contextual and absolute selectors](https://css-tricks.com/front-end-test-element-locators/)
  * [Zac Sweers: You are not blocked](https://www.zacsweers.dev/you-are-not-blocked/)
+ * [The Dark Secrets of Fast Compilation for Kotlin](https://blog.jetbrains.com/kotlin/2020/09/the-dark-secrets-of-fast-compilation-for-kotlin/)
