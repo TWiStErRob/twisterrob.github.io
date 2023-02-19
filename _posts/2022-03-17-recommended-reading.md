@@ -27,3 +27,4 @@ If I get inspiration I might write some actual recommendations, until then, just
  * [Description of test-only, contextual and absolute selectors](https://css-tricks.com/front-end-test-element-locators/)
  * [Zac Sweers: You are not blocked](https://www.zacsweers.dev/you-are-not-blocked/)
  * [The Dark Secrets of Fast Compilation for Kotlin](https://blog.jetbrains.com/kotlin/2020/09/the-dark-secrets-of-fast-compilation-for-kotlin/)
+ * [Jake Wharton: Build on latest Java, test through lowest Java](https://jakewharton.com/build-on-latest-java-test-through-lowest-java/)
