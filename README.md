@@ -96,3 +96,7 @@ shell code formatting lost user@machine$ formatting
 
 https://github.com/jekyll/jekyll/pull/6384/files#diff-514abd885acda367325e5236a9be3192R68
 https://github.com/kacperduras/disqus-for-jekyll
+
+## Origin
+
+This website is based on the [Feeling Responsive theme](https://phlow.github.io/feeling-responsive/) by [Moritz »mo.« Sauer](https://github.com/Phlow/feeling-responsive) // [Phlow.de](https://phlow.de)
