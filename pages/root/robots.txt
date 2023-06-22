@@ -8,3 +8,8 @@ layout: null
 
 User-agent: *
 Sitemap: {{ site.url }}{{ site.baseurl }}/sitemap.xml
+
+# See https://github.com/TWiStErRob/twisterrob.github.io/issues/22
+User-agent: *
+Disallow: /dagger/api/2.13/
+Disallow: /dagger/api/latest/
