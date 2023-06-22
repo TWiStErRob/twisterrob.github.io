@@ -43,15 +43,17 @@ me@webiste$ gradle preCommitServe local
 ## Upgrade
 
  * Change `gem 'github-pages'` version to [GitHub version](https://pages.github.com/versions/)
- * `bundle update`, watch for these two lines:
-   > Fetching github-pages 192 (was 127)  
-   > Fetching jekyll 3.7.4 (was 3.4.1)
- * Read release notes for missed versions:
-   * https://github.com/github/pages-gem/releases
-   * https://jekyllrb.com/news/releases/  
-     https://jekyllrb.com/docs/history/
-   * Watch out for Liquid updates
-   * Watch out for Ruby updates
+ * `bundle update`, watch for these lines and read release notes:
+   * Fetching github-pages 192 (was 127)  
+     * https://github.com/github/pages-gem/releases
+   * Fetching jekyll 3.7.4 (was 3.4.1)
+     * https://jekyllrb.com/news/releases/
+     * https://jekyllrb.com/docs/history/
+   * Fetching liquid 4.0.4 (was 4.0.3)
+   * Fetching kramdown 2.3.2 (was 2.3.1)
+   * Fetching rouge 3.26.0 (was 3.25.0)
+   * Ruby
+      * If it asks for `ridk install`, choose _"MSYS2 and MINGW development toolchain"_ and install to `%RUBY_HOME%\msys64`.
  * Check if https://help.github.com/articles/configuring-jekyll/#configuration-settings-you-cannot-change has changed
 
 ## TODO
@@ -96,3 +98,7 @@ shell code formatting lost user@machine$ formatting
 
 https://github.com/jekyll/jekyll/pull/6384/files#diff-514abd885acda367325e5236a9be3192R68
 https://github.com/kacperduras/disqus-for-jekyll
+
+## Origin
+
+This website is based on the [Feeling Responsive theme](https://phlow.github.io/feeling-responsive/) by [Moritz »mo.« Sauer](https://github.com/Phlow/feeling-responsive) // [Phlow.de](https://phlow.de)
