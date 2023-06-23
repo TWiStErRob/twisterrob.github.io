@@ -66,12 +66,12 @@
 
 
 {% if site.msapplication_tileimage %}
-	{% comment %} Favicon for Windows 8  {% endcomment %}
+	{% comment %} Favicon for Windows 8 {% endcomment %}
 	<meta name="msapplication-TileImage" content="{{ site.baseurl }}/assets/img/{{ site.msapplication_tileimage }}" />
 {% endif %}
 
 
 {% if site.msapplication_tilecolor %}
-	{% comment %} Background Color for Tile for Windows 8  {% endcomment %}
+	{% comment %} Background Color for Tile for Windows 8 {% endcomment %}
 	<meta name="msapplication-TileColor" content="{{ site.msapplication_tilecolor }}" />
 {% endif %}
