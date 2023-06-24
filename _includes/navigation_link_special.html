@@ -1,6 +1,7 @@
 {% case include.link.special %}
 {% when 'projects' %}
-	{% for project in site.projects %}{% if project.published and project.type == 'app' %}
+	{% assign projects = site.projects | sort: 'title' %}
+	{% for project in projects %}{% if project.published and project.type == 'app' %}
 		<li{% if project.url == page_url %} class="active"{% endif %}>
 			<a href="{{ site.baseurl }}{{ project.url }}">
 				<img src="{{ site.urlimg }}{{ project.images.icon_small }}" />{{ project.title }}
@@ -8,7 +9,8 @@
 		</li>
 	{% endif %}{% endfor %}
 {% when 'projects-other' %}
-	{% for project in site.projects %}{% if project.published and project.type != 'app' %}
+	{% assign projects = site.projects | sort: 'title' %}
+	{% for project in projects %}{% if project.published and project.type != 'app' %}
 	<li{% if project.url == page_url %} class="active"{% endif %}>
 		<a href="{{ site.baseurl }}{{ project.url }}">
 			<img src="{{ site.urlimg }}{{ project.images.icon_small }}" />{{ project.title }}
@@ -49,4 +51,3 @@
 		{% endif %}
 	{% endfor %}
 {% endcase %}
- 
