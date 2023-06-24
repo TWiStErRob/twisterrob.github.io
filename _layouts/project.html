@@ -57,4 +57,13 @@ layout: page
 	</ul>
 {% endif %}
 
+{% if page.images.videos %}
+<h2 id="videos">Videos</h2>
+<ul class="clearing-thumbs small-block-grid-1" data-clearing>
+	{% for video in page.images.videos %}
+	<li>{% include video.html video=video %}</li>
+	{% endfor %}
+</ul>
+{% endif %}
+
 {{ content }}
