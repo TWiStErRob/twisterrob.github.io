@@ -13,7 +13,7 @@ layout: page
 {% endif %}
 
 {% if page.released != true %}
-	{% capture message %}This project is not publicly released, *yet*. Feel free to [nag me]({{site.baseurl}}/contact) if you're interested.{% endcapture %}
+	{% capture message %}This project is not publicly released, *yet*.{% if page.links.sources %} The <a href="{{ page.links.sources }}" target="_blank">source code</a> is available, so it can be built manually.{% endif %} Feel free to [nag me]({{site.baseurl}}/contact) if you're interested.{% endcapture %}
 	{% include alert warning = message %}
 {% endif %}
 
