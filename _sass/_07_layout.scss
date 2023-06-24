@@ -47,8 +47,13 @@ body.video {
     }
 }
 
-
-
+/* Adjustments: Video Layout
+------------------------------------------------------------------- */
+.carousel {
+    max-height: 256px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
 
 /* Navigation
 ------------------------------------------------------------------- */
