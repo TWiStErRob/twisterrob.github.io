@@ -3,11 +3,11 @@ title: Glide
 type: Personal
 role: contributor, issue support
 maintech: Android, communication
-sector: IT
+sector: technology
 location: Szentes
 dates:
   from: 2014-08-24
-  to: 
+  to: 2018-03-30
 employer:
   onsite: false
 ---

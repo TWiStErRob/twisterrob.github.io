@@ -11,6 +11,6 @@
 {% if show_panel %}<div id="toc" class="panel radius" markdown="1">{% endif %}
 ## Table of Contents
 {:{% unless show_panel %}#toc{% endunless %}.no_toc}
-*  Auto generated table of contents
+* Auto generated table of contents
 {:toc}
 {% if show_panel %}</div>{% endif %}

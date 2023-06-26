@@ -43,15 +43,17 @@ me@webiste$ gradle preCommitServe local
 ## Upgrade
 
  * Change `gem 'github-pages'` version to [GitHub version](https://pages.github.com/versions/)
- * `bundle update`, watch for these two lines:
-   > Fetching github-pages 192 (was 127)  
-   > Fetching jekyll 3.7.4 (was 3.4.1)
- * Read release notes for missed versions:
-   * https://github.com/github/pages-gem/releases
-   * https://jekyllrb.com/news/releases/  
-     https://jekyllrb.com/docs/history/
-   * Watch out for Liquid updates
-   * Watch out for Ruby updates
+ * `bundle update`, watch for these lines and read release notes:
+   * Fetching github-pages 192 (was 127)  
+     * https://github.com/github/pages-gem/releases
+   * Fetching jekyll 3.7.4 (was 3.4.1)
+     * https://jekyllrb.com/news/releases/
+     * https://jekyllrb.com/docs/history/
+   * Fetching liquid 4.0.4 (was 4.0.3)
+   * Fetching kramdown 2.3.2 (was 2.3.1)
+   * Fetching rouge 3.26.0 (was 3.25.0)
+   * Ruby
+      * If it asks for `ridk install`, choose _"MSYS2 and MINGW development toolchain"_ and install to `%RUBY_HOME%\msys64`.
  * Check if https://help.github.com/articles/configuring-jekyll/#configuration-settings-you-cannot-change has changed
 
 ## TODO
@@ -65,7 +67,7 @@ Jekyll 3.5
  * Sitemaps for static files
  * Liquid 4: https://github.com/Shopify/liquid/blob/master/History.md#400--2016-12-14--branch-4-0-stable
  * Jekyll now uses Liquid 4, the latest! It comes with whitespace control, new filters concat and compact, loop performance improvements and many fixes
- * Pages, posts, and other documents can now access layout variables via  {{ layout }}.
+ * Pages, posts, and other documents can now access layout variables via {{ layout }}.
  * The gems key in the _config.yml is now plugins.
  * Filters like sort now allow you to sort based on a subvalue, e.g. {% assign sorted = site.posts | sort: "image.alt_text" %}.
  * layout: null -> layout: none (null = default, none = no layout)

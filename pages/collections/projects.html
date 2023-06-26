@@ -9,7 +9,9 @@ breadcrumbs: true
 ---
 
 {% assign found = false %}
-{% for project in site.projects %}{% if project.published and project.type == 'app' %}
+{% assign projects = site.projects | sort: 'title' %}
+
+{% for project in projects %}{% if project.published and project.type == 'app' %}
 	{% unless found %}{% assign found = true %}
 		<div class="clearfix text-center">
 		<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 items">
@@ -22,7 +24,7 @@ breadcrumbs: true
 {% endif %}
 
 {% assign found = false %}
-{% for project in site.projects %}{% if project.published and project.type == 'poc' %}
+{% for project in projects %}{% if project.published and project.type == 'poc' %}
 	{% unless found %}{% assign found = true %}
 		<h2>Proof of Concepts</h2>
 		<blockquote>
@@ -41,7 +43,7 @@ breadcrumbs: true
 
 
 {% assign found = false %}
-{% for project in site.projects %}{% if project.published and project.type == 'bodge' %}
+{% for project in projects %}{% if project.published and project.type == 'bodge' %}
 	{% unless found %}{% assign found = true %}
 		<h2>Bodges</h2>
 		<blockquote>

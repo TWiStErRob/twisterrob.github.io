@@ -12,10 +12,10 @@ layout: page
 	{% include alert warning = message %}
 {% endif %}
 
-{%  if page.released != true %}
-	{% capture message %}This project is not publicly released, *yet*. Feel free to [nag me]({{site.baseurl}}/contact) if you're insterested.{% endcapture %}
+{% if page.released != true %}
+	{% capture message %}This project is not publicly released, *yet*.{% if page.links.sources %} The <a href="{{ page.links.sources }}" target="_blank">source code</a> is available, so it can be built manually.{% endif %} Feel free to [nag me]({{site.baseurl}}/contact) if you're interested.{% endcapture %}
 	{% include alert warning = message %}
-{%  endif  %}
+{% endif %}
 
 <div class="row">
 	<div class="small-12 medium-3 large-4 columns">
@@ -50,11 +50,20 @@ layout: page
 	<h2 id="screenshots">Screenshots</h2>
 	<ul class="clearing-thumbs small-block-grid-3" data-clearing>
 	{% for shot in page.images.screenshots %}
-	<li><a href="{{ site.urlimg}}{{ shot.url }}">
+	<li><a href="{{ site.urlimg }}{{ shot.url }}">
 		<img src="{{ site.urlimg }}{{ shot.url }}" alt="Screenshot #{{ forloop.index }}" data-caption="{{ shot.title }}" title="{{ shot.title }}" />
 	</a></li>
 	{% endfor %}
 	</ul>
+{% endif %}
+
+{% if page.images.videos %}
+<h2 id="videos">Videos</h2>
+<ul class="clearing-thumbs small-block-grid-1" data-clearing>
+	{% for video in page.images.videos %}
+	<li>{% include video.html video=video %}</li>
+	{% endfor %}
+</ul>
 {% endif %}
 
 {{ content }}
