@@ -1,9 +1,9 @@
 ---
 title: Sabbatical
-type: Company
-role: multitalented senior software engineer
+type: Personal
+role: multitalented software engineer
 maintech: Android, Web
-sector: IT
+sector: technology
 location: Szentes
 dates:
   from: 2014-07-08
@@ -39,9 +39,9 @@ Most notable [projects]({{ site.baseurl }}/project) are:
    Android widget to show the Sun's angle.
  * **[Better London Travel - Range Map]({{ site.baseurl }}/project/local-travel/)**  
    Android app to see how far you can go from an arbitrary point using the Tube.
- * **Android Gradle plugin**  
+ * **[Android Gradle plugin]({{ site.baseurl }}/project/gradle/)**  
    an advanced Gradle build plugin to help streamline my Android projects' build process and countless build scripts.
- * **Gradle Build graph visualization**  
+ * **[Gradle Build graph visualization]({{ site.baseurl }}/project/gradle-graph/)**  
    to display task as they're running, which helps to see progress visually
  * **[regex101.com](http://regex101.com)**  
    helped [Firas Dib](https://se.linkedin.com/in/firas-dib-6a86a868) (the author) with a few issues and ideas
