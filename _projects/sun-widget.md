@@ -34,7 +34,7 @@ I thought it was a simple calculation, but there's really complex mathematics be
 
 
 ### The App
-I spend another two weeks to make it work on more Android devices and planned to publish it as my first ever Google Play store app together with [Android Color Filters]({{ site.baseurl }}/project/color-filters), both as a preparation for a bigger release of [Magic Home Inventory]({{ site.baseurl }}/project/inventory).
+I spend another two weeks to make it work on more Android devices and planned to publish it as my first ever Google Play store app together with [Android Color Filters]({{ site.baseurl }}/project/color-filters/), both as a preparation for a bigger release of [Magic Home Inventory]({{ site.baseurl }}/project/inventory/).
 
 There were quite a few challenges with home screen widgets and the publishing process. The biggest one was the layout: I want to display information based on the available size, but because of the architecture it's not possible to know how big it'll be. So in the end I left to the user to switch parts of the widget on/off.
 

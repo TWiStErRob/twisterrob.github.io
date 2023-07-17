@@ -27,7 +27,7 @@ This is how the `net.twisterrob.gradle.quality` plugin was born.
 I also needed a way to share configuration between my projects,
 so I don't have to repeat complex Gradle scripts and can improve and fix bugs centrally.
 This was called "private" plugin and was recently migrated to the same repository as the quality plugins with the name "convention" plugins.
-Along with this the experimental [Gradle Task Graph visualization]({{ site.baseurl }}/project/gradle-graph) was also moved and published.
+Along with this the experimental [Gradle Task Graph visualization]({{ site.baseurl }}/project/gradle-graph/) was also moved and published.
 
 ### Motivation
 This project is my testbed of discovering and learning new Gradle APIs and features.
