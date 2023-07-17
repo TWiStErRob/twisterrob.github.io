@@ -23,7 +23,7 @@ I'm an experienced senior&nbsp;software&nbsp;engineer with a masters degree from
 
 ## The Site
 
-This website is a long-waited upgrade from my [old website](http://twisterrob.uw.hu) that we hacked together at the beginning of University. I pretty much stopped maintaining it ~10 years ago. I'm planning to migrate content over to this new site. For more see the page for [project "My Website"]({{ site.baseurl }}/project/twisterrob-net).
+This website is a long-waited upgrade from my [old website](http://twisterrob.uw.hu) that we hacked together at the beginning of University. I pretty much stopped maintaining it ~10 years ago. I'm planning to migrate content over to this new site. For more see the page for [project "My Website"]({{ site.baseurl }}/project/twisterrob-net/).
 
 *Big thanks to [Moritz&nbsp;»mo.«&nbsp;Sauer](http://sauer.io) aka [Phlow](http://phlow.de/) for his [**Feeling&nbsp;Responsive**](http://phlow.github.io/feeling-responsive/) theme.*
 

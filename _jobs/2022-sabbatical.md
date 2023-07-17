@@ -34,7 +34,7 @@ Technologies I up-skilled on:
 
 Most notable projects completed over these few months:
 
- * **[Open Source contributions]({{ site.baseurl }}/project/contributions)** are too many to count,
+ * **[Open Source contributions]({{ site.baseurl }}/project/contributions/)** are too many to count,
    but based on some rough math, on average I dealt with 2 issues and 2 PRs a day during my sabbatical.
  * **Notion**: I started using Notion as Life management tool.
    This involved learning how to set up everything in Notion, from scratch.

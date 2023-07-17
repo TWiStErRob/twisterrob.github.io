@@ -32,7 +32,7 @@ subheadline: 'Articles in Category'
 {% for other_category in site.pages %}
 	{% if other_category.category and other_category.category != page.category %}
 		<li>
-			<a href="{{ site.baseurl }}/blog/category/{{ other_category.category | slugify }}">{{ other_category.title }}</a>
+			<a href="{{ site.baseurl }}/blog/category/{{ other_category.category | slugify }}/">{{ other_category.title }}</a>
 			{% assign posts = site.categories[other_category.category] %}
 			{% include snippets/article_count.html list=posts %}
 		</li>

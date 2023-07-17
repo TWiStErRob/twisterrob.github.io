@@ -22,7 +22,7 @@ Links to my public profiles:
  * [StackOverflow](https://stackoverflow.com/users/253468/twisterrob?tab=profile)
  * [Facebook](https://www.facebook.com/TWiStErRob)
 
-Most notable [projects]({{ site.baseurl }}/project) are:
+Most notable [projects]({{ site.baseurl }}/project/) are:
 
  * **[Magic Home Inventory]({{ site.baseurl }}/project/inventory/)**  
    Android app to inventory anything in your home.  
