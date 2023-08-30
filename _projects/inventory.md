@@ -153,10 +153,21 @@ If there are still unanswered questions, or You want to chat about privacy of Yo
 
 ## History
 
-<!--
- * Known issues with target=29:
-   * Using Search doesn't immediately show keyboard on Andorid 10+, need to tap on "Search items" to get a keyboard.
--->
+### [1.2.0#1279-8eca619](https://github.com/TWiStErRob/net.twisterrob.inventory/releases/tag/v1.2.0) (2023-08-30)
+{: #v12001279}
+* Feature: Android 9, 10, 11, 12, 13 (API 28-33) compatibility.
+* Feature: Android KitKat (4.4 / API 19) support is dropped, Android Lollipop (5.0 / API 21) is the minimum now.
+* Feature: New, simpler Backup screen to accommodate new Android "Scoped Storage" practices.
+* Feature: Internally re-written Manage Space screen.
+* [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/pull/265): Editing an item always starts clean, so when there are no changes it doesn't ask to discard.
+* [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/286): Hide "Flatten subcategories" button when it's not relevant.
+* [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/296): SnackBar (delete/move confirmation) overlapping the system navigation bar (back button, home button).
+* [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/196): Selection is now tracked correctly when a new item is added/removed.
+* [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/191): Allow clicking the category icon to change category, previously it was opening the camera/image.
+* Experimental: Reviewed Google Drive hacks, it's still broken, use Export/Import whenever possible.
+* [Known issue](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/269): on API 23 deselecting text in About screen crashes the app, not fixing it as it's not a critical interaction.
+* [Feature](https://github.com/TWiStErRob/net.twisterrob.inventory/tree/main/.github/workflows): Continuous Integration on GitHub
+
 ### [1.1.3#3191](https://github.com/TWiStErRob/net.twisterrob.inventory/milestone/14?closed=1) (2020-11-01)
 {: #v11303191}
  * Feature: Support Android 9 (API 28), while keeping Gingerbread (2.3.7 API 10) compatibility.
