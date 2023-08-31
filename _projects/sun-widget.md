@@ -110,6 +110,11 @@ If there are still unanswered questions, or You want to chat about privacy of Yo
 ## History
 See [releases on GitHub](https://github.com/TWiStErRob/net.twisterrob.sun/releases) for more details.
 
+### [1.2.2#302-7ceb0e8](https://github.com/TWiStErRob/net.twisterrob.sun/releases/tag/v1.2.2) (2023-08-31)
+{: #v12200302}
+ * Feature: Android 13 compatibility
+ * Enhancement: tons of dependency updates
+
 ### [1.2.1#fa87837](https://github.com/TWiStErRob/net.twisterrob.sun/releases/tag/v1.2.1) (2022-02-28)
 {: #v12100086}
  * Enhancement: allow resizing of widget
