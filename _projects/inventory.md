@@ -168,7 +168,7 @@ If there are still unanswered questions, or You want to chat about privacy of Yo
 * [Known issue](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/269): on API 23 deselecting text in About screen crashes the app, not fixing it as it's not a critical interaction.
 * [Feature](https://github.com/TWiStErRob/net.twisterrob.inventory/tree/main/.github/workflows): Continuous Integration on GitHub
 
-### [1.1.3#3191](https://github.com/TWiStErRob/net.twisterrob.inventory/milestone/14?closed=1) (2020-11-01)
+### [1.1.3#3191](https://github.com/TWiStErRob/net.twisterrob.inventory/releases/tag/v1.1.3) (2020-11-01)
 {: #v11303191}
  * Feature: Support Android 9 (API 28), while keeping Gingerbread (2.3.7 API 10) compatibility.
    * [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/169): Permissions issues in Camera.
@@ -195,7 +195,7 @@ If there are still unanswered questions, or You want to chat about privacy of Yo
      _(Thanks Alberto P for the very detailed report!)_
    * [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/124): Fix generating invalid backup when a list references an item with name containing `--`.
    * Fix: Improved some error messages to show instead of SQL errors.  
-     _(If you see an techie SQL error, please send me a screenshot. Thanks Dave S. for doing so already!)_
+     _(If you see a techie SQL error, please send me a screenshot. Thanks Dave S. for doing so already!)_
    * Fix: crashes reported via Crash reporting in Android (e.g. 
        [#161](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/161),
        [#162](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/162)
@@ -235,12 +235,12 @@ If there are still unanswered questions, or You want to chat about privacy of Yo
    * Updated test libraries to latest compatible versions  
      (Mockito 3.2.4, Robolectric 4.3.1, PowerMock 2.0.4, JUnit 4.13, Espresso 3.0.1)
 
-### [1.1.2#2292](https://github.com/TWiStErRob/net.twisterrob.inventory/milestone/13?closed=1) (2017-07-28)
+### [1.1.2#2292](https://github.com/TWiStErRob/net.twisterrob.inventory/releases/tag/v1.1.2) (2017-07-28)
 {: #v11202292-2}
  * Fix: Forgot bump staged rollout to 100%, so only half the users got the release.  
    _Thanks to Michael L. for alerting me! (Excellent example of useful feedback.)_
 
-### [1.1.2#2292](https://github.com/TWiStErRob/net.twisterrob.inventory/milestone/13?closed=1) (2017-03-13)
+### [1.1.2#2292](https://github.com/TWiStErRob/net.twisterrob.inventory/releases/tag/v1.1.2) (2017-03-13)
 {: #v11202292}
  * Known issues:
    * Cannot import image from gallery on Android 10, fixed in [1.1.3](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/148)
@@ -255,30 +255,30 @@ If there are still unanswered questions, or You want to chat about privacy of Yo
  * [Fix](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/83): Prevent crash when sharing with low resources.
  * Fix: Other very minor fixes, and internal improvements
 
-### [1.1.1#2203](https://github.com/TWiStErRob/net.twisterrob.inventory/milestone/10?closed=1) (2016-09-20)
+### [1.1.1#2203](https://github.com/TWiStErRob/net.twisterrob.inventory/releases/tag/v1.1.0) (2016-09-20)
 {: #v11102203}
  * Fix: Property images were associated with the wrong belonging when importing a local ZIP file from device.
  * Fix: Remove colors from texts to prevent crashes on exotic Android versions.
  * Enhancement: Use material design error for editing a belonging's name.
 
-### [1.1.0#2193](https://github.com/TWiStErRob/net.twisterrob.inventory/milestone/10?closed=1) (2016-09-19)
+### [1.1.0#2193](https://github.com/TWiStErRob/net.twisterrob.inventory/releases/tag/v1.1.0) (2016-09-19)
 {: #v11002193}
  * [Feature](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/37): Ability to import/export from/to any external source (incl. Drive, Dropbox).
  * Feature: Proper background import/export with notifications and all.
- * Feature: Add human readable HTML (web page) and CSV (Excel) files to backup ZIPs.
+ * Feature: Add human-readable HTML (web page) and CSV (Excel) files to backup ZIPs.
  * Feature: Show details page automatically when opening a search result (most likely looking for location).
  * Feature: Added a lot of tests to cover the functionality and prevent breaking changes.
- * [Enancement](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/42): Show which lists the items are on in details view.
- * Enancement: Use ▶ instead of > to signify containment.
+ * [Enhancement](https://github.com/TWiStErRob/net.twisterrob.inventory/issues/42): Show which lists the items are on in details view.
+ * Enhancement: Use ▶ instead of > to signify containment.
  * Fix: Few suggestion improvements.
  * Fix: Minor additions and fixes to help (Navigation, Backup, Tips).
  * Fix: some images were not removed when some belongings were deleted: some space may free up after upgrade.
  * Fix: that single crash reported about HTC One M8 not knowing what "gray" is.  
-   _(Please send the error reports if it pops up. The app doesn't have Internet premission, so I can't send automatic crash reports.)_
- * Fix: Lessen probabilty of technical messages showing up.
- * Fix: don't include any logging classes, more agressive ProGuard
+   _(Please send the error reports if it pops up. The app doesn't have Internet permission, so I can't send automatic crash reports.)_
+ * Fix: Lessen probability of technical messages showing up.
+ * Fix: don't include any logging classes, more aggressive ProGuard
 
-### 1.0.0#1934 (2016-07-05)
+### [1.0.0#1934](https://github.com/TWiStErRob/net.twisterrob.inventory/releases/tag/v1.0.0) (2016-07-05)
 {: #v10001934}
  * Enhancement: Lots of category research & rework
  * Enhancement: Typo-safe category suggestions
@@ -286,7 +286,7 @@ If there are still unanswered questions, or You want to chat about privacy of Yo
  * Enhancement: Added Help and fixed usability issues
  * Fix: Lots of other improvements
 
-### 1.0.0#1627 (2015-05-31)
+### [1.0.0#1627](https://github.com/TWiStErRob/net.twisterrob.inventory/releases/tag/v1.0.0-rc) (2015-05-31)
 {: #v10001627}
  * Feature: Category suggestions
  * Enhancement: Lots of category research 
