@@ -28,6 +28,6 @@ I'm looking for:
  * a company that values its users and employees  
    (having a dedicated team for the above is a good sign)
 
-**Technologies**: Gradle, Android
+**Technologies**: Gradle, Android, Kotlin, GitHub Actions
 
 **Tools used**: Git, IntelliJ IDEA/Android Studio
