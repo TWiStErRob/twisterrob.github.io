@@ -9,7 +9,7 @@ script:
   foot: bookmarklet.js
 ---
 
-I got bored of searching through <q>Grilled&nbsp;Chicken&nbsp;Wings</q> and <q>Lamb&nbsp;Shish&nbsp;Kebab</q> and so on when ordering from&nbsp;<a href="http://www.just-eat.co.uk/" target="_blank">Just-Eat.co.uk</a>, so I came up with this script which removes all food containing known meat ingredients:
+I got bored with searching through <q>Grilled&nbsp;Chicken&nbsp;Wings</q> and <q>Lamb&nbsp;Shish&nbsp;Kebab</q> and so on when ordering from&nbsp;<a href="http://www.just-eat.co.uk/" target="_blank">Just-Eat.co.uk</a>, so I came up with this script which removes all food containing known meat ingredients:
 <a class="bookmarklet" href="#JustEat-GoGreen">Just-Eat: Go green</a>.
 <!--more-->
 [^1]
@@ -18,7 +18,7 @@ This bookmarklet is designed for the *Just-Eat menu pages* (updated for 2015 des
  1. Install the bookmarklet [^1]
  2. Open [Indian Greedy Cow's menu](http://www.just-eat.co.uk/restaurants-indiangreedycowe2/menu){:target="_blank"}
  3. Click the bookmarklet, wait a little and observe:
-     * how the whole <mark>Healty Food Dishes</mark> category disappears  
+     * how the whole <mark>Healthy Food Dishes</mark> category disappears  
        (I would've thought they have some **(V)** food there...)
      * that only the <mark>Vegetable</mark> options remain in the <mark>Traditional Curries</mark> category
 
