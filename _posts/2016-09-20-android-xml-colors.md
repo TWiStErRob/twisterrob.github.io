@@ -7,6 +7,7 @@ tags:
 - xml
 - workaround
 - collection
+- investigation
 ---
 
 So you read somewhere that Android supports `<font>` tags to color `string` resources, when used with `Resources#getText()`? Well, yeah, except...<!--more-->
