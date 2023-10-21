@@ -1278,25 +1278,25 @@ $side-nav-divider-color: $grey-1;
 // $include-html-table-classes: $include-html-classes;
 
 // These control the background color for the table and even rows
-// $table-bg: $white;
-$table-even-row-bg: $grey-1;
+$table-bg: scale-color($body-bg, $lightness: 5%);
+$table-even-row-bg: scale-color($body-bg, $lightness: 0%);
 
 // These control the table cell border style
-// $table-border-style: solid;
-// $table-border-size: 1px;
-// $table-border-color: $gainsboro;
+$table-border-style: ridge;
+$table-border-size: 3px;
+$table-border-color: scale-color($secondary-color, $lightness: -23%);
 
 // These control the table head styles
-$table-head-bg: $grey-2;
+$table-head-bg: scale-color($secondary-color, $lightness: 23%);
 // $table-head-font-size: rem-calc(14);
-// $table-head-font-color: $jet;
+$table-head-font-color: #000;
 // $table-head-font-weight: $font-weight-bold;
 // $table-head-padding: rem-calc(8 10 10);
 
 // These control the row padding and font styles
 // $table-row-padding: rem-calc(9 10);
 // $table-row-font-size: rem-calc(14);
-// $table-row-font-color: $jet;
+$table-row-font-color: $body-font-color;
 // $table-line-height: rem-calc(18);
 
 // These are for controlling the layout, display and margin of tables

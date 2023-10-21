@@ -4,7 +4,7 @@ subheadline: "Spoiler alert: not available out of the box"
 teaser: "A saga of finding out, that I can't use them without external dependencies."
 category: android
 tags:
-- debug
+- investigation
 - workaround
 - xml
 ---

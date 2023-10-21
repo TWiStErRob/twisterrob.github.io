@@ -7,7 +7,7 @@ tags:
 - blog
 - jekyll
 - liquid
-- debug
+- investigation
 - efficiency
 - workaround
 - collection
