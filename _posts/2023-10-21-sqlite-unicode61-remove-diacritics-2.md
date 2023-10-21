@@ -11,7 +11,7 @@ _Android developer_ wants to create a quick full text search for an internationa
 
 ## TL;DR
 
-See the [Summary](#summary) section below.
+See the [Summary](#summary-) section below.
 
 {% include toc.md %}
 
