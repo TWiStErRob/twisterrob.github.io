@@ -116,6 +116,8 @@ exclude:
   - gradlew.bat
   - Gemfile
   - Gemfile.lock
+  # Workaround for GitHub actions Ruby action vs Jekyll v3.x
+  - vendor/bundle
   # _config*.yml      # doesn't work, see https://github.com/jekyll/jekyll-watch/issues/34
   - _config_local.yml # need to explicitly exclude all configs https://github.com/jekyll/jekyll-watch/issues/35
   - _config_dev.yml   # need to explicitly exclude all configs https://github.com/jekyll/jekyll-watch/issues/35
