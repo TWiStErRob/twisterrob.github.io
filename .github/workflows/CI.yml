@@ -92,7 +92,7 @@ jobs:
         id: params
         env:
           GITHUB: ${{ toJSON(github.event) }}
-        run:
+        run: |
           echo "sha=${{ github.event.pull_request.base.sha || github.event.push.after }}" >> $GITHUB_OUTPUT
           echo "gh=${GITHUB}"
 
