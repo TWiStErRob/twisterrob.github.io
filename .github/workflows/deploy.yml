@@ -174,15 +174,18 @@ jobs:
           path: _site
           fail-on-cache-miss: true
 
-      - name: "Prepare for diffing."
+      - name: "Prepare base for diffing."
         run: mv _site github-pages-base
 
       - name: "Download just-built artifact."
         uses: actions/download-artifact@v3
-        id: download
         with:
           name: github-pages
           path: github-pages-head
+
+      - name: "Prepare head for diffing."
+        working-directory: github-pages-head
+        run: tar -xf artifact.tar && rm artifact.tar
 
       - name: "Display structure of downloaded files"
         run: ls -R
