@@ -168,14 +168,22 @@ jobs:
     steps:
 
       - name: "Load the cached base reference."
+        id: cache
         uses: actions/cache/restore@v3
         with:
           key: github-pages-${{ github.event.pull_request.base.sha }}
           path: _site
-          fail-on-cache-miss: true
-
-      - name: "Prepare base for diffing."
+      
+      - name: "Prepare cached base for diffing."
+        if: steps.cache.outputs.cache-hit == 'true'
         run: mv _site github-pages-base
+
+      - name: "Download just-built reference."
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: actions/download-artifact@v3
+        with:
+          name: cached _site
+          path: github-pages-base
 
       - name: "Download just-built artifact."
         uses: actions/download-artifact@v3
@@ -189,3 +197,6 @@ jobs:
 
       - name: "Display structure of downloaded files"
         run: ls -R
+
+      - name: "Diff head against base."
+        run: diff --recursive --side-by-side github-pages-base github-pages-head
