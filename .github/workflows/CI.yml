@@ -78,7 +78,7 @@ jobs:
 
   cache:
     name: "Build Reference Site"
-    if: (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'no-content-change')) || github.event_name == 'push'
+    if: (github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'content-change')) || github.event_name == 'push'
 
     permissions:
       contents: read
@@ -147,8 +147,7 @@ jobs:
           JEKYLL_ENV: production
 
       - name: "Upload 'github-pages-base' artifact."
-        # Try to upload a partial _site even if job fails, so things may be debugged.
-        if: success() || failure()
+        if: github.event_name == 'pull_request' && (success() || failure())
         # Move cached files from cache to artifacts, so they can be used in other jobs. 
         # It seems the job id/context is used to create the "cache version" and it always mismatches.
         #if: steps.cache.outputs.cache-hit != 'true'
@@ -167,7 +166,7 @@ jobs:
 
   diff:
     name: "Verify Against Reference Site"
-    if: github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'no-content-change')
+    if: github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'content-change')
     needs:
       - build
       - cache
