@@ -1,4 +1,4 @@
-name: "Deploy to GitHub Pages"
+name: "CI"
 
 on:
   push:
@@ -77,7 +77,7 @@ jobs:
 
 
   cache:
-    name: "Build GitHub Pages site reference"
+    name: "Build Reference Site"
     if: (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'no-content-change')) || github.event_name == 'push'
 
     permissions:
@@ -166,7 +166,7 @@ jobs:
 
 
   diff:
-    name: "Verify against reference build"
+    name: "Verify Against Reference Site"
     if: github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'no-content-change')
     needs:
       - build
