@@ -96,7 +96,7 @@ jobs:
         id: cache
         uses: actions/cache/restore@v3
         with:
-          key: github-pages-main-${{ steps.params.outputs.sha }}
+          key: github-pages-${{ steps.params.outputs.sha }}
           path: '*'
           lookup-only: true
         # If yes (steps.cache.outputs.cache-hit == 'true'), then skip the rest of the steps.
