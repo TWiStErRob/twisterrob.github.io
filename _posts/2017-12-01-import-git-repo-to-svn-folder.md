@@ -30,7 +30,7 @@ I'll be doing everything on Windows and using spaces in paths, because that's tr
     {: title="structure"}
 
     ```
-    master: A --- B --- C
+    main: A --- B --- C
     ```
     {: title="branches & commits"}
 
@@ -151,8 +151,8 @@ git remote add bridge "P:\temp\git repo"
 git fetch bridge
 ```
 ```
-master: pg1 --- p1 --- p2 --- pg2 --- p3 --- p4 --- prep
-bridge/master: A --- B --- C
+main: pg1 --- p1 --- p2 --- pg2 --- p3 --- p4 --- prep
+bridge/main: A --- B --- C
 ```
 {: title="branches & commits"}
 
@@ -160,37 +160,37 @@ bridge/master: A --- B --- C
 > fatal: Not a git repository (or any of the parent directories): .git' %}
 
 ### Prepare commits to be put on top of the SVN repo
-Create working copy of the GIT repo (`bridge/master`) and put its history (`import`) on top of the SVN folder's history (`master`).
+Create working copy of the GIT repo (`bridge/main`) and put its history (`import`) on top of the SVN folder's history (`main`).
 ```shell
-git checkout -b import bridge/master
-git rebase -i master
+git checkout -b import bridge/main
+git rebase -i main
 ```
 ```
-master: pg1 --- p1 --- p2 --- pg2 --- p3 --- p4 --- prep
+main: pg1 --- p1 --- p2 --- pg2 --- p3 --- p4 --- prep
 import: A --- B --- C
-bridge/master: A --- B --- C
+bridge/main: A --- B --- C
 ```
 {: title="branches & commits after checkout"}
 ```
-master: pg1 --- p1 --- p2 --- pg2 --- p3 --- p4 --- prep
+main: pg1 --- p1 --- p2 --- pg2 --- p3 --- p4 --- prep
                                                        \
 import:                                                  A' --- B' --- C'
-bridge/master: A --- B --- C
+bridge/main: A --- B --- C
 ```
 {: title="branches & commits after rebase"}
 
-{% include alert info='This is the point where you can edit the history, filter the branch, reword commits, etc.. Just `rebase -i master` as much as you want.' %}
+{% include alert info='This is the point where you can edit the history, filter the branch, reword commits, etc.. Just `rebase -i main` as much as you want.' %}
 
 ### Finalize the process
 ```shell
-git checkout master
+git checkout main
 git merge --ff-only import
 ```
 ```
-master: pg1 --- p1 --- p2 --- pg2 --- p3 --- p4 --- prep --- A' --- B' --- C'
+main: pg1 --- p1 --- p2 --- pg2 --- p3 --- p4 --- prep --- A' --- B' --- C'
                                                        \
 import:                                                  A' --- B' --- C'
-bridge/master: A --- B --- C
+bridge/main: A --- B --- C
 ```
 {: title="branches & commits"}
 

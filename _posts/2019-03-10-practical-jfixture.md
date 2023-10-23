@@ -913,7 +913,7 @@ fun Type.isValidType() = this != Other
 ```
 {: title="Test code"}
 This could mean that if you run the test a few times, and the code reviewer runs it,
-and the CI runs it; it's still going to pass all those times, but then when you merge to `master`, it fails.
+and the CI runs it; it's still going to pass all those times, but then when you merge to the default branch, it fails.
 The above example is over-simplified, but even the most complex flaky tests we had of this type weren't that hard to debug and fix.
 Notice that the reason for failure is assuming what the fixture will generate.
 If this `isValidType` is used in an `if`, that behaviour will trigger 90% of the time.
@@ -930,4 +930,4 @@ Give it a whirl and let me know how you find the framework.
 ## References
  * [JFixture library's GitHub repository](https://github.com/FlexTradeUKLtd/jfixture)
  * [JFixture library's documentation](https://github.com/FlexTradeUKLtd/jfixture/wiki)
- * [Example code used](https://github.com/TWiStErRob/TWiStErRob/tree/master/JFixturePlayground)
+ * [Example code used](https://github.com/TWiStErRob/TWiStErRob/tree/main/JFixturePlayground)

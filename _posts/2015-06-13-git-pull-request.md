@@ -18,7 +18,7 @@ Many times when you ask for a feature in a GitHub issue, you're welcomed with:
 <!--more-->
 
 ## What is a PR?
-A <dfn>Pull&nbsp;Request</dfn> is request created on GitHub to merge code from one fork of the repository to another. Usually there's a feature/bug branch in the fork and the PR is made against the `master` branch &mdash;, or wherever their `HEAD` commit is &mdash; in the base repository.
+A <dfn>Pull&nbsp;Request</dfn> is request created on GitHub to merge code from one fork of the repository to another. Usually there's a feature/bug branch in the fork and the PR is made against the default branch (usually called `main` or `master`) in the base repository.
 
 ## GitHub setup
 
@@ -64,7 +64,7 @@ origin  https://github.com/me/repo-name.git (push)
 
 ## Update remote
 
-`stranger-head-branch` is usually the `master` branch and `my-pr-branch`'s name is highly correlated with what your PR is representing.
+`stranger-head-branch` is usually the `main` branch and `my-pr-branch`'s name is highly correlated with what your PR is representing.
 
 ```shell
 me@laptop$ git checkout stranger-head-branch

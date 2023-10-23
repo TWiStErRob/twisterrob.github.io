@@ -65,7 +65,7 @@ GHPages:
 
 Jekyll 3.5
  * Sitemaps for static files
- * Liquid 4: https://github.com/Shopify/liquid/blob/master/History.md#400--2016-12-14--branch-4-0-stable
+ * Liquid 4: https://github.com/Shopify/liquid/blob/main/History.md#400--2016-12-14--branch-4-0-stable
  * Jekyll now uses Liquid 4, the latest! It comes with whitespace control, new filters concat and compact, loop performance improvements and many fixes
  * Pages, posts, and other documents can now access layout variables via {{ layout }}.
  * The gems key in the _config.yml is now plugins.
