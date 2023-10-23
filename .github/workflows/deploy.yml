@@ -110,6 +110,7 @@ jobs:
           fetch-depth: 0
 
       - name: "Restore file modification times from git."
+        if: steps.cache.outputs.cache-hit != 'true'
         uses: chetan/git-restore-mtime-action@v2
 
       - name: "Patch main"
