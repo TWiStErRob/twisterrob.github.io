@@ -50,6 +50,7 @@ jobs:
 
   deploy:
     name: "Deploy GitHub Pages site"
+    if: github.event_name == 'push'
     needs:
       - build
 
