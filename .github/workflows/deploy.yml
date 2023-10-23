@@ -69,3 +69,85 @@ jobs:
         uses: actions/deploy-pages@v2
         with:
           error_count: 0
+
+
+  cache:
+    name: "Build GitHub Pages site reference"
+    if: (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'no-content-change')) || github.event_name == 'push'
+
+    permissions:
+      contents: read
+
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: "Calculate relevant SHA"
+        id: params
+        run:
+          echo "sha=${{ github.event.pull_request.base.sha || github.event.push.after }}" >> $GITHUB_OUTPUT
+
+      - name: "Verify cache exists"
+        id: cache
+        uses: actions/cache/restore@v3
+        with:
+          key: github-pages-main-${{ steps.params.outputs.sha }}
+          lookup-only: true
+        # If yes (steps.cache.outputs.cache-hit == 'true'), then skip the rest of the steps.
+
+      - name: "Checkout ${{ steps.params.outputs.sha }} commit in ${{ github.repository }} repository."
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ steps.params.outputs.sha }}
+
+      - name: "Setup Ruby."
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          cache-version: 0 # Increment this number if you need to re-download cached gems.
+
+      - name: "Retrieve GitHub Pages configuration."
+        if: steps.cache.outputs.cache-hit != 'true'
+        id: pages
+        uses: actions/configure-pages@v3
+
+      - name: "Build _site with Jekyll."
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: bundle exec jekyll build --trace --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+
+      - name: "Store _site to cache."
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v3
+        with:
+          path: _site/
+          key: github-pages-main-${{ steps.params.outputs.sha }}
+
+
+  diff:
+    name: "Verify against reference build"
+    if: github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'no-content-change')
+    needs:
+      - build
+      - cache
+
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: "Download just-built artifact."
+        uses: actions/download-artifact@v3
+        id: download
+        with:
+          name: github-pages
+          path: github-pages-new
+
+      - name: "Store to cache"
+        uses: actions/cache/restore@v3
+        with:
+          key: github-pages-main-${{ github.event.pull_request.base.sha }}
+          path: github-pages-main
+
+      - name: "Display structure of downloaded files"
+        run: ls -R
