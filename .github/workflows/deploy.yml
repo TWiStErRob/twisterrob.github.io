@@ -92,14 +92,13 @@ jobs:
         run:
           echo "sha=${{ github.event.pull_request.base.sha || github.event.push.after }}" >> $GITHUB_OUTPUT
 
-      - name: "Verify cache exists"
+      - name: "Load cached site."
         id: cache
         uses: actions/cache/restore@v3
         with:
           key: github-pages-${{ steps.params.outputs.sha }}
           path: _site/
-          lookup-only: true
-        # If yes (steps.cache.outputs.cache-hit == 'true'), then skip the rest of the steps.
+        # If exists (steps.cache.outputs.cache-hit == 'true'), then skip regeneration steps.
 
       - name: "Checkout ${{ steps.params.outputs.sha }} commit in ${{ github.repository }} repository."
         if: steps.cache.outputs.cache-hit != 'true'
@@ -154,18 +153,22 @@ jobs:
         env:
           JEKYLL_ENV: production
 
-      - name: "Upload 'cached _site' artifact."
-        if: steps.cache.outputs.cache-hit != 'true' && (success() || failure())
+      - name: "Upload 'github-pages-base' artifact."
+        # Try to upload a partial _site even if job fails, so things may be debugged.
+        if: success() || failure()
+        # Move cached files from cache to artifacts, so they can be used in other jobs. 
+        # It seems the job id/context is used to create the "cache version" and it always mismatches.
+        #if: steps.cache.outputs.cache-hit != 'true'
         uses: actions/upload-artifact@v3
         with:
-          name: 'cached _site'
+          name: 'github-pages-base'
           path: _site/
 
       - name: "Store _site to cache."
         if: steps.cache.outputs.cache-hit != 'true'
         uses: actions/cache/save@v3
         with:
-          key: github-pages-${{ steps.params.outputs.sha }}
+          key: ${{ steps.cache.outputs.cache-primary-key }}
           path: _site/
 
 
@@ -179,36 +182,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: "Load the cached base reference."
-        id: cache
-        uses: actions/cache/restore@v3
-        with:
-          key: github-pages-${{ github.event.pull_request.base.sha }}
-          path: _site
-      
-      - name: "Prepare cached base for diffing."
-        if: steps.cache.outputs.cache-hit == 'true'
-        run: mv _site github-pages-base
-
-      - name: "Download just-built reference."
-        if: steps.cache.outputs.cache-hit != 'true'
+      - name: "Download base reference."
         uses: actions/download-artifact@v3
         with:
-          name: cached _site
+          name: 'github-pages-base'
           path: github-pages-base
 
       - name: "Download just-built artifact."
         uses: actions/download-artifact@v3
         with:
-          name: github-pages
+          name: 'github-pages'
           path: github-pages-head
 
       - name: "Prepare head for diffing."
         working-directory: github-pages-head
+        # This is not a normal artifact. It was produced by actions/upload-pages-artifact and has only a tar file inside.
         run: tar -xf artifact.tar && rm artifact.tar
-
-      - name: "Display structure of downloaded files"
-        run: ls -R
 
       - name: "Diff head against base."
         run: diff --recursive github-pages-base github-pages-head
