@@ -91,6 +91,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: github-pages-main-${{ steps.params.outputs.sha }}
+          path: '*'
           lookup-only: true
         # If yes (steps.cache.outputs.cache-hit == 'true'), then skip the rest of the steps.
 
@@ -101,6 +102,7 @@ jobs:
           ref: ${{ steps.params.outputs.sha }}
 
       - name: "Patch main"
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           echo '2.7.8' > .ruby-version
           cat > ci.patch << EOF
@@ -145,7 +147,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           path: _site/
-          key: github-pages-main-${{ steps.params.outputs.sha }}
+          key: github-pages-${{ steps.params.outputs.sha }}
 
 
   diff:
@@ -158,18 +160,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      - name: "Load the cached base reference."
+        uses: actions/cache/restore@v3
+        with:
+          key: github-pages-${{ github.event.pull_request.base.sha }}
+          path: github-pages-base
+
       - name: "Download just-built artifact."
         uses: actions/download-artifact@v3
         id: download
         with:
           name: github-pages
-          path: github-pages-new
-
-      - name: "Store to cache"
-        uses: actions/cache/restore@v3
-        with:
-          key: github-pages-main-${{ github.event.pull_request.base.sha }}
-          path: github-pages-main
+          path: github-pages-head
 
       - name: "Display structure of downloaded files"
         run: ls -R
