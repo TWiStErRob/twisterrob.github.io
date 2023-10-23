@@ -100,11 +100,32 @@ jobs:
         with:
           ref: ${{ steps.params.outputs.sha }}
 
+      - name: "Patch main"
+        run: |
+          echo '2.7.8' > .ruby-version
+          cat > ci.patch << EOF
+          Index: _config.yml
+          ===================================================================
+          diff --git a/_config.yml b/_config.yml
+          --- a/_config.yml	(revision f3a7628350dae347fa0f2db3a332e5f004b86b55)
+          +++ b/_config.yml	(revision 2efdc41e41f9d9d363ceb7306158dc69568b145e)
+          @@ -116,6 +116,8 @@
+             - gradlew.bat
+             - Gemfile
+             - Gemfile.lock
+            +  # Workaround for GitHub actions Ruby action vs Jekyll v3.x
+            +  - vendor/bundle
+             # _config*.yml      # doesn't work, see https://github.com/jekyll/jekyll-watch/issues/34
+             - _config_local.yml # need to explicitly exclude all configs https://github.com/jekyll/jekyll-watch/issues/35
+             - _config_dev.yml   # need to explicitly exclude all configs https://github.com/jekyll/jekyll-watch/issues/35
+          
+          EOF
+          git apply ci.patch
+
       - name: "Setup Ruby."
         if: steps.cache.outputs.cache-hit != 'true'
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.7.8'
           bundler-cache: true
           cache-version: 0 # Increment this number if you need to re-download cached gems.
 
