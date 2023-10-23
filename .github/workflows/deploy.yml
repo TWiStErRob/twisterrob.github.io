@@ -199,4 +199,4 @@ jobs:
         run: ls -R
 
       - name: "Diff head against base."
-        run: diff --brief --side-by-side --recursive github-pages-base github-pages-head
+        run: diff --recursive github-pages-base github-pages-head
