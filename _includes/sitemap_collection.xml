@@ -8,7 +8,7 @@
 	{% elsif link.date %}
 		<lastmod>{{ link.date | date_to_xmlschema }}</lastmod>
 	{% else %}
-		<lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+		{% comment %}<lastmod>{{ site.time | date_to_xmlschema }}</lastmod>{% endcomment %}
 	{% endif %}
 	{% if link.sitemap.changefreq %}
 		<changefreq>{{ link.sitemap.changefreq }}</changefreq>

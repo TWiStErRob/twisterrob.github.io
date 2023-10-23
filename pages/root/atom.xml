@@ -9,7 +9,15 @@ title: "Atom Feed"
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>{{ site.url }}{{ site.baseurl }}/</id>
 	<title>{{ site.title | xml_escape }}</title>
-	<updated>{{ site.time | date_to_xmlschema }}</updated>
+	{% assign max_post_date = nil %}
+	{% for post in site.posts %}
+		{% if max_post_date == nil or post.date > max_post_date %}
+			{% assign max_post_date = post.date %}
+		{% endif %}
+	{% endfor %}
+	{% if max_post_date != nil %}
+		<updated>{{ max_post_date | date_to_xmlschema }}</updated>
+	{% endif %}
 
 	<subtitle>{{ site.description | xml_escape }}</subtitle>
 
