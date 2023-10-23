@@ -5,6 +5,11 @@ on:
     branches:
       - main
   pull_request:
+    types:
+      - opened # default
+      - reopened # default
+      - synchronize # default
+      - labeled # Listen for label changes to re-run the diff job.
   workflow_dispatch:
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
