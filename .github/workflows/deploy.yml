@@ -142,6 +142,13 @@ jobs:
         env:
           JEKYLL_ENV: production
 
+      - name: "Upload 'cached _site' artifact."
+        if: steps.cache.outputs.cache-hit != 'true' && (success() || failure())
+        uses: actions/upload-artifact@v3
+        with:
+          name: 'cached _site'
+          path: _site/
+
       - name: "Store _site to cache."
         if: steps.cache.outputs.cache-hit != 'true'
         uses: actions/cache/save@v3
