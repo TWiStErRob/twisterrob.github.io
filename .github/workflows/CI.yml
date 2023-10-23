@@ -94,7 +94,7 @@ jobs:
           GITHUB: ${{ toJSON(github.event) }}
         run:
           echo "sha=${{ github.event.pull_request.base.sha || github.event.push.after }}" >> $GITHUB_OUTPUT
-          echo "${GITHUB}"
+          echo "gh=${GITHUB}"
 
       - name: "Load cached site."
         id: cache
