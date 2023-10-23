@@ -22,7 +22,7 @@ concurrency:
 jobs:
 
   build:
-    name: "Build GitHub Pages site"
+    name: "Build GitHub Pages Site"
 
     permissions:
       contents: read
@@ -55,7 +55,7 @@ jobs:
 
 
   deploy:
-    name: "Deploy GitHub Pages site"
+    name: "Deploy GitHub Pages Site"
     if: github.event_name == 'push'
     needs:
       - build
