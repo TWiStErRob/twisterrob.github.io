@@ -153,8 +153,8 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         uses: actions/cache/save@v3
         with:
-          path: _site/
           key: github-pages-${{ steps.params.outputs.sha }}
+          path: _site/
 
 
   diff:
@@ -171,7 +171,11 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: github-pages-${{ github.event.pull_request.base.sha }}
-          path: github-pages-base
+          path: _site
+          fail-on-cache-miss: true
+
+      - name: "Prepare for diffing."
+        run: mv _site github-pages-base
 
       - name: "Download just-built artifact."
         uses: actions/download-artifact@v3
