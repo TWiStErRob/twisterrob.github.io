@@ -101,6 +101,7 @@ include: ['.htaccess']
 exclude:
   # GitHub
   - .git
+  - .github
   - .gitignore
   - CNAME
   - README.md
