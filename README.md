@@ -1,4 +1,4 @@
-Visit [twisterrob.net](http://www.twisterrob.net).
+Visit [twisterrob.net](https://www.twisterrob.net).
 
 
 # Development Install
@@ -83,9 +83,9 @@ Jekyll 3.7
 
 Finished reading news <3.8 and changelog <=3.8
 
-these two end up in sitemap after update
-/dev/assets/css/style.css
-/dev/redirects.json
+These two end up in sitemap after update:
+ * /dev/assets/css/style.css
+ * /dev/redirects.json
 
 dev > sass > line_numbers: true is broken after update (generated CSS files no longer have line numbers)
 ref https://github.com/jekyll/jekyll-sass-converter/blob/master/lib/jekyll/converters/scss.rb#L48
