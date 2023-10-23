@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - push
   pull_request:
     types:
       - opened # default
@@ -90,11 +89,8 @@ jobs:
 
       - name: "Calculate relevant SHA"
         id: params
-        env:
-          GITHUB: ${{ toJSON(github.event) }}
         run: |
-          echo "sha=${{ github.event.pull_request.base.sha || github.event.push.after }}" >> $GITHUB_OUTPUT
-          echo "gh=${GITHUB}"
+          echo "sha=${{ github.event.pull_request.base.sha || github.event.after }}" >> $GITHUB_OUTPUT
 
       - name: "Load cached site."
         id: cache
