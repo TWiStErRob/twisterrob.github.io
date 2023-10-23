@@ -79,7 +79,7 @@ jobs:
 
   cache:
     name: "Build Reference Site"
-    if: (github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'content-change')) || github.event_name == 'push'
+    if: (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'content-change')) || github.event_name == 'push'
 
     permissions:
       contents: read
@@ -144,7 +144,7 @@ jobs:
 
   diff:
     name: "Verify Against Reference Site"
-    if: github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'content-change')
+    if: github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'content-change')
     needs:
       - build
       - cache
