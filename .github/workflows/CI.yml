@@ -1,0 +1,173 @@
+name: "CI"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened # default
+      - reopened # default
+      - synchronize # default
+      - labeled # Listen for label changes to re-run the diff job.
+      - unlabeled # Listen for label changes to re-run the diff job.
+  workflow_dispatch:
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+
+  build:
+    name: "Build GitHub Pages Site"
+
+    permissions:
+      contents: read
+
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
+        uses: actions/checkout@v3
+
+      - name: "Setup Ruby"
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          cache-version: 0 # Increment this number if you need to re-download cached gems.
+
+      - name: "Setup Pages"
+        id: pages
+        uses: actions/configure-pages@v3
+
+      - name: "Build with Jekyll"
+        run: bundle exec jekyll build --trace --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+
+      - name: "Upload artifact"
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: _site/
+
+
+  deploy:
+    name: "Deploy GitHub Pages Site"
+    if: github.event_name == 'push'
+    needs:
+      - build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Deploy to GitHub Pages"
+        id: deployment
+        uses: actions/deploy-pages@v2
+        with:
+          error_count: 0
+
+
+  cache:
+    name: "Build Reference Site"
+    if: (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'content-change')) || github.event_name == 'push'
+
+    permissions:
+      contents: read
+
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: "Calculate relevant SHA"
+        id: params
+        run:
+          echo "sha=${{ github.event.pull_request.base.sha || github.event.push.after }}" >> $GITHUB_OUTPUT
+
+      - name: "Load cached site."
+        id: cache
+        uses: actions/cache/restore@v3
+        with:
+          key: github-pages-${{ steps.params.outputs.sha }}
+          path: _site/
+        # If exists (steps.cache.outputs.cache-hit == 'true'), then skip regeneration steps.
+
+      - name: "Checkout ${{ steps.params.outputs.sha }} commit in ${{ github.repository }} repository."
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ steps.params.outputs.sha }}
+
+      - name: "Setup Ruby."
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          cache-version: 0 # Increment this number if you need to re-download cached gems.
+
+      - name: "Retrieve GitHub Pages configuration."
+        if: steps.cache.outputs.cache-hit != 'true'
+        id: pages
+        uses: actions/configure-pages@v3
+
+      - name: "Build _site with Jekyll."
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: bundle exec jekyll build --trace --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+
+      - name: "Upload 'github-pages-base' artifact."
+        if: github.event_name == 'pull_request' && (success() || failure())
+        # Move cached files from cache to artifacts, so they can be used in other jobs. 
+        # It seems the job id/context is used to create the "cache version" and it always mismatches.
+        #if: steps.cache.outputs.cache-hit != 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: 'github-pages-base'
+          path: _site/
+
+      - name: "Store _site to cache."
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v3
+        with:
+          key: ${{ steps.cache.outputs.cache-primary-key }}
+          path: _site/
+
+
+  diff:
+    name: "Verify Against Reference Site"
+    if: github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'content-change')
+    needs:
+      - build
+      - cache
+
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: "Download base reference."
+        uses: actions/download-artifact@v3
+        with:
+          name: 'github-pages-base'
+          path: github-pages-base
+
+      - name: "Download just-built artifact."
+        uses: actions/download-artifact@v3
+        with:
+          name: 'github-pages'
+          path: github-pages-head
+
+      - name: "Prepare head for diffing."
+        working-directory: github-pages-head
+        # This is not a normal artifact. It was produced by actions/upload-pages-artifact and has only a tar file inside.
+        run: tar -xf artifact.tar && rm artifact.tar
+
+      - name: "Diff head against base."
+        run: diff --recursive github-pages-base github-pages-head
