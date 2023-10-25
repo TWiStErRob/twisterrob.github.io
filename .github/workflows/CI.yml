@@ -42,6 +42,29 @@ jobs:
           bundler-cache: true
           cache-version: 0 # Increment this number if you need to re-download cached gems.
 
+      - name: "Install fontcustom with all dependencies."
+        working-directory: sources/iconfont
+        run: ${{ github.workspace }}/.github/workflows/install-fontcustom.sh
+
+      - name: "Build iconfont."
+        working-directory: sources/iconfont
+        run: fontcustom compile
+
+      - name: "Upload 'iconfont' artifact."
+        uses: actions/upload-artifact@v3
+        with:
+          name: 'iconfont'
+          path: |
+            _sass/_iconfont.scss
+            assets/fonts/iconfont.eot
+            assets/fonts/iconfont.svg
+            assets/fonts/iconfont.ttf
+            assets/fonts/iconfont.woff
+            assets/fonts/iconfont.woff2
+            sources/iconfont/.fontcustom-manifest.json
+            sources/iconfont/iconfont-preview.html
+          if-no-files-found: error
+
       - name: "Setup Pages"
         id: pages
         uses: actions/configure-pages@v3
@@ -116,6 +139,16 @@ jobs:
           bundler-cache: true
           cache-version: 0 # Increment this number if you need to re-download cached gems.
 
+      - name: "Install fontcustom with all dependencies."
+        if: steps.cache.outputs.cache-hit != 'true'
+        working-directory: sources/iconfont
+        run: ${{ github.workspace }}/.github/workflows/install-fontcustom.sh
+
+      - name: "Build iconfont"
+        if: steps.cache.outputs.cache-hit != 'true'
+        working-directory: sources/iconfont
+        run: fontcustom compile
+
       - name: "Retrieve GitHub Pages configuration."
         if: steps.cache.outputs.cache-hit != 'true'
         id: pages
@@ -162,6 +195,15 @@ jobs:
           name: 'github-pages-base'
           path: github-pages-base
 
+      - name: "Prepare base for diffing."
+        working-directory: github-pages-base
+        run: |
+          rm assets/fonts/iconfont.eot
+          rm assets/fonts/iconfont.svg
+          rm assets/fonts/iconfont.ttf
+          rm assets/fonts/iconfont.woff
+          rm assets/fonts/iconfont.woff2
+
       - name: "Download just-built artifact."
         uses: actions/download-artifact@v3
         with:
@@ -170,8 +212,15 @@ jobs:
 
       - name: "Prepare head for diffing."
         working-directory: github-pages-head
-        # This is not a normal artifact. It was produced by actions/upload-pages-artifact and has only a tar file inside.
-        run: tar -xf artifact.tar && rm artifact.tar
+        run: |
+          # This is not a normal artifact. It was produced by actions/upload-pages-artifact and has only a tar file inside.
+          tar -xf artifact.tar && rm artifact.tar
+          rm assets/fonts/iconfont.eot
+          rm assets/fonts/iconfont.svg
+          rm assets/fonts/iconfont.ttf
+          rm assets/fonts/iconfont.woff
+          rm assets/fonts/iconfont.woff2
 
+      # assets/fonts/ is excluded, because building fonts is not deterministic.
       - name: "Diff head against base."
         run: diff --recursive github-pages-base github-pages-head
