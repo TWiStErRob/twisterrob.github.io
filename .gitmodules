@@ -1,0 +1,5 @@
+[submodule "_sass/foundation"]
+	path = _sass/foundation
+	url = https://github.com/zurb/foundation-sites
+	branch = v5.5.0
+	shallow = true
