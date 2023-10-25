@@ -1,0 +1,37 @@
+name: "Create Jobs PR"
+
+on:
+  create: # This event does not support branch filter (branches: jobs).
+
+concurrency:
+  group: "jobs"
+  cancel-in-progress: false
+
+jobs:
+
+  build:
+    name: "Create PR for jobs branch."
+    if: github.ref == 'refs/heads/jobs'
+
+    permissions:
+      contents: read
+      # `gh pr create` needs this. It also needs
+      # Settings > Actions > General > Workflow permissions > Allow GitHub Actions to create and approve pull requests
+      pull-requests: write
+
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
+        uses: actions/checkout@v3
+        with:
+          ref: jobs
+
+      - name: "Create PR"
+        env:
+          # Use token that's auto-created for this Job, see permissions: above.
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Workaround for https://github.com/cli/cli/issues/5896
+          git fetch origin main
+          gh pr create --fill-first

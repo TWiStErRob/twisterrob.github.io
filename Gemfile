@@ -13,5 +13,4 @@ gem 'wdm', '>= 0.1.1' if Gem.win_platform?
 # > To use retry middleware with Faraday v2.0+, install `faraday-retry` gem
 # Not sure what it does, because I don't use octokit directly:
 # https://github.com/octokit/octokit.rb/discussions/1486
-# TODEL condition; it was added as a workaround for https://github.com/actions/jekyll-build-pages/issues/104
-gem 'faraday-retry', '~> 2.2.0' if ENV["GITHUB_ACTIONS"] != "true"
+gem 'faraday-retry', '~> 2.2.0'

@@ -1,11 +1,35 @@
-/.git
-/.sass-cache
-/.gradle
-/_site
+# Version Control
+/temp/
+/sources/jobs/
+
+# Gradle build
+/.gradle/
+/build/
+
+# Jekyll build
+/.jekyll-metadata
+/.sass-cache/
+/_site/
+
+# Ruby
 /Gemfile.lock
+
+# Fontcustom build
+/sources/iconfont/.fontcustom-manifest.json
+/sources/iconfont/iconfont-preview.html
+/_sass/_iconfont.scss
+/assets/fonts/iconfont.eot
+/assets/fonts/iconfont.svg
+/assets/fonts/iconfont.ttf
+/assets/fonts/iconfont.woff
+/assets/fonts/iconfont.woff2 
+
+# IntelliJ IDEA
+/.idea/
 /*.iws
 /*.ipr
-/*.iml
-/.idea
-/.jekyll-metadata
+*.iml
+
+# Operating System
+# When subst'd, Windows might create this folder.
 /System Volume Information
