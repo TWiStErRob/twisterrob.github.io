@@ -7,7 +7,7 @@ sector: any
 location: London / remote
 dates:
   from: 2023-06-01
-  to:
+  to: 
 ---
 
 I'm looking for a new opportunity. If the below fits what you need and your company, please see my [CV](https://drive.google.com/file/d/0B5qTNPgq_ll5UlRfbVdjckE5Y0k/view?usp=sharing) and contact me.
