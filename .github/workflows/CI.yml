@@ -35,10 +35,10 @@ jobs:
         with:
           submodules: true
 
-      - name: "Setup Ruby"
+      - name: "Setup old Ruby."
         uses: ruby/setup-ruby@v1
         with:
-          #ruby-version: .ruby-version # So checkout is needed.
+          ruby-version: '2.7.8'
           bundler-cache: true
           cache-version: 0 # Increment this number if you need to re-download cached gems.
 
@@ -65,16 +65,23 @@ jobs:
             sources/iconfont/iconfont-preview.html
           if-no-files-found: error
 
-      - name: "Setup Pages"
+      - name: "Setup Ruby."
+        uses: ruby/setup-ruby@v1
+        with:
+          #ruby-version: .ruby-version # So checkout is needed.
+          bundler-cache: true
+          cache-version: 0 # Increment this number if you need to re-download cached gems.
+
+      - name: "Retrieve GitHub Pages configuration."
         id: pages
         uses: actions/configure-pages@v3
 
-      - name: "Build with Jekyll"
+      - name: "Build _site with Jekyll."
         run: bundle exec jekyll build --trace --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
 
-      - name: "Upload artifact"
+      - name: "Upload 'github-pages' artifact."
         uses: actions/upload-pages-artifact@v2
         with:
           path: _site/
@@ -111,10 +118,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: "Calculate relevant SHA"
+      - name: "Calculate relevant SHA."
         id: params
         run: |
-          echo "sha=${{ github.event.pull_request.base.sha || github.event.after }}" >> $GITHUB_OUTPUT
+          echo "sha=${{ github.event.pull_request.base.sha || github.event.after }}" >> "${GITHUB_OUTPUT}"
 
       - name: "Load cached site."
         id: cache
@@ -131,11 +138,10 @@ jobs:
           submodules: true
           ref: ${{ steps.params.outputs.sha }}
 
-      - name: "Setup Ruby."
-        if: steps.cache.outputs.cache-hit != 'true'
+      - name: "Setup old Ruby."
         uses: ruby/setup-ruby@v1
         with:
-          #ruby-version: .ruby-version # So checkout is needed.
+          ruby-version: '2.7.8'
           bundler-cache: true
           cache-version: 0 # Increment this number if you need to re-download cached gems.
 
@@ -144,10 +150,18 @@ jobs:
         working-directory: sources/iconfont
         run: ${{ github.workspace }}/.github/workflows/install-fontcustom.sh
 
-      - name: "Build iconfont"
+      - name: "Build iconfont."
         if: steps.cache.outputs.cache-hit != 'true'
         working-directory: sources/iconfont
         run: fontcustom compile
+
+      - name: "Setup Ruby."
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: ruby/setup-ruby@v1
+        with:
+          #ruby-version: .ruby-version # So checkout is needed.
+          bundler-cache: true
+          cache-version: 0 # Increment this number if you need to re-download cached gems.
 
       - name: "Retrieve GitHub Pages configuration."
         if: steps.cache.outputs.cache-hit != 'true'
