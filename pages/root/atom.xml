@@ -41,7 +41,7 @@ title: "Atom Feed"
 	<link href="{{ site.url }}{{ site.baseurl }}{{page.url }}" rel="self" type="application/rss+xml" />
 	<link href="{{ site.url }}{{ site.baseurl }}/" rel="alternate" type="text/html" />
 
-	<generator uri="http://jekyllrb.com" version="{{ jekyll.version }}">Jekyll</generator>
+	<generator uri="https://jekyllrb.com" version="{{ jekyll.version }}">Jekyll</generator>
 
 	{% for post in site.posts limit: 10 %}
 		<entry>

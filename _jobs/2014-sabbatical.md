@@ -43,7 +43,7 @@ Most notable [projects]({{ site.baseurl }}/project/) are:
    an advanced Gradle build plugin to help streamline my Android projects' build process and countless build scripts.
  * **[Gradle Build graph visualization]({{ site.baseurl }}/project/gradle-graph/)**  
    to display task as they're running, which helps to see progress visually
- * **[regex101.com](http://regex101.com)**  
+ * **[regex101.com](https://regex101.com)**  
    helped [Firas Dib](https://se.linkedin.com/in/firas-dib-6a86a868) (the author) with a few issues and ideas
  * **Email cleanup**  
    I cleaned up my old mailboxes, folders and labels; migrating about 10000 emails and manually deleting more than 30000 useless notifications and subscriptions. I also properly introduced the empty inbox policy, and a better workflow, to deal with incomming messages really quickly.  

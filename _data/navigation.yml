@@ -33,19 +33,19 @@
     icon: browser
     dropdown:
     - title: Old Homepage (2005–2007)
-      url: http://twisterrob.uw.hu/mypage
+      url: https://twisterrob.uw.hu/mypage
     - title: LESS Attractive! (2012)
-      url: http://twisterrob.net/dev/less
+      url: https://twisterrob.net/dev/less
     - title: Reference Projects (2006)
-      url: http://web.twisterrob.net/ref
+      url: https://web.twisterrob.net/ref
     - title: Project Earthquake (2004)
-      url: http://twisterrob.uw.hu/peq/eng/index_eng.htm
+      url: https://twisterrob.uw.hu/peq/eng/index_eng.htm
     - title: Learn Italian in Hungarian (2004)
-      url: http://web.twisterrob.net/italian
+      url: https://web.twisterrob.net/italian
     - title: Regex Sandbox
-      url: http://regex.twisterrob.net
+      url: https://regex.twisterrob.net
     - title: Old Website (2005–2007)
-      url: http://twisterrob.uw.hu
+      url: https://twisterrob.uw.hu
 
 - title: Blog
   icon: open-book

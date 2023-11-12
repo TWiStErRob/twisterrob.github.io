@@ -200,5 +200,5 @@ After checking that everything is correct `git log`, `gitk` and the like push th
 
  * [StackOverflow question with tricky answers](https://stackoverflow.com/questions/661018/pushing-an-existing-git-repository-to-svn)
  * [Original idea and credit](https://chani.wordpress.com/2012/01/25/the-easy-way-to-import-from-git-into-svn/)
- * [`svn mkdir`](http://svnbook.red-bean.com/en/1.7/svn.ref.svn.c.mkdir.html)
+ * [`svn mkdir`](https://svnbook.red-bean.com/en/1.7/svn.ref.svn.c.mkdir.html)
  * [`git svn`](https://git-scm.com/docs/git-svn)

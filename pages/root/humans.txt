@@ -2,7 +2,7 @@
 permalink: /humans.txt
 title: "Staff Information"
 layout: null
-source: "http://humanstxt.org/Standard.html"
+source: "https://humanstxt.org/Standard.html"
 ---
 /* TEAM */
 {% for author_entry in site.data.authors %}{% assign author = author_entry[1] %}
@@ -16,9 +16,9 @@ Twitter: @{{ author.twitter }}{% endif %}
 
 Name: Moritz »mo.« Sauer
 Role: Creator of the Theme
-Site: http://mo.phlow.de/
+Site: https://mo.phlow.de/
 Twitter: @phlow
-Theme: http://phlow.github.io/feeling-responsive/
+Theme: https://phlow.github.io/feeling-responsive/
 
 
 /* SITE */

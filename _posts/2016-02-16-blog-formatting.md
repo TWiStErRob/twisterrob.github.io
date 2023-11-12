@@ -74,7 +74,7 @@ public void method();
 {% for tag in site.data.tags %}<li>{{ tag.name }}{% unless forloop.last %}, {% endunless %}</li>{% endfor %}
 ```{% endraw %}
 {: title="Liquid code, that's not executed"}
-{% comment %}Outputting `endraw` in code block requires some trickery: http://blog.slaks.net/2013-06-10/jekyll-endraw-in-code/{% endcomment %}
+{% comment %}Outputting `endraw` in code block requires some trickery: https://blog.slaks.net/2013-06-10/jekyll-endraw-in-code/{% endcomment %}
 
 ### Code block for shell
 
@@ -92,7 +92,7 @@ Here's a <q>short quotation</q> which is in the middle of a sentence.
   **strong**, *em*, _em_, ***strong em***, <b>html bold</b>, `code`, <kbd>kbd</kbd>, <samp>samp</samp>, <ins>ins</ins>, <del>del</del>
   <cite>TWiStErRob</cite>
 
-> <samp>Program output text</samp> <cite>output from [file.name](http://sources.com/path/to/file.name#line=123) in [library](http://library.com/)</cite>
+> <samp>Program output text</samp> <cite>output from [file.name](https://sources.com/path/to/file.name#line=123) in [library](https://library.com/)</cite>
 
 
 ## Alerts

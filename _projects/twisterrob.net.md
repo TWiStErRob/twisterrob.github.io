@@ -7,7 +7,7 @@ images:
   icon: projects/twisterrob.net/html5.png 
   icon_small: projects/twisterrob.net/html5.png
 links:
-  view: http://twisterrob.net
+  view: https://twisterrob.net
 ---
 
 ## Intro
@@ -16,7 +16,7 @@ This website is a long-waited upgrade from my old website that we hacked togethe
 I've created many things that are useful for some, but they're undiscoverable because there are no external links pointing to them.
 
 ## Implementation
-In the beginning I just wanted to merge my Blogger blog to Jekyll, luckily I found a great base theme in [Feeling Responsive](http://phlow.github.io/feeling-responsive/) with just enough to start me off. As I dug deeper and deeper into it, I found that it's a really good platform for informational websites with static content. The best part is the versatile language support with Markdown for content, I can use HTML when needed, and I have the ability to script via Liquid and also the built-in GitHub pages hosting support is not negligible.
+In the beginning I just wanted to merge my Blogger blog to Jekyll, luckily I found a great base theme in [Feeling Responsive](https://phlow.github.io/feeling-responsive/) with just enough to start me off. As I dug deeper and deeper into it, I found that it's a really good platform for informational websites with static content. The best part is the versatile language support with Markdown for content, I can use HTML when needed, and I have the ability to script via Liquid and also the built-in GitHub pages hosting support is not negligible.
 
 ## Layout
 

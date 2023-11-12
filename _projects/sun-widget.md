@@ -30,7 +30,7 @@ I spent two weekends on developing a quick prototype, one for the algorithm to c
 
 
 ### Calculating the angle
-I thought it was a simple calculation, but there's really complex mathematics behind it. Luckily I found [some](http://www.susdesign.com/sunangle/) [good](http://www.pveducation.org/pvcdrom/properties-of-sunlight/elevation-angle) [articles](https://en.wikipedia.org/wiki/Solar_zenith_angle) and a [credible source](http://aa.usno.navy.mil/data/docs/AltAz.php) to double check my calculations.
+I thought it was a simple calculation, but there's really complex mathematics behind it. Luckily I found [some](https://www.susdesign.com/sunangle/) [good](https://www.pveducation.org/pvcdrom/properties-of-sunlight/elevation-angle) [articles](https://en.wikipedia.org/wiki/Solar_zenith_angle) and a [credible source](https://aa.usno.navy.mil/data/docs/AltAz.php) to double check my calculations.
 
 
 ### The App
@@ -74,10 +74,10 @@ The widget will display the following part of the day, each with a corresponding
 
 
 ## Read more
- * [about Twilights](http://en.wikipedia.org/wiki/Twilight) (not the movies)
+ * [about Twilights](https://en.wikipedia.org/wiki/Twilight) (not the movies)
  * [the Math](#calculating-the-angle)
- * [Light Pollution ☹](http://www.mensjournal.com/magazine/where-did-all-the-stars-go-20131115?page=2)
- * [UV/B and Vitamin D benefits](http://articles.mercola.com/sites/articles/archive/2012/09/29/sun-exposure-vitamin-d-production-benefits.aspx), [also here](http://articles.mercola.com/sites/articles/archive/2012/03/26/maximizing-vitamin-d-exposure.aspx)
+ * [Light Pollution ☹](https://www.mensjournal.com/magazine/where-did-all-the-stars-go-20131115?page=2)
+ * [UV/B and Vitamin D benefits](https://articles.mercola.com/sites/articles/archive/2012/09/29/sun-exposure-vitamin-d-production-benefits.aspx), [also here](https://articles.mercola.com/sites/articles/archive/2012/03/26/maximizing-vitamin-d-exposure.aspx)
 
 ## Privacy Policy
 

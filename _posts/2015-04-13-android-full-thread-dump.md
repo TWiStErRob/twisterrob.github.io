@@ -16,7 +16,7 @@ Fear not, there's a workaround to get the exact same thread dump with a little m
 There are a few sources on the Internet on how to make a thread dump in Android, but most of them don't work or are lacking the intrinsic locking information, here's an example:
 
 > If you have a developer / rooted device, you can ask the Dalvik VM to dump thread stacks by sending a `SIGQUIT` to the app process you're interested in.
-<cite>[How to make Java Thread Dump in Android?](http://stackoverflow.com/a/13592951/253468)</cite>
+<cite>[How to make Java Thread Dump in Android?](https://stackoverflow.com/a/13592951/253468)</cite>
 
 If you try to send a signal on a non-rooted/non-dev device you'll get:
 
@@ -29,7 +29,7 @@ me@laptop$ adb shell kill -s SIGQUIT 10904
 /system/bin/sh: kill: 10904: Operation not permitted
 ```
 
-[An answer](http://stackoverflow.com/a/17737101/253468) to [How to stop an android application from adb without force-stop or root?](http://stackoverflow.com/q/17736188/253468) suggests to use `run-as`:
+[An answer](https://stackoverflow.com/a/17737101/253468) to [How to stop an android application from adb without force-stop or root?](https://stackoverflow.com/q/17736188/253468) suggests to use `run-as`:
 
 ```shell
 me@laptop$ adb shell run-as net.twisterrob.app kill -3 10904

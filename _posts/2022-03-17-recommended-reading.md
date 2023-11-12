@@ -25,7 +25,7 @@ If I get inspiration I might write some actual recommendations, until then, just
  * [Trisha Gee: Code Smells series from IntelliJ Blog](https://blog.jetbrains.com/idea/2017/08/code-smells-null/)  
    (⚠ The series is a long read, but well worth the time!)
  * [French vs. English punctuation rules (the French perspective)](https://leconjugueur.lefigaro.fr/ukponctuationtypographie.php)
- * [~~Android Lint User Guide~~](https://developer.android.com/studio/write/lint) &rarr; [Android Lint Documentation](http://googlesamples.github.io/android-custom-lint-rules/book.md.html)
+ * [~~Android Lint User Guide~~](https://developer.android.com/studio/write/lint) &rarr; [Android Lint Documentation](https://googlesamples.github.io/android-custom-lint-rules/book.md.html)
  * [Tom Scott: The Art of the Bodge](https://www.youtube.com/watch?v=lIFE7h3m40U)
  * [Marcin Moskala: Kotlin not-to-do list (after the book Effective Kotlin)](https://www.youtube.com/watch?v=2ffR1h4BejQ)
  * [Description of test-only, contextual and absolute selectors](https://css-tricks.com/front-end-test-element-locators/)

@@ -14,7 +14,7 @@ In this article we'll go through some practical usage patterns of JFixture, and 
 
 ## Introduction
 
-> JFixture is a Java library to assist in the writing of Unit Tests, particularly when following Test Driven Development. It generates types based on the concept of 'constrained non-determinism', which is an implementation of the [Generated Value](http://xunitpatterns.com/Generated%20Value.html) xUnit test pattern.
+> JFixture is a Java library to assist in the writing of Unit Tests, particularly when following Test Driven Development. It generates types based on the concept of 'constrained non-determinism', which is an implementation of the [Generated Value](https://xunitpatterns.com/Generated%20Value.html) xUnit test pattern.
 <cite>[JFixture README.md](https://github.com/FlexTradeUKLtd/jfixture)</cite>
 
 In practice this means, is that JFixture can create any data object with very little developer effort, here's an example:

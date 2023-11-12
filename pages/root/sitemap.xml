@@ -5,7 +5,7 @@ layout: null
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 {% comment %}
-	See http://www.sitemaps.org/protocol.html for argument meanings and values.
+	See https://www.sitemaps.org/protocol.html for argument meanings and values.
 	Gem jekyll-sitemap only lists urls with no control over priority and changefreq, hence using a custom one.
 {% endcomment %}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

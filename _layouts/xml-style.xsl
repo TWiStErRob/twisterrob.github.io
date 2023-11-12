@@ -1,6 +1,6 @@
 ---
 layout: null
-source: 'http://www.evagoras.com/2011/02/10/improving-an-xml-feed-display-through-css-and-xslt/'
+source: 'https://www.evagoras.com/2011/02/10/improving-an-xml-feed-display-through-css-and-xslt/'
 breadcrumbs: true
 ---
 <?xml version="1.0" encoding="UTF-8"?>
