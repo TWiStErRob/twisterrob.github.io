@@ -131,6 +131,7 @@ exclude:
   - .project
   - www.twisterrob.net.sublime-project # should be '*.sublime-project', see https://github.com/jekyll/jekyll-watch/issues/34
   # Random stuff
+  - temp
   - sources
   - .svn
   - .git
