@@ -1,5 +1,5 @@
 - name: LinkedIn
-  url: http://uk.linkedin.com/in/papproberts
+  url: https://uk.linkedin.com/in/papproberts
   class: icon-linkedin
   title: "Scout me on LinkedIn"
 
@@ -9,12 +9,12 @@
   title: "Install my apps from Google Play"
 
 - name: GitHub
-  url: http://github.com/TWiStErRob
+  url: https://github.com/TWiStErRob
   class: icon-github
   title: "Interpret my code on GitHub"
 
 - name: YouTube
-  url: http://www.youtube.com/user/TWiStErRob
+  url: https://www.youtube.com/user/TWiStErRob
   class: icon-youtube
   title: "Watch my videos on YouTube"
 
@@ -24,12 +24,12 @@
   title: "Add me to your circles on Google Plus!"
 
 - name: Facebook
-  url: http://www.facebook.com/TWiStErRob
+  url: https://www.facebook.com/TWiStErRob
   class: icon-facebook
   title: "Let's be friends on Facebook!"
 
 - name: Twitter
-  url: http://twitter.com/TWiStErRob
+  url: https://twitter.com/TWiStErRob
   class: icon-twitter
   title: "Follow my tweets on Twitter"
 
@@ -40,20 +40,20 @@
   title: "Call me on Skype"
 
 #- name: Soundcloud
-#  url: http://soundcloud.com/twisterrob
+#  url: https://soundcloud.com/twisterrob
 #  class: icon-soundcloud
 #  title: "Listen to my music on Soundcloud"
 #
 #- name: Instagram
-#  url: http://instagram.com/twisterrob
+#  url: https://instagram.com/twisterrob
 #  class: icon-instagram
 #  title: "Check out my pictures on Instagram"
 #
 #- name: Pinterest
-#  url: http://www.pinterest.com/TWiStErRob
+#  url: https://www.pinterest.com/TWiStErRob
 #  class: icon-pinterest
 #  title: "See my pins on Pinterest"
 
-# http://picasaweb.google.com/papp.robert.s
-# http://www.google.com/reader/shared/papp.robert.s
+# https://picasaweb.google.com/papp.robert.s
+# https://www.google.com/reader/shared/papp.robert.s
 # https://profiles.google.com/117531635791453169417/buzz

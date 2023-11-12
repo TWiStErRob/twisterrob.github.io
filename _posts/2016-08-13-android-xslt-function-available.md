@@ -26,7 +26,7 @@ I wanted to do a simple check to see whether Xalan's extension functions are ava
     <xsl:otherwise>
         <!-- Oh well, we have this nice XSLT 1.0-compatbile implementation -->
         <xsl:variable name="escaped">
-            <!-- @see http://stackoverflow.com/a/10528912/253468 -->
+            <!-- @see https://stackoverflow.com/a/10528912/253468 -->
             <xsl:call-template name="string-replace-all">
                 <xsl:with-param name="text" select="$text" />
                 <xsl:with-param name="replace" select="$quote" />

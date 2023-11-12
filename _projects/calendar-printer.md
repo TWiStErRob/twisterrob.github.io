@@ -10,7 +10,7 @@ images:
     - url: 'projects/calendar-printer/india_twisterrob.png'
       title: My take on printing the same data
 links:
-  view: http://web.twisterrob.net/calendar-printer/
+  view: https://web.twisterrob.net/calendar-printer/
 ---
 
 ## Inception
@@ -48,9 +48,9 @@ One day we wanted to print an agenda for a week for events held at a venue. Goog
 
 {% comment %}
 ## Used
- * http://momentjs.com/docs/#/manipulating/start-of/
- * http://underscorejs.org/#sortBy
+ * https://momentjs.com/docs/#/manipulating/start-of/
+ * https://underscorejs.org/#sortBy
  * https://developers.google.com/google-apps/calendar/v3/reference/events/list
 ## Future plans
- * validation http://ajax.aspnetcdn.com/ajax/jQuery.Validate/1.6/jQuery.Validate.pack.js
+ * validation https://ajax.aspnetcdn.com/ajax/jQuery.Validate/1.6/jQuery.Validate.pack.js
 {% endcomment %}

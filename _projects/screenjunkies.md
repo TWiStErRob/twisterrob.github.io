@@ -8,9 +8,9 @@ images:
   icon_small: projects/screenjunkies/icon-mdpi.png
   inline:
     sj: projects/screenjunkies/sj.jpg
-    sjv: http://i.imgur.com/wAZnRCk.gif
+    sjv: https://i.imgur.com/wAZnRCk.gif
     my: projects/screenjunkies/my.jpg
-    myv: http://i.imgur.com/oP3Ykjg.gif
+    myv: https://i.imgur.com/oP3Ykjg.gif
     titles: projects/screenjunkies/titles.jpg
   screenshots:
     - url: 'projects/screenjunkies/shows.jpg'
@@ -21,7 +21,7 @@ images:
       title: Page view on a big screen
 links:
   view: https://twisterrob-screenjunkies.herokuapp.com/
-deprecation: 'This app was made redundant by the [termination of ScreenJunkies Plus](https://honest-trailers.fandom.com/wiki/Screen_Junkies_Plus#The_End_of_Plus).<br/>[ScreenJunkies website](http://www.screenjunkies.com) is no longer live.'
+deprecation: 'This app was made redundant by the [termination of ScreenJunkies Plus](https://honest-trailers.fandom.com/wiki/Screen_Junkies_Plus#The_End_of_Plus).<br/>[ScreenJunkies website](https://www.screenjunkies.com) is no longer live.'
 ---
 
 {% include toc.md %}
@@ -29,7 +29,7 @@ deprecation: 'This app was made redundant by the [termination of ScreenJunkies P
 ## Inception
 
 ### Motivation
-I like to watch the content the awesome ScreenJunkies&nbsp;Team creates, but the [ScreenJunkies website](http://www.screenjunkies.com) has some usability and performance issues that are making me not want to use it. Let's look at an example use case:
+I like to watch the content the awesome ScreenJunkies&nbsp;Team creates, but the [ScreenJunkies website](https://www.screenjunkies.com) has some usability and performance issues that are making me not want to use it. Let's look at an example use case:
 
 > I already watched the latest <mark>Honest Trailer Commentaries</mark> yesterday, but prior to that I didn't watch the show for a few weeks. I want to watch the one episode before the latest that I missed.
 

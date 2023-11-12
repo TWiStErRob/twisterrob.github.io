@@ -63,7 +63,7 @@ I'm curious to see which of these pop up in reviews.
 ### Model
 I started implementing the app with a basic, but flexible database schema:
 
-{% assign url = "http://yuml.me/diagram/plain;dir:LR/class/[Property%7Bbg:green%7D],%20[Room%7Bbg:green%7D],%20[Item%7Bbg:green%7D],%20[PropertyType%7Bbg:orange%7D],%20[RoomType%7Bbg:orange%7D],%20[Category%7Bbg:orange%7D],%20[Room]++--%3E[Item],%20[Item]%3C%3E---%3E[Item],%20[Property]++--%3E[Room],%20[Property]-.-%3C%3E[PropertyType],%20[Room]-.-%3C%3E[RoomType],%20[Item]-.-%3C%3E[Category],%20[Category]++---%3E[Category].png" %}
+{% assign url = "https://yuml.me/diagram/plain;dir:LR/class/[Property%7Bbg:green%7D],%20[Room%7Bbg:green%7D],%20[Item%7Bbg:green%7D],%20[PropertyType%7Bbg:orange%7D],%20[RoomType%7Bbg:orange%7D],%20[Category%7Bbg:orange%7D],%20[Room]++--%3E[Item],%20[Item]%3C%3E---%3E[Item],%20[Property]++--%3E[Room],%20[Property]-.-%3C%3E[PropertyType],%20[Room]-.-%3C%3E[RoomType],%20[Item]-.-%3C%3E[Category],%20[Category]++---%3E[Category].png" %}
 [![Database schema]({{ url }}){: .light-bg}]({{ url }}){: .no-adorn }
 
 ... and it turned out to be the really good so far, because I didn't have to change the core ever since.

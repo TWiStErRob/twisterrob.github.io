@@ -12,7 +12,7 @@ script:
 
 I wanted to share bookmarklets without duplicating the code to display and the code in `href`.
 I also wanted that a <q>bookmarklet name</q> link can be dragged to the bookmarks bar and then just work.
-This post describes how I included prettified and easily copiable bookmarklet code to my <a href="http://www.blogger.com/" target="_blank">Blogger</a> blog.
+This post describes how I included prettified and easily copiable bookmarklet code to my <a href="https://www.blogger.com/" target="_blank">Blogger</a> blog.
 <!--more-->
 
 

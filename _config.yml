@@ -1,8 +1,8 @@
 # gradle build
 
-#http://jekyllrb.com/docs/configuration/
+#https://jekyllrb.com/docs/configuration/
 
-# ASCII-Font › http://patorjk.com/software/taag/#p=display&f=Slant&t=Phlow
+# ASCII-Font › https://patorjk.com/software/taag/#p=display&f=Slant&t=Phlow
 #
 #      _____ _ __          _____      __  __  _
 #     / ___/(_) /____     / ___/___  / /_/ /_(_)___  ____ ______
@@ -152,8 +152,8 @@ markdown: kramdown
 # Since Jekyll 3 the default highlighter is Rouge (replaced Pygments.rb in v44)
 highlighter: rouge
 
-# More › http://kramdown.gettalong.org/quickref.html
-# Options › http://kramdown.gettalong.org/options.html
+# More › https://kramdown.gettalong.org/quickref.html
+# Options › https://kramdown.gettalong.org/options.html
 kramdown:
   input:          GFM
   auto_ids:       true
@@ -172,7 +172,7 @@ kramdown:
   math_engine: mathjax
   show_warnings: true
 
-  # Rouge Highlighter in Kramdown › http://kramdown.gettalong.org/syntax_highlighter/rouge.html
+  # Rouge Highlighter in Kramdown › https://kramdown.gettalong.org/syntax_highlighter/rouge.html
   # span, block element options fall back to global
   syntax_highlighter_opts:
     # Rouge Options › https://github.com/jneen/rouge#full-options
@@ -191,17 +191,17 @@ kramdown:
       #start_line: 1
       disable: false
 
-# More › http://sass-lang.com
-# Docs › http://jekyllrb.com/docs/assets/#sassscss
-# Options › http://sass-lang.com/documentation/file.SASS_REFERENCE.html#options
+# More › https://sass-lang.com
+# Docs › https://jekyllrb.com/docs/assets/#sassscss
+# Options › https://sass-lang.com/documentation/file.SASS_REFERENCE.html#options
 # Safe mode only allows style, syntax=based on extension, cache=false
 sass:
   sass_dir: _sass
-  # Options › http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+  # Options › https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
   style: :compressed # :nested | :expanded | :compact | :compressed
 
 # Used › default.html front-matter and compress.html
-# Options › http://jch.penibelst.de
+# Options › https://jch.penibelst.de
 compress_html:
   clippings: all
   comments: ["<!--", "-->"]
@@ -223,7 +223,7 @@ lsi: false
 language: "en"
 
 
-# Docs › http://jekyllrb.com/docs/collections/
+# Docs › https://jekyllrb.com/docs/collections/
 permalink: /blog/:year/:month/:title.html
 collections:
   projects:
@@ -335,7 +335,7 @@ google_author:             "https://plus.google.com/+RóbertPappTWiStErRob"
 #msapplication_tileimage:                "msapplication_tileimage.png"               # Size 144x144
 #msapplication_tilecolor:                "#fabb00"
 
-# Facebook-Optimization › http://j.mp/fb_optimize
+# Facebook-Optimization › https://j.mp/fb_optimize
 og_image:                           imgurl + "/logo-512x512.png"
 og_locale:                          "en_EN"
 og_type:                            "website"

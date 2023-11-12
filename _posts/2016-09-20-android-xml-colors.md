@@ -2579,4 +2579,4 @@ Note: on new platforms the color will be black, so be careful if you have a dark
 
 ## References
 
- * [Original conversation and investigation](http://stackoverflow.com/questions/9635435/change-word-color-in-resource-string/11577658#comment40124504_11577658)
+ * [Original conversation and investigation](https://stackoverflow.com/questions/9635435/change-word-color-in-resource-string/11577658#comment40124504_11577658)

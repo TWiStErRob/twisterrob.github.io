@@ -144,7 +144,7 @@ Liquid::Template.register_filter(Jekyll::DebugFilter)
 
 ### Debugging Example Walkthrough
 
-Suppose there's a [tags data file](http://www.minddust.com/post/tags-and-categories-on-github-pages/) in the [format I suggested](https://github.com/minddust/minddust.github.io/issues/5):
+Suppose there's a [tags data file](https://www.minddust.com/post/tags-and-categories-on-github-pages/) in the [format I suggested](https://github.com/minddust/minddust.github.io/issues/5):
 
 ```yaml
 tag1:
@@ -257,7 +257,7 @@ stripped: (String)"/blog/tags/"
 ## Hidden Gems
 
 ### Filter Documentation
-Not all the filters documented are available when using an older version of either [Jekyll](http://jekyllrb.com/docs/templates/#filters) or [Liquid](https://docs.shopify.com/themes/liquid-documentation/filters). The most relevant documentation and list of filters can be found in your local Ruby installation:
+Not all the filters documented are available when using an older version of either [Jekyll](https://jekyllrb.com/docs/templates/#filters) or [Liquid](https://docs.shopify.com/themes/liquid-documentation/filters). The most relevant documentation and list of filters can be found in your local Ruby installation:
 
  * Jekyll: <samp>lib/ruby/gems/2.2.0/gems/jekyll-2.4.0/lib/jekyll/filters.rb</samp>
  * Liquid <samp>lib/ruby/gems/2.2.0/gems/liquid-2.6.2/lib/liquid/standardfilters.rb</samp>
@@ -295,7 +295,7 @@ order by contents: (Array)["a", "c", "z"]
 ### Liquid code highlight
 Luckily the page's code is first run through Liquid and then kramdown, so it's possible to use liquid tags to generate the markdown code. Based on this it's also possible to nest them weirdly, notice that the <code>```</code> pair is interleaving with the `raw`/`endraw` tags; I prefer this because the markdown indentation is natural, only the end of the line is a little different.
 
-{% comment %}Outputting endraw requires some trickery: http://blog.slaks.net/2013-06-10/jekyll-endraw-in-code/{% endcomment %}
+{% comment %}Outputting endraw requires some trickery: https://blog.slaks.net/2013-06-10/jekyll-endraw-in-code/{% endcomment %}
 {% assign endraw_literal = '{% endraw %' | append: '}' %}
 ```liquid{% raw %}
 ```liquid{% raw %}
@@ -306,7 +306,7 @@ Luckily the page's code is first run through Liquid and then kramdown, so it's p
 {: title="output is similar to this block"}
 
 ## Liquid Error Messages
-{% include alert todo='Maybe http://saimonmoore.com/tumblog/200612/debugging-liquid-templates.html can help with this.' %}
+{% include alert todo='Maybe https://saimonmoore.com/tumblog/200612/debugging-liquid-templates.html can help with this.' %}
 Among other modifications made to my tags display, I wanted to sort tags case insensitively and I got the following error message:
 
 > Liquid Exception: no implicit conversion from nil to integer <cite>in tags.html</cite>

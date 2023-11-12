@@ -162,7 +162,7 @@ module Jekyll
 
 	# TODO site.static_files: "#<Jekyll::StaticFile:0x00000005b9aeb0>"
 	module Drops
-		# http://stackoverflow.com/a/4471202/253468 > Method Wrapping is used to override behavior
+		# https://stackoverflow.com/a/4471202/253468 > Method Wrapping is used to override behavior
 		class DocumentDrop
 			self_hash_for_json = instance_method(:hash_for_json)
 			define_method(:hash_for_json) do |state = nil|

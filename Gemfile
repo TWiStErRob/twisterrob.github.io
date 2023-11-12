@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 # For some reason omitting the version defaults to 0.
 gem 'github-pages', '= 228', group: :jekyll_plugins
 
-# http://jekyllrb.com/docs/windows/#auto-regeneration
+# https://jekyllrb.com/docs/windows/#auto-regeneration
 # For --watch to work on Windows.
 gem 'wdm', '>= 0.1.1' if Gem.win_platform?
 

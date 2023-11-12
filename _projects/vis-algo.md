@@ -14,7 +14,7 @@ images:
     - url: 'projects/vis-algo/swap.png'
       title: After determining that both children violate the heap property, the parent is ready to be swapped. No user interaction at this point.
 links:
-  view: http://web.twisterrob.net/vis-algo/
+  view: https://web.twisterrob.net/vis-algo/
 ---
 {% include toc.md %}
 
