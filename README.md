@@ -29,7 +29,7 @@ If there's the same SSL issue, for example when using `jekyll-gist`, then [try t
 
 ```shell
 me@windows$ unsubst bundle exec jekyll serve --config _config.yml,_config_local.yml,_config_dev.yml --trace --skip-initial-build --incremental
-me@windows$ gradle serve dev noskip
+me@windows$ gradlew serve dev noskip
 ```
 
 ## Usage
@@ -37,7 +37,7 @@ me@windows$ gradle serve dev noskip
 Check if site build successfully before each commit
 
 ```shell
-me@webiste$ gradle preCommitServe local
+me@webiste$ gradlew preCommitServe local
 ```
 
 ## Upgrade
