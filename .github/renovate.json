@@ -1,0 +1,15 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": [
+		"local>TWiStErRob/renovate-config"
+	],
+	"packageRules": [
+		{
+			"description": "Keep Ruby where it is, TODO https://github.com/TWiStErRob/twisterrob.github.io/issues/39",
+			"matchDepNames": "ruby",
+			"matchCurrentValue": "/^2\\..*$/",
+			"matchUpdateTypes": "major",
+			"enabled": false
+		}
+	]
+}
