@@ -31,7 +31,7 @@ jobs:
     steps:
 
       - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
 
@@ -51,7 +51,7 @@ jobs:
         run: fontcustom compile
 
       - name: "Upload 'iconfont' artifact."
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: 'iconfont'
           path: |
@@ -74,7 +74,7 @@ jobs:
 
       - name: "Retrieve GitHub Pages configuration."
         id: pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v4
 
       - name: "Build _site with Jekyll."
         run: bundle exec jekyll build --trace --baseurl "${{ steps.pages.outputs.base_path }}"
@@ -82,7 +82,7 @@ jobs:
           JEKYLL_ENV: production
 
       - name: "Upload 'github-pages' artifact."
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: _site/
 
@@ -105,7 +105,7 @@ jobs:
     steps:
       - name: "Deploy to GitHub Pages"
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
 
 
   cache:
@@ -133,7 +133,7 @@ jobs:
 
       - name: "Checkout ${{ steps.params.outputs.sha }} commit in ${{ github.repository }} repository."
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
           ref: ${{ steps.params.outputs.sha }}
@@ -166,7 +166,7 @@ jobs:
       - name: "Retrieve GitHub Pages configuration."
         if: steps.cache.outputs.cache-hit != 'true'
         id: pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v4
 
       - name: "Build _site with Jekyll."
         if: steps.cache.outputs.cache-hit != 'true'
@@ -179,7 +179,7 @@ jobs:
         # Move cached files from cache to artifacts, so they can be used in other jobs. 
         # It seems the job id/context is used to create the "cache version" and it always mismatches.
         #if: steps.cache.outputs.cache-hit != 'true'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: 'github-pages-base'
           path: _site/
@@ -204,7 +204,7 @@ jobs:
     steps:
 
       - name: "Download base reference."
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: 'github-pages-base'
           path: github-pages-base
@@ -219,7 +219,7 @@ jobs:
           rm assets/fonts/iconfont.woff2
 
       - name: "Download just-built artifact."
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: 'github-pages'
           path: github-pages-head
