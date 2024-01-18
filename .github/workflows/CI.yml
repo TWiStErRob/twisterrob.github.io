@@ -125,7 +125,7 @@ jobs:
 
       - name: "Load cached site."
         id: cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           key: github-pages-${{ steps.params.outputs.sha }}
           path: _site/
@@ -187,7 +187,7 @@ jobs:
 
       - name: "Store _site to cache."
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           key: ${{ steps.cache.outputs.cache-primary-key }}
           path: _site/
