@@ -3,7 +3,9 @@ source 'https://rubygems.org'
 # See https://github.com/TWiStErRob/twisterrob.github.io#upgrade
 # Current latest version: https://pages.github.com/versions/
 # For some reason omitting the version defaults to 0.
-gem 'github-pages', '= 228', group: :jekyll_plugins
+# TODO decouple, because it's unmaintained https://github.com/github/pages-gem/issues/890
+# Use specific ref, because last release was more than a year ago, master seems to have support for Ruby 3.3 and Jekyll 3.9.4.
+gem 'github-pages', :github => 'github/pages-gem', :ref => '974872fe73f8ec0b704e48f5c1f150df7a508e01', group: :jekyll_plugins
 
 # https://jekyllrb.com/docs/windows/#auto-regeneration
 # For --watch to work on Windows.
