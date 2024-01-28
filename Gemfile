@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 # For some reason omitting the version defaults to 0.
 # TODO decouple, because it's unmaintained https://github.com/github/pages-gem/issues/890
 gem 'github-pages', '= 228', group: :jekyll_plugins
+gem 'jekyll', '= 3.9.4'
 gem 'nokogiri', '= 1.16.0'
 
 # https://jekyllrb.com/docs/windows/#auto-regeneration
