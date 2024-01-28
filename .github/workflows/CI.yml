@@ -139,6 +139,7 @@ jobs:
           ref: ${{ steps.params.outputs.sha }}
 
       - name: "Setup old Ruby."
+        if: steps.cache.outputs.cache-hit != 'true'
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7.8'
