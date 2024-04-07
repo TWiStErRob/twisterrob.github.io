@@ -90,9 +90,10 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: "Build _site with Jekyll."
-        run: bundle exec jekyll build --trace --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+          BASE_URL: "${{ steps.pages.outputs.base_path }}"
+        run: bundle exec jekyll build --trace --baseurl "${BASE_URL}"
 
       - name: "Upload 'github-pages' artifact."
         uses: actions/upload-pages-artifact@v3
@@ -138,8 +139,10 @@ jobs:
 
       - name: "Calculate relevant SHA."
         id: params
+        env:
+          SHA: ${{ github.event.pull_request.base.sha || github.event.after }}
         run: |
-          echo "sha=${{ github.event.pull_request.base.sha || github.event.after }}" >> "${GITHUB_OUTPUT}"
+          echo "sha=${SHA}" >> "${GITHUB_OUTPUT}"
 
       - name: "Load cached site."
         id: cache
