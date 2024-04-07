@@ -32,6 +32,7 @@ jobs:
 
   build:
     name: "Build GitHub Pages Site"
+    timeout-minutes: 5
 
     permissions:
       contents: read
@@ -104,6 +105,7 @@ jobs:
     if: ${{ github.event_name == 'push' }}
     needs:
       - build
+    timeout-minutes: 1
 
     permissions:
       pages: write
@@ -123,11 +125,15 @@ jobs:
   cache:
     name: "Build Reference Site"
     if: ${{ (github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'content-change')) || github.event_name == 'push' }}
+    timeout-minutes: 5
 
     permissions:
       contents: read
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     steps:
 
       - name: "Calculate relevant SHA."
@@ -183,9 +189,10 @@ jobs:
 
       - name: "Build _site with Jekyll."
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
-        run: bundle exec jekyll build --trace --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+          BASE_URL: "${{ steps.pages.outputs.base_path }}"
+        run: bundle exec jekyll build --trace --baseurl "${BASE_URL}"
 
       - name: "Upload 'github-pages-base' artifact."
         if: ${{ github.event_name == 'pull_request' && (success() || failure()) }}
@@ -212,6 +219,9 @@ jobs:
     needs:
       - build
       - cache
+    timeout-minutes: 1
+
+    permissions: {} # download-artifact doesn't need a permission.
 
     runs-on: ubuntu-latest
     defaults:
