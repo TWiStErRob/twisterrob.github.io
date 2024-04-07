@@ -21,13 +21,27 @@ concurrency:
 
 jobs:
 
+  validate:
+    name: "🦺 Validation"
+    uses: TWiStErRob/github-workflows/.github/workflows/validate.yml@v3
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+
+
   build:
     name: "Build GitHub Pages Site"
+    timeout-minutes: 5
 
     permissions:
+      # actions/checkout
       contents: read
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     steps:
 
       - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."
@@ -44,7 +58,7 @@ jobs:
 
       - name: "Install fontcustom with all dependencies."
         working-directory: sources/iconfont
-        run: ${{ github.workspace }}/.github/workflows/install-fontcustom.sh
+        run: "${GITHUB_WORKSPACE}/.github/workflows/install-fontcustom.sh"
 
       - name: "Build iconfont."
         working-directory: sources/iconfont
@@ -54,6 +68,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: 'iconfont'
+          if-no-files-found: error
           path: |
             _sass/_iconfont.scss
             assets/fonts/iconfont.eot
@@ -63,7 +78,6 @@ jobs:
             assets/fonts/iconfont.woff2
             sources/iconfont/.fontcustom-manifest.json
             sources/iconfont/iconfont-preview.html
-          if-no-files-found: error
 
       - name: "Setup Ruby."
         uses: ruby/setup-ruby@v1
@@ -77,9 +91,10 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: "Build _site with Jekyll."
-        run: bundle exec jekyll build --trace --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+          BASE_URL: "${{ steps.pages.outputs.base_path }}"
+        run: bundle exec jekyll build --trace --baseurl "${BASE_URL}"
 
       - name: "Upload 'github-pages' artifact."
         uses: actions/upload-pages-artifact@v3
@@ -89,12 +104,15 @@ jobs:
 
   deploy:
     name: "Deploy GitHub Pages Site"
-    if: github.event_name == 'push'
+    if: ${{ github.event_name == 'push' }}
     needs:
       - build
+    timeout-minutes: 1
 
     permissions:
+      # actions/deploy-pages
       pages: write
+      # actions/deploy-pages
       id-token: write
 
     environment:
@@ -110,18 +128,25 @@ jobs:
 
   cache:
     name: "Build Reference Site"
-    if: (github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'content-change')) || github.event_name == 'push'
+    if: ${{ (github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'content-change')) || github.event_name == 'push' }}
+    timeout-minutes: 5
 
     permissions:
+      # actions/checkout
       contents: read
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     steps:
 
       - name: "Calculate relevant SHA."
         id: params
+        env:
+          SHA: ${{ github.event.pull_request.base.sha || github.event.after }}
         run: |
-          echo "sha=${{ github.event.pull_request.base.sha || github.event.after }}" >> "${GITHUB_OUTPUT}"
+          echo "sha=${SHA}" >> "${GITHUB_OUTPUT}"
 
       - name: "Load cached site."
         id: cache
@@ -132,14 +157,14 @@ jobs:
         # If exists (steps.cache.outputs.cache-hit == 'true'), then skip regeneration steps.
 
       - name: "Checkout ${{ steps.params.outputs.sha }} commit in ${{ github.repository }} repository."
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         uses: actions/checkout@v4
         with:
           submodules: true
           ref: ${{ steps.params.outputs.sha }}
 
       - name: "Setup old Ruby."
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7.8'
@@ -147,17 +172,17 @@ jobs:
           cache-version: 0 # Increment this number if you need to re-download cached gems.
 
       - name: "Install fontcustom with all dependencies."
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         working-directory: sources/iconfont
-        run: ${{ github.workspace }}/.github/workflows/install-fontcustom.sh
+        run: "${GITHUB_WORKSPACE}/.github/workflows/install-fontcustom.sh"
 
       - name: "Build iconfont."
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         working-directory: sources/iconfont
         run: fontcustom compile
 
       - name: "Setup Ruby."
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         uses: ruby/setup-ruby@v1
         with:
           #ruby-version: .ruby-version # So checkout is needed.
@@ -165,29 +190,30 @@ jobs:
           cache-version: 0 # Increment this number if you need to re-download cached gems.
 
       - name: "Retrieve GitHub Pages configuration."
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         id: pages
         uses: actions/configure-pages@v5
 
       - name: "Build _site with Jekyll."
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: bundle exec jekyll build --trace --baseurl "${{ steps.pages.outputs.base_path }}"
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         env:
           JEKYLL_ENV: production
+          BASE_URL: "${{ steps.pages.outputs.base_path }}"
+        run: bundle exec jekyll build --trace --baseurl "${BASE_URL}"
 
       - name: "Upload 'github-pages-base' artifact."
-        if: github.event_name == 'pull_request' && (success() || failure())
+        if: ${{ github.event_name == 'pull_request' && (success() || failure()) }}
         # Move cached files from cache to artifacts, so they can be used in other jobs. 
         # It seems the job id/context is used to create the "cache version" and it always mismatches.
         #if: steps.cache.outputs.cache-hit != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: 'github-pages-base'
-          path: _site/
           if-no-files-found: error
+          path: _site/
 
       - name: "Store _site to cache."
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         uses: actions/cache/save@v4
         with:
           key: ${{ steps.cache.outputs.cache-primary-key }}
@@ -196,12 +222,18 @@ jobs:
 
   diff:
     name: "Verify Against Reference Site"
-    if: github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'content-change')
+    if: ${{ github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'content-change') }}
     needs:
       - build
       - cache
+    timeout-minutes: 1
+
+    permissions: {} # download-artifact doesn't need a permission.
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     steps:
 
       - name: "Download base reference."

@@ -1,7 +1,7 @@
 name: "Create Jobs PR"
 
 on:
-  create: # This event does not support branch filter (branches: jobs).
+  create: # This event does not support branch filter (want `branches: jobs`, see if: below).
 
 concurrency:
   group: "jobs"
@@ -11,9 +11,11 @@ jobs:
 
   build:
     name: "Create PR for jobs branch."
-    if: github.ref == 'refs/heads/jobs'
+    if: ${{ github.ref == 'refs/heads/jobs' }}
+    timeout-minutes: 1
 
     permissions:
+      # actions/checkout
       contents: read
       # `gh pr create` needs this. It also needs
       # Settings > Actions > General > Workflow permissions > Allow GitHub Actions to create and approve pull requests
@@ -31,6 +33,7 @@ jobs:
         env:
           # Use token that's auto-created for this Job, see permissions: above.
           GH_TOKEN: ${{ github.token }}
+        shell: bash
         run: |
           # Workaround for https://github.com/cli/cli/issues/5896
           git fetch origin main
