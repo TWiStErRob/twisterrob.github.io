@@ -81,7 +81,7 @@ The widget will display the following part of the day, each with a corresponding
 
 ## Privacy Policy
 
-The Sun Position Widget (the app) allows the user (You) to check an estimation of the Sun's position in the sky.
+The _Sun Position Widget_ app (the app) allows the user (You) to check an estimation of the Sun's position in the sky.
 
 ### Location permission
 {: .no_toc }
