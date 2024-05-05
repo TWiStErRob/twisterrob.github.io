@@ -30,23 +30,28 @@ When looking at the data available from TfL, I found that it publishes the line 
 
 ## Privacy Policy
 
-The Color Filters in Android SDK app (the app) allows the user (You) to test color related features of the Android SDK and support libraries.
+The _Tube Range Map (London)_ app (the app) allows the user (You) to view a map that shows approximate travel times related to a specific location.
 
-### Read external storage permission
+### Location and network/Wi-Fi permissions
 {: .no_toc }
-This permission authorizes the app to read files from the device. This is used when taking a photo from camera, or picking an image from gallery.
-
-### Storage of user data
-{: .no_toc }
-The loaded images stay in the app, unless explicitly shared or saved.
+These permissions authorize the app to know where Your device is located in order to calculate Your current location (usually blue dot).
 
 ### Third-party services
 {: .no_toc }
-Currently there are no third party integrations (including analytics and ads) that allow data to leave the app without user action.
-This may change in the future, in which case:
+This section describes the third party service integrations.
+For more information about their privacy policies, please visit the links provided.
 
-* there will be an update available for the app
-* this Privacy Policy will be updated
+ * The app uses Google Maps SDK for Android to display the map.
+   * [Google's Privacy Policy](https://policies.google.com/privacy)
+   * [Google Maps SDK Data Disclosure documentation](https://developers.google.com/maps/documentation/android-sdk/play-data-disclosure)
+ * The app uses Google Places SDK for Android to provide location search.
+   * [Google's Privacy Policy](https://policies.google.com/privacy)
+   * [Google Places SDK Policies documentation](https://developers.google.com/maps/documentation/places/android-sdk/policies)
+   * [Google Places SDK Data Disclosure documentation](https://developers.google.com/maps/documentation/places/android-sdk/play-data-disclosure)
+ * The app uses the reverse geocoding service built into Android to display an approximate address of the chosen location.
+
+By using the app, You agree to the terms of the third-party services.
+For example [Google Maps Platform Terms of Service](https://cloud.google.com/maps-platform/terms).
 
 ### Future Changes
 {: .no_toc }
