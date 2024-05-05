@@ -37,7 +37,7 @@ After Lollipop came out the Android libraries were updated and they added suppor
 
 ## Privacy Policy
 
-The Color Filters in Android SDK app (the app) allows the user (You) to test color related features of the Android SDK and support libraries.
+The _Color Filters in Android SDK_ app (the app) allows the user (You) to test color related features of the Android SDK and support libraries.
 
 ### Read external storage permission
 {: .no_toc }
