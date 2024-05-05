@@ -133,7 +133,7 @@ The captured images are used as visual identification of Your belongings.
 {: .no_toc }
 The information You input is stored on the device\'s local storage mechanisms, as opposed to Cloud Storage.
 However, it is possible through various ways to directly or indirectly export Your data and make it available for external parties.
-From the moment Your data leaves the app via Backup or Export, the app has no control over that data, and hence third party terms and policies will apply.
+From the moment Your data leaves the app via Backup, Export, or Share functionalities, the app has no control over that data, and hence third party terms and policies will apply.
 
 ### Third-party services
 {: .no_toc }
