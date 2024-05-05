@@ -122,7 +122,7 @@ The HTML conversion XSLT file can be found in each exported ZIP file, so based o
 
 ## Privacy Policy
 
-The Magic Home Inventory app (the app) allows the user (You) to enter information about personal belongings.
+The _Magic Home Inventory_ app (the app) allows the user (You) to enter information about personal belongings.
 
 ### Camera permission
 {: .no_toc }
