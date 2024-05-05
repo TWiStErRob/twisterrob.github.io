@@ -18,7 +18,7 @@ me@devkit$ ruby dk.rb init
 me@devkit$ edit config.yml # add ruby directory
 me@devkit$ ruby dk.rb install
 me@anywhere$ gem install bundler
-me@website$ bundle install # takes about 5 minutes
+me@website$ bundle install # Takes about 5 minutes the first time on a clean Ruby.
 ```
 
 In case of `SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed` follow [these instructions](https://gist.github.com/luislavena/f064211759ee0f806c88).
