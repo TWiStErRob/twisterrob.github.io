@@ -52,7 +52,8 @@ jobs:
       - name: "Setup old Ruby."
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.7.8'
+          # ruby-version: sources/iconfont/.ruby-version # So checkout is needed.
+          working-directory: sources/iconfont
           bundler-cache: false
           cache-version: 0 # Increment this number if you need to re-download cached gems.
 
@@ -167,7 +168,8 @@ jobs:
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.7.8'
+          # ruby-version: sources/iconfont/.ruby-version # So checkout is needed.
+          working-directory: sources/iconfont
           bundler-cache: false
           cache-version: 0 # Increment this number if you need to re-download cached gems.
 
