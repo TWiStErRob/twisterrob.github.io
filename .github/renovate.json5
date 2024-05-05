@@ -5,10 +5,13 @@
 	],
 	"packageRules": [
 		{
-			"description": "Keep Ruby where it is, TODO https://github.com/TWiStErRob/twisterrob.github.io/issues/39",
-			"matchDepNames": "ruby",
+			"description": "Keep Ruby where it is, fontcustom is abandonware, see https://github.com/TWiStErRob/twisterrob.github.io/issues/32.",
+			"matchDepNames": ["ruby"],
+			"matchFileNames": [
+				"sources/iconfont/.ruby-version",
+			],
 			"matchCurrentValue": "/^2\\..*$/",
-			"matchUpdateTypes": "major",
+			"matchUpdateTypes": ["major"],
 			"enabled": false
 		}
 	]
