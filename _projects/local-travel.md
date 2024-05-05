@@ -27,3 +27,31 @@ To find more info about the current state of the app, go to the Google Play Stor
 
 ## Line status history
 When looking at the data available from TfL, I found that it publishes the line statuses. Sometimes I had the urge to see what's going on in the city. For example at times of a bigger snowfall, storm, or just a sports event. By the time I found out the status was most of the time already back to normal. The website linked above allows you to see what was happening in the past.
+
+## Privacy Policy
+
+The Color Filters in Android SDK app (the app) allows the user (You) to test color related features of the Android SDK and support libraries.
+
+### Read external storage permission
+{: .no_toc }
+This permission authorizes the app to read files from the device. This is used when taking a photo from camera, or picking an image from gallery.
+
+### Storage of user data
+{: .no_toc }
+The loaded images stay in the app, unless explicitly shared or saved.
+
+### Third-party services
+{: .no_toc }
+Currently there are no third party integrations (including analytics and ads) that allow data to leave the app without user action.
+This may change in the future, in which case:
+
+* there will be an update available for the app
+* this Privacy Policy will be updated
+
+### Future Changes
+{: .no_toc }
+If I decide to change this Privacy Policy, I will post those changes on this page.
+
+### Contact
+{: .no_toc }
+If there are still unanswered questions, or You want to chat about privacy of Your data, feel free to [contact&nbsp;me]({{site.baseurl}}/contact).
