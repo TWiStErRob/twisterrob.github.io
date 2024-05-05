@@ -14,6 +14,8 @@ links:
   googleplay: net.twisterrob.blt.range
 ---
 
+{% include toc.md %}
+
 ## Inception
 
 ### First idea
