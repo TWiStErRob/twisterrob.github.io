@@ -59,7 +59,7 @@ jobs:
 
       - name: "Install fontcustom with all dependencies."
         working-directory: sources/iconfont
-        run: "${GITHUB_WORKSPACE}/.github/workflows/install-fontcustom.sh"
+        run: bash --noprofile --norc -eo pipefail "${GITHUB_WORKSPACE}/.github/workflows/install-fontcustom.sh"
 
       - name: "Build iconfont."
         working-directory: sources/iconfont
@@ -176,7 +176,7 @@ jobs:
       - name: "Install fontcustom with all dependencies."
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         working-directory: sources/iconfont
-        run: "${GITHUB_WORKSPACE}/.github/workflows/install-fontcustom.sh"
+        run: bash --noprofile --norc -eo pipefail "${GITHUB_WORKSPACE}/.github/workflows/install-fontcustom.sh"
 
       - name: "Build iconfont."
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
