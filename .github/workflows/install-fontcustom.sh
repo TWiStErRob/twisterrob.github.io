@@ -1,3 +1,4 @@
+set -eo pipefail
 mkdir -p fontcustom && cd fontcustom
 gem install fontcustom --version 2.0.0
 sudo apt-get install fontforge=1:20201107~dfsg-4build1
