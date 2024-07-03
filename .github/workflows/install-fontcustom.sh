@@ -2,6 +2,9 @@ set -eo pipefail
 
 mkdir -p fontcustom && cd fontcustom
 
+# Disable printing years of changelog on install.
+echo 'gem: --no-document' >> ~/.gemrc
+
 # Workaround for
 # > Error installing fontcustom:
 # > The last version of ffi (~> 1.0) to support your Ruby & RubyGems was 1.17.0.
@@ -14,7 +17,7 @@ mkdir -p fontcustom && cd fontcustom
 # > rubygems-update requires Ruby version >= 3.0.0. The current ruby version is 2.7.8.225.
 # downgrading to specific version because Rubygems 3.5 dropped support for Ruby 2.7.x
 # https://blog.rubygems.org/2023/12/15/3.5.0-released.html
-gem update --system 3.4.22 --no-document
+gem update --system 3.4.22
 
 gem install fontcustom --version 2.0.0
 
