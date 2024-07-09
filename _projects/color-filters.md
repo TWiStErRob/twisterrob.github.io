@@ -66,6 +66,11 @@ If there are still unanswered questions, or You want to chat about privacy of Yo
 ## History
 See [releases on GitHub](https://github.com/TWiStErRob/net.twisterrob.colorfilters/releases) for more details.
 
+### [3.2.0#440-6decedd](https://github.com/TWiStErRob/net.twisterrob.colorfilters/releases/tag/v3.2.0) (2024-07-10)
+{: #v32000440}
+* Feature: Android 14 compatibility
+* Enhancement: dependency updates
+
 ### [3.1.0#333-64aa349](https://github.com/TWiStErRob/net.twisterrob.colorfilters/releases/tag/v3.1.0) (2023-08-30)
 {: #v31000333}
 * Feature: Android 12 and 13 compatibility
