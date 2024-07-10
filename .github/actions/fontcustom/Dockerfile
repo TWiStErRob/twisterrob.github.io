@@ -40,4 +40,4 @@ RUN git -c advice.detachedHead=false clone --branch v1.0.2 --depth 1 --recursive
 ENV PATH="$PATH:/tmp/woff2"
 
 COPY fontcustom.sh entrypoint.sh
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/tmp/entrypoint.sh"]
