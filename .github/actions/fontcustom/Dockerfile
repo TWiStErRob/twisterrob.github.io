@@ -23,7 +23,7 @@ RUN gem update --system 3.4.22
 # Install fontcustom with all required dependencies (fontforge, python2, sfnt2woff, woff2).
 RUN gem install fontcustom --version 2.0.0
 RUN apk add --no-cache fontforge --repository=https://dl-cdn.alpinelinux.org/alpine/v3.17/community
-RUN apk add python2 --repository=https://dl-cdn.alpinelinux.org/alpine/v3.15/community
+RUN apk add --no-cache python2   --repository=https://dl-cdn.alpinelinux.org/alpine/v3.15/community
 
 WORKDIR /tmp
 RUN git -c advice.detachedHead=false clone --branch v1.3.1 --depth 1 https://github.com/bramstein/sfnt2woff-zopfli.git \
