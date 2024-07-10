@@ -1,0 +1,10 @@
+name: "Build iconfont"
+description: "Build iconfont from SVG files using fontcustom."
+
+runs:
+  using: composite
+  steps:
+    - name: "Build iconfont"
+      uses: ./.github/actions/fontcustom
+      with:
+        working-directory: sources/iconfont
