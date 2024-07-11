@@ -1,0 +1,15 @@
+name: "fontcustom"
+description: "Build a font from SVG files using fontcustom."
+
+inputs:
+  working-directory:
+    description: |
+      Working directory in local file system.
+      Cannot use step.*.working-directory, because it's not available with Actions only runs:.
+    required: true
+
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.working-directory }}
