@@ -21,7 +21,7 @@ jobs:
       # Settings > Actions > General > Workflow permissions > Allow GitHub Actions to create and approve pull requests
       pull-requests: write
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
 
       - name: "Checkout ${{ github.ref }} branch in ${{ github.repository }} repository."

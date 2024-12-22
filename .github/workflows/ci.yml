@@ -38,7 +38,7 @@ jobs:
       # actions/checkout
       contents: read
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         shell: bash
@@ -120,7 +120,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: "Deploy to GitHub Pages"
         id: deployment
@@ -136,7 +136,7 @@ jobs:
       # actions/checkout
       contents: read
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         shell: bash
@@ -232,7 +232,7 @@ jobs:
 
     permissions: {} # download-artifact doesn't need a permission.
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         shell: bash
