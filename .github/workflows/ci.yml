@@ -66,7 +66,7 @@ jobs:
         run: fontcustom compile
 
       - name: "Upload 'iconfont' artifact."
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: 'iconfont'
           if-no-files-found: error
@@ -208,7 +208,7 @@ jobs:
         # Move cached files from cache to artifacts, so they can be used in other jobs. 
         # It seems the job id/context is used to create the "cache version" and it always mismatches.
         #if: steps.cache.outputs.cache-hit != 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: 'github-pages-base'
           if-no-files-found: error
@@ -239,7 +239,7 @@ jobs:
     steps:
 
       - name: "Download base reference."
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: 'github-pages-base'
           path: github-pages-base
@@ -255,7 +255,7 @@ jobs:
           sed -re 's/Last Updated: [0-9]{4}\/[0-9]{2}\/[0-9]{2}//' -i humans.txt
 
       - name: "Download just-built artifact."
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: 'github-pages'
           path: github-pages-head
