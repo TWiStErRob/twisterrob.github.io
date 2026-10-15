@@ -5,11 +5,10 @@
 	],
 	"packageRules": [
 		{
-			"description": "Keep Ruby where it is, fontcustom is abandonware, see https://github.com/TWiStErRob/twisterrob.github.io/issues/32.",
+			"description": "Keep fontcustom on Ruby 2.x until it is replaced: https://github.com/TWiStErRob/twisterrob.github.io/issues/32.",
 			"matchDepNames": ["ruby"],
-			"matchFileNames": [
-				"sources/iconfont/.ruby-version",
-			],
+			"matchFileNames": ["sources/iconfont/.ruby-version"],
+			// Restrict this rule to the iconfont runtime; the site Ruby receives normal updates.
 			"matchCurrentValue": "/^2\\..*$/",
 			"matchUpdateTypes": ["major"],
 			"enabled": false
