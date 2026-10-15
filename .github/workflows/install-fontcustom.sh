@@ -18,7 +18,7 @@ gem update --system 3.4.22
 
 gem install fontcustom --version 2.0.0
 
-sudo apt-get install fontforge
+sudo apt-get install fontforge=1:20230101~dfsg-1.1build1
 
 git -c advice.detachedHead=false clone --branch v1.3.1 --depth 1 https://github.com/bramstein/sfnt2woff-zopfli.git \
   && pushd sfnt2woff-zopfli \

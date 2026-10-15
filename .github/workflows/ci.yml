@@ -38,7 +38,7 @@ jobs:
       # actions/checkout
       contents: read
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         shell: bash
@@ -136,7 +136,7 @@ jobs:
       # actions/checkout
       contents: read
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         shell: bash
@@ -163,6 +163,13 @@ jobs:
         with:
           submodules: true
           ref: ${{ steps.params.outputs.sha }}
+
+      # Temporary: test the fix against the reference build while main still has the old pin.
+      - name: "Use Ubuntu 24.04 FontForge package for reference build."
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+        run: |
+          sed -i 's|sudo apt-get install fontforge=1:20201107~dfsg-4build1|sudo apt-get install fontforge=1:20230101~dfsg-1.1build1|' .github/workflows/install-fontcustom.sh
+          grep -qxF 'sudo apt-get install fontforge=1:20230101~dfsg-1.1build1' .github/workflows/install-fontcustom.sh
 
       - name: "Setup old Ruby."
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
