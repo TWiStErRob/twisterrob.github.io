@@ -102,3 +102,4 @@ https://github.com/kacperduras/disqus-for-jekyll
 ## Origin
 
 This website is based on the [Feeling Responsive theme](https://phlow.github.io/feeling-responsive/) by [Moritz »mo.« Sauer](https://github.com/Phlow/feeling-responsive) // [Phlow.de](https://phlow.de)
+
