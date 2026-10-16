@@ -89,8 +89,12 @@ def slowStyle = tasks.register("slowStyle") {
 }
 
 project.afterEvaluate {
-	tasks.named("build", Jekyll.class).configure { mustRunAfter(jobs, font, fastStyle, slowStyle) }
-	tasks.named("serve", Jekyll.class).configure { mustRunAfter(jobs, font, fastStyle, slowStyle) }
+	tasks.named("build", Jekyll.class).configure {
+		mustRunAfter(jobs, font, fastStyle, slowStyle, tasks.withType(JekyllSetup.class))
+	}
+	tasks.named("serve", Jekyll.class).configure {
+		mustRunAfter(jobs, font, fastStyle, slowStyle, tasks.withType(JekyllSetup.class))
+	}
 	tasks.named("clean", Delete.class).configure { mustRunAfter(fastStyleCopyCachedCSS) }
 
 	tasks.register("fastDev") {
@@ -187,9 +191,6 @@ class JekyllSetup extends DefaultTask {
 
 	JekyllSetup() {
 		group = GROUP
-		project.afterEvaluate {
-			project.tasks.withType(Jekyll.class) { it.mustRunAfter(this) }
-		}
 	}
 
 	@TaskAction
