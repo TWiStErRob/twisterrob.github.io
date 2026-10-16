@@ -238,16 +238,23 @@ abstract class Jekyll extends Exec {
 
 	@Override protected void exec() {
 		workingDir = project.file(unsubst(workingDir.path))
-		commandLine([Os.isFamily(Os.FAMILY_WINDOWS)? "bundle.bat" : "bundle",
-			"exec",
-			"jekyll",
-			jekyllTask,
-			!configs.isEmpty() ? "--config" : "",
-			configs.join(","),
-			trace? "--trace" : "",
-			verbose? "--verbose" : "",
-			incremental? "--incremental" : "",
-			jekyllTask == "serve" && skip? "--skip-initial-build": ""] + args)
+		List<String> command = [Os.isFamily(Os.FAMILY_WINDOWS) ? "bundle.bat" : "bundle", "exec", "jekyll", jekyllTask]
+		if (!configs.isEmpty()) {
+			command.addAll(["--config", configs.join(",")])
+		}
+		if (trace) {
+			command.add("--trace")
+		}
+		if (verbose) {
+			command.add("--verbose")
+		}
+		if (incremental) {
+			command.add("--incremental")
+		}
+		if (jekyllTask == "serve" && skip) {
+			command.add("--skip-initial-build")
+		}
+		commandLine(command + args)
 		super.exec()
 	}
 
