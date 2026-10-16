@@ -123,12 +123,12 @@ task clean(type: Delete) {
 }
 task build(type: Jekyll) {
 	description = "Runs jekyll build, use tasks in ${JekyllSetup.GROUP} group to change behavior"
-	jekyllTask 'build'
+	jekyllTask = "build"
 	mustRunAfter clean
 }
 task serve(type: Jekyll) {
 	description = "Start jekyll in serve mode, use tasks in ${JekyllSetup.GROUP} group to change behavior"
-	jekyllTask 'serve'
+	jekyllTask = "serve"
 	mustRunAfter clean
 	outputs.upToDateWhen { false }
 }
