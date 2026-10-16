@@ -35,6 +35,7 @@ def font = tasks.register("font", Exec.class) {
 	outputs.file("assets/fonts/iconfont.ttf")
 	outputs.file("assets/fonts/iconfont.svg")
 	outputs.file("assets/fonts/iconfont.woff")
+	outputs.file("assets/fonts/iconfont.woff2")
 	outputs.file("assets/fonts/iconfont.eot")
 	outputs.file("_sass/_iconfont.scss")
 	outputs.file("sources/iconfont/iconfont-preview.html")
