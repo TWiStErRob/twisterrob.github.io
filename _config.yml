@@ -67,6 +67,9 @@ plugins:
 # Provides redirect_from: in frontmatter for path aliases
   - jekyll-redirect-from
 
+redirect_from:
+  json: false
+
 #      _____ __                  __
 #     / ___// /________  _______/ /___  __________
 #     \__ \/ __/ ___/ / / / ___/ __/ / / / ___/ _ \
