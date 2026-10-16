@@ -10,11 +10,9 @@ buildscript {
 }
 //project.afterEvaluate { project.tasks.all { Task t -> t.inputs.file "build.gradle"; } }
 
-task jobs(type: Exec.class) {
+def jobs = tasks.register("jobs", Exec.class) {
 	group = "Pre-build"
 	description = "Processes the jobs collection by removing unused stuff from their frontmatter for privacy"
-	afterEvaluate { tasks.build.mustRunAfter(jobs) }
-	afterEvaluate { tasks.serve.mustRunAfter(jobs) }
 
 	def script = "sources/jobs/strip-frontmatter.rb"
 	def from = "sources/jobs/"
@@ -25,11 +23,9 @@ task jobs(type: Exec.class) {
 	logging.captureStandardOutput(LogLevel.INFO)
 	commandLine("ruby", script, from, to)
 }
-task font(type: Exec.class) {
+def font = tasks.register("font", Exec.class) {
 	group = "Pre-build"
 	description = "Regenerate the custom icon font"
-	afterEvaluate { tasks.build.mustRunAfter(font) }
-	afterEvaluate { tasks.serve.mustRunAfter(font) }
 
 	workingDir = file("sources/iconfont")
 	inputs.file(new File(workingDir, "fontcustom.yml"))
@@ -49,8 +45,7 @@ def slow = file("assets/css/${style}.scss")
 def ignored = file("assets/css/_${style}.scss")
 def fast = "assets/css/${style}.css"
 def fastSource = file("_site/" + fast)
-task fastStyleCopyCachedCSS(type: Copy.class) {
-	afterEvaluate { tasks.clean.mustRunAfter(fastStyleCopyCachedCSS) }
+def fastStyleCopyCachedCSS = tasks.register("fastStyleCopyCachedCSS", Copy.class) {
 
 	from(fastSource)
 	into("assets/css")
@@ -62,28 +57,26 @@ task fastStyleCopyCachedCSS(type: Copy.class) {
 		return true
 	}
 }
-task fastStyle(dependsOn: fastStyleCopyCachedCSS) {
+def fastStyle = tasks.register("fastStyle") {
 	group = "Efficiency"
 	description = "Uses generated CSS from _site instead of compiling from _sass."
-	afterEvaluate { tasks.build.mustRunAfter(fastStyle) }
-	afterEvaluate { tasks.serve.mustRunAfter(fastStyle) }
+	dependsOn(fastStyleCopyCachedCSS)
 
-	onlyIf { fastStyleCopyCachedCSS.state.didWork || fastStyleCopyCachedCSS.state.skipMessage == "UP-TO-DATE" }
+	onlyIf { fastStyleCopyCachedCSS.get().state.didWork || fastStyleCopyCachedCSS.get().state.skipMessage == "UP-TO-DATE" }
 	doLast {
 		if (slow.exists() && ignored.exists() && slow.text == ignored.text) { ignored.delete() }
 		if (!slow.renameTo(ignored)) { throw new IOException("Cannot rename ${slow} to ${ignored}.") }
 	}
 	outputs.upToDateWhen { !slow.exists() && ignored.exists() }
 }
-task slowStyleRemoveCachedCSS(type: Delete.class) {
+def slowStyleRemoveCachedCSS = tasks.register("slowStyleRemoveCachedCSS", Delete.class) {
 	delete(fast)
 	onlyIf { slow.exists() || ignored.exists() }
 }
-task slowStyle(dependsOn: slowStyleRemoveCachedCSS) {
+def slowStyle = tasks.register("slowStyle") {
 	group = "Efficiency"
 	description = "Generates CSS from _sass."
-	afterEvaluate { tasks.build.mustRunAfter(slowStyle) }
-	afterEvaluate { tasks.serve.mustRunAfter(slowStyle) }
+	dependsOn(slowStyleRemoveCachedCSS)
 
 	doLast {
 		if (!ignored.renameTo(slow)) {
@@ -94,6 +87,10 @@ task slowStyle(dependsOn: slowStyleRemoveCachedCSS) {
 }
 
 project.afterEvaluate {
+	tasks.build.mustRunAfter(jobs, font, fastStyle, slowStyle)
+	tasks.serve.mustRunAfter(jobs, font, fastStyle, slowStyle)
+	tasks.clean.mustRunAfter(fastStyleCopyCachedCSS)
+
 	task fastDev(dependsOn: [fastStyle, serve, dev, skip]) {
 		group = "Efficiency"
 		description = "Daily development task to run in browser for editing content."
