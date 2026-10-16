@@ -193,7 +193,7 @@ class JekyllSetup extends DefaultTask {
 	}
 }
 
-class Jekyll extends Exec {
+abstract class Jekyll extends Exec {
 	static final GROUP = "Jekyll"
 
 	@Input
