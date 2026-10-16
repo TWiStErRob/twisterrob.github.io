@@ -2,8 +2,8 @@ Visit [twisterrob.net](https://www.twisterrob.net).
 
 
 # Development Install
-Install [Ruby+Devkit](https://rubyinstaller.org/downloads/) on Windows to build the site and its native gems. Use the version in [`.ruby-version`](.ruby-version) (currently 3.4.11) to match CI.
-
+Install [Ruby+Devkit](https://rubyinstaller.org/downloads/) on Windows to build the site and its native gems.
+Use the version in [`.ruby-version`](.ruby-version) to match CI.
 To regenerate the icon font, see [the iconfont build instructions](sources/iconfont/README.md).
 
 
@@ -12,7 +12,7 @@ To regenerate the icon font, see [the iconfont build instructions](sources/iconf
 ```shell
 ridk install # Select the MSYS2 and MINGW development toolchain.
 gem install bundler
-bundle install
+bundle install # Takes about 5 minutes the first time on a clean Ruby.
 ```
 
 In case of `SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed` follow [these instructions](https://gist.github.com/luislavena/f064211759ee0f806c88).
