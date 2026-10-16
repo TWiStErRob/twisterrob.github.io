@@ -10,7 +10,6 @@ buildscript {
 		classpath("org.yaml:snakeyaml:2.7")
 	}
 }
-//project.afterEvaluate { project.tasks.all { Task t -> t.inputs.file "build.gradle"; } }
 
 def jobs = tasks.register("jobs", Exec.class) {
 	group = "Pre-build"
@@ -110,12 +109,12 @@ project.afterEvaluate {
 	}
 	tasks.register("preCommit") {
 		group = "Efficiency"
-		description = "Task to run before commiting to version control."
+		description = "Task to run before committing to version control."
 		dependsOn(tasks.named("slowStyle"), tasks.named("clean"), tasks.named("jobs"), tasks.named("build"))
 	}
 	tasks.register("preCommitServe") {
 		group = "Efficiency"
-		description = "Task to run before commiting to version control."
+		description = "Task to run before committing to version control."
 		dependsOn(tasks.named("slowStyle"), tasks.named("clean"), tasks.named("jobs"), tasks.named("serve"), tasks.named("local"))
 	}
 	tasks.register("rebuild") {
@@ -175,11 +174,11 @@ def trace = tasks.register("trace", JekyllSetup.class) {
 }
 notrace.configure { mustRunAfter(trace) }
 def noverbose = tasks.register("noverbose", JekyllSetup.class) {
-	description = "Remove --trace argument from jekyll (default is removed)"
+	description = "Remove --verbose argument from jekyll (default is removed)"
 	action = { it.verbose = false }
 }
 def verbose = tasks.register("verbose", JekyllSetup.class) {
-	description = "Add --trace argument to jekyll (default is removed)"
+	description = "Add --verbose argument to jekyll (default is removed)"
 	action = { it.verbose = true }
 }
 noverbose.configure { mustRunAfter(verbose) }
