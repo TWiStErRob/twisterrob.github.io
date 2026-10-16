@@ -50,49 +50,6 @@ me@webiste$ gradlew preCommitServe local
       * If it asks for `ridk install`, choose _"MSYS2 and MINGW development toolchain"_ and install to `%RUBY_HOME%\msys64`.
  * Check if https://help.github.com/articles/configuring-jekyll/#configuration-settings-you-cannot-change has changed
 
-## TODO
-
-GHPages:
- * 161 Whitelist jekyll-octicons (#483) https://github.com/github/pages-gem/pull/483
- * 86-192: rouge 1.11.1 -> 2.2.1
- * kramdown 1.13.2 -> 1.17.0
-
-Jekyll 3.5
- * Sitemaps for static files
- * Liquid 4: https://github.com/Shopify/liquid/blob/main/History.md#400--2016-12-14--branch-4-0-stable
- * Jekyll now uses Liquid 4, the latest! It comes with whitespace control, new filters concat and compact, loop performance improvements and many fixes
- * Pages, posts, and other documents can now access layout variables via {{ layout }}.
- * The gems key in the _config.yml is now plugins.
- * Filters like sort now allow you to sort based on a subvalue, e.g. {% assign sorted = site.posts | sort: "image.alt_text" %}.
- * layout: null -> layout: none (null = default, none = no layout)
-
-Jekyll 3.6
- * Rouge 2 support, but note you can continue to use Rouge 1
-
-Jekyll 3.7
- * --livereload
- * slugify latin
- * collections folder (https://jekyllrb.com/docs/collections/)
- * Ruby 2.5.3
-
-Finished reading news <3.8 and changelog <=3.8
-
-These two end up in sitemap after update:
- * /dev/assets/css/style.css
- * /dev/redirects.json
-
-dev > sass > line_numbers: true is broken after update (generated CSS files no longer have line numbers)
-ref https://github.com/jekyll/jekyll-sass-converter/blob/master/lib/jekyll/converters/scss.rb#L48
-
-dev > sass > sourcemap is disabled, check if it can be enabled
-
-new RegExp('vegetarian is broken in javascript, report backslash issue
-contact wasn't working, now it is? (probably should be generated in debug)
-shell code formatting lost user@machine$ formatting
-
-https://github.com/jekyll/jekyll/pull/6384/files#diff-514abd885acda367325e5236a9be3192R68
-https://github.com/kacperduras/disqus-for-jekyll
-
 ## Origin
 
 This website is based on the [Feeling Responsive theme](https://phlow.github.io/feeling-responsive/) by [Moritz »mo.« Sauer](https://github.com/Phlow/feeling-responsive) // [Phlow.de](https://phlow.de)
