@@ -89,13 +89,15 @@ def slowStyle = tasks.register("slowStyle") {
 }
 
 project.afterEvaluate {
-	tasks.named("build", Jekyll.class).configure {
+	tasks.named("build").configure {
 		mustRunAfter(jobs, font, fastStyle, slowStyle, tasks.withType(JekyllSetup.class))
 	}
-	tasks.named("serve", Jekyll.class).configure {
+	tasks.named("serve").configure {
 		mustRunAfter(jobs, font, fastStyle, slowStyle, tasks.withType(JekyllSetup.class))
 	}
-	tasks.named("clean", Delete.class).configure { mustRunAfter(fastStyleCopyCachedCSS) }
+	tasks.named("clean").configure {
+		mustRunAfter(fastStyleCopyCachedCSS)
+	}
 
 	tasks.register("fastDev") {
 		group = "Efficiency"
