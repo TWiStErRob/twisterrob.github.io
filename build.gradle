@@ -224,7 +224,6 @@ abstract class Jekyll extends Exec {
 		def excludes = new org.yaml.snakeyaml.Yaml().load(new File(project.rootDir, "_config.yml").text).exclude
 		def tree = project.fileTree(dir: project.rootDir)
 		excludes.each { tree.exclude(it) }
-		configs.each { tree.include(it) }
 		inputs.files(tree)
 		outputs.dir(new File(project.rootDir, "_site"))
 		onlyIf { jekyllTask }
