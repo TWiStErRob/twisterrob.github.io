@@ -136,7 +136,7 @@ jobs:
 
   cache:
     name: "Build Reference Site"
-    if: ${{ (github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'content-change')) || github.event_name == 'push' }}
+    if: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
     timeout-minutes: 5
 
     permissions:
@@ -231,7 +231,7 @@ jobs:
 
   diff:
     name: "Verify Against Reference Site"
-    if: ${{ github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'content-change') }}
+    if: ${{ github.event_name == 'pull_request' }}
     needs:
       - build
       - cache
@@ -281,4 +281,5 @@ jobs:
 
       # assets/fonts/ is excluded, because building fonts is not deterministic.
       - name: "Diff head against base."
+        continue-on-error: ${{ contains(github.event.pull_request.labels.*.name, 'content-change') }}
         run: diff --recursive github-pages-base github-pages-head
