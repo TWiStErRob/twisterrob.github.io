@@ -238,40 +238,38 @@ abstract class Jekyll extends Exec {
 	}
 }
 
-project.afterEvaluate {
-	build.configure {
-		mustRunAfter(jobs, font, fastStyle, slowStyle, tasks.withType(JekyllSetup.class))
-	}
-	serve.configure {
-		mustRunAfter(jobs, font, fastStyle, slowStyle, tasks.withType(JekyllSetup.class))
-	}
-	clean.configure {
-		mustRunAfter(fastStyleCopyCachedCSS)
-	}
+build.configure {
+	mustRunAfter(jobs, font, fastStyle, slowStyle, tasks.withType(JekyllSetup.class))
+}
+serve.configure {
+	mustRunAfter(jobs, font, fastStyle, slowStyle, tasks.withType(JekyllSetup.class))
+}
+clean.configure {
+	mustRunAfter(fastStyleCopyCachedCSS)
+}
 
-	tasks.register("fastDev") {
-		group = "Efficiency"
-		description = "Daily development task to run in browser for editing content."
-		dependsOn(fastStyle, serve, dev, skip)
-	}
-	tasks.register("fastDevStyle") {
-		group = "Efficiency"
-		description = "Daily development task to run in browser for editing theme."
-		dependsOn(slowStyle, serve, dev, skip)
-	}
-	tasks.register("preCommit") {
-		group = "Efficiency"
-		description = "Task to run before committing to version control."
-		dependsOn(slowStyle, clean, jobs, build)
-	}
-	tasks.register("preCommitServe") {
-		group = "Efficiency"
-		description = "Task to run before committing to version control."
-		dependsOn(slowStyle, clean, jobs, serve, local)
-	}
-	tasks.register("rebuild") {
-		group = "Efficiency"
-		description = "Rebuild the whole site from scratch."
-		dependsOn(slowStyle, clean, jobs, font, build, local)
-	}
+tasks.register("fastDev") {
+	group = "Efficiency"
+	description = "Daily development task to run in browser for editing content."
+	dependsOn(fastStyle, serve, dev, skip)
+}
+tasks.register("fastDevStyle") {
+	group = "Efficiency"
+	description = "Daily development task to run in browser for editing theme."
+	dependsOn(slowStyle, serve, dev, skip)
+}
+tasks.register("preCommit") {
+	group = "Efficiency"
+	description = "Task to run before committing to version control."
+	dependsOn(slowStyle, clean, jobs, build)
+}
+tasks.register("preCommitServe") {
+	group = "Efficiency"
+	description = "Task to run before committing to version control."
+	dependsOn(slowStyle, clean, jobs, serve, local)
+}
+tasks.register("rebuild") {
+	group = "Efficiency"
+	description = "Rebuild the whole site from scratch."
+	dependsOn(slowStyle, clean, jobs, font, build, local)
 }
