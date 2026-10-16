@@ -26,8 +26,6 @@ me@windows$ unsubst bundle exec jekyll serve --config _config.yml,_config_local.
 me@windows$ gradlew serve --dev --noskip
 ```
 
-Use `--skip` to skip the initial serve build, or `--noskip` to run it.
-
 ## Usage
 
 Check if site build successfully before each commit
