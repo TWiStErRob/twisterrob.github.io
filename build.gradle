@@ -202,7 +202,7 @@ abstract class Jekyll extends Exec {
 	}
 
 	@Override protected void exec() {
-		workingDir = new File(unsubst(workingDir.path))
+		workingDir = unsubst(workingDir)
 		commandLine([Os.isFamily(Os.FAMILY_WINDOWS)? "bundle.bat" : "bundle",
 			"exec",
 			"jekyll",
@@ -221,18 +221,19 @@ abstract class Jekyll extends Exec {
 		inputs.file(file)
 	}
 
-	private static String unsubst(String path) {
-		if (!Os.isFamily(Os.FAMILY_WINDOWS)) return path
+	private static File unsubst(File directory) {
+		if (!Os.isFamily(Os.FAMILY_WINDOWS)) return directory
 		def subst = "subst".execute()
 		def substs = [:]
 		subst.text.eachLine {
 			substs[it[0..1]] = it.substring("X:\\: => ".size(), it.size())
 		}
-		if (subst.exitValue()) return path
+		if (subst.exitValue()) return directory
+		String path = directory.path
 		while(path[0..1] in substs) {
 			path = substs[path[0..1]] + path.substring(2)
 		}
-		return path
+		return new File(path)
 	}
 }
 
