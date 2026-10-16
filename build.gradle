@@ -83,7 +83,7 @@ def slowStyle = tasks.register("slowStyle") {
 			throw new IOException("Cannot rename ${ignored} to ${slow}.")
 		}
 	}
-	outputs.upToDateWhen { !ignored.exists() && slow.exists() }
+	onlyIf { ignored.exists() || !slow.exists() }
 }
 
 def clean = tasks.register("clean", Delete.class) {
