@@ -135,46 +135,47 @@ def serve = tasks.register("serve", Jekyll.class) {
 	outputs.upToDateWhen { false }
 }
 
-task local(type: JekyllSetup.class) {
+def local = tasks.register("local", JekyllSetup.class) {
 	description = "Use _config_local.yml overrides"
 	action = {
 		it.config("_config_local.yml")
 	}
 }
-task dev(type: JekyllSetup.class, dependsOn: local) {
+def dev = tasks.register("dev", JekyllSetup.class) {
 	description = "Use _config_dev.yml overrides and sets JEKYLL_ENV to development"
+	dependsOn(local)
 	action = {
 		it.config("_config_dev.yml")
 		it.environment("JEKYLL_ENV", "development")
 	}
 }
-task noskip(type: JekyllSetup.class) {
+def noskip = tasks.register("noskip", JekyllSetup.class) {
 	description = "Remove --skip-initial-build from serve command (default is removed)"
 	action = { it.skip = false }
 }
-task skip(type: JekyllSetup.class) {
+def skip = tasks.register("skip", JekyllSetup.class) {
 	description = "Add --skip-initial-build to serve command (default is removed)"
 	action = { it.skip = true }
-	noskip.mustRunAfter(skip)
 }
-task notrace(type: JekyllSetup.class) {
+noskip.configure { mustRunAfter(skip) }
+def notrace = tasks.register("notrace", JekyllSetup.class) {
 	description = "Remove --trace argument from jekyll (default is added)"
 	action = { it.trace = false }
 }
-task trace(type: JekyllSetup.class) {
+def trace = tasks.register("trace", JekyllSetup.class) {
 	description = "Add --trace argument to jekyll (default is added)"
 	action = { it.trace = true }
-	notrace.mustRunAfter(trace)
 }
-task noverbose(type: JekyllSetup.class) {
+notrace.configure { mustRunAfter(trace) }
+def noverbose = tasks.register("noverbose", JekyllSetup.class) {
 	description = "Remove --trace argument from jekyll (default is removed)"
 	action = { it.verbose = false }
 }
-task verbose(type: JekyllSetup.class) {
+def verbose = tasks.register("verbose", JekyllSetup.class) {
 	description = "Add --trace argument to jekyll (default is removed)"
 	action = { it.verbose = true }
-	noverbose.mustRunAfter(verbose)
 }
+noverbose.configure { mustRunAfter(verbose) }
 
 class JekyllSetup extends DefaultTask {
 	static final GROUP = "Jekyll Param"
