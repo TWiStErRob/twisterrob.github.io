@@ -95,7 +95,14 @@ jobs:
         env:
           JEKYLL_ENV: production
           BASE_URL: "${{ steps.pages.outputs.base_path }}"
-        run: bundle exec jekyll build --trace --baseurl "${BASE_URL}"
+        run: bundle exec jekyll build --trace --baseurl "${BASE_URL}" 2>&1 | tee "${RUNNER_TEMP}/build.log"
+
+      - name: "Fail on Jekyll warnings."
+        run: |
+          if grep --fixed-strings --ignore-case --quiet --regexp='warn:' --regexp='warning:' "${RUNNER_TEMP}/build.log"; then
+            echo "::error::Jekyll build emitted warnings."
+            exit 1
+          fi
 
       - name: "Upload 'github-pages' artifact."
         uses: actions/upload-pages-artifact@v5

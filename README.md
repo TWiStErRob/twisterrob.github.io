@@ -2,23 +2,17 @@ Visit [twisterrob.net](https://www.twisterrob.net).
 
 
 # Development Install
-Requires both [ruby](https://rubyinstaller.org/downloads/) and [devkit](https://rubyinstaller.org/downloads/) on [Windows 7 x64](https://corlewsolutions.com/articles/article-19-install-ruby-on-windows-7-32-bit-or-64-bit) to install native extensions.
-
-
-## Ruby
-Download `ruby-2.1.3-x64-mingw32.7z` from [bintray](https://bintray.com/oneclick/rubyinstaller/rubyinstaller/2.1.3/view#files).
-Download Latest DevKit from [bintray](https://bintray.com/oneclick/rubyinstaller/DevKit/view)
-Note: the version number should match closely what's on: https://pages.github.com/versions/
+Install [Ruby+Devkit](https://rubyinstaller.org/downloads/) on Windows to build the site and its native gems.
+Use the version in [`.ruby-version`](.ruby-version) to match CI.
+To regenerate the icon font, see [the iconfont build instructions](sources/iconfont/README.md).
 
 
 ## First time
 
 ```shell
-me@devkit$ ruby dk.rb init
-me@devkit$ edit config.yml # add ruby directory
-me@devkit$ ruby dk.rb install
-me@anywhere$ gem install bundler
-me@website$ bundle install # Takes about 5 minutes the first time on a clean Ruby.
+ridk install # Select the MSYS2 and MINGW development toolchain.
+gem install bundler
+bundle install # Takes about 5 minutes the first time on a clean Ruby.
 ```
 
 In case of `SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed` follow [these instructions](https://gist.github.com/luislavena/f064211759ee0f806c88).
@@ -55,49 +49,6 @@ me@webiste$ gradlew preCommitServe local
    * Ruby
       * If it asks for `ridk install`, choose _"MSYS2 and MINGW development toolchain"_ and install to `%RUBY_HOME%\msys64`.
  * Check if https://help.github.com/articles/configuring-jekyll/#configuration-settings-you-cannot-change has changed
-
-## TODO
-
-GHPages:
- * 161 Whitelist jekyll-octicons (#483) https://github.com/github/pages-gem/pull/483
- * 86-192: rouge 1.11.1 -> 2.2.1
- * kramdown 1.13.2 -> 1.17.0
-
-Jekyll 3.5
- * Sitemaps for static files
- * Liquid 4: https://github.com/Shopify/liquid/blob/main/History.md#400--2016-12-14--branch-4-0-stable
- * Jekyll now uses Liquid 4, the latest! It comes with whitespace control, new filters concat and compact, loop performance improvements and many fixes
- * Pages, posts, and other documents can now access layout variables via {{ layout }}.
- * The gems key in the _config.yml is now plugins.
- * Filters like sort now allow you to sort based on a subvalue, e.g. {% assign sorted = site.posts | sort: "image.alt_text" %}.
- * layout: null -> layout: none (null = default, none = no layout)
-
-Jekyll 3.6
- * Rouge 2 support, but note you can continue to use Rouge 1
-
-Jekyll 3.7
- * --livereload
- * slugify latin
- * collections folder (https://jekyllrb.com/docs/collections/)
- * Ruby 2.5.3
-
-Finished reading news <3.8 and changelog <=3.8
-
-These two end up in sitemap after update:
- * /dev/assets/css/style.css
- * /dev/redirects.json
-
-dev > sass > line_numbers: true is broken after update (generated CSS files no longer have line numbers)
-ref https://github.com/jekyll/jekyll-sass-converter/blob/master/lib/jekyll/converters/scss.rb#L48
-
-dev > sass > sourcemap is disabled, check if it can be enabled
-
-new RegExp('vegetarian is broken in javascript, report backslash issue
-contact wasn't working, now it is? (probably should be generated in debug)
-shell code formatting lost user@machine$ formatting
-
-https://github.com/jekyll/jekyll/pull/6384/files#diff-514abd885acda367325e5236a9be3192R68
-https://github.com/kacperduras/disqus-for-jekyll
 
 ## Origin
 

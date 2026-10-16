@@ -132,4 +132,4 @@ alert("Bookmarklet");
 ## Other blogging platforms
 You can use the same technique on any blogging platform given that you have control over the styles and scripts of the pages.
 
-[^1]: {% include snippets/bookmarklet.html %}
+{{ '' }}[^1]: {% include snippets/bookmarklet.html %}

@@ -101,4 +101,4 @@ $('#menu-navigation .current-menu-item > a').text("Menu, filtered: (V)")
 
 This is a best effort implementation which only works in English menus and I take no responsibility if the script breaks the page or leaves some non-vegetarian dishes on the menu. Please report any omissions and other issues with the script.
 
-[^1]: {% include snippets/bookmarklet.html %}
+{{ '' }}[^1]: {% include snippets/bookmarklet.html %}

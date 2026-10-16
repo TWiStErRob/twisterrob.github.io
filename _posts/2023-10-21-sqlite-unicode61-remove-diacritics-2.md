@@ -169,8 +169,8 @@ Android API 30 (including SQLite `3.28`) is the first one that supports `remove_
  3. Test assumptions if possible.  
     Luckily I tested on my `minSdk` version before releasing this time and found the problem early.
 
-[^1]: You can substitute many versions here for a few coming years. According to [apilevels.com](https://apilevels.com/) which sources data from [GlobalStats](https://gs.statcounter.com/android-version-market-share/mobile-tablet/worldwide).
-[^2]: Foreshadowing: At this point something was fishy to me: using the first SQLite version where FTS4 was available had "historical reasons" already. But I dismissed feeling on account of the high of the great feasibility news.
-[^3]: I set out to find and document the exact problem here, the end result is what you're reading right now.
-[^4]: In hindsight the answer is very simple, but finding it wasn't that trivial.
-[^5]: Research based on [Android Release dates](https://developer.android.com/reference/kotlin/android/os/Build.VERSION_CODES), [Android embedded SQLite versions](https://developer.android.com/reference/android/database/sqlite/package-summary), [SQLite FTS3 and FTS4 documentation](https://www.sqlite.org/fts3.html) and its [historical snapshots on archive.org](https://web.archive.org/web/20190207000000*/https://www.sqlite.org/fts3.html), [SQLite release dates](https://sqlite.org/chronology.html) and [release notes](https://sqlite.org/changes.html).
+{{ '' }}[^1]: You can substitute many versions here for a few coming years. According to [apilevels.com](https://apilevels.com/) which sources data from [GlobalStats](https://gs.statcounter.com/android-version-market-share/mobile-tablet/worldwide).
+{{ '' }}[^2]: Foreshadowing: At this point something was fishy to me: using the first SQLite version where FTS4 was available had "historical reasons" already. But I dismissed feeling on account of the high of the great feasibility news.
+{{ '' }}[^3]: I set out to find and document the exact problem here, the end result is what you're reading right now.
+{{ '' }}[^4]: In hindsight the answer is very simple, but finding it wasn't that trivial.
+{{ '' }}[^5]: Research based on [Android Release dates](https://developer.android.com/reference/kotlin/android/os/Build.VERSION_CODES), [Android embedded SQLite versions](https://developer.android.com/reference/android/database/sqlite/package-summary), [SQLite FTS3 and FTS4 documentation](https://www.sqlite.org/fts3.html) and its [historical snapshots on archive.org](https://web.archive.org/web/20190207000000*/https://www.sqlite.org/fts3.html), [SQLite release dates](https://sqlite.org/chronology.html) and [release notes](https://sqlite.org/changes.html).
