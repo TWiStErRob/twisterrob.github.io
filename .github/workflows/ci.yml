@@ -281,9 +281,5 @@ jobs:
 
       # assets/fonts/ is excluded, because building fonts is not deterministic.
       - name: "Diff head against base."
-        if: ${{ contains(github.event.pull_request.labels.*.name, 'content-change') }}
-        run: diff --recursive github-pages-base github-pages-head || true
-
-      - name: "Strict diff head against base."
-        if: ${{ !contains(github.event.pull_request.labels.*.name, 'content-change') }}
+        continue-on-error: ${{ contains(github.event.pull_request.labels.*.name, 'content-change') }}
         run: diff --recursive github-pages-base github-pages-head
