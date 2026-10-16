@@ -67,6 +67,9 @@ plugins:
 # Provides redirect_from: in frontmatter for path aliases
   - jekyll-redirect-from
 
+redirect_from:
+  json: false
+
 #      _____ __                  __
 #     / ___// /________  _______/ /___  __________
 #     \__ \/ __/ ___/ / / / ___/ __/ / / / ___/ _ \
@@ -104,6 +107,7 @@ exclude:
   - .github
   - .gitignore
   - CNAME
+  - LICENSE
   - README.md
   # Build Artifacts and byproducts
   - .sass-cache
@@ -134,6 +138,8 @@ exclude:
   # Random stuff
   - temp
   - sources
+  - descript.ion
+  - "**/descript.ion"
   - .svn
   - .git
   - System Volume Information
