@@ -112,6 +112,7 @@ exclude:
   - _drafts/_*
   # Build Scripts and Dependencies
   - build.gradle
+  - settings.gradle
   - gradle
   - gradlew
   - gradlew.bat
