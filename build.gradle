@@ -237,7 +237,7 @@ abstract class Jekyll extends Exec {
 	}
 
 	@Override protected void exec() {
-		workingDir = project.file(unsubst(workingDir.path))
+		workingDir = new File(unsubst(workingDir.path))
 		List<String> command = [Os.isFamily(Os.FAMILY_WINDOWS) ? "bundle.bat" : "bundle", "exec", "jekyll", jekyllTask]
 		if (!configs.isEmpty()) {
 			command.addAll(["--config", configs.join(",")])
