@@ -4,7 +4,7 @@ Visit [twisterrob.net](https://www.twisterrob.net).
 # Development Install
 Install [Ruby+Devkit](https://rubyinstaller.org/downloads/) on Windows to build the site and its native gems. Use the version in [`.ruby-version`](.ruby-version) (currently 3.4.11) to match CI.
 
-The icon font build uses a separate Ruby version from [`sources/iconfont/.ruby-version`](sources/iconfont/.ruby-version) (currently 2.7.8). CI installs it separately before building the site.
+To regenerate the icon font, see [the iconfont build instructions](sources/iconfont/README.md).
 
 
 ## First time
