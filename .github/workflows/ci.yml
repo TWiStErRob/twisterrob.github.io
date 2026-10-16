@@ -281,16 +281,9 @@ jobs:
 
       # assets/fonts/ is excluded, because building fonts is not deterministic.
       - name: "Diff head against base."
-        env:
-          CONTENT_CHANGE: ${{ contains(github.event.pull_request.labels.*.name, 'content-change') }}
-        run: |
-          if diff --recursive github-pages-base github-pages-head; then
-            exit 0
-          else
-            status=$?
-            if [ "$status" -eq 1 ] && [ "$CONTENT_CHANGE" = "true" ]; then
-              echo "::notice::Site differs from reference (content-change label)."
-              exit 0
-            fi
-            exit "$status"
-          fi
+        if: ${{ contains(github.event.pull_request.labels.*.name, 'content-change') }}
+        run: diff --recursive github-pages-base github-pages-head || true
+
+      - name: "Strict diff head against base."
+        if: ${{ !contains(github.event.pull_request.labels.*.name, 'content-change') }}
+        run: diff --recursive github-pages-base github-pages-head
