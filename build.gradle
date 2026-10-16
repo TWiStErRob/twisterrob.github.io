@@ -1,4 +1,5 @@
 import org.apache.tools.ant.taskdefs.condition.Os
+import org.gradle.api.tasks.options.Option
 
 buildscript {
 	repositories {
@@ -93,76 +94,15 @@ def clean = tasks.register("clean", Delete.class) {
 }
 
 def build = tasks.register("build", Jekyll.class) {
-	description = "Runs jekyll build, use tasks in ${JekyllSetup.GROUP} group to change behavior"
+	description = "Runs Jekyll build with command-line options to change behavior"
 	jekyllTask = "build"
 	mustRunAfter(clean)
 }
 def serve = tasks.register("serve", Jekyll.class) {
-	description = "Start jekyll in serve mode, use tasks in ${JekyllSetup.GROUP} group to change behavior"
+	description = "Starts Jekyll serve with command-line options to change behavior"
 	jekyllTask = "serve"
 	mustRunAfter(clean)
 	outputs.upToDateWhen { false }
-}
-
-def local = tasks.register("local", JekyllSetup.class) {
-	description = "Use _config_local.yml overrides"
-	action = {
-		it.config("_config_local.yml")
-	}
-}
-def dev = tasks.register("dev", JekyllSetup.class) {
-	description = "Use _config_dev.yml overrides and sets JEKYLL_ENV to development"
-	dependsOn(local)
-	action = {
-		it.config("_config_dev.yml")
-		it.environment("JEKYLL_ENV", "development")
-	}
-}
-
-def noskip = tasks.register("noskip", JekyllSetup.class) {
-	description = "Remove --skip-initial-build from serve command (default is ${build.get().skip ? "added" : "removed"})"
-	action = { it.skip = false }
-}
-def skip = tasks.register("skip", JekyllSetup.class) {
-	description = "Add --skip-initial-build to serve command (default is ${build.get().skip ? "added" : "removed"})"
-	action = { it.skip = true }
-}
-noskip.configure { mustRunAfter(skip) }
-
-def notrace = tasks.register("notrace", JekyllSetup.class) {
-	description = "Remove --trace argument from jekyll (default is ${build.get().trace ? "added" : "removed"})"
-	action = { it.trace = false }
-}
-def trace = tasks.register("trace", JekyllSetup.class) {
-	description = "Add --trace argument to jekyll (default is ${build.get().trace ? "added" : "removed"})"
-	action = { it.trace = true }
-}
-notrace.configure { mustRunAfter(trace) }
-
-def noverbose = tasks.register("noverbose", JekyllSetup.class) {
-	description = "Remove --verbose argument from jekyll (default is ${build.get().verbose ? "added" : "removed"})"
-	action = { it.verbose = false }
-}
-def verbose = tasks.register("verbose", JekyllSetup.class) {
-	description = "Add --verbose argument to jekyll (default is ${build.get().verbose ? "added" : "removed"})"
-	action = { it.verbose = true }
-}
-noverbose.configure { mustRunAfter(verbose) }
-
-class JekyllSetup extends DefaultTask {
-	static final GROUP = "Jekyll Param"
-
-	@Internal
-	Action<Jekyll> action
-
-	JekyllSetup() {
-		group = GROUP
-	}
-
-	@TaskAction
-	void setup() {
-		project.tasks.withType(Jekyll.class).all(action)
-	}
 }
 
 abstract class Jekyll extends Exec {
@@ -184,6 +124,38 @@ abstract class Jekyll extends Exec {
 	String jekyllTask
 
 	private final List<String> configs = ["_config.yml"]
+
+	@Option(option = "trace", description = "Show Jekyll stack traces")
+	void setTrace(boolean enabled) { trace = enabled }
+
+	@Option(option = "notrace", description = "Hide Jekyll stack traces")
+	void setNotrace(boolean enabled) { trace = !enabled }
+
+	@Option(option = "verbose", description = "Show verbose Jekyll output")
+	void setVerbose(boolean enabled) { verbose = enabled }
+
+	@Option(option = "noverbose", description = "Hide verbose Jekyll output")
+	void setNoverbose(boolean enabled) { verbose = !enabled }
+
+	@Option(option = "skip", description = "Skip the initial Jekyll serve build")
+	void setSkip(boolean enabled) { skip = enabled }
+
+	@Option(option = "noskip", description = "Run the initial Jekyll serve build")
+	void setNoskip(boolean enabled) { skip = !enabled }
+
+	@Option(option = "local", description = "Include local Jekyll configuration")
+	void setLocal(boolean enabled) {
+		if (enabled) config("_config_local.yml")
+	}
+
+	@Option(option = "dev", description = "Include development Jekyll configuration")
+	void setDev(boolean enabled) {
+		if (enabled) {
+			setLocal(true)
+			config("_config_dev.yml")
+			environment("JEKYLL_ENV", "development")
+		}
+	}
 
 	Jekyll() {
 		group = GROUP
@@ -218,8 +190,10 @@ abstract class Jekyll extends Exec {
 	}
 
 	void config(String file) {
-		configs.add(file)
-		inputs.file(file)
+		if (!configs.contains(file)) {
+			configs.add(file)
+			inputs.file(file)
+		}
 	}
 
 	private static File unsubst(File directory) {
@@ -239,37 +213,50 @@ abstract class Jekyll extends Exec {
 }
 
 build.configure {
-	mustRunAfter(jobs, font, fastStyle, slowStyle, tasks.withType(JekyllSetup.class))
+	mustRunAfter(jobs, font, fastStyle, slowStyle)
 }
 serve.configure {
-	mustRunAfter(jobs, font, fastStyle, slowStyle, tasks.withType(JekyllSetup.class))
+	mustRunAfter(jobs, font, fastStyle, slowStyle)
 }
 clean.configure {
 	mustRunAfter(fastStyleCopyCachedCSS)
 }
 
-tasks.register("fastDev") {
+tasks.register("fastDev", Jekyll.class) {
 	group = "Efficiency"
 	description = "Daily development task to run in browser for editing content."
-	dependsOn(fastStyle, serve, dev, skip)
+	jekyllTask = "serve"
+	setDev(true)
+	setSkip(true)
+	dependsOn(fastStyle)
+	outputs.upToDateWhen { false }
 }
-tasks.register("fastDevStyle") {
+tasks.register("fastDevStyle", Jekyll.class) {
 	group = "Efficiency"
 	description = "Daily development task to run in browser for editing theme."
-	dependsOn(slowStyle, serve, dev, skip)
+	jekyllTask = "serve"
+	setDev(true)
+	setSkip(true)
+	dependsOn(slowStyle)
+	outputs.upToDateWhen { false }
 }
 tasks.register("preCommit") {
 	group = "Efficiency"
 	description = "Task to run before committing to version control."
 	dependsOn(slowStyle, clean, jobs, build)
 }
-tasks.register("preCommitServe") {
+tasks.register("preCommitServe", Jekyll.class) {
 	group = "Efficiency"
 	description = "Task to run before committing to version control."
-	dependsOn(slowStyle, clean, jobs, serve, local)
+	jekyllTask = "serve"
+	setLocal(true)
+	dependsOn(slowStyle, clean, jobs)
+	outputs.upToDateWhen { false }
 }
-tasks.register("rebuild") {
+tasks.register("rebuild", Jekyll.class) {
 	group = "Efficiency"
 	description = "Rebuild the whole site from scratch."
-	dependsOn(slowStyle, clean, jobs, font, build, local)
+	jekyllTask = "build"
+	setLocal(true)
+	dependsOn(slowStyle, clean, jobs, font)
 }
