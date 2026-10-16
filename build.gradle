@@ -242,39 +242,39 @@ abstract class Jekyll extends Exec {
 }
 
 project.afterEvaluate {
-	tasks.named("build").configure {
+	build.configure {
 		mustRunAfter(jobs, font, fastStyle, slowStyle, tasks.withType(JekyllSetup.class))
 	}
-	tasks.named("serve").configure {
+	serve.configure {
 		mustRunAfter(jobs, font, fastStyle, slowStyle, tasks.withType(JekyllSetup.class))
 	}
-	tasks.named("clean").configure {
+	clean.configure {
 		mustRunAfter(fastStyleCopyCachedCSS)
 	}
 
 	tasks.register("fastDev") {
 		group = "Efficiency"
 		description = "Daily development task to run in browser for editing content."
-		dependsOn(tasks.named("fastStyle"), tasks.named("serve"), tasks.named("dev"), tasks.named("skip"))
+		dependsOn(fastStyle, serve, dev, skip)
 	}
 	tasks.register("fastDevStyle") {
 		group = "Efficiency"
 		description = "Daily development task to run in browser for editing theme."
-		dependsOn(tasks.named("slowStyle"), tasks.named("serve"), tasks.named("dev"), tasks.named("skip"))
+		dependsOn(slowStyle, serve, dev, skip)
 	}
 	tasks.register("preCommit") {
 		group = "Efficiency"
 		description = "Task to run before committing to version control."
-		dependsOn(tasks.named("slowStyle"), tasks.named("clean"), tasks.named("jobs"), tasks.named("build"))
+		dependsOn(slowStyle, clean, jobs, build)
 	}
 	tasks.register("preCommitServe") {
 		group = "Efficiency"
 		description = "Task to run before committing to version control."
-		dependsOn(tasks.named("slowStyle"), tasks.named("clean"), tasks.named("jobs"), tasks.named("serve"), tasks.named("local"))
+		dependsOn(slowStyle, clean, jobs, serve, local)
 	}
 	tasks.register("rebuild") {
 		group = "Efficiency"
 		description = "Rebuild the whole site from scratch."
-		dependsOn(tasks.named("slowStyle"), tasks.named("clean"), tasks.named("jobs"), tasks.named("font"), tasks.named("build"), tasks.named("local"))
+		dependsOn(slowStyle, clean, jobs, font, build, local)
 	}
 }
