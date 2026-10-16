@@ -104,6 +104,7 @@ exclude:
   - .github
   - .gitignore
   - CNAME
+  - LICENSE
   - README.md
   # Build Artifacts and byproducts
   - .sass-cache
@@ -112,6 +113,7 @@ exclude:
   - _drafts/_*
   # Build Scripts and Dependencies
   - build.gradle
+  - settings.gradle
   - gradle
   - gradlew
   - gradlew.bat
@@ -133,6 +135,8 @@ exclude:
   # Random stuff
   - temp
   - sources
+  - descript.ion
+  - "**/descript.ion"
   - .svn
   - .git
   - System Volume Information
