@@ -117,6 +117,7 @@ exclude:
   # Build Scripts and Dependencies
   - build.gradle
   - settings.gradle
+  - gradle.properties
   - gradle
   - gradlew
   - gradlew.bat
