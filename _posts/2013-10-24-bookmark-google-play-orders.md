@@ -57,4 +57,4 @@ check();
 ```
 {: #GooglePlay-RemoveFreeOrders}
 
-[^1]: {% include snippets/bookmarklet.html %}
+{{ '' }}[^1]: {% include snippets/bookmarklet.html %}
