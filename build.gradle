@@ -1,4 +1,6 @@
 import org.apache.tools.ant.taskdefs.condition.Os
+import org.gradle.api.Action
+import org.gradle.api.tasks.Internal
 
 buildscript {
 	repositories {
@@ -180,8 +182,8 @@ noverbose.configure { mustRunAfter(verbose) }
 class JekyllSetup extends DefaultTask {
 	static final GROUP = "Jekyll Param"
 
-	@Input
-	Action<JekyllSetup> action
+	@Internal
+	Action<Jekyll> action
 
 	JekyllSetup() {
 		group = GROUP
