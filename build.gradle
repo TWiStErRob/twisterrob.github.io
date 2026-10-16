@@ -156,29 +156,29 @@ def dev = tasks.register("dev", JekyllSetup.class) {
 	}
 }
 def noskip = tasks.register("noskip", JekyllSetup.class) {
-	description = "Remove --skip-initial-build from serve command (default is removed)"
+	description = "Remove --skip-initial-build from serve command (default is ${build.get().skip ? "added" : "removed"})"
 	action = { it.skip = false }
 }
 def skip = tasks.register("skip", JekyllSetup.class) {
-	description = "Add --skip-initial-build to serve command (default is removed)"
+	description = "Add --skip-initial-build to serve command (default is ${build.get().skip ? "added" : "removed"})"
 	action = { it.skip = true }
 }
 noskip.configure { mustRunAfter(skip) }
 def notrace = tasks.register("notrace", JekyllSetup.class) {
-	description = "Remove --trace argument from jekyll (default is added)"
+	description = "Remove --trace argument from jekyll (default is ${build.get().trace ? "added" : "removed"})"
 	action = { it.trace = false }
 }
 def trace = tasks.register("trace", JekyllSetup.class) {
-	description = "Add --trace argument to jekyll (default is added)"
+	description = "Add --trace argument to jekyll (default is ${build.get().trace ? "added" : "removed"})"
 	action = { it.trace = true }
 }
 notrace.configure { mustRunAfter(trace) }
 def noverbose = tasks.register("noverbose", JekyllSetup.class) {
-	description = "Remove --verbose argument from jekyll (default is removed)"
+	description = "Remove --verbose argument from jekyll (default is ${build.get().verbose ? "added" : "removed"})"
 	action = { it.verbose = false }
 }
 def verbose = tasks.register("verbose", JekyllSetup.class) {
-	description = "Add --verbose argument to jekyll (default is removed)"
+	description = "Add --verbose argument to jekyll (default is ${build.get().verbose ? "added" : "removed"})"
 	action = { it.verbose = true }
 }
 noverbose.configure { mustRunAfter(verbose) }
