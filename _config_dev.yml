@@ -2,7 +2,7 @@
 # This config-file is only for development.
 # It helps to give a faster turnaround on local development as well as turning off code compation to be easier to debug.
 #
-# gradle serve dev OR gradle fastDev[Style]
+# gradle serve --dev OR gradle fastDev[Style]
 
 url: 'http://localhost:4000'
 
