@@ -1,7 +1,6 @@
 ---
 # Only the main Sass file needs front matter
-sitemap:
-  exclude: true
+sitemap: false
 ---
 @charset "utf-8";
 $environment: '{{ jekyll.environment }}';
