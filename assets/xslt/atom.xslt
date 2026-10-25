@@ -1,5 +1,6 @@
 ---
 layout: xml-style
+sitemap: false
 title: "Atom Feed (Styled)"
 rootMatcher: '/atom:feed'
 stylesheetAttributes: 'xmlns:atom="http://www.w3.org/2005/Atom"'

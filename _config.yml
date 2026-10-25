@@ -252,6 +252,11 @@ collections:
 defaults:
   -
     scope:
+      path: "assets/css/style.scss"
+    values:
+      sitemap: false
+  -
+    scope:
       path: ""
     values:
       layout: page

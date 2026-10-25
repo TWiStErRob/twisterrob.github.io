@@ -1,6 +1,5 @@
 ---
-sitemap:
-  exclude: true
+sitemap: false
 ---
 @charset "utf-8";
 $environment: '{{ jekyll.environment }}';
