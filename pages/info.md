@@ -1,6 +1,7 @@
 ---
 permalink: /info/
 layout: page
+breadcrumbs: true
 title: "About"
 subheadline: "Home for all things about and by Róbert&nbsp;Papp (TWiStErRob)."
 teaser: "I spent many years developing applications, it's time to publish..."

@@ -133,6 +133,21 @@ body.video {
     letter-spacing: -2px;
 }
 
+.masthead-bar {
+    display: flex;
+    align-items: center;
+    background: $crumb-bg;
+
+    nav.breadcrumbs {
+        flex: 1;
+        min-width: 0;
+    }
+    .edit-source-container {
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+}
+
 /* Masthead › small-only
 ------------------------------------------------------------------- */
 
@@ -455,7 +470,7 @@ body.video {
     @page { margin: 0.32in; } // TODO https://github.com/zurb/foundation/issues/6834
     #navigation,
     #masthead, #masthead-with-pattern, #masthead-with-background-color, #masthead-with-text, #masthead-no-image-header,
-    .breadcrumbs,
+    .masthead-bar, .breadcrumbs,
     .sidebar, #post-nav, #sharer, #pagination, #up-to-top,
     #footer-content, #footer, #subfooter {
         display: none !important;

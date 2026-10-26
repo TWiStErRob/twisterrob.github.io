@@ -4,6 +4,7 @@
 *  
 {% endcomment %}
 
+{% if page.breadcrumbs == true %}
 <nav class="breadcrumbs" role="menubar" aria-label="breadcrumbs">
 	<a href="{{ site.baseurl }}/">{{ site.data.language.breadcrumb_start }}</a>
 	{% assign crumbs = page.url | split: '/' %}
@@ -17,3 +18,4 @@
 		{% endif %}
 	{% endfor %}
 </nav>
+{% endif %}

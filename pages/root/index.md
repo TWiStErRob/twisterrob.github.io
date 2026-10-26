@@ -23,6 +23,8 @@ widget3:
   url: /blog/
   image: widget-3_keyboard.jpg
   text: "Read my articles about software development, the problems I encountered and solutions I came up with."
+edit:
+  enabled: false
 ---
 
 {% comment %}
