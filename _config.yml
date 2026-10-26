@@ -112,6 +112,7 @@ exclude:
   # Build Artifacts and byproducts
   - .sass-cache
   - .gradle
+  - build
   - _site
   - _drafts/_*
   # Build Scripts and Dependencies
