@@ -1,0 +1,10 @@
+{% capture breadcrumbs %}{% include masthead-breadcrumbs.html %}{% endcapture %}
+{% capture edit_link %}{% include improve_content.html %}{% endcapture %}
+{% assign breadcrumbs = breadcrumbs | strip %}
+{% assign edit_link = edit_link | strip %}
+{% if breadcrumbs != empty or edit_link != empty %}
+<div class="masthead-bar">
+	{{ breadcrumbs }}
+	{{ edit_link }}
+</div>
+{% endif %}

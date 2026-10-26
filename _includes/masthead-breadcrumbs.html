@@ -4,16 +4,8 @@
 *  
 {% endcomment %}
 
-{% assign show_breadcrumbs = page.breadcrumbs %}
-{% assign show_edit = false %}
-{% if site.improve_content != blank and page.edit.enabled != false %}
-	{% if page.edit.source != blank or page.path != blank %}
-		{% assign show_edit = true %}
-	{% endif %}
-{% endif %}
-{% if show_breadcrumbs or show_edit %}
+{% if page.breadcrumbs == true %}
 <nav class="breadcrumbs" role="menubar" aria-label="breadcrumbs">
-	{% if show_breadcrumbs %}
 	<a href="{{ site.baseurl }}/">{{ site.data.language.breadcrumb_start }}</a>
 	{% assign crumbs = page.url | split: '/' %}
 	{% for crumb in crumbs offset: 1 %}
@@ -25,10 +17,5 @@
 			<a href="{{ crumb_url }}">{{ crumb | replace: '-', ' ' }}</a>
 		{% endif %}
 	{% endfor %}
-	{% endif %}
-
-	{% if show_edit %}
-	{% include improve_content.html %}
-	{% endif %}
 </nav>
 {% endif %}

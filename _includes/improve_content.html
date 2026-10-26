@@ -6,5 +6,7 @@
 * 
 {% endcomment %}
 {% assign edit_path = page.edit.source | default: page.path %}
-{% assign edit_url = site.improve_content | append: '/' | append: edit_path %}
-<a class="edit-source" href="{{ edit_url }}" title="Edit this page on GitHub">{{ site.data.language.edit }}</a>
+{% if site.improve_content and site.improve_content != empty and page.edit.enabled != false and edit_path and edit_path != empty %}
+	{% assign edit_url = site.improve_content | append: '/' | append: edit_path %}
+	<a class="edit-source" href="{{ edit_url }}" title="Edit this page on GitHub">{{ site.data.language.edit }}</a>
+{% endif %}

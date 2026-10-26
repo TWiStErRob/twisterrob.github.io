@@ -255,12 +255,24 @@ body.video {
 .breadcrumbs>.current {
   font-weight: bold;
 }
-.breadcrumbs>.edit-source {
-  float: right;
+.masthead-bar {
+  display: flex;
+  align-items: center;
+  background: $footer-bg;
 }
-.breadcrumbs>.edit-source:before {
-  /* hide breadcrumb separator from <a> */
-  content: none;
+.masthead-bar .breadcrumbs {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+}
+.masthead-bar .edit-source {
+  margin-left: auto;
+  padding: 0.5625rem 0.875rem;
+  flex-shrink: 0;
+  font-size: 0.6875rem;
+  line-height: 0.6875rem;
+  text-transform: uppercase;
+  color: $crumb-font-color;
 }
 
 
@@ -462,7 +474,7 @@ body.video {
     @page { margin: 0.32in; } // TODO https://github.com/zurb/foundation/issues/6834
     #navigation,
     #masthead, #masthead-with-pattern, #masthead-with-background-color, #masthead-with-text, #masthead-no-image-header,
-    .breadcrumbs,
+    .masthead-bar, .breadcrumbs,
     .sidebar, #post-nav, #sharer, #pagination, #up-to-top,
     #footer-content, #footer, #subfooter {
         display: none !important;
