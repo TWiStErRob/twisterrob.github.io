@@ -255,6 +255,13 @@ body.video {
 .breadcrumbs>.current {
   font-weight: bold;
 }
+.breadcrumbs>.edit-source {
+  float: right;
+}
+.breadcrumbs>.edit-source:before {
+  /* hide breadcrumb separator from <a> */
+  content: none;
+}
 
 
 /* Meta
