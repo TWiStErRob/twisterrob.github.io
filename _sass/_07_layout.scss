@@ -133,6 +133,21 @@ body.video {
     letter-spacing: -2px;
 }
 
+.masthead-bar {
+    display: flex;
+    align-items: center;
+    background: $crumb-bg;
+
+    nav.breadcrumbs {
+        flex: 1;
+        min-width: 0;
+    }
+    .edit-source-container {
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+}
+
 /* Masthead › small-only
 ------------------------------------------------------------------- */
 
@@ -254,25 +269,6 @@ body.video {
 }
 .breadcrumbs>.current {
   font-weight: bold;
-}
-.masthead-bar {
-  display: flex;
-  align-items: center;
-  background: $footer-bg;
-}
-.masthead-bar .breadcrumbs {
-  flex: 1;
-  min-width: 0;
-  background: transparent;
-}
-.masthead-bar .edit-source {
-  margin-left: auto;
-  padding: 0.5625rem 0.875rem;
-  flex-shrink: 0;
-  font-size: 0.6875rem;
-  line-height: 0.6875rem;
-  text-transform: uppercase;
-  color: $crumb-font-color;
 }
 
 
