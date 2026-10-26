@@ -11,9 +11,7 @@
 	</div><!-- /.row -->
 </div><!-- /#masthead -->
 
-{% if page.breadcrumbs == true %}
-{% include masthead-breadcrumbs.html %}
-{% endif %}
+{% include masthead-bar.html %}
 
 
 
@@ -29,9 +27,7 @@
 	</div><!-- /.row -->
 </div><!-- /#masthead -->
 
-{% if page.breadcrumbs == true %}
-{% include masthead-breadcrumbs.html %}
-{% endif %}
+{% include masthead-bar.html %}
 
 {% if page.header.caption_url and page.header.caption %}
 <div class="masthead-caption">
@@ -57,9 +53,7 @@
 	</div><!-- /.row -->
 </div><!-- /#masthead -->
 
-{% if page.breadcrumbs == true %}
-{% include masthead-breadcrumbs.html %}
-{% endif %}
+{% include masthead-bar.html %}
 
 {% if page.header.caption_url and page.header.caption %}
 <div class="masthead-caption">
@@ -85,9 +79,7 @@
 	</div><!-- /.row -->
 </div><!-- /#masthead -->
 
-{% if page.breadcrumbs == true %}
-{% include masthead-breadcrumbs.html %}
-{% endif %}
+{% include masthead-bar.html %}
 
 {% if page.header.caption_url and page.header.caption %}
 <div class="masthead-caption">
@@ -113,9 +105,7 @@
 	</div><!-- /.row -->
 </div><!-- /#masthead -->
 
-{% if page.breadcrumbs == true %}
-{% include masthead-breadcrumbs.html %}
-{% endif %}
+{% include masthead-bar.html %}
 
 {% if page.header.caption_url and page.header.caption %}
 <div class="masthead-caption">
@@ -133,8 +123,6 @@
 
 {% elsif page.header == false %}
 
-{% if page.breadcrumbs == true %}
-{% include masthead-breadcrumbs.html %}
-{% endif %}
+{% include masthead-bar.html %}
 
 {% endif %}

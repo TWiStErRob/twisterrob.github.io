@@ -1,6 +1,7 @@
 ---
 permalink: /contact/
 layout: page
+breadcrumbs: true
 title: "Contact"
 meta_title: "Contact Róbert Papp (TWiStErRob)"
 teaser: "Want to message me to ask a question or just tell me something?"

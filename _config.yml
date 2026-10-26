@@ -31,9 +31,9 @@ author: twisterrob
 url: 'https://www.twisterrob.net'
 baseurl: ''
 
-# This is for the editing function in _/includes/improve_content.html
+# This is for the editing function in _includes/improve_content.html
 # Leave it empty if your site is not on GitHub/GitHub Pages
-improve_content: https://github.com/twisterrob/twisterrob.github.io/issues
+improve_content: https://github.com/TWiStErRob/twisterrob.github.io/edit/main
 
 # This URL points directly to the images directory making
 # things easier to link to images in posts and templates. Don't include a slash at the end.
