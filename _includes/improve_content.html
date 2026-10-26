@@ -5,6 +5,6 @@
 * give people a possibility to improve your content.
 * 
 {% endcomment %}
-{% assign edit_path = page.edit_source | default: page.path %}
+{% assign edit_path = page.edit.source | default: page.path %}
 {% assign edit_url = site.improve_content | append: '/' | append: edit_path %}
 <a class="edit-source" href="{{ edit_url }}" title="Edit this page on GitHub">{{ site.data.language.edit }}</a>

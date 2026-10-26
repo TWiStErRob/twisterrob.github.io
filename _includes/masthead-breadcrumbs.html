@@ -5,7 +5,10 @@
 {% endcomment %}
 
 {% assign show_breadcrumbs = page.breadcrumbs %}
-{% assign show_edit = false %}{% if site.improve_content != blank and page.path != blank %}{% assign show_edit = true %}{% endif %}
+{% assign show_edit = false %}
+{% if site.improve_content != blank and page.edit.enabled != false and page.path != blank %}
+	{% assign show_edit = true %}
+{% endif %}
 {% if show_breadcrumbs or show_edit %}
 <nav class="breadcrumbs" role="menubar" aria-label="breadcrumbs">
 	{% if show_breadcrumbs %}
