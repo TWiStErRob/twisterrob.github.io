@@ -14,6 +14,15 @@
 		{% else %}
 			{% assign crumb_limit = forloop.index | plus: 1 %}
 			{% capture crumb_url %}{{ site.baseurl }}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' }}{% endfor %}{% endcapture %}
+			{% if page.collection == 'posts' %}
+				{% assign year_url = page.date | date: '/blog/%Y/' | prepend: site.baseurl %}
+				{% assign month_url = page.date | date: '/blog/%Y/%m/' | prepend: site.baseurl %}
+				{% if crumb_url == year_url %}
+					{% capture crumb_url %}{{ site.baseurl }}/blog/archive/#{{ page.date | date: '%Y' }}{% endcapture %}
+				{% elsif crumb_url == month_url %}
+					{% capture crumb_url %}{{ site.baseurl }}/blog/archive/#{{ page.date | date: '%Y-%m' }}{% endcapture %}
+				{% endif %}
+			{% endif %}
 			<a href="{{ crumb_url }}">{{ crumb | replace: '-', ' ' }}</a>
 		{% endif %}
 	{% endfor %}
