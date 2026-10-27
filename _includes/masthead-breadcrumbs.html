@@ -18,9 +18,9 @@
 				{% assign year_url = page.date | date: '/blog/%Y/' | prepend: site.baseurl %}
 				{% assign month_url = page.date | date: '/blog/%Y/%m/' | prepend: site.baseurl %}
 				{% if crumb_url == year_url %}
-					{% capture crumb_url %}{{ site.baseurl }}/blog/archive/#{{ page.date | date: '%Y' }}{% endcapture %}
+					{% assign crumb_url = page.date | date: '/blog/archive/#%Y' | prepend: site.baseurl %}
 				{% elsif crumb_url == month_url %}
-					{% capture crumb_url %}{{ site.baseurl }}/blog/archive/#{{ page.date | date: '%Y-%m' }}{% endcapture %}
+					{% assign crumb_url = page.date | date: '/blog/archive/#%Y-%m' | prepend: site.baseurl %}
 				{% endif %}
 			{% endif %}
 			<a href="{{ crumb_url }}">{{ crumb | replace: '-', ' ' }}</a>
