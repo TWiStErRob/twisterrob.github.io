@@ -16,10 +16,11 @@
 			{% capture crumb_url %}{{ site.baseurl }}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' }}{% endfor %}{% endcapture %}
 			{% if page.collection == 'posts' %}
 				{% assign year_url = page.date | date: '/blog/%Y/' | prepend: site.baseurl %}
-				{% assign month_url = page.date | date: '/blog/%Y/%m/' | prepend: site.baseurl %}
 				{% if crumb_url == year_url %}
 					{% assign crumb_url = page.date | date: '/blog/archive/#%Y' | prepend: site.baseurl %}
-				{% elsif crumb_url == month_url %}
+				{% endif %}
+				{% assign month_url = page.date | date: '/blog/%Y/%m/' | prepend: site.baseurl %}
+				{% if crumb_url == month_url %}
 					{% assign crumb_url = page.date | date: '/blog/archive/#%Y-%m' | prepend: site.baseurl %}
 				{% endif %}
 			{% endif %}
