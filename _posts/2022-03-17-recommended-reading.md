@@ -14,6 +14,7 @@ Let's start with a quick baseline that should be(come) common sense:
    (probably the original version: https://www.nohello.com/)
  * [Don't ask to ask](https://dontasktoask.com/)
  * [The XY Problem](https://xyproblem.info)
+ * [Niklas Gruhn: Don't be a meat proxy](https://gruhn.me/blog/2026-08-03/)
  * [Zac Sweers: You are not blocked](https://www.zacsweers.dev/you-are-not-blocked/)
 
 The pages are in no particular order, just randomly thrown here.
@@ -33,3 +34,5 @@ If I get inspiration I might write some actual recommendations, until then, just
  * [The Dark Secrets of Fast Compilation for Kotlin](https://blog.jetbrains.com/kotlin/2020/09/the-dark-secrets-of-fast-compilation-for-kotlin/)
  * [Jake Wharton: Build on latest Java, test through lowest Java](https://jakewharton.com/build-on-latest-java-test-through-lowest-java/)
  * [Jonathan Chan: U+237C ⍼ RIGHT ANGLE WITH DOWNWARDS ZIGZAG ARROW](https://ionathan.ch/2022/04/09/angzarr.html)
+ * [Parse, don't validate](https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/)
+ * [Primitive Obsession](https://refactoring.guru/smells/primitive-obsession)
