@@ -275,6 +275,7 @@ defaults:
       type: posts
       path: ''
     values:
+      breadcrumbs: true
       show_meta:
         info: true
         sharer: true
